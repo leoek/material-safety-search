@@ -22,6 +22,7 @@ def main(argv, sname):
 
     if inputFolder == '':
         print(sname, '-i <pathToFolder>')
+        return
     else:
         print('Input folder is: ' + inputFolder)
 
