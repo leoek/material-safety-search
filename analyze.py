@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 import re, sys, getopt, os, fnmatch
 from collections import Counter
 
 #Input must be a folder.
-def main(argv):
+def main(argv, sname):
     inputFolder = ''
     showPath = False
     regex = '=  ([A-Za-z0-9\s]+)  ='
@@ -20,7 +21,7 @@ def main(argv):
             showPath = True
 
     if inputFolder == '':
-        print('shit.py -i <pathToFolder>')
+        print(sname, '-i <pathToFolder>')
     else:
         print('Input folder is: ' + inputFolder)
 
@@ -47,4 +48,4 @@ def main(argv):
     print(d)
 
 #cli with arguments: file path, regex (optional)
-if __name__ == "__main__":main(sys.argv[1:])
+if __name__ == "__main__":main(sys.argv[1:], sys.argv[0])
