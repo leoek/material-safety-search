@@ -10,7 +10,7 @@ def main(argv, sname):
     try:
         opts, args = getopt.getopt(argv,'hi:r:p',['input=' , 'path', 'regex='])
     except getopt.GetoptError:
-        print('shit.py -i <pathToFolder> [-r <regEx>] [-p]')
+        print(sname, '-i <pathToFolder> [-r <regEx>] [-p]')
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-i", "--input"):
