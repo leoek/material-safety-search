@@ -10,6 +10,7 @@ def main(argv, sname):
     try:
         opts, args = getopt.getopt(argv,'hi:r:p',['input=' , 'path', 'regex='])
     except getopt.GetoptError:
+        print('Usage:')
         print(sname, '-i <pathToFolder> [-r <regEx>] [-p]')
         sys.exit(2)
     for opt, arg in opts:
@@ -21,8 +22,9 @@ def main(argv, sname):
             showPath = True
 
     if inputFolder == '':
-        print(sname, '-i <pathToFolder>')
-        return
+        print('Usage:')
+        print(sname, '-i <pathToFolder> [-r <regEx>] [-p]')
+        sys.exit(2)
     else:
         print('Input folder is: ' + inputFolder)
 
