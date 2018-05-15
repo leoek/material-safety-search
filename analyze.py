@@ -5,7 +5,7 @@ from collections import Counter
 def main(argv):
     inputFolder = ''
     showPath = False
-    regex = '=\s\s([A-Za-z0-9\s]+)\s\s='
+    regex = '=  ([A-Za-z0-9\s]+)  ='
     try:
         opts, args = getopt.getopt(argv,'hi:r:p',['input=' , 'path', 'regex='])
     except getopt.GetoptError:
