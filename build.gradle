@@ -38,6 +38,9 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
+	compile 'org.springframework.data:spring-data-solr:3.0.7.RELEASE'
+    compile("org.springframework.boot.spring-boot-starter-data-solr")
+
 	compile 'com.google.guava:guava:25.0-jre'
 
     testCompile("junit:junit")
