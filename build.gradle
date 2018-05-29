@@ -1,0 +1,50 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+idea {
+	module {
+		outputDir file('build/classes/main')
+		testOutputDir file('build/classes/test')
+	}
+}
+
+bootJar {
+    baseName = 'material-safety-search'
+    version =  '0.1.0'
+}
+
+group = "org"
+
+sourceCompatibility = 10
+targetCompatibility = 10
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+	compile 'com.google.guava:guava:25.0-jre'
+
+    testCompile("junit:junit")
+}
+
+[bootRun].each { runTask ->
+	configure(runTask) {
+		systemProperties System.properties
+	}
+}
