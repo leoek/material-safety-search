@@ -26,14 +26,8 @@ public class Application implements CommandLineRunner {
 
         log.info("Done");
 
-        this.dataSheetRepository.deleteAll();
 
-        // insert some products
-        DataSheet sheet = new DataSheet();
-        sheet.setId(1L);
-        sheet.setRaw("some pretty random text");
-        //this.dataSheetRepository.save(sheet);
 
-        System.exit(0);
+        //System.exit(0);
     }
 }
