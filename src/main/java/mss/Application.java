@@ -1,6 +1,5 @@
 package mss;
 
-import mss.domain.entity.DataSheet;
 import mss.domain.repository.DataSheetRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,16 +17,9 @@ public class Application implements CommandLineRunner {
         SpringApplication.run(Application.class, args);
     }
 
-    @Autowired
-    private DataSheetRepository dataSheetRepository;
-
     @Override
     public void run(String... strings) throws Exception {
-
         log.info("Done");
-
-
-
         //System.exit(0);
     }
 }
