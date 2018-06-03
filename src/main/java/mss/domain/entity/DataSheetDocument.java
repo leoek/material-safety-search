@@ -4,6 +4,7 @@ package mss.domain.entity;
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.SolrDocument;
+import org.springframework.data.solr.repository.Score;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class DataSheetDocument {
 
     @Field
     private List<String> lines;
+
+    @Score
+    private Double score;
 
     public Boolean hasId() {
         return id != null;
@@ -44,5 +48,13 @@ public class DataSheetDocument {
 
     public void setLines(List<String> lines) {
         this.lines = lines;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 }
