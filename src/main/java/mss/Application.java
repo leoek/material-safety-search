@@ -1,7 +1,9 @@
 package mss;
 
-import mss.domain.entity.DataSheet;
+import mss.domain.entity.DataSheetDocument;
 import mss.domain.repository.DataSheetRepository;
+import mss.service.DataSheetImporter;
+import mss.service.DataSheetIndexService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +23,16 @@ public class Application implements CommandLineRunner {
     @Autowired
     private DataSheetRepository dataSheetRepository;
 
+    @Autowired
+    private DataSheetImporter dataSheetImporter;
+
     @Override
     public void run(String... strings) throws Exception {
 
-        log.info("Done");
+        dataSheetImporter.importDataSet();
+        log.info("import done");
 
-        this.dataSheetRepository.deleteAll();
-
-        // insert some products
-        DataSheet sheet = new DataSheet();
-        sheet.setId(1L);
-        sheet.setRaw("some pretty random text");
-        this.dataSheetRepository.save(sheet);
+        
 
         System.exit(0);
     }

@@ -6,6 +6,7 @@ services:
      - "8983:8983"
     volumes:
       - data:/opt/solr/server/solr/mycores
+      - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
