@@ -32,7 +32,7 @@ public class Application implements CommandLineRunner {
         DataSheet sheet = new DataSheet();
         sheet.setId(1L);
         sheet.setRaw("some pretty random text");
-        //this.dataSheetRepository.save(sheet);
+        this.dataSheetRepository.save(sheet);
 
         System.exit(0);
     }
