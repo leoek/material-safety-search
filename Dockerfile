@@ -12,7 +12,7 @@ COPY ./src /usr/app/src
 RUN ./gradlew build
 RUN cp /usr/app/build/libs/*.jar /usr/app/app.jar
 
-FROM openjdk:10.0.1-10-jdk-sid
+FROM openjdk:10.0.1-10-jre-slim-sid
 COPY --from=builder /usr/app/app.jar /opt/app.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/app.jar"]
 EXPOSE 8080
