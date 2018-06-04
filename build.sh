@@ -11,8 +11,9 @@ fi
 
 packageVersion=$(./getVersion.sh)
 
-baseTag="leoek/material-safety-search"
+baseTag="materialsafetysearch/private"
 newTag="$baseTag:$packageVersion-$BUILD_NUMBER"
 
 echo "Building $newTag"
 docker build -t "$newTag" .
+docker push $newTag
