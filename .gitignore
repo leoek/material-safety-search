@@ -1,7 +1,17 @@
+#intellij stuff
 *.iml
 /.gradle
 /.idea
+
+#vscode stuff
+/.classpath
+/.project
+/.settings
+
+
 /bin
 /out
 /build
+
+#dataset
 /hazard-dataset*
