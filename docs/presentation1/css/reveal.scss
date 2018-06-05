@@ -62,6 +62,11 @@ body {
  * VIEW FRAGMENTS
  *********************************************/
 
+
+.no-max-height {
+	max-height: 100%!important;
+}
+
 .reveal .slides section .fragment {
 	opacity: 0;
 	visibility: hidden;
