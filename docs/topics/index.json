@@ -7,9 +7,9 @@
     },
     {
         "number": 1,
-        "query" : "",
-        "description": "",
-        "narrative": ""
+        "query" : "liquid on fire",
+        "description": "Compile a list of all liquids which are inflammable.",
+        "narrative": "Any document about a liquid which is inflammable is relevant. Documents about easily inflamable materials which highlight the material being on fire as danger are more relevant than those which just list inflamable as property. Inflamable materials which are not liquid can be relevant too if they beocme liquid if they are heated. In the best case the document contains instructions about what to do in case the material is on fire."
     },
     {
         "number": 2,
