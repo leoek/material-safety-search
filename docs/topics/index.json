@@ -19,9 +19,9 @@
     },
     {
         "number": 3,
-        "query" : "",
-        "description": "",
-        "narrative": ""
+        "query" : "omnilube precautions",
+        "description": "Show all necessary precautions when using/handling/storing the product Omnilube",
+        "narrative": "All precautions should be picked from the product sheet from Omnilube and similar products. The most relevant precautions are those that prevent the most harm. Precautions from products other than exactly Omnilube are less relevant."
     },
     {
         "number": 4,
