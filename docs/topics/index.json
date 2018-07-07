@@ -1,9 +1,9 @@
 [
     {
         "number": 0,
-        "query" : "",
-        "description": "",
-        "narrative": ""
+        "query" : "oxygen inhaled",
+        "description": "Effects of inhaling oxygen",
+        "narrative": "A relevant search result should indicate that human is not harmed when amount of inhaled oxygen is below a certain threshold. Effects and first aid measurements should be listed."
     },
     {
         "number": 1,
@@ -19,9 +19,9 @@
     },
     {
         "number": 3,
-        "query" : "",
-        "description": "",
-        "narrative": ""
+        "query" : "buy ammonium flouride",
+        "description": "Identify companies that sell ammonium flouride",
+        "narrative": "Relevant search results are all MSDSs of ammonium flouride. Ideally company name, address and phone number should be highlighted."
     },
     {
         "number": 4,
@@ -31,8 +31,8 @@
     },
     {
         "number": 5,
-        "query" : "",
-        "description": "",
-        "narrative": ""
+        "query" : "how to store hydroflouric acid",
+        "description": "Identify storing precautions of hydroflouric acid",
+        "narrative": "Relevant search results contain instructions and precautions regarding storage of hydroflouric acid."
     }
 ]
