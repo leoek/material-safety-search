@@ -7,21 +7,21 @@
     },
     {
         "number": 1,
-        "query" : "",
-        "description": "",
-        "narrative": ""
+        "query" : "liquid on fire",
+        "description": "Compile a list of all liquids which are inflammable.",
+        "narrative": "Any document about a liquid which is inflammable is relevant. Documents about easily inflamable materials which highlight the material being on fire as danger are more relevant than those which just list inflamable as property. Inflamable materials which are not liquid can be relevant too if they become liquid if they are heated. In the best case the document contains instructions about what to do in case the material is on fire."
     },
     {
         "number": 2,
-        "query" : "",
-        "description": "",
-        "narrative": ""
-    },
-    {
-        "number": 3,
         "query" : "buy ammonium flouride",
         "description": "Identify companies that sell ammonium flouride",
         "narrative": "Relevant search results are all MSDSs of ammonium flouride. Ideally company name, address and phone number should be highlighted."
+    },
+    {
+        "number": 3,
+        "query" : "omnilube precautions",
+        "description": "Show all necessary precautions when using/handling/storing the product Omnilube",
+        "narrative": "All precautions should be picked from the product sheet from Omnilube and similar products. The most relevant precautions are those that prevent the most harm. Precautions from products other than exactly Omnilube are less relevant."
     },
     {
         "number": 4,
@@ -34,5 +34,11 @@
         "query" : "how to store hydroflouric acid",
         "description": "Identify storing precautions of hydroflouric acid",
         "narrative": "Relevant search results contain instructions and precautions regarding storage of hydroflouric acid."
+    },
+    {
+        "number": 6,
+        "query" : "protective gloves required",
+        "description": "List all products that require protective gloves to handle",
+        "narrative": "A small firm producing general use rubber gloves without expertise in the field of protective gear for chemicals is looking to market their gloves in more fields of use. To test their product for the specific use with chemicals, the company is looking for chemicals that require protective gloves. To find examples for a presentation an employee may be searching the material safety database to quickly satisfy their information need. Entries for products that mention the absence of need for protective gloves are irrelevant. All entries for products that do not require protective gloves when handling it are irrelevant."
     }
 ]
