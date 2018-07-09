@@ -25,18 +25,12 @@
     },
     {
         "number": 4,
-        "query" : "",
-        "description": "",
-        "narrative": ""
-    },
-    {
-        "number": 5,
         "query" : "how to store hydroflouric acid",
         "description": "Identify storing precautions of hydroflouric acid",
         "narrative": "Relevant search results contain instructions and precautions regarding storage of hydroflouric acid."
     },
     {
-        "number": 6,
+        "number": 5,
         "query" : "protective gloves required",
         "description": "List all products that require protective gloves to handle",
         "narrative": "A small firm producing general use rubber gloves without expertise in the field of protective gear for chemicals is looking to market their gloves in more fields of use. To test their product for the specific use with chemicals, the company is looking for chemicals that require protective gloves. To find examples for a presentation an employee may be searching the material safety database to quickly satisfy their information need. Entries for products that mention the absence of need for protective gloves are irrelevant. All entries for products that do not require protective gloves when handling it are irrelevant."
