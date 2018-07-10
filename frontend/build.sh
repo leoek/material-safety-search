@@ -9,7 +9,8 @@ else
     exit 1
 fi
 
-packageVersion=$(./getVersion.sh)
+versionFile=./package.json
+packageVersion=$(awk '/version/{gsub(/("|",)/,"",$2);print $2};' $versionFile)
 
 baseTag="materialsafetysearch/private"
 tagName="frontend"
