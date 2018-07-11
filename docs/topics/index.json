@@ -40,5 +40,11 @@
         "query": "how to handle SULFURIC ACID",
         "description": "list of handling instructions for sulfuric acid.",
         "narrative": "Any material safety data sheet about sulfuric acid is relevant, especially the Handling and Storage section if available. The best case would be to have a list of the relevant data sheets and additionally a list of necessary precautions and the instructions for proper handling."
+    },
+    {
+        "number": 7,
+        "query": "stainless steel waste disposal",
+        "description": "Retrieve information about waste disposal or waste disposal methods of products with the ingredient STAINLESS STEEL",
+        "narrative": "Items solely consisting of stainless steel are more relevant than those with high percentages of stainless steel."
     }
 ]
