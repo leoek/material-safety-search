@@ -31,7 +31,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        if (dataSheetRepository.count() == 0){
+        /*if (dataSheetRepository.count() == 0){
             dataSheetImporter.importDataSet();
             log.info("import done");
         }
@@ -42,6 +42,6 @@ public class Application implements CommandLineRunner {
 
         log.info("{}", documents);
 
-        System.exit(0);
+        System.exit(0);*/
     }
 }

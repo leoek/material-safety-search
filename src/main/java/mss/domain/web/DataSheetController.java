@@ -1,6 +1,9 @@
 package mss.domain.web;
 
+import mss.domain.entity.DataSheetDocument;
 import mss.domain.service.DataSheetService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -19,11 +22,18 @@ public class DataSheetController {
         this.dataSheetService = dataSheetService;
     }
 
-    @GetMapping
+    /*@GetMapping
     @ResponseBody
     public ResponseEntity<HttpStatus> doStuff(@RequestParam(name = "ids", required = false) List<Long> ids) {
         dataSheetService.doStuff();
         return new ResponseEntity<>(HttpStatus.OK);
+    }*/
+
+    @GetMapping
+    @ResponseBody
+    public ResponseEntity<Page<DataSheetDocument>> findFullText(Pageable p, @RequestParam(name = "s") String searchTerm) {
+        Page<DataSheetDocument> result = dataSheetService.findFullText(p, searchTerm);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }
