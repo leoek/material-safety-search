@@ -1,6 +1,6 @@
 package mss.domain.service;
 
-import mss.domain.entity.DataSheet;
+import mss.domain.entity.DataSheetDocument;
 import mss.domain.repository.DataSheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class DataSheetService {
         //this.dataSheetRepository.deleteAll();
 
         // insert some products
-        DataSheet sheet = new DataSheet();
+        DataSheetDocument sheet = new DataSheetDocument();
         sheet.setId(1L);
         sheet.setRaw("some pretty random text");
         this.dataSheetRepository.save(sheet);

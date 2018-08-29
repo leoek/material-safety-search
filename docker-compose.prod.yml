@@ -1,0 +1,25 @@
+version: '3'
+services:
+  solr:
+    image: solr
+    ports:
+     - "8983:8983"
+    volumes:
+      - data:/opt/solr/server/solr/mycores
+      - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - dataSheet
+
+  mss-server:
+    image: materialsafetysearch/private:0.1.0-7
+    depends_on:
+      - solr
+    links:
+      - solr
+    volumes:
+      - ./hazard-dataset:/hazard-dataset:ro
+
+volumes:
+  data:
