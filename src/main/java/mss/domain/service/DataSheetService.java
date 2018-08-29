@@ -16,16 +16,6 @@ public class DataSheetService {
         this.dataSheetRepository = dataSheetRepository;
     }
 
-    /*public void doStuff(){
-        //this.dataSheetRepository.deleteAll();
-
-        // insert some products
-        DataSheetDocument sheet = new DataSheetDocument();
-        sheet.setId(1L);
-        sheet.setRaw("some pretty random text");
-        this.dataSheetRepository.save(sheet);
-    }
-*/
     public Page<DataSheetDocument> findFullText(Pageable p, String searchTerm){
         Page<DataSheetDocument> result = dataSheetRepository.findFullText(searchTerm, p);
         return result;

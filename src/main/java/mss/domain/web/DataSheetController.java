@@ -22,18 +22,10 @@ public class DataSheetController {
         this.dataSheetService = dataSheetService;
     }
 
-    /*@GetMapping
-    @ResponseBody
-    public ResponseEntity<HttpStatus> doStuff(@RequestParam(name = "ids", required = false) List<Long> ids) {
-        dataSheetService.doStuff();
-        return new ResponseEntity<>(HttpStatus.OK);
-    }*/
-
     @GetMapping
     @ResponseBody
     public ResponseEntity<Page<DataSheetDocument>> findFullText(Pageable p, @RequestParam(name = "s") String searchTerm) {
         Page<DataSheetDocument> result = dataSheetService.findFullText(p, searchTerm);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
 }
