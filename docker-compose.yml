@@ -7,6 +7,7 @@ services:
     volumes:
       - data:/opt/solr/server/solr/mycores
       - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
+      - ./docker/solrconfig.xml:/opt/solr/server/solr/mycores/dataSheet/conf/solrconfig.xml
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
