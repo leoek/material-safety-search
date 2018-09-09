@@ -37,7 +37,7 @@ SHERWIN-WILLIAMS -- VM&P NAPHTHA  -- 8010-00F006672
 >MSDS Date:01/01/1987 (sorting, faceting, limting results)
 >FSC:8010 (second time)
 >NIIN:00F006672 (second time)
->MSDS Number: BBWFT
+MSDS Number: BBWFT
 === Responsible Party === (what is a party)
 >Company Name:SHERWIN-WILLIAMS/CLEVELAND, OH 44115
 Emergency Phone Num:(216) 556-2917
