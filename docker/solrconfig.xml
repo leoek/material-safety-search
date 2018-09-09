@@ -115,7 +115,7 @@
        solr.RAMDirectoryFactory is memory based and not persistent.
     -->
   <directoryFactory name="DirectoryFactory"
-                    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/>
+    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/>
 
   <!-- The CodecFactory for defining the format of the inverted index.
        The default implementation is SchemaCodecFactory, which is the official Lucene
@@ -409,9 +409,9 @@
                       and initialSize parameters are ignored.
       -->
     <filterCache class="solr.FastLRUCache"
-                 size="512"
-                 initialSize="512"
-                 autowarmCount="0"/>
+      size="512"
+      initialSize="512"
+      autowarmCount="0"/>
 
     <!-- Query Result Cache
 
@@ -422,9 +422,9 @@
                        to occupy
       -->
     <queryResultCache class="solr.LRUCache"
-                      size="512"
-                      initialSize="512"
-                      autowarmCount="0"/>
+      size="512"
+      initialSize="512"
+      autowarmCount="0"/>
 
     <!-- Document Cache
 
@@ -433,17 +433,17 @@
          this cache will not be autowarmed.
       -->
     <documentCache class="solr.LRUCache"
-                   size="512"
-                   initialSize="512"
-                   autowarmCount="0"/>
+      size="512"
+      initialSize="512"
+      autowarmCount="0"/>
 
     <!-- custom cache currently used by block join -->
     <cache name="perSegFilter"
-           class="solr.search.LRUCache"
-           size="10"
-           initialSize="0"
-           autowarmCount="10"
-           regenerator="solr.NoOpRegenerator" />
+      class="solr.search.LRUCache"
+      size="10"
+      initialSize="0"
+      autowarmCount="10"
+      regenerator="solr.NoOpRegenerator" />
 
     <!-- Field Value Cache
 
@@ -791,8 +791,8 @@
 
     -->
   <requestHandler name="/update/extract"
-                  startup="lazy"
-                  class="solr.extraction.ExtractingRequestHandler" >
+    startup="lazy"
+    class="solr.extraction.ExtractingRequestHandler" >
     <lst name="defaults">
       <str name="lowernames">true</str>
       <str name="fmap.meta">ignored_</str>
@@ -1007,8 +1007,8 @@
       <!-- Configure the standard fragmenter -->
       <!-- This could most likely be commented out in the "default" case -->
       <fragmenter name="gap"
-                  default="true"
-                  class="solr.highlight.GapFragmenter">
+        default="true"
+        class="solr.highlight.GapFragmenter">
         <lst name="defaults">
           <int name="hl.fragsize">100</int>
         </lst>
@@ -1018,7 +1018,7 @@
            (for sentence extraction)
         -->
       <fragmenter name="regex"
-                  class="solr.highlight.RegexFragmenter">
+        class="solr.highlight.RegexFragmenter">
         <lst name="defaults">
           <!-- slightly smaller fragsizes work better because of slop -->
           <int name="hl.fragsize">70</int>
@@ -1031,35 +1031,35 @@
 
       <!-- Configure the standard formatter -->
       <formatter name="html"
-                 default="true"
-                 class="solr.highlight.HtmlFormatter">
+        default="true"
+        class="solr.highlight.HtmlFormatter">
         <lst name="defaults">
           <str name="hl.simple.pre"><![CDATA[<em>]]></str>
-          <str name="hl.simple.post"><![CDATA[</em>]]></str>
+            <str name="hl.simple.post"><![CDATA[</em>]]></str>
         </lst>
       </formatter>
 
       <!-- Configure the standard encoder -->
       <encoder name="html"
-               class="solr.highlight.HtmlEncoder" />
+        class="solr.highlight.HtmlEncoder" />
 
       <!-- Configure the standard fragListBuilder -->
       <fragListBuilder name="simple"
-                       class="solr.highlight.SimpleFragListBuilder"/>
+        class="solr.highlight.SimpleFragListBuilder"/>
 
       <!-- Configure the single fragListBuilder -->
       <fragListBuilder name="single"
-                       class="solr.highlight.SingleFragListBuilder"/>
+        class="solr.highlight.SingleFragListBuilder"/>
 
       <!-- Configure the weighted fragListBuilder -->
       <fragListBuilder name="weighted"
-                       default="true"
-                       class="solr.highlight.WeightedFragListBuilder"/>
+        default="true"
+        class="solr.highlight.WeightedFragListBuilder"/>
 
       <!-- default tag FragmentsBuilder -->
       <fragmentsBuilder name="default"
-                        default="true"
-                        class="solr.highlight.ScoreOrderFragmentsBuilder">
+        default="true"
+        class="solr.highlight.ScoreOrderFragmentsBuilder">
         <!--
         <lst name="defaults">
           <str name="hl.multiValuedSeparatorChar">/</str>
@@ -1069,42 +1069,42 @@
 
       <!-- multi-colored tag FragmentsBuilder -->
       <fragmentsBuilder name="colored"
-                        class="solr.highlight.ScoreOrderFragmentsBuilder">
+        class="solr.highlight.ScoreOrderFragmentsBuilder">
         <lst name="defaults">
           <str name="hl.tag.pre"><![CDATA[
-               <b style="background:yellow">,<b style="background:lawgreen">,
-               <b style="background:aquamarine">,<b style="background:magenta">,
-               <b style="background:palegreen">,<b style="background:coral">,
-               <b style="background:wheat">,<b style="background:khaki">,
-               <b style="background:lime">,<b style="background:deepskyblue">]]></str>
-          <str name="hl.tag.post"><![CDATA[</b>]]></str>
-        </lst>
-      </fragmentsBuilder>
+            <b style="background:yellow">,<b style="background:lawgreen">,
+                <b style="background:aquamarine">,<b style="background:magenta">,
+                    <b style="background:palegreen">,<b style="background:coral">,
+                        <b style="background:wheat">,<b style="background:khaki">,
+                            <b style="background:lime">,<b style="background:deepskyblue">]]></str>
+                              <str name="hl.tag.post"><![CDATA[</b>]]></str>
+                          </lst>
+                        </fragmentsBuilder>
 
-      <boundaryScanner name="default"
-                       default="true"
-                       class="solr.highlight.SimpleBoundaryScanner">
-        <lst name="defaults">
-          <str name="hl.bs.maxScan">10</str>
-          <str name="hl.bs.chars">.,!? &#9;&#10;&#13;</str>
-        </lst>
-      </boundaryScanner>
+                        <boundaryScanner name="default"
+                          default="true"
+                          class="solr.highlight.SimpleBoundaryScanner">
+                          <lst name="defaults">
+                            <str name="hl.bs.maxScan">10</str>
+                            <str name="hl.bs.chars">.,!? &#9;&#10;&#13;</str>
+                          </lst>
+                        </boundaryScanner>
 
-      <boundaryScanner name="breakIterator"
-                       class="solr.highlight.BreakIteratorBoundaryScanner">
-        <lst name="defaults">
-          <!-- type should be one of CHARACTER, WORD(default), LINE and SENTENCE -->
-          <str name="hl.bs.type">WORD</str>
-          <!-- language and country are used when constructing Locale object.  -->
-          <!-- And the Locale object will be used when getting instance of BreakIterator -->
-          <str name="hl.bs.language">en</str>
-          <str name="hl.bs.country">US</str>
-        </lst>
-      </boundaryScanner>
-    </highlighting>
-  </searchComponent>
+                        <boundaryScanner name="breakIterator"
+                          class="solr.highlight.BreakIteratorBoundaryScanner">
+                          <lst name="defaults">
+                            <!-- type should be one of CHARACTER, WORD(default), LINE and SENTENCE -->
+                            <str name="hl.bs.type">WORD</str>
+                            <!-- language and country are used when constructing Locale object.  -->
+                            <!-- And the Locale object will be used when getting instance of BreakIterator -->
+                            <str name="hl.bs.language">en</str>
+                            <str name="hl.bs.country">US</str>
+                          </lst>
+                        </boundaryScanner>
+                      </highlighting>
+                    </searchComponent>
 
-  <!-- Update Processors
+                    <!-- Update Processors
 
        Chains of Update Processor Factories for dealing with Update
        Requests can be declared, and then used by name in Update
@@ -1190,7 +1190,7 @@
 
   <!-- The update.autoCreateFields property can be turned to false to disable schemaless mode -->
   <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"
-           processor="uuid,remove-blank,field-name-mutating,parse-boolean,parse-long,parse-double,parse-date,add-schema-fields">
+    processor="uuid,remove-blank,field-name-mutating,parse-boolean,parse-long,parse-double,parse-date,add-schema-fields">
     <processor class="solr.LogUpdateProcessorFactory"/>
     <processor class="solr.DistributedUpdateProcessorFactory"/>
     <processor class="solr.RunUpdateProcessorFactory"/>
@@ -1361,4 +1361,16 @@
       EditorialMarkerFactory will do exactly that:
      <transformer name="qecBooster" class="org.apache.solr.response.transform.EditorialMarkerFactory" />
     -->
-</config>
+    <searchComponent name="suggest" class="solr.SuggestComponent">
+      <lst name="suggester">
+        <str name="name">mySuggester</str>
+        <str name="lookupImpl">FuzzyLookupFactory</str>
+        <str name="dictionaryImpl">DocumentDictionaryFactory</str>
+        <str name="field">cat</str>
+        <str name="weightField">price</str>
+        <str name="suggestAnalyzerFieldType">string</str>
+        <str name="buildOnStartup">false</str>
+      </lst>
+
+    </searchComponent>
+  </config>
