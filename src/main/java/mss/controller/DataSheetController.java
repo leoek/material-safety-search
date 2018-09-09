@@ -1,6 +1,7 @@
 package mss.controller;
 
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +22,8 @@ public class DataSheetController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<DataSheetDocument>> findFullText(Pageable p, @RequestParam(name = "s") String searchTerm) {
+    public PageResponse<DataSheetDocument> findFullText(Pageable p, @RequestParam(name = "s") String searchTerm) {
         Page<DataSheetDocument> result = dataSheetService.findFullText(p, searchTerm);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new PageResponse<>(result);
     }
 }
