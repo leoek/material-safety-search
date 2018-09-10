@@ -65,9 +65,9 @@ public class DataSheetImporter {
         }
         List<String> rawContent = readFile(file);
         DataSheetDocument document = new DataSheetDocument();
-        document.setLines(readFile(file));
+        //document.setLines(readFile(file));
         indexService.addBulk(document);
-        //log.info("Imported {} {}", document.getId(), file.getName());
+        log.info("Imported {} {}", document.getId(), file.getName());
     }
 
     private List<String> readFile(File file){

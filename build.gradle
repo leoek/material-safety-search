@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-controller")
+	compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter")
 	compile("org.springframework.data:spring-data-solr")
     compile("org.springframework.boot:spring-boot-starter-data-solr:2.0.4.RELEASE")

@@ -67,7 +67,7 @@ public class Application implements CommandLineRunner {
             log.info("import done");
         }
 
-        examples();
+        //examples();
 
         //System.exit(0);
     }
