@@ -7,6 +7,8 @@ import org.springframework.data.solr.core.mapping.ChildDocument;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 import org.springframework.data.solr.repository.Score;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @SolrDocument(solrCoreName = "dataSheet")
@@ -36,7 +38,7 @@ public class DataSheetDocument{
     private String companyName;
 
     @Field
-    private String msdsDate;
+    private Date msdsDate;
 
     @Field
     @ChildDocument
@@ -122,11 +124,11 @@ public class DataSheetDocument{
         this.companyName = companyName;
     }
 
-    public String getMsdsDate() {
+    public Date getMsdsDate() {
         return msdsDate;
     }
 
-    public void setMsdsDate(String msdsDate) {
+    public void setMsdsDate(Date msdsDate) {
         this.msdsDate = msdsDate;
     }
 

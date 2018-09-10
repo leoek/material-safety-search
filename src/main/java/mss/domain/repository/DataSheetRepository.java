@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocument, Long> {
 
-    @Query("lines:*?0*")
+    @Query("productId:*?0*")
     public Page<DataSheetDocument> findFullText(String searchTerm, Pageable pageable);
 }

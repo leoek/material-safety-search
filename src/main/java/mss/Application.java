@@ -62,10 +62,12 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        if (dataSheetRepository.count() == 0){
+        /*if (dataSheetRepository.count() == 0){
             dataSheetImporter.importDataSet();
             log.info("import done");
-        }
+        }*/
+
+        dataSheetImporter.addExampleDoc();
 
         //examples();
 

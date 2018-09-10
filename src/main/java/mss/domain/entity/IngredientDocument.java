@@ -2,6 +2,7 @@ package mss.domain.entity;
 
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.solr.core.mapping.Indexed;
 
 public class IngredientDocument {
 
@@ -9,7 +10,11 @@ public class IngredientDocument {
     @Field
     private String id;
 
+    @Field
     private String ingredName;
+
+    @Field
+    private String cas;
 
     public String getId() {
         return id;
@@ -34,6 +39,4 @@ public class IngredientDocument {
     public void setCas(String cas) {
         this.cas = cas;
     }
-
-    private String cas;
 }
