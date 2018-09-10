@@ -1,4 +1,4 @@
-package mss.domain.service;
+package mss.service;
 
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.repository.DataSheetRepository;
