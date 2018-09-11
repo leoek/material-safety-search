@@ -7,13 +7,17 @@ import org.springframework.data.solr.core.mapping.Indexed;
 public class IngredientDocument {
 
     @Id
-    @Field
+    @Indexed
     private String id;
 
-    @Field
+    @Indexed(value = "docType_s", defaultValue = "ingredient")
+    private String docType;
+
+    //Indexed and stored fields
+    @Indexed
     private String ingredName;
 
-    @Field
+    @Indexed
     private String cas;
 
     public String getId() {
@@ -22,6 +26,14 @@ public class IngredientDocument {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getDocType() {
+        return docType;
+    }
+
+    public void setDocType(String docType) {
+        this.docType = docType;
     }
 
     public String getIngredName() {

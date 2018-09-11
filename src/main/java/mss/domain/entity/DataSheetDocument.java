@@ -4,6 +4,7 @@ package mss.domain.entity;
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.ChildDocument;
+import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 import org.springframework.data.solr.repository.Score;
 
@@ -16,56 +17,68 @@ public class DataSheetDocument{
 
 
     @Id
-    @Field
+    @Indexed
     private Long id;
 
     @Score
     private Double score;
 
+    @Indexed(value = "docType_s", defaultValue = "datasheet")
+    private String docType;
+
     //Indexed and stored fields
 
-    //@Indexed
-    @Field
+    @Indexed("productId_s")
     private String productId;
 
-    @Field
+    @Indexed
     private String fsc;
 
-    @Field
+    @Indexed
     private String niin;
 
-    @Field
+    @Indexed
     private String companyName;
 
-    @Field
+    @Indexed
     private Date msdsDate;
 
-    @Field
+    @Indexed
     @ChildDocument
     List<IngredientDocument> ingredients;
 
     //Raw fields
-
+    @Indexed(searchable = false)
     private String rawIdentification;
 
+    @Indexed(searchable = false)
     private String rawComposition;
 
+    @Indexed(searchable = false)
     private String rawHazards;
 
+    @Indexed(searchable = false)
     private String rawFirstAid;
 
+    @Indexed(searchable = false)
     private String rawFireFighting;
 
+    @Indexed(searchable = false)
     private String rawAccidentalRelease;
 
+    @Indexed(searchable = false)
     private String rawHandlingStorage;
 
+    @Indexed(searchable = false)
     private String rawProtection;
 
+    @Indexed(searchable = false)
     private String rawChemicalProperties;
 
+    @Indexed(searchable = false)
     private String rawStabilityReactivity;
 
+    @Indexed(searchable = false)
     private String rawDisposal;
 
     //Used by Importer
@@ -90,6 +103,14 @@ public class DataSheetDocument{
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public String getDocType() {
+        return docType;
+    }
+
+    public void setDocType(String docType) {
+        this.docType = docType;
     }
 
     public String getProductId() {

@@ -94,11 +94,13 @@ public class DataSheetImporter {
         DataSheetDocument document = new DataSheetDocument();
         IngredientDocument i1 = new IngredientDocument();
         IngredientDocument i2 = new IngredientDocument();
-        i1.setId("0");
+        i1.setId("1");
+        i1.setDocType("ingredient");
         i1.setIngredName("N-BUTYL ACETATE  (SARA III)");
         i1.setCas("123-86-4");
 
-        i2.setId("1");
+        i2.setId("2");
+        i2.setDocType("ingredient");
         i2.setIngredName("2-ETHOXYETHYL ACETATE (CELLOSOLVE ACETATE) (EGEEA)");
         i2.setCas("111-15-9");
 
@@ -106,15 +108,12 @@ public class DataSheetImporter {
         ingredientDocuments.add(i1);
         ingredientDocuments.add(i2);
 
-        //document.setId(0l);
         document.setProductId("SD 36118 GUNSHIP GRAY (822X339)");
+        document.setDocType("datasheet");
         document.setFsc("8010");
         document.setNiin("01-107-2186");
         document.setCompanyName("DESOTO, INC.");
         document.setIngredients(ingredientDocuments);
-        DateTimeConverters dateTimeConverters = new DateTimeConverters();
-
-
 
         try {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -123,7 +122,6 @@ public class DataSheetImporter {
         } catch (ParseException pe) {
             pe.printStackTrace();
         }
-
 
         document.setRawIdentification("Product ID:SD 36118 GUNSHIP GRAY (822X339)\n" +
                 "MSDS Date:12/13/1983\n" +
