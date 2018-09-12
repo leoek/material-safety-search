@@ -155,12 +155,24 @@ public class DataSheetImporter {
 
         //Get Date
         if (document.getRawIdentification() != null) {
+            //Normal pattern: 12/17/1986
             Pattern p3 = Pattern.compile("MSDS Date:([0-9]{2}\\/[0-9]{2}\\/[0-9]{4})");
             Matcher m3 = p3.matcher(document.getRawIdentification());
+            //Alternative pattern: Jan 24 1989
+            Pattern p3alt = Pattern.compile("MSDS Date:([A-Za-z]{3} [0-9]{2} [0-9]{4})");
+            Matcher m3alt = p3alt.matcher(document.getRawIdentification());
             if (m3.find()) {
                 try {
                     DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
                     Date date = dateFormat.parse(m3.group(1));
+                    document.setMsdsDate(date);
+                } catch (ParseException pe) {
+                    pe.printStackTrace();
+                }
+            } else if (m3alt.find()){
+                try {
+                    DateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy");
+                    Date date = dateFormat.parse(m3alt.group(1));
                     document.setMsdsDate(date);
                 } catch (ParseException pe) {
                     pe.printStackTrace();
