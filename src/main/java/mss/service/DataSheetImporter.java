@@ -2,11 +2,9 @@ package mss.service;
 
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.entity.IngredientDocument;
-import mss.service.DataSheetIndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.solr.core.convert.DateTimeConverters;
 import org.springframework.stereotype.Service;
 
 import org.slf4j.Logger;
@@ -132,22 +130,22 @@ public class DataSheetImporter {
                     document.setRawDisposal(value);
                     break;
                 case "Toxicological Information ":
-                    document.setRawDisposal(value);
+                    document.setRawToxic(value);
                     break;
                 case "Toxicological Information":
-                    document.setRawDisposal(value);
+                    document.setRawToxic(value);
                     break;
                 case "Ecological Information ":
-                    document.setRawDisposal(value);
+                    document.setRawEco(value);
                     break;
                 case "MSDS Transport Information ":
-                    document.setRawDisposal(value);
+                    document.setRawTransport(value);
                     break;
                 case "Regulatory Information ":
-                    document.setRawDisposal(value);
+                    document.setRawRegulatory(value);
                     break;
                 case "Other Information ":
-                    document.setRawDisposal(value);
+                    document.setRawOther(value);
                     break;
                 default:
                     log.warn("Unlisted Category \"" + category + "\" found in file " + file.getName() + ".\nPlease consider reporting this to the developers.");

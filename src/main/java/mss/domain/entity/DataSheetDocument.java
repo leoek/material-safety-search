@@ -1,14 +1,12 @@
 package mss.domain.entity;
 
 
-import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.ChildDocument;
 import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 import org.springframework.data.solr.repository.Score;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -95,7 +93,7 @@ public class DataSheetDocument{
     private String rawRegulatory;
 
     @Indexed(searchable = false)
-    private String rawOtherInformation;
+    private String rawOther;
 
     //Used by Importer
 
@@ -297,12 +295,12 @@ public class DataSheetDocument{
         this.rawRegulatory = rawRegulatory;
     }
 
-    public String getRawOtherInformation() {
-        return rawOtherInformation;
+    public String getRawOther() {
+        return rawOther;
     }
 
-    public void setRawOtherInformation(String rawOtherInformation) {
-        this.rawOtherInformation = rawOtherInformation;
+    public void setRawOther(String rawOther) {
+        this.rawOther = rawOther;
     }
 
 }
