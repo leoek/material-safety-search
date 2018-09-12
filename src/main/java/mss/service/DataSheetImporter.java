@@ -95,7 +95,7 @@ public class DataSheetImporter {
         while (m2.find()) {
             // Get the matching string
             String category = m2.group(1);
-            String value = m2.group(2);
+            String value = m2.group(2).replaceAll("\n {4}", " ").replaceAll("\n\t", " ").trim();
             switch (category) {
                 case "Product Identification ":
                     document.setRawIdentification(value);
