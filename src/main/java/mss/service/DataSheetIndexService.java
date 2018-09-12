@@ -2,6 +2,8 @@ package mss.service;
 
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.repository.DataSheetRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Service
 public class DataSheetIndexService {
 
+
+    private static final Logger log = LoggerFactory.getLogger(DataSheetIndexService.class);
     private DataSheetRepository dataSheetRepository;
 
     private List<DataSheetDocument> documentCache;
@@ -67,6 +71,8 @@ public class DataSheetIndexService {
     }
 
     private Long getNewDocumentId(){
+        log.info("Repository: " + dataSheetRepository.count());
+        log.info("Cache: " + documentCache.size());
         return dataSheetRepository.count() + documentCache.size();
     }
 

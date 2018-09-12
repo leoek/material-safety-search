@@ -23,6 +23,7 @@ public class DataSheetDocument{
     @Score
     private Double score;
 
+    //Enables Solr to recognize a "datasheet" as a parent of an "ingredient" in queries
     @Indexed(value = "docType_s", defaultValue = "datasheet")
     private String docType;
 
@@ -80,6 +81,21 @@ public class DataSheetDocument{
 
     @Indexed(searchable = false)
     private String rawDisposal;
+
+    @Indexed(searchable = false)
+    private String rawToxic;
+
+    @Indexed(searchable = false)
+    private String rawEco;
+
+    @Indexed(searchable = false)
+    private String rawTransport;
+
+    @Indexed(searchable = false)
+    private String rawRegulatory;
+
+    @Indexed(searchable = false)
+    private String rawOtherInformation;
 
     //Used by Importer
 
@@ -248,4 +264,45 @@ public class DataSheetDocument{
     public void setRawDisposal(String rawDisposal) {
         this.rawDisposal = rawDisposal;
     }
+
+    public String getRawToxic() {
+        return rawToxic;
+    }
+
+    public void setRawToxic(String rawToxic) {
+        this.rawToxic = rawToxic;
+    }
+
+    public String getRawEco() {
+        return rawEco;
+    }
+
+    public void setRawEco(String rawEco) {
+        this.rawEco = rawEco;
+    }
+
+    public String getRawTransport() {
+        return rawTransport;
+    }
+
+    public void setRawTransport(String rawTransport) {
+        this.rawTransport = rawTransport;
+    }
+
+    public String getRawRegulatory() {
+        return rawRegulatory;
+    }
+
+    public void setRawRegulatory(String rawRegulatory) {
+        this.rawRegulatory = rawRegulatory;
+    }
+
+    public String getRawOtherInformation() {
+        return rawOtherInformation;
+    }
+
+    public void setRawOtherInformation(String rawOtherInformation) {
+        this.rawOtherInformation = rawOtherInformation;
+    }
+
 }
