@@ -64,7 +64,7 @@ public class DataSheetImporter {
 
     public void importFile(File file){
         if (excludes.contains(file.getName())){
-            log.info("Did not import {} (filename is excluded):", file.getName());
+            log.info("Did not import {} (filename is excluded)", file.getName());
             return;
         }
         String rawContent = readFile(file);
