@@ -18,7 +18,7 @@ public class DataSheetDocument{
 
     @Id
     @Indexed
-    private Long id;
+    private String id;
 
     @Score
     private Double score;
@@ -105,11 +105,11 @@ public class DataSheetDocument{
 
     //Getters and Setters
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

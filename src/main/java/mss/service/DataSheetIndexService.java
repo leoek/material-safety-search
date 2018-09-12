@@ -19,6 +19,7 @@ public class DataSheetIndexService {
 
     private List<DataSheetDocument> documentCache;
     private Integer cacheLimit = 10000;
+    private Integer uploadCount = 1;
 
     @Autowired
     public DataSheetIndexService(DataSheetRepository dataSheetRepository){
@@ -26,13 +27,7 @@ public class DataSheetIndexService {
         documentCache = new ArrayList<>();
     }
 
-    public void add(DataSheetDocument document){
-        addIdIfNecessary(document);
-        dataSheetRepository.save(document);
-    }
-
     public void addBulk(DataSheetDocument document){
-        addIdIfNecessary(document);
         documentCache.add(document);
         if(documentCache.size()>cacheLimit){
             add(documentCache);
@@ -41,39 +36,7 @@ public class DataSheetIndexService {
     }
 
     public void add(List<DataSheetDocument> documents){
-        documents.forEach(document -> addIdIfNecessary(document));
         dataSheetRepository.saveAll(documents);
+        log.info("Imported " + dataSheetRepository.count() + " documents, cache #" + uploadCount++);
     }
-
-    public void remove(DataSheetDocument document){
-        dataSheetRepository.delete(document);
-    }
-
-    public Boolean removeIfExists(DataSheetDocument document){
-        if (document.hasId()){
-            return removeIfExists(document.getId());
-        }
-        return false;
-    }
-
-    public Boolean removeIfExists(Long id){
-        Boolean exists = dataSheetRepository.existsById(id);
-        if (exists) dataSheetRepository.deleteById(id);
-        return exists;
-    }
-
-    private Boolean addIdIfNecessary(DataSheetDocument document){
-        if (!document.hasId()){
-            document.setId(getNewDocumentId());
-            return true;
-        }
-        return false;
-    }
-
-    private Long getNewDocumentId(){
-        log.info("Repository: " + dataSheetRepository.count());
-        log.info("Cache: " + documentCache.size());
-        return dataSheetRepository.count() + documentCache.size();
-    }
-
 }
