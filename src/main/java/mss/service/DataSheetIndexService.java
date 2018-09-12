@@ -29,7 +29,7 @@ public class DataSheetIndexService {
 
     public void addBulk(DataSheetDocument document){
         documentCache.add(document);
-        if(documentCache.size()>cacheLimit){
+        if(documentCache.size() >= cacheLimit){
             add(documentCache);
             documentCache = new ArrayList<>();
         }
@@ -37,6 +37,11 @@ public class DataSheetIndexService {
 
     public void add(List<DataSheetDocument> documents){
         dataSheetRepository.saveAll(documents);
-        log.info("Imported " + dataSheetRepository.count() + " documents, cache #" + uploadCount++);
+        log.info("Imported " + dataSheetRepository.count() + " documents, Cache #" + uploadCount++);
+    }
+
+    public void addRestStillInCache(){
+        add(documentCache);
+        documentCache = new ArrayList<>();
     }
 }

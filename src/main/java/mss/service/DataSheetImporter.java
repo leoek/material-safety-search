@@ -49,6 +49,7 @@ public class DataSheetImporter {
 
     public void importDataSet(){
         importFolder(new File(dataSetPath));
+        indexService.addRestStillInCache();
         log.info("Import done!");
     }
 
@@ -206,9 +207,9 @@ public class DataSheetImporter {
             }
         }
 
-        if (ingredientDocuments.size() == 0) {
+        /*if (ingredientDocuments.size() == 0) {
             log.info("No ingredients found for file: " + file.getName());
-        }
+        }*/
 
         document.setIngredients(ingredientDocuments);
 
