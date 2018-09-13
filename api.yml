@@ -191,7 +191,7 @@ definitions:
         description: "Number of documents per page"
       count:
         type: integer
-        description: "No Information available"
+        description: "Number of items on the current page"
       page:
         type: integer
         description: "Current page number"
