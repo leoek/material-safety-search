@@ -2,7 +2,8 @@
 Search engine for Material Safety Datasheets based on Solr.
 
 ## Installation
-NOTE: You will need the dataset that is NOT in this repository because of liscensing issues.
+NOTE: You will need the dataset that is NOT in this repository because of liscensing issues. Contact the developers.
+
 This project uses docker-compose for comfortable installation and distribution.
 ### Backend
 Clone the repository and navigate to the base folder with a shell, then type:
