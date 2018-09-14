@@ -1375,7 +1375,7 @@
     </searchComponent>
 
     <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
-      <lst name="defaults">
+      <lst name="default">
         <str name="suggest">true</str>
         <str name="suggest.count">10</str>
       </lst>
