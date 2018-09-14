@@ -1,0 +1,138 @@
+Possible fields
+- Must pointer to the file (e.g. 'bcbdx.txt') be included?
+Use cases:
+- Find specific datasheet (exact) vs. find some datasheet of chemical or ingredient of product (fast in emergency)
+- search for multiple chemicals to find product with them all (Type in ingredients on bottle)
+- 'disposal/storage of xyz'
+
+1.) Find product (and its MSDS)
+2.) Find specific information in its MSDS
+e.g. 'hydroflouric acid spilled' should point to 'Accidental Release Measures' on corresponding MSDS
+-> Finding MSDS is rather easy (when not in emergency just type in NIIN or similar ID)
+-> Aid in finding (suggestions, interactive exploration), Point to measures and procedures (e.g. in emergency situation)
+
+Ways of finding an MSDS:
+- type in an exact identifier (NIIN, productID?) -> Regex to find if identifier was entered & show MSDS directly
+- search for product name, explore results
+- search for company name, explore products
+- search for CAS, show products containing that chemical
+
+Exploration possibilities:
+- limit search by clicking buttons (company names, more concrete chemical names, category buttons (first aid, storage, etc.))
+- show other products with same chemicals / measures / procedures / ...
+
+Result presentation:
+- links to pubchem.org
+
+To Do:
+- create sample structure of MSDS
+
+
+<companyName> -- <productID> -- <FSC-NIIN>
+
+SHERWIN-WILLIAMS -- VM&P NAPHTHA  -- 8010-00F006672
+<pre>=====================  Product Identification  ===================== SEARCH?
+
+>Product ID:VM&P NAPHTHA (second time)
+>MSDS Date:01/01/1987 (sorting, faceting, limting results)
+>FSC:8010 (second time)
+>NIIN:00F006672 (second time)
+MSDS Number: BBWFT
+=== Responsible Party === (what is a party)
+>Company Name:SHERWIN-WILLIAMS/CLEVELAND, OH 44115
+Emergency Phone Num:(216) 556-2917
+CAGE:54636
+=== Contractor Identification === (what is a contractor)
+>Company Name:SHERWIN-WILLIAMS CO THE
+Address:101 PROSPECT AVE NW
+Box:City:CLEVELAND
+State:OH
+?ZIP:44115-1042 (might be useful for location)
+>Country:US (might be useful for limiting search results, check what countries are in here)
+Phone:800-251-2486/216-566-2242
+CAGE:54636
+
+=============  Composition/Information on Ingredients  ============= SEARCH / INFO
+
+Ingred Name:NAPHTHA (PETROLEUM SPIRITS OR BENZIN) (for searching!)
+>CAS:8030-30-6 (for searching and for linking to chempub maybe!)
+RTECS #:SE7555000 (?)
+Fraction by Wt: 100% (for information)
+OSHA PEL:100 PPM (prob. for information)
+
+=====================  Hazards Identification  ===================== SEARCH / INFO
+
+>Effects of Overexposure:EYE, SKIN/RESPIRATORY
+    IRRITATION/HEADACHE/DIZZINESS/STAGGERING
+    GAIT/UNCONSCIOUSNESS/DEATH/NAUSEA.
+
+=======================  First Aid Measures  ======================= INFO only
+
+First Aid:INHALATION: REMOVE FROM EXPOSURE. SKIN: WASH W/SOAP & WATER.
+    REMOVE CONTAMINATED CLOTHING/LAUNDER BEFORE RE-USE. EYES: FLUSH
+    W/WATER FOR 15 MINS. INGESTION: NEVER GIVE ANYTHING IF UNCONSCIOUS.
+    DON'T I NDUCE VOMITING. GIVE WATER. SEEK MED ATT.
+
+=====================  Fire Fighting Measures  ===================== INFO only
+
+Flash Point:50F TCC
+Lower Limits:0.9%
+Extinguishing Media:CO2, DRY CHEMICAL, FOAM
+Fire Fighting Procedures:FULL PROTECTIVE EQUIPMENT SCBA. WATER FOG COOL
+    CONTAINERS.
+Unusual Fire/Explosion Hazard:WATER COOL CLOSED CONTAINERS TO PREVENT
+    PRESSURE BUILDUP/AUTOIGNITION/EXPLOSION WHEN EXPOSED TO HEAT
+
+==================  Accidental Release Measures  ================== INFO only
+
+Spill Release Procedures:REMOVE ALL SOURCES OF IGNITION. VENTILATE AND
+    REMOVE WITH INERT ABSORBENT.
+
+======================	Handling and Storage  ====================== INFO only
+
+Handling and Storage Precautions:USE ONLY W/ADEQUATE VENTILATION. AVOID
+    BREATHING VAPOR & SPRAY MIST. AVOID CONTACT W/SKIN & EY. WASH HANDS
+    AFTER USING. DO NOT TAKE INTERNALLY.
+Other Precautions:INTENTIONAL MISUSE BY DELIBERATELY
+    CONCENTRATING/INHALING CONTENTS CAN BE HARMFUL OR FATAL. KEEP
+    CONTAINER CLOSED WHEN NOT IUSE. KEEP OUT OF REACH OF CHILDREN. KEEP
+    AWAY FROM HEAT/FLAME.
+
+=============  Exposure Controls/Personal Protection  ============= INFO only
+
+Respiratory Protection:WEAR RESPIRATORY DEVICE APPROVED BY NIOSH/MSHA
+    AS NEEDED.
+Ventilation:PROVIDE LOCAL EXHAUST VENTILATION TO KEEP <TLV.
+Protective Gloves:RECOMMENDED
+Eye Protection:WEAR SAFETY SPECTACLES
+Supplemental Safety and Health
+MSDS DATE: 10/29/86. WT/GAL: 6.20
+
+==================  Physical/Chemical Properties  ================== INFO (maybe SEARCH)
+
+Boiling Pt:B.P. Text:240-325F
+Vapor Density:>AIR
+Evaporation Rate &amp; Reference:SLOWER THAN ETHER
+Percent Volatiles by Volume:100%
+
+=================  Stability and Reactivity Data  ================= INFO only
+
+Stability Indicator/Materials to Avoid:YES
+Stability Condition to Avoid:HEAT, SPARKS, OPEN FLAME, HOT SURFACES
+Hazardous Decomposition Products:CO2, CO
+
+====================  Disposal Considerations  ==================== INFO only
+
+Waste Disposal Methods:INCINERATE IN APPROVED FACILITY. DO NOT
+    INCINERATE CLOSED CONTAINER. DISPOSE OF IN ACCORDANCE WITH FEDERAL,
+    STATE, & LOCAL REGULATIONS REGARDING POLLUTION. WASTE MAY BE
+    HAZARDOUS AS DEFINED UNDER RCRA  AND TESTED FOR IGNITABILITY.
+
+ Disclaimer (provided with this information by the compiling agencies):
+ This information is formulated for use by elements of the Department
+ of Defense.  The United States of America in no manner whatsoever,
+ expressly or implied, warrants this information to be accurate and
+ disclaims all liability for its use.  Any person utilizing this
+ document should seek competent professional advice to verify and
+ assume responsibility for the suitability of this information to their
+ particular situation. (Ignore)

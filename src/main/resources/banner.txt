@@ -1,0 +1,6 @@
+${AnsiColor.BLUE}______  ___________________ ________       ${AnsiColor.GREEN}_________________________ ________ _______________  __
+${AnsiColor.BLUE}___   |/  /__  ___/___  __ \__  ___/       ${AnsiColor.GREEN}__  ___/___  ____/___    |___  __ \__  ____/___  / / /
+${AnsiColor.BLUE}__  /|_/ / _____ \ __  / / /_____ \        ${AnsiColor.GREEN}_____ \ __  __/   __  /| |__  /_/ /_  /     __  /_/ /
+${AnsiColor.BLUE}_  /  / /  ____/ / _  /_/ / ____/ /        ${AnsiColor.GREEN}____/ / _  /___   _  ___ |_  _, _/ / /___   _  __  /
+${AnsiColor.BLUE}/_/  /_/   /____/  /_____/  /____/         ${AnsiColor.GREEN}/____/  /_____/   /_/  |_|/_/ |_|  \____/   /_/ /_/
+${AnsiColor.BRIGHT_BLACK}Adrian Fichtner, Leonard Krause, Salomo Pflugradt, David Reinartz @ Universität Leipzig, Germany

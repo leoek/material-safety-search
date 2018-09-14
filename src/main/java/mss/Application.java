@@ -64,11 +64,8 @@ public class Application implements CommandLineRunner {
 
         if (dataSheetRepository.count() == 0){
             dataSheetImporter.importDataSet();
-            log.info("import done");
         }
-
-        examples();
-
+        //examples();
         //System.exit(0);
     }
 }
