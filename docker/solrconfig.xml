@@ -1361,14 +1361,21 @@
       EditorialMarkerFactory will do exactly that:
      <transformer name="qecBooster" class="org.apache.solr.response.transform.EditorialMarkerFactory" />
     -->
+    <fieldType class="solr.TextField" name="textSuggest" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
     <searchComponent name="suggest" class="solr.SuggestComponent">
       <lst name="suggester">
         <str name="name">mySuggester</str>
-        <str name="lookupImpl">FuzzyLookupFactory</str>
-        <str name="dictionaryImpl">DocumentDictionaryFactory</str>
-        <str name="field">cat</str>
-        <str name="weightField">price</str>
-        <str name="suggestAnalyzerFieldType">string</str>
+        <str name="lookupImpl">TSTLookupFactory</str>
+        <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
+        <str name="field">textSuggest</str>
+        <str name="buildOnCommit">true</str>
         <str name="buildOnStartup">false</str>
       </lst>
 
