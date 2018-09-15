@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocument, Long> {
 
-    @Query("productId_s:*?0*")
+    @Query("productId:*?0*")
     public Page<DataSheetDocument> findFullText(String searchTerm, Pageable pageable);
 
 /*    value is the query term used by solr
@@ -18,6 +18,6 @@ public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocumen
     1.) "*" means return everything (the whole DataSheetDocument with all its fields)
     2.) "[child parentFilter=docType_s:datasheet]" returns children of each DataSheetDocument (i.e. list of its ingredients)
      and inserts them into the DataSheetDocument*/
-    @Query(value = "productId_s:?0", fields = {"*", "[child parentFilter=docType_s:datasheet]"})
+    @Query(value = "productId:?0", fields = {"*", "[child parentFilter=docType:datasheet]"})
     public Page<DataSheetDocument> findAllDataSheetDocumentsWithIngredientDocuments(String searchTerm, Pageable pageable);
 }

@@ -22,12 +22,11 @@ public class DataSheetDocument{
     private Double score;
 
     //Enables Solr to recognize a "datasheet" as a parent of an "ingredient" in queries
-    @Indexed(value = "docType_s", defaultValue = "datasheet")
+    @Indexed
     private String docType;
 
     //Indexed and stored fields
-
-    @Indexed("productId_s")
+    @Indexed
     private String productId;
 
     @Indexed
