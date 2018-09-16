@@ -5,7 +5,8 @@ export const config = {
       ? "http://localhost:8080"
       : "https://api.mss.leoek.eu",
   ERROR: {
-    NOCONNECTION: "NOCONNECTION"
+    NOCONNECTION: "NOCONNECTION",
+    UNPARSABLE_RESPONSE: "UNPARSABLE_RESPONSE"
   },
   DEFAULTS: {
     pageSize: 10
