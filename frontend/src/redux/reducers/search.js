@@ -12,7 +12,7 @@ const initialState = {
 };
 
 const search = (state = initialState, action) => {
-  const { type, payload, time } = action;
+  const { type, payload } = action;
   if (type === FETCH_SEARCH_REQUEST) {
     return {
       ...state,
