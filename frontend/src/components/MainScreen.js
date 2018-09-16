@@ -166,7 +166,7 @@ export class Screen extends Component {
           <Grid item xs={12} sm={10} md={8} lg={6}>
             <SearchForm
               ref={form => (this.form = form)}
-              initialValues={{ searchField: "" }}
+              initialValues={{ query: "" }}
               onSubmit={this.submit}
               canSubmit={canSubmit}
               quickselect={quickselect}

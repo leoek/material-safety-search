@@ -1,25 +1,31 @@
 import { all, put, takeLatest, takeEvery } from "redux-saga/effects";
 import { REHYDRATE } from "redux-persist";
-import { reduxRehydrationCompleted, FETCH_SEARCH_REQUEST } from "../actions";
+import {
+  reduxRehydrationCompleted,
+  FETCH_SEARCH_REQUEST,
+  fetchSearchSuccess
+} from "../actions";
 import { get } from "../../lib/api";
+import { config } from "../../config";
 
 export function* reduxRehydrateSaga(action) {
   yield put(reduxRehydrationCompleted());
 }
 
 export function* fetchSearchSaga(action) {
-  const {
-    payload: { searchField }
-  } = action;
+  const { payload = {} } = action;
+  const { query, page = 0, size = config.DEFAULTS.pageSize } = payload;
+  const parameters = {
+    s: query,
+    page,
+    size
+  };
   const response = yield get({
     endpoint: "search",
-    parameters: {
-      s: searchField
-    }
+    parameters
   });
   const data = yield response.json();
-  console.log(data);
-  yield put({ type: "test", paload: { data } });
+  yield put(fetchSearchSuccess(data));
 }
 
 export default function* root() {

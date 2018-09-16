@@ -6,6 +6,9 @@ export const config = {
       : "https://api.mss.leoek.eu",
   ERROR: {
     NOCONNECTION: "NOCONNECTION"
+  },
+  DEFAULTS: {
+    pageSize: 10
   }
 };
 

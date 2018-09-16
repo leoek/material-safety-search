@@ -21,7 +21,7 @@ export const get = async request => {
   const { endpoint, parameters } = request;
   const query = getQueryFromParams(parameters);
   const headers = getHeaders();
-  console.info("request: ", endpoint, query, headers);
+  console.info("request: ", endpoint, parameters, query, headers);
   return fetch(`${config.apiBaseUrl}/${endpoint}?${query}`, {
     method: "get",
     headers
