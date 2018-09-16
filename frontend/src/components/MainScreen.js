@@ -15,7 +15,10 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import { withStyles } from "@material-ui/core/styles";
+
 import SearchForm from "./SearchForm";
+
+import { fetchSearchRequest } from "../redux/actions";
 import { getSearchFormValues } from "../redux/selectors";
 
 const styles = theme => ({
@@ -92,6 +95,8 @@ export class Screen extends Component {
 
   submit = values => {
     console.log({ values });
+    const { fetchSearchRequest } = this.props;
+    fetchSearchRequest(values);
     this.setMockOptions();
   };
 
@@ -233,9 +238,13 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = {
+  fetchSearchRequest
+};
+
 export const ConnectedScreen = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Screen);
 
 export default withStyles(styles)(translate()(ConnectedScreen));
