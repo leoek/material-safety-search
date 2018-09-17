@@ -1,0 +1,48 @@
+version: '3'
+services:
+  solr:
+    image: solr:7.4.0
+    volumes:
+      - data:/opt/solr/server/solr/mycores
+      - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - dataSheet
+    networks:
+      - backend
+
+  mss-server:
+    image: materialsafetysearch/private:backend-next
+    depends_on:
+      - solr
+    environment:
+      - VIRTUAL_HOST=${SERVER_DOMAIN}
+      - VIRTUAL_NETWORK=${NETWORK}
+      - VIRTUAL_PORT=8080
+      - LETSENCRYPT_HOST=${SERVER_DOMAIN}
+      - LETSENCRYPT_EMAIL=webmaster@leoek.tech
+    volumes:
+      - ./hazard-dataset:/hazard-dataset:ro
+    networks:
+      - backend
+
+  mss-client:
+    image: materialsafetysearch/private:frontend-next
+    environment:
+      - VIRTUAL_HOST=${CLIENT_DOMAIN}
+      - VIRTUAL_NETWORK=${NETWORK}
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=${CLIENT_DOMAIN}
+      - LETSENCRYPT_EMAIL=webmaster@leoek.tech
+    networks:
+      - proxy-tier
+
+volumes:
+  data:
+
+networks:
+  backend:
+  proxy-tier:
+    external:
+      name: ${NETWORK}

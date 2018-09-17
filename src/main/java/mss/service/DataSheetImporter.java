@@ -2,6 +2,7 @@ package mss.service;
 
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.entity.IngredientDocument;
+import mss.domain.repository.DataSheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -38,9 +39,12 @@ public class DataSheetImporter {
 
     private DataSheetIndexService indexService;
 
+    private DataSheetRepository dataSheetRepository;
+
     @Autowired
-    public DataSheetImporter(DataSheetIndexService indexService){
+    public DataSheetImporter(DataSheetIndexService indexService, DataSheetRepository dataSheetRepository){
         this.indexService = indexService;
+        this.dataSheetRepository = dataSheetRepository;
         excludes = new ArrayList<>();
         excludes.add("index.txt");
     }
@@ -48,9 +52,14 @@ public class DataSheetImporter {
     private static final Logger log = LoggerFactory.getLogger(DataSheetImporter.class);
 
     public void importDataSet(){
-        importFolder(new File(dataSetPath));
-        indexService.addRestStillInCache();
-        log.info("Import done!");
+        if (dataSheetRepository.count() == 0) {
+            log.info("No data found. Starting to import from \"" + dataSetPath + "\".");
+            importFolder(new File(dataSetPath));
+            indexService.addRestStillInCache();
+            log.info("Import done!");
+        } else {
+            log.info("Data is already indexed. Wont import again.");
+        }
     }
 
     public void importFolder(File folder){

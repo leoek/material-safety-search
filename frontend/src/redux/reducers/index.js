@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
+import search from "./search";
+
 const reducers = {
-  form: formReducer
+  form: formReducer,
+  search
 };
 
 export const getRootReducer = combineReducers(reducers);
