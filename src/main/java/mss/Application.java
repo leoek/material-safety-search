@@ -42,6 +42,9 @@ public class Application implements CommandLineRunner {
     @Autowired
     private SearchConfig searchConfig;
 
+    @Autowired
+    private SolrClient dataSheetSolrClient;
+
     public void examples() {
         Pageable pageable = PageRequest.of(0, 10);
 
@@ -49,15 +52,14 @@ public class Application implements CommandLineRunner {
 
         log.info("{}", documents);
 
-        String urlString = searchConfig.getSolrUrl() + "/dataSheet";
-        SolrClient solr = new HttpSolrClient.Builder(urlString).build();
+        //SolrClient solr = new HttpSolrClient.Builder(searchConfig.getSolrDataSheetUrl()).build();
 
         SolrQuery query = new SolrQuery();
         query.setQuery("productId_s:OXYGEN");
         query.setStart(0);
 
         try {
-            QueryResponse response = solr.query(query);
+            QueryResponse response = dataSheetSolrClient.query(query);
             SolrDocumentList results = response.getResults();
             log.info("{}", results);
         } catch (SolrServerException | IOException solrE){

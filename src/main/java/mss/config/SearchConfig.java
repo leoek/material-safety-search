@@ -22,11 +22,24 @@ public class SearchConfig {
     @Value("${spring.data.solr.host:http://localhost:8983/solr}")
     private String solrUrl;
 
+    @Value("${solrcore.name:dataSheet}")
+    private String solrCoreName;
+
     /**
      * @return the solrUrl
      */
     public String getSolrUrl() {
         return solrUrl;
+    }
+
+    /**
+     * @return the solrUrl with the solr core specified
+     */
+    public String getSolrDataSheetUrl(){
+        StringBuilder urlBuilder = new StringBuilder(solrUrl);
+        urlBuilder.append("/");
+        urlBuilder.append(solrCoreName);
+        return urlBuilder.toString();
     }
 
     @Bean
@@ -44,5 +57,10 @@ public class SearchConfig {
     @Bean
     SolrClient solrClient() {
         return new HttpSolrClient.Builder(solrUrl).build();
+    }
+
+    @Bean
+    SolrClient dataSheetSolrClient() {
+        return new HttpSolrClient.Builder(getSolrDataSheetUrl()).build();
     }
 }
