@@ -1,5 +1,6 @@
 package mss;
 
+import mss.config.SearchConfig;
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.repository.DataSheetRepository;
 import mss.service.DataSheetImporter;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +24,7 @@ import org.springframework.data.domain.Pageable;
 import java.io.IOException;
 
 @SpringBootApplication
+@Configuration
 public class Application implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -36,6 +39,9 @@ public class Application implements CommandLineRunner {
     @Autowired
     private DataSheetImporter dataSheetImporter;
 
+    @Autowired
+    private SearchConfig searchConfig;
+
     public void examples() {
         Pageable pageable = PageRequest.of(0, 10);
 
@@ -43,11 +49,11 @@ public class Application implements CommandLineRunner {
 
         log.info("{}", documents);
 
-        String urlString = "http://localhost:8983/solr/dataSheet";
+        String urlString = searchConfig.getSolrUrl() + "/dataSheet";
         SolrClient solr = new HttpSolrClient.Builder(urlString).build();
 
         SolrQuery query = new SolrQuery();
-        query.setQuery("lines:oxygen");
+        query.setQuery("productId_s:OXYGEN");
         query.setStart(0);
 
         try {
@@ -65,7 +71,7 @@ public class Application implements CommandLineRunner {
         if (dataSheetRepository.count() == 0){
             dataSheetImporter.importDataSet();
         }
-        //examples();
+        examples();
         //System.exit(0);
     }
 }

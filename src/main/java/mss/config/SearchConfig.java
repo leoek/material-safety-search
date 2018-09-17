@@ -18,6 +18,17 @@ import org.springframework.data.solr.server.support.HttpSolrClientFactory;
 @EnableSolrRepositories(basePackageClasses = {DataSheetRepository.class})
 @ComponentScan
 public class SearchConfig {
+
+    @Value("${spring.data.solr.host:http://localhost:8983/solr}")
+    private String solrUrl;
+
+    /**
+     * @return the solrUrl
+     */
+    public String getSolrUrl() {
+        return solrUrl;
+    }
+
     @Bean
     SolrTemplate solrTemplate() {
         return new SolrTemplate(solrClientFactory());
@@ -32,6 +43,6 @@ public class SearchConfig {
 
     @Bean
     SolrClient solrClient() {
-        return new HttpSolrClient.Builder("http://localhost:8983/solr").build();
+        return new HttpSolrClient.Builder(solrUrl).build();
     }
 }
