@@ -3,14 +3,16 @@ package mss.domain.entity;
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.Indexed;
+import org.springframework.data.solr.core.mapping.SolrDocument;
 
+@SolrDocument(solrCoreName = "dataSheet")
 public class IngredientDocument {
 
     @Id
     @Indexed
     private String id;
 
-    @Indexed(value = "docType_s", defaultValue = "ingredient")
+    @Indexed
     private String docType;
 
     //Indexed and stored fields

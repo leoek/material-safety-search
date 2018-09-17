@@ -6,14 +6,17 @@ import mss.service.DataSheetService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * TODO wide open cors settings are ok for now.
+ * Any client should be able to connect for now.
+ */
 
 @RestController
 @Component
 @RequestMapping(path = "/search")
+@CrossOrigin(origins = "*")
 public class DataSheetController {
 
     private DataSheetService dataSheetService;

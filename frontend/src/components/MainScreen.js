@@ -6,17 +6,15 @@ import Snackbar from "@material-ui/core/Snackbar";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import { withStyles } from "@material-ui/core/styles";
+
 import SearchForm from "./SearchForm";
+
+import { fetchSearchRequest } from "../redux/actions";
 import { getSearchFormValues } from "../redux/selectors";
+import ResultList from "./ResultList";
+import QuickAnswerSection from "./QuickAnswerSection";
 
 const styles = theme => ({
   root: {
@@ -91,7 +89,8 @@ export class Screen extends Component {
   };
 
   submit = values => {
-    console.log({ values });
+    const { fetchSearchRequest } = this.props;
+    fetchSearchRequest(values);
     this.setMockOptions();
   };
 
@@ -135,18 +134,6 @@ export class Screen extends Component {
         }))
     };
 
-    const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.`;
-
-    const results = [
-      "https://example.org",
-      "https://herr-ek.de",
-      "https://xkcd.com"
-    ].map((link, index) => ({
-      title: `Awesome Title ${index}`,
-      link,
-      snippet: loremIpsum
-    }));
-
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
@@ -161,48 +148,13 @@ export class Screen extends Component {
           <Grid item xs={12} sm={10} md={8} lg={6}>
             <SearchForm
               ref={form => (this.form = form)}
-              initialValues={{ searchField: "" }}
+              initialValues={{ query: "" }}
               onSubmit={this.submit}
               canSubmit={canSubmit}
               quickselect={quickselect}
             />
-            {quickAnswer && (
-              <ExpansionPanel defaultExpanded className={classes.paper}>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography className={classes.title}>
-                    {quickAnswer.summary}
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails className={classes.details}>
-                  {quickAnswer.details.map((step, index) => (
-                    <Typography key={index}>
-                      {`${index + 1}. ${step}`}
-                    </Typography>
-                  ))}
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-            )}
-            {results &&
-              Array.isArray(results) &&
-              results.map((result, index) => (
-                <Card key={index} className={classes.paper}>
-                  <CardContent>
-                    <Typography
-                      variant="headline"
-                      component="h2"
-                      className={classes.title}
-                    >
-                      {result.title}
-                    </Typography>
-                    <a href={result.link}>
-                      <Button className={classes.link}>{result.link}</Button>
-                    </a>
-                    <Typography className={classes.snippet}>
-                      {result.snippet}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              ))}
+            <QuickAnswerSection quickAnswer={quickAnswer} />
+            <ResultList />
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
         </Grid>
@@ -233,9 +185,13 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = {
+  fetchSearchRequest
+};
+
 export const ConnectedScreen = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Screen);
 
 export default withStyles(styles)(translate()(ConnectedScreen));

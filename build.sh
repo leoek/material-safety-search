@@ -12,8 +12,12 @@ fi
 packageVersion=$(./getVersion.sh)
 
 baseTag="materialsafetysearch/private"
-newTag="$baseTag:$packageVersion-$BUILD_NUMBER"
+tagName="backend"
+newTag="$baseTag:$tagName-$packageVersion-$BUILD_NUMBER"
 
 echo "Building $newTag"
 docker build -t "$newTag" .
 docker push $newTag
+
+docker tag $newTag "$baseTag:$tagName-next"
+docker push "$baseTag:$tagName-next"
