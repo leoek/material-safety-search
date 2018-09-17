@@ -18,6 +18,6 @@ public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocumen
     1.) "*" means return everything (the whole DataSheetDocument with all its fields)
     2.) "[child parentFilter=docType_s:datasheet]" returns children of each DataSheetDocument (i.e. list of its ingredients)
      and inserts them into the DataSheetDocument*/
-    @Query(value = "productId:?0", fields = {"*", "[child parentFilter=docType:datasheet]"})
+    @Query(value = "?0", fields = {"*", "[child parentFilter=docType:datasheet]"})
     public Page<DataSheetDocument> findAllDataSheetDocumentsWithIngredientDocuments(String searchTerm, Pageable pageable);
 }

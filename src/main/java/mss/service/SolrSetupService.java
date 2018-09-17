@@ -11,11 +11,13 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.request.GenericSolrRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.SimpleSolrResponse;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.util.ContentStream;
 import org.apache.solr.common.util.ContentStreamBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -28,61 +30,68 @@ public class SolrSetupService {
 
     private static final Logger log = LoggerFactory.getLogger(SolrSetupService.class);
 
+    @Autowired
+    private SolrClient dataSheetSolrClient;
+
     /**
      * @throws IOException network error.
      * @throws SolrServerException solr error.
      */
     public void setup() throws IOException, SolrServerException {
+        SolrClient solrClient = dataSheetSolrClient;
 
-        String solrUrl = "http://localhost:8983/solr/dataSheet";
-        SolrClient solrClient = new HttpSolrClient.Builder(solrUrl).build();
+        GenericSolrRequest request = new GenericSolrRequest(SolrRequest.METHOD.GET, "/schema/fields", null);
+        SimpleSolrResponse response = request.process(solrClient);
 
-        //Create Schema
-        //Maybe custom fieldTypes for productId, companyName and ingredName
-        //Maybe set required to true for some fields
-        List<ObjectNode> fieldArray = new ArrayList<>();
-        //fieldArray.add(fieldObjectJson("id", "string", null, true, true, true, false, false));
-        //fieldArray.add(fieldObjectJson("score"));
-        //fieldArray.add(fieldObjectJson("docType"));
-        fieldArray.add(fieldObjectJson("productId", "text_general", true, true, false, false, false));
-        fieldArray.add(fieldObjectJson("fsc", "string", true, true, false, false, false));
-        fieldArray.add(fieldObjectJson("niin", "string", true, true, false, false, false));
-        fieldArray.add(fieldObjectJson("companyName", "text_general",true, true, false, false, false));
-        fieldArray.add(fieldObjectJson("msdsDate", "pdates", true, true, false, false, false));
-        //fieldArray.add(fieldObjectJson("ingredients"));
-        fieldArray.add(fieldObjectJson("ingredName", "text_general",true, true, false, false, false));
-        fieldArray.add(fieldObjectJson("cas", "string", true, true, false, false, false));
+        if(!response.getResponse().toString().contains("productId")){
+            String fieldTypeText = "text_en_splitting";
+            String fieldTypeRawText = "string";
+            //Create Schema
+            //Maybe custom fieldTypes for productId, companyName and ingredName
+            //Maybe set required to true for some fields
+            List<ObjectNode> fieldArray = new ArrayList<>();
+            //fieldArray.add(fieldObjectJson("id", "string", null, true, true, true, false, false));
+            //fieldArray.add(fieldObjectJson("score"));
+            //fieldArray.add(fieldObjectJson("docType"));
+            fieldArray.add(fieldObjectJson("productId", fieldTypeText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fsc", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("niin", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("companyName", fieldTypeText,true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("msdsDate", "pdate", true, true, false, false, false));
+            //fieldArray.add(fieldObjectJson("ingredients"));
+            fieldArray.add(fieldObjectJson("ingredName", fieldTypeText,true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("cas", "string", true, true, false, false, false));
 
-        fieldArray.add(fieldObjectJson("rawIdentification", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawComposition", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawHazards", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawFirstAid", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawFireFighting", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawAccidentalRelease", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawHandlingStorage", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawProtection", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawChemicalProperties", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawStabilityReactivity", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawDisposal", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawToxic", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawEco", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawTransport", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawRegulatory", "text_general", false, true, false, false, false));
-        fieldArray.add(fieldObjectJson("rawOther", "text_general", false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawIdentification", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawComposition", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawHazards", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawFirstAid", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawFireFighting", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawAccidentalRelease", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawHandlingStorage", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawProtection", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawChemicalProperties", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawStabilityReactivity", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawDisposal", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawToxic", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawEco", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawTransport", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawRegulatory", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawOther", fieldTypeRawText, false, true, false, false, false));
+
+            String command = fieldArrayJson(fieldArray);
+
+            GenericSolrRequest genericSolrRequest = new GenericSolrRequest(SolrRequest.METHOD.POST, "/schema", null);
+            ContentStream contentStream = new ContentStreamBase.StringStream(command);
+            genericSolrRequest.setContentStreams(Collections.singleton(contentStream));
+            genericSolrRequest.process(solrClient);
+
+            log.info("Partial schema imported.");
+        } else {
+            log.info("Schema is already imported.");
+        }
 
 
-
-        String command = fieldArrayJson(fieldArray);
-
-        //log.info(command);
-
-        GenericSolrRequest genericSolrRequest = new GenericSolrRequest(SolrRequest.METHOD.POST, "/schema", null);
-        ContentStream contentStream = new ContentStreamBase.StringStream(command);
-        genericSolrRequest.setContentStreams(Collections.singleton(contentStream));
-        log.info(command);
-        genericSolrRequest.process(solrClient);
-
-        log.info("Partial schema imported.");
 
     }
 
