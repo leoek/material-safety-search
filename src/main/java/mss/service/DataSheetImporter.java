@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Splitter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +38,10 @@ public class DataSheetImporter {
     private Boolean debug;
 
     private List<String> excludes;
+    
+    private HashMap<Integer, String> fscMap;
+    
+    private HashMap<Integer, String> fsgMap;
 
     private DataSheetIndexService indexService;
 
@@ -47,6 +53,8 @@ public class DataSheetImporter {
         this.dataSheetRepository = dataSheetRepository;
         excludes = new ArrayList<>();
         excludes.add("index.txt");
+        this.fscMap = this.getFSCMap();
+        this.fsgMap = this.getFSGMap();
     }
 
     private static final Logger log = LoggerFactory.getLogger(DataSheetImporter.class);
@@ -92,6 +100,12 @@ public class DataSheetImporter {
             document.setCompanyName(comp);
             document.setProductId(prod);
             document.setFsc(fsc);
+            if(fsc.matches("\\d*") && fsc.length() > 2) 
+            {
+            	document.setFsgString(this.fsgMap.get(Integer.parseInt(fsc.substring(0, 2))));
+            	document.setFscString(this.fscMap.get(Integer.parseInt(fsc)));
+            }
+            System.out.println(document.getFscString() + " " + document.getFsgString());
             document.setNiin(niin);
         } else {
             log.error("Regex not possible for first line in file " + file.getName() + ". File may be empty.");
@@ -263,4 +277,26 @@ public class DataSheetImporter {
             return null;
         }
     }
+    
+    private HashMap<Integer, String> getFSGMap(){
+    	Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
+    	HashMap<Integer, String> fsgmap = new HashMap<Integer, String>();
+    	for (String line : splitter.split(readFile(new File("./src/main/resources/fsg.txt")))){
+    		int key = Integer.parseInt(line.substring(0, 2));
+			String value = line.substring(3,line.length());
+    		fsgmap.put(key, value);
+    	}
+    	return fsgmap;
     }
+    
+    private HashMap<Integer, String> getFSCMap(){
+	    Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
+		HashMap<Integer, String> fscmap = new HashMap<Integer, String>();
+		for (String line : splitter.split(readFile(new File("./src/main/resources/fsc.txt")))){
+			int key = Integer.parseInt(line.substring(0, 4));
+			String value = line.substring(5,line.length());
+			fscmap.put(key, value);
+		}
+		return fscmap;
+    }
+}
