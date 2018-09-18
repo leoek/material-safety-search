@@ -1,8 +1,10 @@
 package mss.controller;
 
+import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -21,13 +23,20 @@ public class DataSheetController {
 
     private DataSheetService dataSheetService;
 
+    @Autowired
     public DataSheetController(DataSheetService dataSheetService){
         this.dataSheetService = dataSheetService;
     }
 
     @GetMapping
-    public PageResponse<DataSheetDocument> findFullText(Pageable p, @RequestParam(name = "s") String searchTerm) {
-        Page<DataSheetDocument> result = dataSheetService.findFullText(p, searchTerm);
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam(name = "s") String searchTerm) {
+        Page<DataSheetDocument> result = dataSheetService.generalSearch(p, searchTerm);
+        return new PageResponse<>(result);
+    }
+
+    @PostMapping
+    public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
+        Page<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
         return new PageResponse<>(result);
     }
 }

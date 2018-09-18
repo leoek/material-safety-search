@@ -3,9 +3,12 @@ package mss.domain.repository;
 import mss.domain.entity.DataSheetDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.solr.repository.Query;
 import org.springframework.data.solr.repository.SolrCrudRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocument, Long> {
@@ -20,4 +23,16 @@ public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocumen
      and inserts them into the DataSheetDocument*/
     @Query(value = "?0", fields = {"*", "[child parentFilter=docType:datasheet]"})
     public Page<DataSheetDocument> findAllDataSheetDocumentsWithIngredientDocuments(String searchTerm, Pageable pageable);
+
+    @Query(value = "{!parent which=docType:datasheet}cas:?0", fields = {"*", "[child parentFilter=docType:datasheet]"})
+    public Page<DataSheetDocument> findWithSingleCas(String searchTerm, Pageable pageable);
+
+    @Query(value = "?0", fields = {"*", "[child parentFilter=docType:datasheet]"}, defType = "dismax")
+    public Page<DataSheetDocument> generalSearch(String query, Pageable pageable);
+
+    @Query(value = "?0", fields = {"*", "[child parentFilter=docType:datasheet]"}, defType = "lucene")
+    public Page<DataSheetDocument> advancedSearch(String query, List<String> filters, Pageable pageable);
+
+
+
 }
