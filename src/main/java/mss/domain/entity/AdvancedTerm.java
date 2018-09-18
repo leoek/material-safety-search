@@ -6,6 +6,8 @@ import java.util.List;
 public class AdvancedTerm {
     private String productId;
     private String fsc;
+    private String fscString;
+    private String fsgString;
     private String niin;
     private String companyName;
     private Date beginDate;
@@ -26,6 +28,22 @@ public class AdvancedTerm {
 
     public void setFsc(String fsc) {
         this.fsc = fsc;
+    }
+
+    public String getFscString() {
+        return fscString;
+    }
+
+    public void setFscString(String fscString) {
+        this.fscString = fscString;
+    }
+
+    public String getFsgString() {
+        return fsgString;
+    }
+
+    public void setFsgString(String fsgString) {
+        this.fsgString = fsgString;
     }
 
     public String getNiin() {

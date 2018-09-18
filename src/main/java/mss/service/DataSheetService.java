@@ -47,17 +47,6 @@ public class DataSheetService {
     }
 
     public Page<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
-        /*log.info(advancedTerm.getProductId());
-        log.info(advancedTerm.getFsc());
-        log.info(advancedTerm.getNiin());
-        log.info(advancedTerm.getCompanyName());
-        log.info(advancedTerm.getBeginDate().toString());
-        log.info(advancedTerm.getEndDate().toString());
-        log.info(advancedTerm.getIngredients().get(0).getIngredName());
-        log.info(advancedTerm.getIngredients().get(0).getCas());
-        log.info(advancedTerm.getIngredients().get(1).getIngredName());
-        log.info(advancedTerm.getIngredients().get(1).getCas());*/
-
         List<String> queryList = new ArrayList<>();
 
         String productId = advancedTerm.getProductId();
@@ -75,6 +64,24 @@ public class DataSheetService {
                 queryList.add("!fsc:\"" + fsc.substring(1) + "\"");
             } else {
                 queryList.add("fsc:\"" + fsc + "\"");
+            }
+        }
+
+        String fscString = advancedTerm.getFscString();
+        if (fscString != null) {
+            if (fscString.startsWith("!")) {
+                queryList.add("!fscString:\"" + fscString.substring(1) + "\"");
+            } else {
+                queryList.add("fscString:\"" + fscString + "\"");
+            }
+        }
+
+        String fsgString = advancedTerm.getFsgString();
+        if (fsgString != null) {
+            if (fsgString.startsWith("!")) {
+                queryList.add("!fsgString:\"" + fsgString.substring(1) + "\"");
+            } else {
+                queryList.add("fsgString:\"" + fsgString + "\"");
             }
         }
 
