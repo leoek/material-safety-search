@@ -105,7 +105,6 @@ public class DataSheetImporter {
             	document.setFsgString(this.fsgMap.get(Integer.parseInt(fsc.substring(0, 2))));
             	document.setFscString(this.fscMap.get(Integer.parseInt(fsc)));
             }
-            System.out.println(document.getFscString() + " " + document.getFsgString());
             document.setNiin(niin);
         } else {
             log.error("Regex not possible for first line in file " + file.getName() + ". File may be empty.");
