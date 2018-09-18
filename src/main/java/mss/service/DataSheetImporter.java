@@ -111,13 +111,13 @@ public class DataSheetImporter {
         }
 
         // Get raw infos
-        Pattern p2 = Pattern.compile("={4}(?:  |\\t| )(.+)(?:  |\\t| )={4,}\\n(\\X+?(?=(?:====|\\z)))");
+        Pattern p2 = Pattern.compile("={4}(?:  |\\t| )(.+)(?:  |\\t| )={4,}(\\r\\n|[\\r\\n])(\\X+?(?=(?:====|\\z)))");
         Matcher m2 = p2.matcher(rawContent);
         // Find all matches
         while (m2.find()) {
             // Get the matching string
             String category = m2.group(1);
-            String value = m2.group(2).replaceAll("\n {4}", " ").replaceAll("\n\t", " ").trim();
+            String value = m2.group(2).replaceAll("(\r\n|[\r\n]){4}", " ").replaceAll("(\r\n|[\r\n])\t", " ").trim();
             switch (category) {
                 case "Product Identification ":
                     document.setRawIdentification(value);
@@ -212,7 +212,7 @@ public class DataSheetImporter {
         List<IngredientDocument> ingredientDocuments = new ArrayList<>();
 
         if (document.getRawComposition() != null){
-            String[] partedIngredients = document.getRawComposition().split("\n\n");
+            String[] partedIngredients = document.getRawComposition().split("(\r\n|[\r\n])(\r\n|[\r\n])");
 
             for (String singleIngredient : partedIngredients) {
                 IngredientDocument ingredientDocument = new IngredientDocument();
