@@ -76,4 +76,16 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         simpleQuery.setPageRequest(pageable).setDefType("lucene");
         return solrTemplate.queryForPage("dataSheet", simpleQuery, DataSheetDocument.class);
     }
+
+    @Override
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field) {
+        //Add Query
+        SimpleQuery simpleQuery = new SimpleQuery(new SimpleStringCriteria(field + ":" +searchTerm));
+
+        //Further configuration
+        simpleQuery.addProjectionOnField("*");
+
+        simpleQuery.setRows(20);
+        return solrTemplate.query("dataSheet", simpleQuery, DataSheetDocument.class).getContent();
+    }
 }
