@@ -33,6 +33,12 @@ public class DataSheetDocument{
     private String fsc;
 
     @Indexed
+    private String fscString;
+    
+    @Indexed
+    private String fsgString;
+    
+    @Indexed
     private String niin;
 
     @Indexed
@@ -142,7 +148,23 @@ public class DataSheetDocument{
         this.fsc = fsc;
     }
 
-    public String getNiin() {
+    public String getFscString() {
+		return fscString;
+	}
+
+	public void setFscString(String fscString) {
+		this.fscString = fscString;
+	}
+
+	public String getFsgString() {
+		return fsgString;
+	}
+
+	public void setFsgString(String fsgString) {
+		this.fsgString = fsgString;
+	}
+
+	public String getNiin() {
         return niin;
     }
 
