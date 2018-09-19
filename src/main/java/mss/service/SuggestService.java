@@ -2,6 +2,8 @@ package mss.service;
 
 
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.entity.Suggestions;
+import mss.domain.repository.DataSheetRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +17,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @Component
@@ -23,37 +27,22 @@ public class SuggestService {
 
     private static final Logger log = LoggerFactory.getLogger(DataSheetService.class);
 
-    private DataSheetService dataSheetService;
+    private DataSheetRepository dataSheetRepository;
 
     @Autowired
-    public SuggestService(DataSheetService dataSheetService){
-        this.dataSheetService = dataSheetService;
+    public SuggestService(DataSheetRepository dataSheetRepository){
+        this.dataSheetRepository = dataSheetRepository;
     }
 
+    public Suggestions createSuggestions(String s) {
+        Suggestions suggestions = new Suggestions();
 
-    @ResponseBody
-    @GetMapping
-    @RequestMapping(path="/autocomplete", produces = "application/json")
-    public Set<String> autocomplete(@RequestParam("term") String query) {
-        if (StringUtils.isBlank(query)) {
-            return Collections.emptySet();
-        }
+        List<DataSheetDocument> suggestionsDocuments = dataSheetRepository.product(s);
 
-        PageRequest pageRequest = PageRequest.of(0, 1);
+        List<String> suggestionsList = suggestionsDocuments.stream().collect(Collectors.mapping(doc -> doc.getProductId(), Collectors.toList()));
 
-        FacetPage<DataSheetDocument> result = (FacetPage<DataSheetDocument>) dataSheetService.findFullText(pageRequest, query);
+        suggestions.setSuggestions(suggestionsList);
 
-
-        Set<String> suggestions = new LinkedHashSet<String>();
-        for (Page<FacetFieldEntry> page : result.getFacetResultPages()) {
-            log.info(page.toString());
-            for (FacetFieldEntry entry : page) {
-                log.info(entry.toString());
-                if (entry.getValue().contains(query)) {
-                    suggestions.add(entry.getValue());
-                }
-            }
-        }
 
         return suggestions;
     }

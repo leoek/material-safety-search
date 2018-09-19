@@ -7,8 +7,15 @@ import org.springframework.data.solr.repository.Query;
 import org.springframework.data.solr.repository.SolrCrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
 @Repository
 public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocument, Long>, CustomDataSheetRepository{
     @Query(value = "*:* && docType:datasheet", fields = {"*", "[child parentFilter=docType:datasheet]"})
     public Page<DataSheetDocument> getAllDocuments(Pageable pageable);
+
+    @Query(value = "productId:?0", fields = {"productId"})
+    public List<DataSheetDocument> product(String searchTerm);
+
 }
