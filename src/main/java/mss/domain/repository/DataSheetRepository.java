@@ -15,7 +15,7 @@ public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocumen
     @Query(value = "*:* && docType:datasheet", fields = {"*", "[child parentFilter=docType:datasheet]"})
     public Page<DataSheetDocument> getAllDocuments(Pageable pageable);
 
-    @Query(value = "productId:?0", fields = {"productId"})
-    public List<DataSheetDocument> product(String searchTerm);
+    @Query(value = "?1:?0", fields = {"*"})
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field);
 
 }
