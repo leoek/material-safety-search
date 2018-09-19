@@ -1,8 +1,6 @@
 package mss.config;
 
 import mss.domain.repository.DataSheetRepository;
-import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +12,9 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 import org.springframework.data.solr.server.SolrClientFactory;
 import org.springframework.data.solr.server.support.HttpSolrClientFactory;
 
+/**
+ * Class for configuring Solr
+ */
 @Configuration
 @EnableSolrRepositories(basePackageClasses = {DataSheetRepository.class})
 @ComponentScan

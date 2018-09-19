@@ -1,15 +1,15 @@
 package mss.service;
 
+import com.google.common.base.Splitter;
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.entity.IngredientDocument;
 import mss.domain.repository.DataSheetRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +22,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Service class for importing the dataset into Solr
+ */
 @Service
 @Configuration
 public class DataSheetImporter {
@@ -37,6 +40,10 @@ public class DataSheetImporter {
 
     private List<String> excludes;
 
+    private HashMap<Integer, String> fscMap;
+
+    private HashMap<Integer, String> fsgMap;
+
     private DataSheetIndexService indexService;
 
     private DataSheetRepository dataSheetRepository;
@@ -47,10 +54,15 @@ public class DataSheetImporter {
         this.dataSheetRepository = dataSheetRepository;
         excludes = new ArrayList<>();
         excludes.add("index.txt");
+        this.fscMap = this.getFSCMap();
+        this.fsgMap = this.getFSGMap();
     }
 
     private static final Logger log = LoggerFactory.getLogger(DataSheetImporter.class);
 
+    /**
+     * Starter logic for importing the dataset
+     */
     public void importDataSet(){
         if (dataSheetRepository.count() == 0) {
             log.info("No data found. Starting to import from \"" + dataSetPath + "\".");
@@ -62,6 +74,10 @@ public class DataSheetImporter {
         }
     }
 
+    /**
+     * Recursive algorithm to call method importFile() on each individual file
+     * @param folder File to open / folder to follow
+     */
     public void importFolder(File folder){
         if (folder.isFile()){
             importFile(folder);
@@ -71,6 +87,11 @@ public class DataSheetImporter {
         Arrays.stream(files).forEach(file -> importFolder(file));
     }
 
+    /**
+     * Turns a text file into a POJO and sends it to the bulk importer.
+     * Also contains logic to enhance document information by mapping FSCG number to corresponding description String.
+     * @param file One text file to be analyzed and indexed
+     */
     public void importFile(File file){
         if (excludes.contains(file.getName())){
             log.info("Did not import {} (filename is excluded)", file.getName());
@@ -92,19 +113,24 @@ public class DataSheetImporter {
             document.setCompanyName(comp);
             document.setProductId(prod);
             document.setFsc(fsc);
+            if(fsc.matches("\\d*") && fsc.length() > 2)
+            {
+            	document.setFsgString(this.fsgMap.get(Integer.parseInt(fsc.substring(0, 2))));
+            	document.setFscString(this.fscMap.get(Integer.parseInt(fsc)));
+            }
             document.setNiin(niin);
         } else {
             log.error("Regex not possible for first line in file " + file.getName() + ". File may be empty.");
         }
 
         // Get raw infos
-        Pattern p2 = Pattern.compile("={4}(?:  |\\t| )(.+)(?:  |\\t| )={4,}\\n(\\X+?(?=(?:====|\\z)))");
+        Pattern p2 = Pattern.compile("={4}(?:  |\\t| )(.+)(?:  |\\t| )={4,}(?:\\r\\n|[\\r\\n])(\\X+?(?=(?:====|\\z)))");
         Matcher m2 = p2.matcher(rawContent);
         // Find all matches
         while (m2.find()) {
             // Get the matching string
             String category = m2.group(1);
-            String value = m2.group(2).replaceAll("\n {4}", " ").replaceAll("\n\t", " ").trim();
+            String value = m2.group(2).replaceAll("(?:\r\n|[\r\n]){4}", " ").replaceAll("(?:\r\n|[\r\n])\t", " ").trim();
             switch (category) {
                 case "Product Identification ":
                     document.setRawIdentification(value);
@@ -199,7 +225,7 @@ public class DataSheetImporter {
         List<IngredientDocument> ingredientDocuments = new ArrayList<>();
 
         if (document.getRawComposition() != null){
-            String[] partedIngredients = document.getRawComposition().split("\n\n");
+            String[] partedIngredients = document.getRawComposition().split("(?:\r\n|[\r\n])(?:\r\n|[\r\n])");
 
             for (String singleIngredient : partedIngredients) {
                 IngredientDocument ingredientDocument = new IngredientDocument();
@@ -227,26 +253,21 @@ public class DataSheetImporter {
                 ingredientDocuments.add(ingredientDocument);
             }
         }
-
         /*if (ingredientDocuments.size() == 0) {
             log.info("No ingredients found for file: " + file.getName());
         }*/
-
         document.setIngredients(ingredientDocuments);
 
-        /*System.out.println("\nPROD: " + document.getProductId());
-        System.out.println("FSC: " + document.getFsc());
-        System.out.println("NIIN: " + document.getNiin());
-        System.out.println("DATE: " + document.getMsdsDate());
-        for(IngredientDocument i: document.getIngredients()){
-            System.out.println("INGR: " + i.getIngredName() + ", " + i.getCas());
-        }
-        System.out.println(document.getRawIdentification());*/
-
+        //Send to bulk import
         indexService.addBulk(document);
         //log.info("Imported {} {}", document.getId(), file.getName());
     }
 
+    /**
+     * Parses a file to a string and returns it
+     * @param file File to be opened
+     * @return Content of file
+     */
     private String readFile(File file){
         String content = "";
         try{
@@ -263,4 +284,34 @@ public class DataSheetImporter {
             return null;
         }
     }
+
+    /**
+     * Creates a Hashmap connecting FSG numbers to descriptions in order to enhance the information content of the documents
+     * @return Hashmap with FSG numbers as keys and descriptions as values
+     */
+    private HashMap<Integer, String> getFSGMap(){
+    	Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
+    	HashMap<Integer, String> fsgmap = new HashMap<Integer, String>();
+    	for (String line : splitter.split(readFile(new File("./src/main/resources/fsg.txt")))){
+    		int key = Integer.parseInt(line.substring(0, 2));
+			String value = line.substring(3,line.length());
+    		fsgmap.put(key, value);
+    	}
+    	return fsgmap;
     }
+
+    /**
+     * Creates a Hashmap connecting FSC numbers to descriptions in order to enhance the information content of the documents
+     * @return Hashmap with FSC numbers as keys and descriptions as values
+     */
+    private HashMap<Integer, String> getFSCMap(){
+	    Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
+		HashMap<Integer, String> fscmap = new HashMap<Integer, String>();
+		for (String line : splitter.split(readFile(new File("./src/main/resources/fsc.txt")))){
+			int key = Integer.parseInt(line.substring(0, 4));
+			String value = line.substring(5,line.length());
+			fscmap.put(key, value);
+		}
+		return fscmap;
+    }
+}
