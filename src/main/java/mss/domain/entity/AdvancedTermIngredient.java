@@ -2,6 +2,9 @@ package mss.domain.entity;
 
 public class AdvancedTermIngredient {
 
+    private String ingredName;
+    private String cas;
+
     public String getIngredName() {
         return ingredName;
     }
@@ -17,7 +20,4 @@ public class AdvancedTermIngredient {
     public void setCas(String cas) {
         this.cas = cas;
     }
-
-    private String ingredName;
-    private String cas;
 }

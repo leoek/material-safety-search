@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Component
-@RequestMapping(path = "/search")
 @CrossOrigin(origins = "*")
 public class DataSheetController {
 
@@ -28,13 +27,13 @@ public class DataSheetController {
         this.dataSheetService = dataSheetService;
     }
 
-    @GetMapping
-    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam(name = "s") String searchTerm) {
+    @RequestMapping(path = "/search", method = RequestMethod.GET)
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam String searchTerm) {
         Page<DataSheetDocument> result = dataSheetService.generalSearch(p, searchTerm);
         return new PageResponse<>(result);
     }
 
-    @PostMapping
+    @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
         Page<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
         return new PageResponse<>(result);
