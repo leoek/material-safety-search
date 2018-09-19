@@ -9,18 +9,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+/**
+ * Class containing all querying logic
+ */
 @Component
 public class DataSheetService {
 
@@ -33,12 +33,16 @@ public class DataSheetService {
         this.dataSheetRepository = dataSheetRepository;
     }
 
-    public Page<DataSheetDocument> findFullText(Pageable p, String searchTerm) {
-        Page<DataSheetDocument> result = dataSheetRepository.findAllDataSheetDocumentsWithIngredientDocuments(searchTerm, p);
-        log.info(result.toString());
-        return result;
-    }
-
+    /**
+     * Analyzes the given search term, turns it into SolrTemplate-digestable information and triggers a query for paged results.
+     * Recognizes if a NIIN, a FSCG and multiple CAS numbers are entered and converts them into query terms that are mandatory for a match.
+     * This allows users to use the General Search for exact document retrieval without needing to pay attention to detailed formatting.
+     * Less strict than {@link #advancedSearch(Pageable, AdvancedTerm)} as recognized numbers are aggregated in a disjunctive term.
+     *
+     * @param p          Spring {@link Pageable} object
+     * @param searchTerm Term to be analyzed and turned into a query
+     * @return Page of result documents
+     */
     public Page<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
         log.info("Search term: \"" + searchTerm + "\"");
 
@@ -83,37 +87,32 @@ public class DataSheetService {
             searchTerm = searchTerm.replace(m3.group(1), " ");
         }
 
+        //Create a query string from the populated AdvancedTerm object
         String advancedQueryString = advancedTermToQuery(advancedTerm);
 
+        //Lists containing query information
         List<String> criteria = new ArrayList<>();
-        //log.info(advancedTerm.getIngredients().get(0).getCas());
+        List<String> filters = new ArrayList<>(advancedTermToFilterQueries(advancedTerm));
+
         if (!advancedQueryString.isEmpty()) {
             criteria.add(advancedQueryString);
-
         }
 
         searchTerm = searchTerm.trim().replaceAll("\\s{2,}", " ");
-
-        List<String> filters = new ArrayList<>();
-        filters.addAll(advancedTermToFilterQueries(advancedTerm));
-
         if (!searchTerm.isEmpty()) {
             criteria.add("productId:(" + searchTerm + ") || " +
                     "companyName:(" + searchTerm + ") || " +
                     "fscString:(" + searchTerm + ") || " +
                     "fsgString:(" + searchTerm + ") || " +
                     "{!parent which=docType:datasheet v='ingredName:(" + searchTerm + ")'}");
-            //Don't know if fuzzy search is the best idea here.
-            //filters.add("{!parent which=docType:datasheet v='ingredName:(" + searchTerm + ")'}");
         }
 
-
+        //Edge case where only CAS numbers are entered.
         if (criteria.isEmpty()) {
             if (!filters.isEmpty()) {
                 criteria.add("*:* && docType:datasheet");
             }
         }
-
 
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
@@ -121,6 +120,13 @@ public class DataSheetService {
         return dataSheetRepository.generalSearch(criteria, filters, p);
     }
 
+    /**
+     * Turns the given {@link AdvancedTerm} object into SolrTemplate-digestable information and triggers a query for paged results.
+     * More strict than {@link #generalSearch(Pageable, String)} as it requires all specified search terms to be present in their respective fields.
+     * @param p            Spring {@link Pageable} object
+     * @param advancedTerm {@link AdvancedTerm} object representing an advanced query term with multiple fields
+     * @return Page of result documents
+     */
     public Page<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
         String query = advancedTermToQuery(advancedTerm);
         List<String> filters = advancedTermToFilterQueries(advancedTerm);

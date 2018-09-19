@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.SolrOperations;
-import org.springframework.data.solr.core.query.FilterQuery;
 import org.springframework.data.solr.core.query.SimpleFilterQuery;
 import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.SimpleStringCriteria;
@@ -15,9 +14,7 @@ import org.springframework.data.solr.core.query.SimpleStringCriteria;
 import java.util.List;
 
 public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository {
-    //@Query(value = "?0", fields = {"*", "[child parentFilter=docType:datasheet]"}, defType = "lucene")
     private static final Logger log = LoggerFactory.getLogger(CustomDataSheetRepositoryImpl.class);
-
 
     private SolrOperations solrTemplate;
 
@@ -31,6 +28,14 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         this.solrTemplate = solrTemplate;
     }
 
+    /**
+     * Generates an appropriate query from query critera and filter queries and sets the field list.
+     * Also the Solr query parser is chosen (lucene/standard).
+     * @param criteria List of query strings that will be connected with AND
+     * @param filters List of filter query strings
+     * @param pageable
+     * @return
+     */
     @Override
     public Page<DataSheetDocument> generalSearch(List<String> criteria, List<String> filters, Pageable pageable) {
         SimpleQuery simpleQuery = new SimpleQuery();
@@ -38,7 +43,6 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         for (String c: criteria){
             simpleQuery.addCriteria(new SimpleStringCriteria(c));
         }
-        //log.info(simpleQuery);
         //Add Filter Queries
         for (String filter: filters) {
             simpleQuery.addFilterQuery(new SimpleFilterQuery(new SimpleStringCriteria(filter)));
@@ -50,6 +54,14 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         return solrTemplate.queryForPage("dataSheet", simpleQuery, DataSheetDocument.class);
     }
 
+    /**
+     * Generates an appropriate query from query critera and filter queries and sets the field list.
+     * Also the Solr query parser is chosen (lucene/standard).
+     * @param queryString simple query string
+     * @param filters List of filter query strings
+     * @param pageable
+     * @return
+     */
     @Override
     public Page<DataSheetDocument> advancedSearch(String queryString, List<String> filters, Pageable pageable) {
         //Add Query

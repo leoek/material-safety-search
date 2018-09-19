@@ -1,8 +1,10 @@
 package mss.domain.responses;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.data.domain.Pageable;
 
+/**
+ * Class for formatting a custom meta object
+ */
 public class PageMeta {
 
     private Long totalCount;

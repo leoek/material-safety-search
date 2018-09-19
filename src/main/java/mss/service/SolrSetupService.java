@@ -3,16 +3,11 @@ package mss.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.apache.catalina.LifecycleState;
 import org.apache.solr.client.solrj.SolrClient;
-import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrRequest;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.request.GenericSolrRequest;
-import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SimpleSolrResponse;
-import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.util.ContentStream;
 import org.apache.solr.common.util.ContentStreamBase;
 import org.slf4j.Logger;
@@ -25,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class for specifying schema details via the Solr configuration API
+ */
 @Service
 public class SolrSetupService {
 
@@ -34,8 +32,9 @@ public class SolrSetupService {
     private SolrClient dataSheetSolrClient;
 
     /**
-     * @throws IOException network error.
-     * @throws SolrServerException solr error.
+     * Sets a partial schema with detailed field property information via the solr configuration API
+     * @throws IOException Network error.
+     * @throws SolrServerException Solr error.
      */
     public void setup() throws IOException, SolrServerException {
         SolrClient solrClient = dataSheetSolrClient;
@@ -43,9 +42,11 @@ public class SolrSetupService {
         GenericSolrRequest request = new GenericSolrRequest(SolrRequest.METHOD.GET, "/schema/fields", null);
         SimpleSolrResponse response = request.process(solrClient);
 
+        //Check if this schema is already imported
         if(!response.getResponse().toString().contains("productId")){
             String fieldTypeText = "text_en_splitting";
             String fieldTypeRawText = "string";
+
             //Create Schema
             //Maybe custom fieldTypes for productId, companyName and ingredName
             //Maybe set required to true for some fields
@@ -88,16 +89,24 @@ public class SolrSetupService {
             genericSolrRequest.setContentStreams(Collections.singleton(contentStream));
             genericSolrRequest.process(solrClient);
 
-            log.info("Partial schema imported.");
+            log.info("Partial schema imported. Remaining fields will be automatically added.");
         } else {
             log.info("Schema is already imported.");
         }
-
-
-
     }
 
-    public ObjectNode fieldObjectJson(String name, String type, Boolean indexed, Boolean stored, Boolean required, Boolean docValues, Boolean multiValued){
+    /**
+     * Creates a JSON object node from the given input that represents one field configuration
+     * @param name Corresponds to Solr's Field Property parameter "name"
+     * @param type Corresponds to Solr's Field Property parameter "type"
+     * @param indexed Corresponds to Solr's Field Property parameter "indexed"
+     * @param stored Corresponds to Solr's Field Property parameter "stored"
+     * @param required Corresponds to Solr's Field Property parameter "required"
+     * @param docValues Corresponds to Solr's Field Property parameter "docValues"
+     * @param multiValued Corresponds to Solr's Field Property parameter "multiValued"
+     * @return The created field configuration object
+     */
+    private ObjectNode fieldObjectJson(String name, String type, Boolean indexed, Boolean stored, Boolean required, Boolean docValues, Boolean multiValued){
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode field = mapper.createObjectNode();
 
@@ -112,45 +121,20 @@ public class SolrSetupService {
         return field;
     }
 
-    public String fieldArrayJson(List<ObjectNode> fields){
+    /**
+     * Turns multiple field configuration objects into a JSON String for adding fields via the Solr configuration API
+     * @param fields List of field configuration objects
+     * @return JSON string for Solr config API
+     */
+    private String fieldArrayJson(List<ObjectNode> fields){
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode fieldArray = mapper.createArrayNode();
         ObjectNode finalObject = mapper.createObjectNode();
-
         for (ObjectNode field: fields) {
             fieldArray.add(field);
         }
-
         finalObject.putPOJO("add-field", fieldArray);
 
         return finalObject.toString();
-    }
-
-    public String fieldTypeJson(){
-        return "";
-    }
-
-
-    public void examples() {
-        //Pageable pageable = PageRequest.of(0, 10);
-
-        //Page<DataSheetDocument> documents = dataSheetRepository.findFullText("SEMI GLOSS INTERIOR LATEX WHITE", pageable);
-
-        //log.info("{}", documents);
-
-        String urlString = "http://localhost:8983/solr/dataSheet";
-        SolrClient solr = new HttpSolrClient.Builder(urlString).build();
-
-        SolrQuery query = new SolrQuery();
-        query.setQuery("lines:oxygen");
-        query.setStart(0);
-
-        try {
-            QueryResponse response = solr.query(query);
-            SolrDocumentList results = response.getResults();
-            log.info("{}", results);
-        } catch (SolrServerException | IOException solrE){
-            log.info("{}", solrE);
-        }
     }
 }

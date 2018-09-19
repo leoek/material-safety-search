@@ -11,10 +11,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * TODO wide open cors settings are ok for now.
- * Any client should be able to connect for now.
+ * Controller for exposing certain methods to the frontend
+ * TODO: Wide open CORS settings are adequate for now. During development client should be able to connect for now.
  */
-
 @RestController
 @Component
 @CrossOrigin(origins = "*")
@@ -28,8 +27,8 @@ public class DataSheetController {
     }
 
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam String searchTerm) {
-        Page<DataSheetDocument> result = dataSheetService.generalSearch(p, searchTerm);
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam String s) {
+        Page<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
         return new PageResponse<>(result);
     }
 
