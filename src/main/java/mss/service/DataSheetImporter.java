@@ -1,17 +1,15 @@
 package mss.service;
 
+import com.google.common.base.Splitter;
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.entity.IngredientDocument;
 import mss.domain.repository.DataSheetRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
-
-import com.google.common.base.Splitter;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +22,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Service class for importing the dataset into Solr
+ */
 @Service
 @Configuration
 public class DataSheetImporter {
@@ -59,6 +60,9 @@ public class DataSheetImporter {
 
     private static final Logger log = LoggerFactory.getLogger(DataSheetImporter.class);
 
+    /**
+     * Starter logic for importing the dataset
+     */
     public void importDataSet(){
         if (dataSheetRepository.count() == 0) {
             log.info("No data found. Starting to import from \"" + dataSetPath + "\".");
@@ -70,6 +74,10 @@ public class DataSheetImporter {
         }
     }
 
+    /**
+     * Recursive algorithm to call method importFile() on each individual file
+     * @param folder File to open / folder to follow
+     */
     public void importFolder(File folder){
         if (folder.isFile()){
             importFile(folder);
@@ -79,6 +87,11 @@ public class DataSheetImporter {
         Arrays.stream(files).forEach(file -> importFolder(file));
     }
 
+    /**
+     * Turns a text file into a POJO and sends it to the bulk importer.
+     * Also contains logic to enhance document information by mapping FSCG number to corresponding description String.
+     * @param file One text file to be analyzed and indexed
+     */
     public void importFile(File file){
         if (excludes.contains(file.getName())){
             log.info("Did not import {} (filename is excluded)", file.getName());
@@ -240,26 +253,21 @@ public class DataSheetImporter {
                 ingredientDocuments.add(ingredientDocument);
             }
         }
-
         /*if (ingredientDocuments.size() == 0) {
             log.info("No ingredients found for file: " + file.getName());
         }*/
-
         document.setIngredients(ingredientDocuments);
 
-        /*System.out.println("\nPROD: " + document.getProductId());
-        System.out.println("FSC: " + document.getFsc());
-        System.out.println("NIIN: " + document.getNiin());
-        System.out.println("DATE: " + document.getMsdsDate());
-        for(IngredientDocument i: document.getIngredients()){
-            System.out.println("INGR: " + i.getIngredName() + ", " + i.getCas());
-        }
-        System.out.println(document.getRawIdentification());*/
-
+        //Send to bulk import
         indexService.addBulk(document);
         //log.info("Imported {} {}", document.getId(), file.getName());
     }
 
+    /**
+     * Parses a file to a string and returns it
+     * @param file File to be opened
+     * @return Content of file
+     */
     private String readFile(File file){
         String content = "";
         try{
@@ -277,6 +285,10 @@ public class DataSheetImporter {
         }
     }
 
+    /**
+     * Creates a Hashmap connecting FSG numbers to descriptions in order to enhance the information content of the documents
+     * @return Hashmap with FSG numbers as keys and descriptions as values
+     */
     private HashMap<Integer, String> getFSGMap(){
     	Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
     	HashMap<Integer, String> fsgmap = new HashMap<Integer, String>();
@@ -288,6 +300,10 @@ public class DataSheetImporter {
     	return fsgmap;
     }
 
+    /**
+     * Creates a Hashmap connecting FSC numbers to descriptions in order to enhance the information content of the documents
+     * @return Hashmap with FSC numbers as keys and descriptions as values
+     */
     private HashMap<Integer, String> getFSCMap(){
 	    Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
 		HashMap<Integer, String> fscmap = new HashMap<Integer, String>();

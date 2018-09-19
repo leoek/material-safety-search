@@ -1,10 +1,13 @@
 package mss.domain.responses;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+/**
+ * Response class for formatting a custom response
+ * @param <T> Items of page, automatically filled by Spring
+ */
 public class PageResponse<T> {
 
     private List<T> items;
