@@ -171,7 +171,7 @@ public class DataSheetService {
         String productId = advancedTerm.getProductId();
         if (productId != null) {
             if (productId.startsWith("!")) {
-                queryList.add("!productId:(" + productId.substring(1) + ")");
+                queryList.add("(!productId:(" + productId.substring(1) + ") && docType:datasheet)");
             } else {
                 queryList.add("productId:(" + productId + ")");
             }
@@ -180,7 +180,7 @@ public class DataSheetService {
         String fsc = advancedTerm.getFsc();
         if (fsc != null) {
             if (fsc.startsWith("!")) {
-                queryList.add("!fsc:(" + fsc.substring(1) + ")");
+                queryList.add("(!fsc:(" + fsc.substring(1) + ") && docType:datasheet)");
             } else {
                 queryList.add("fsc:(" + fsc + ")");
             }
@@ -189,7 +189,7 @@ public class DataSheetService {
         String fscString = advancedTerm.getFscString();
         if (fscString != null) {
             if (fscString.startsWith("!")) {
-                queryList.add("!fscString:(" + fscString.substring(1) + ")");
+                queryList.add("(!fscString:(" + fscString.substring(1) + ") && docType:datasheet)");
             } else {
                 queryList.add("fscString:(" + fscString + ")");
             }
@@ -198,7 +198,7 @@ public class DataSheetService {
         String fsgString = advancedTerm.getFsgString();
         if (fsgString != null) {
             if (fsgString.startsWith("!")) {
-                queryList.add("!fsgString:(" + fsgString.substring(1) + ")");
+                queryList.add("(!fsgString:(" + fsgString.substring(1) + ") && docType:datasheet)");
             } else {
                 queryList.add("fsgString:(" + fsgString + ")");
             }
@@ -207,7 +207,7 @@ public class DataSheetService {
         String niin = advancedTerm.getNiin();
         if (niin != null) {
             if (niin.startsWith("!")) {
-                queryList.add("!niin:(" + niin.substring(1) + ")");
+                queryList.add("(!niin:(" + niin.substring(1) + ") && docType:datasheet)");
             } else {
                 queryList.add("niin:(" + niin + ")");
             }
@@ -216,7 +216,7 @@ public class DataSheetService {
         String companyName = advancedTerm.getCompanyName();
         if (companyName != null) {
             if (companyName.startsWith("!")) {
-                queryList.add("!companyName:(" + companyName.substring(1) + ")");
+                queryList.add("(!companyName:(" + companyName.substring(1) + ") && docType:datasheet)");
             } else {
                 queryList.add("companyName:(" + companyName + ")");
             }
