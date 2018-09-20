@@ -78,15 +78,26 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         return solrTemplate.queryForPage("dataSheet", simpleQuery, DataSheetDocument.class);
     }
 
+    /**
+     *
+     * Generated 10 Suggestions (or less if there are less than 10 available)
+     *
+     * @param searchTerm
+     * @param field
+     * @return
+     */
     @Override
     public List<DataSheetDocument> autocompleteList(String searchTerm, String field) {
+        return autocompleteList(searchTerm, field, 10);
+    }
+
+    @Override
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field, Integer count) {
         //Add Query
         SimpleQuery simpleQuery = new SimpleQuery(new SimpleStringCriteria(field + ":" +searchTerm));
 
         //Further configuration
         simpleQuery.addProjectionOnField("*");
-
-        simpleQuery.setRows(20);
 
         GroupOptions groupOptions = new GroupOptions();
         groupOptions.addGroupByField(field);
@@ -94,6 +105,7 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         groupOptions.setGroupMain(true);
         simpleQuery.setGroupOptions(groupOptions);
 
+        simpleQuery.setRows(count);
         return solrTemplate.query("dataSheet", simpleQuery, DataSheetDocument.class).getContent();
     }
 }

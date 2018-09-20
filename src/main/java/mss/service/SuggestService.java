@@ -38,12 +38,13 @@ public class SuggestService {
      * retrieve suggestions according to search term ("s") and text field ("field")
      * @param s search term (usually an incomplete word)
      * @param field text field
+     * @Param count Number of suggestions to be returned (can be null, the default of 10 will be used in that case)
      * @return List of Strings containing complete productIds or fscs, etc. depending on field
      */
-    public Suggestions createSuggestions(String s, String field) {
+    public Suggestions createSuggestions(String s, String field, Integer count) {
         Suggestions suggestions = new Suggestions();
 
-        List<DataSheetDocument> suggestionsDocuments = dataSheetRepository.autocompleteList(s, field);
+        List<DataSheetDocument> suggestionsDocuments = (count != null) ? dataSheetRepository.autocompleteList(s, field, count) :  dataSheetRepository.autocompleteList(s, field);
         List<String> suggestionsList;
 
         switch (field) {

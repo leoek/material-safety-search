@@ -44,8 +44,8 @@ public class DataSheetController {
     }
 
     @RequestMapping(path = "/suggest", method = RequestMethod.GET)
-    public Suggestions suggest(@RequestParam String s, @RequestParam String field) {
-        Suggestions result = suggestService.createSuggestions(s, field);
+    public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {
+        Suggestions result = suggestService.createSuggestions(s, field, count);
         return result;
     }
 }

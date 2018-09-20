@@ -12,4 +12,6 @@ public interface CustomDataSheetRepository {
     public Page<DataSheetDocument> advancedSearch(String query, List<String> filters, Pageable pageable);
 
     public List<DataSheetDocument> autocompleteList(String searchTerm, String field);
+
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field, Integer count);
 }
