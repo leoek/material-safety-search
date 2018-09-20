@@ -1,4 +1,10 @@
 #!/bin/bash
+
+ansible_role="playbook-deployment.yml"
+if [ "$1" != "reset-volumes" ]; then
+    ansible_role="playbook-deployment-reset-volumes.yml"
+fi
+
 ip=$(docker network inspect --format='{{range .IPAM.Config}}{{.Gateway}}{{end}}' nginx-proxy | awk -F '/' 'NR==1{print $1}')
 echo "net1 ansible_host=$ip" > hosts-deployment
 echo "[mss]" >> hosts-deployment

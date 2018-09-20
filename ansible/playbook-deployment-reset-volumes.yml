@@ -1,0 +1,23 @@
+---
+#general playbook
+
+#global handlers file: handlers/main.yml
+
+#check connection to all hosts
+- hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+    - name: ping all hosts
+      action: ping
+
+# talk to all hosts just so we can learn about them
+- hosts: all
+  tasks:
+     - group_by: key={{ ansible_distribution | lower }}
+
+- hosts: mss
+  roles:
+    - docker-mss-deployment-local-reset-volumes
+  handlers:
+    - include: handlers/main.yml
