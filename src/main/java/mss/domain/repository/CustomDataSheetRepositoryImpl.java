@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.SolrOperations;
+import org.springframework.data.solr.core.query.GroupOptions;
 import org.springframework.data.solr.core.query.SimpleFilterQuery;
 import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.SimpleStringCriteria;
@@ -75,5 +76,36 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         simpleQuery.addProjectionOnField("[child parentFilter=docType:datasheet]");
         simpleQuery.setPageRequest(pageable).setDefType("lucene");
         return solrTemplate.queryForPage("dataSheet", simpleQuery, DataSheetDocument.class);
+    }
+
+    /**
+     *
+     * Generated 10 Suggestions (or less if there are less than 10 available)
+     *
+     * @param searchTerm
+     * @param field
+     * @return
+     */
+    @Override
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field) {
+        return autocompleteList(searchTerm, field, 10);
+    }
+
+    @Override
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field, Integer count) {
+        //Add Query
+        SimpleQuery simpleQuery = new SimpleQuery(new SimpleStringCriteria(field + ":" +searchTerm));
+
+        //Further configuration
+        simpleQuery.addProjectionOnField("*");
+
+        GroupOptions groupOptions = new GroupOptions();
+        groupOptions.addGroupByField(field);
+        groupOptions.setLimit(1);
+        groupOptions.setGroupMain(true);
+        simpleQuery.setGroupOptions(groupOptions);
+
+        simpleQuery.setRows(count);
+        return solrTemplate.query("dataSheet", simpleQuery, DataSheetDocument.class).getContent();
     }
 }
