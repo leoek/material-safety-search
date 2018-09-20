@@ -31,7 +31,7 @@ services:
   mss-client:
     image: materialsafetysearch/private:frontend-next
     environment:
-      - API_BASE_URL=${SERVER_DOMAIN}
+      - API_BASE_URL=https://${SERVER_DOMAIN}
       - VIRTUAL_HOST=${CLIENT_DOMAIN}
       - VIRTUAL_NETWORK=${NETWORK}
       - VIRTUAL_PORT=80
