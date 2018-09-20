@@ -57,6 +57,7 @@ public class SolrSetupService {
             fieldArray.add(fieldObjectJson("productId", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsc", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fscString", fieldTypeText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fsg", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsgString", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("niin", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("companyName", fieldTypeText,true, true, false, false, false));

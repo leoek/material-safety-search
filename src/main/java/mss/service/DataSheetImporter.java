@@ -109,10 +109,15 @@ public class DataSheetImporter {
             String comp = m1.group(1);
             String prod = m1.group(2);
             String fsc = m1.group(3);
+            String fsg = "";
+            if (m1.group(3).length() >= 4) {
+                fsg = m1.group(3).substring(0, 2);
+            }
             String niin = m1.group(4);
             document.setCompanyName(comp);
             document.setProductId(prod);
             document.setFsc(fsc);
+            document.setFsg(fsg);
             if(fsc.matches("\\d*") && fsc.length() > 2)
             {
             	document.setFsgString(this.fsgMap.get(Integer.parseInt(fsc.substring(0, 2))));

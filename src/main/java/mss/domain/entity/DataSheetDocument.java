@@ -34,6 +34,9 @@ public class DataSheetDocument{
 
     @Indexed
     private String fscString;
+
+    @Indexed
+    private String fsg;
     
     @Indexed
     private String fsgString;
@@ -155,6 +158,14 @@ public class DataSheetDocument{
 	public void setFscString(String fscString) {
 		this.fscString = fscString;
 	}
+
+    public String getFsg() {
+        return fsg;
+    }
+
+    public void setFsg(String fsg) {
+        this.fsg = fsg;
+    }
 
 	public String getFsgString() {
 		return fsgString;
