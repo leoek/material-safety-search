@@ -6,7 +6,10 @@ const devConfig = {
 
 export const baseConfig = {
   version: "0.1.0",
-  apiBaseUrl: process.env.API_BASE_URL || "https://api.mss.leoek.tech",
+  apiBaseUrl:
+    global.MSS && global.MSS.API_BASE_URL !== "REPLACE_WITH_APIBASEURL"
+      ? global.MSS.API_BASE_URL
+      : "https://api.mss.leoek.tech",
   ERROR: {
     NOCONNECTION: "NOCONNECTION",
     UNPARSABLE_RESPONSE: "UNPARSABLE_RESPONSE"

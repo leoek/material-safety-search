@@ -19,7 +19,7 @@ services:
     links:
       - solr
     volumes:
-      - ./hazard-dataset:/hazard-dataset:ro
+      - ./hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
 
 volumes:
   data:

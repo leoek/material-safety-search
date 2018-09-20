@@ -7,6 +7,9 @@ COPY src ./src
 RUN export CI=true && yarn test && yarn build
 
 FROM nginx:1.13.7
-ADD docker/files/default.conf /etc/nginx/conf.d/
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 EXPOSE 80
+ADD docker/files/default.conf /etc/nginx/conf.d/
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+ENTRYPOINT ["/docker-entrypoint.sh"]
