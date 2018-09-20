@@ -19,5 +19,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
+COPY ./docker/fscMap.txt /hazard-ds/fscMap.txt
+COPY ./docker/fsgMap.txt /hazard-ds/fsgMap.txt
 COPY --from=builder /usr/app/app.jar /opt/app.jar
 ENTRYPOINT ["/docker-entrypoint.sh"]
