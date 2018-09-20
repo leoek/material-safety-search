@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.SolrOperations;
+import org.springframework.data.solr.core.query.GroupOptions;
 import org.springframework.data.solr.core.query.SimpleFilterQuery;
 import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.SimpleStringCriteria;
@@ -86,6 +87,13 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         simpleQuery.addProjectionOnField("*");
 
         simpleQuery.setRows(20);
+
+        GroupOptions groupOptions = new GroupOptions();
+        groupOptions.addGroupByField(field);
+        groupOptions.setLimit(1);
+        groupOptions.setGroupMain(true);
+        simpleQuery.setGroupOptions(groupOptions);
+
         return solrTemplate.query("dataSheet", simpleQuery, DataSheetDocument.class).getContent();
     }
 }

@@ -61,14 +61,7 @@ public class SuggestService {
                 suggestionsList = Collections.<String>emptyList();
         }
 
-
-        Set<String> set = new LinkedHashSet<>(suggestionsList);
-        List<String> uniqueList = new ArrayList<>(set);
-        if (uniqueList.size() > 12) {
-            uniqueList = uniqueList.subList(0, 12 - 1);
-        }
-        suggestions.setSuggestions(uniqueList);
-
+        suggestions.setSuggestions(suggestionsList);
         return suggestions;
     }
 }
