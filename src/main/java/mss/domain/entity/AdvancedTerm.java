@@ -13,6 +13,8 @@ public class AdvancedTerm {
     private Date beginDate;
     private Date endDate;
     private List<AdvancedTermIngredient> ingredients;
+    public String fsgFacet;
+    public String fscFacet;
 
     public String getProductId() {
         return productId;
@@ -84,5 +86,21 @@ public class AdvancedTerm {
 
     public void setIngredients(List<AdvancedTermIngredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getFsgFacet() {
+        return fsgFacet;
+    }
+
+    public void setFsgFacet(String fsgFacet) {
+        this.fsgFacet = fsgFacet;
+    }
+
+    public String getFscFacet() {
+        return fscFacet;
+    }
+
+    public void setFscFacet(String fscFacet) {
+        this.fscFacet = fscFacet;
     }
 }

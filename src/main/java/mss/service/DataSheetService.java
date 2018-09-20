@@ -128,14 +128,14 @@ public class DataSheetService {
      * @param advancedTerm {@link AdvancedTerm} object representing an advanced query term with multiple fields
      * @return Page of result documents
      */
-    public Page<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
+    public FacetPage<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
         String query = advancedTermToQuery(advancedTerm);
         List<String> filters = advancedTermToFilterQueries(advancedTerm);
 
         log.info("Query: " + query);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.advancedSearch(query, filters, p);
+        return dataSheetRepository.advancedSearchFacet(query, filters, p);
     }
 
     public List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {

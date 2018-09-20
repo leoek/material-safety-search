@@ -66,7 +66,8 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
      * @return
      */
     @Override
-    public Page<DataSheetDocument> advancedSearch(String queryString, List<String> filters, Pageable pageable) {
+    public FacetPage<DataSheetDocument> advancedSearchFacet(String queryString, List<String> filters, Pageable pageable) {
+        //TODO: Add Faceting functionality
         //Add Query
         SimpleQuery simpleQuery = new SimpleQuery(new SimpleStringCriteria(queryString));
         //Add Filter Queries
@@ -77,7 +78,8 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         simpleQuery.addProjectionOnField("*");
         simpleQuery.addProjectionOnField("[child parentFilter=docType:datasheet]");
         simpleQuery.setPageRequest(pageable).setDefType("lucene");
-        return solrTemplate.queryForPage("dataSheet", simpleQuery, DataSheetDocument.class);
+        //return solrTemplate.queryForFacetPage("dataSheet", simpleQuery, DataSheetDocument.class);
+        return null;
     }
 
     @Override

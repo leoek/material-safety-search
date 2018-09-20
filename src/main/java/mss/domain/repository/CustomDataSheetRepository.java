@@ -10,8 +10,7 @@ import java.util.List;
 public interface CustomDataSheetRepository {
     public Page<DataSheetDocument> generalSearch(List<String> criteria, List<String> filters, Pageable pageable);
 
-    public Page<DataSheetDocument> advancedSearch(String query, List<String> filters, Pageable pageable);
-
     public FacetPage<DataSheetDocument> generalSearchFacet(List<String> criteria, List<String> filters, Pageable pageable);
 
+    public FacetPage<DataSheetDocument> advancedSearchFacet(String query, List<String> filters, Pageable pageable);
 }

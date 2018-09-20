@@ -2,6 +2,7 @@ package mss.controller;
 
 import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.entity.GeneralTerm;
 import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -29,21 +31,16 @@ public class DataSheetController {
         this.dataSheetService = dataSheetService;
     }
 
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam String s) {
-        FacetPage<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
+    @RequestMapping(path = "/search", method = RequestMethod.POST)
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody GeneralTerm generalTerm) {
+        //Assert.notEmpty(generalTerm.getSearchTerm());
+        FacetPage<DataSheetDocument> result = dataSheetService.generalSearch(p, generalTerm.getSearchTerm());
         return new PageResponse<>(result);
     }
 
-    /*@RequestMapping(path = "/search", method = RequestMethod.GET)
-    public ResponseEntity<Page<DataSheetDocument>> generalSearch(Pageable p, @RequestParam String s) {
-        FacetPage<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }*/
-
-    /*@RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
+    @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
-        Page<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
+        FacetPage<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
         return new PageResponse<>(result);
-    }*/
+    }
 }
