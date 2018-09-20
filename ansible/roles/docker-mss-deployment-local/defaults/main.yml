@@ -2,3 +2,7 @@
 # defaults file for role
 
 mss_path: /srv/docker/mss
+
+docker_hub_user: MSS_DEPLOY_DOCKER_HUB_USER_TO_BE_REPLACE
+docker_hub_pw: MSS_DEPLOY_DOCKER_HUB_PW_TO_BE_REPLACE
+docker_hub_mail: mss@leoek.tech

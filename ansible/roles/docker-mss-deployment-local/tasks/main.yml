@@ -16,6 +16,22 @@
     mode: 0644
   notify: rebuild_containers
 
+- name: create folder docker inside mss working dir
+  become: true
+  file:
+    path: "{{ mss_path }}/docker"
+    state: directory
+    mode: 0755
+  notify: rebuild_containers
+
+- name: Copy solr.in.sh script
+  become: true
+  copy:
+    src: solr.in.sh
+    dest: "{{ mss_path }}/docker/solr.in.sh"
+    mode: 0644
+  notify: rebuild_containers
+
 - name: Copy docker-compose.yml template
   become: true
   template:
@@ -23,6 +39,13 @@
     dest: "{{ mss_path }}/"
     mode: 0644
   notify: rebuild_containers
+
+- name: login to docker registry
+  become: true
+  docker_login:
+    username: "{{ docker_hub_user }}"
+    password: "{{ docker_hub_pw }}"
+    email: "{{ docker_hub_mail }}"
 
 - name: pull new images
   become: true
