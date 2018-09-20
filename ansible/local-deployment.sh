@@ -10,4 +10,4 @@ docker pull leoek/ansible:2.4-did
 docker run --rm -v $(pwd):/ansible/playbooks \
 	-v /srv/docker/swt:/srv/docker/swt \
     -v  /var/run/docker.sock:/var/run/docker.sock:ro \
-    leoek/ansible:next playbook-deployment.yml -i hosts-mss-deployment --connection=local
+    leoek/ansible:next playbook-deployment.yml -i hosts-deployment --connection=local
