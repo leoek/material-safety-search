@@ -18,6 +18,9 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Class for Suggestions
+ */
 @RestController
 @Component
 public class SuggestService {
@@ -31,6 +34,12 @@ public class SuggestService {
         this.dataSheetRepository = dataSheetRepository;
     }
 
+    /**
+     * retrieve suggestions according to search term ("s") and text field ("field")
+     * @param s search term (usually an incomplete word)
+     * @param field text field
+     * @return List of Strings containing complete productIds or fscs, etc. depending on field
+     */
     public Suggestions createSuggestions(String s, String field) {
         Suggestions suggestions = new Suggestions();
 
