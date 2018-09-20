@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class for adding {@link DataSheetDocument}s to the Solr index
+ */
 @Service
 public class DataSheetIndexService {
 
@@ -21,12 +24,17 @@ public class DataSheetIndexService {
     private Integer cacheLimit = 10000;
     private Integer uploadCount = 1;
 
+
     @Autowired
     public DataSheetIndexService(DataSheetRepository dataSheetRepository){
         this.dataSheetRepository = dataSheetRepository;
         documentCache = new ArrayList<>();
     }
 
+    /**
+     * Adds a {@link DataSheetDocument} to a cache and indexes the whole cache when its size exceeds {@link #cacheLimit}
+     * @param document {@link DataSheetDocument} to be added to the index
+     */
     public void addBulk(DataSheetDocument document){
         documentCache.add(document);
         if(documentCache.size() >= cacheLimit){
@@ -35,11 +43,18 @@ public class DataSheetIndexService {
         }
     }
 
+    /**
+     * Adds the cached {@link DataSheetDocument} to the index
+     * @param documents Cache of {@link DataSheetDocument} to add to the index
+     */
     public void add(List<DataSheetDocument> documents){
         dataSheetRepository.saveAll(documents);
         log.info("Imported " + dataSheetRepository.count() + " documents, Cache #" + uploadCount++);
     }
 
+    /**
+     * Adds any remaining {@link DataSheetDocument} still in the cache
+     */
     public void addRestStillInCache(){
         add(documentCache);
         documentCache = new ArrayList<>();
