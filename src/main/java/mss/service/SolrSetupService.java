@@ -156,7 +156,7 @@ public class SolrSetupService {
             genericSolrModifyRequest.process(solrClient);
 
             String fieldTypeText = "text_en_splitting_mod";
-            String fieldTypeRawText = "string_mod";
+            String fieldTypeRawText = "string";
 
             //Create Schema
             //Maybe custom fieldTypes for productId, companyName and ingredName
@@ -166,15 +166,15 @@ public class SolrSetupService {
             //fieldArray.add(fieldObjectJson("score"));
             //fieldArray.add(fieldObjectJson("docType"));
             fieldArray.add(fieldObjectJson("productId", fieldTypeText, true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("fsc", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fsc", "string_mod", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fscString", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsgString", fieldTypeText, true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("niin", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("niin", "string_mod", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("companyName", fieldTypeText,true, true, false, false, false));
             fieldArray.add(fieldObjectJson("msdsDate", "pdate", true, true, false, false, false));
             //fieldArray.add(fieldObjectJson("ingredients"));
             fieldArray.add(fieldObjectJson("ingredName", fieldTypeText,true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("cas", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("cas", "string_mod", true, true, false, false, false));
 
             fieldArray.add(fieldObjectJson("rawIdentification", fieldTypeRawText, false, true, false, false, false));
             fieldArray.add(fieldObjectJson("rawComposition", fieldTypeRawText, false, true, false, false, false));
