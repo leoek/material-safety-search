@@ -1,0 +1,3 @@
+[submodule "hazard-ds"]
+	path = hazard-ds
+	url = https://github.com/fxj9a/hazard-ds.git

@@ -21,7 +21,7 @@ services:
     depends_on:
       - solr
     volumes:
-      - ./hazard-dataset:/hazard-dataset:ro
+      - ./hazard-ds/hazard-dataset:/hazard-dataset:ro
     networks: 
       - backend
 
