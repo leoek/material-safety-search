@@ -1,6 +1,11 @@
 .git
 hazard-dataset
 build
+bin
 .gradle
 .idea
 hazard-dataset.tar.gz
+hazard-ds/hazard-dataset
+hazard-ds/.git
+frontend
+docs

@@ -1,0 +1,485 @@
+1005 Guns, through 30mm 
+1010 Guns, over 30mm up to 75mm
+1015 Guns, 75mm through 125mm
+1020 Guns, over 125mm through 150mm
+1025 Guns, over 150mm through 200mm
+1030 Guns, over 200mm through 300mm
+1035 Guns, over 300mm
+1040 Chemical Weapons and Equipment
+1075 Degaussing - Mine Sweeping Equipment
+1080 Camouflage and Deception Equipment
+1090 Assemblies Interchangeable Between Weapons in Two or More Classes
+1095 Miscellaneous Weapons
+1110 Nuclear Projectiles
+1135 Fuzing and Firing Devices, Nuclear Ordnance
+1195 Miscellaneous Nuclear Ordnance
+1220 Fire Control Computing Sights and Devices
+1230 Fire Control Systems, Complete
+1240 Optical Sighting and Ranging Equipment
+1270 Aircraft Gunnery Fire Control Components
+1280 Aircraft, Bombing Fire Control Components
+1285 Fire Control Radar Equipment, except Airborne
+1290 Miscellaneous Fire Control Equipment
+1305 Ammunition, through 30mm
+1310 Ammunition, over 30mm up to 75mm
+1315 Ammunition, 75mm through 125mm
+1320 Ammunition, over 125mm
+1325 Bombs
+1330 Grenades
+1336 Guided Missile Warheads and Explosive Components
+1338 Guided Missile and Space Vehicle Inert Propulsion Units, Solid Fuel and Components
+1340 Rockets, Rocket Ammunition and Rocket Components
+1345 Land Mines
+1350 Underwater Mine Inert Components
+1355 Torpedo Inert Components
+1360 Depth Charge Inert Components
+1365 Military Chemical Agents
+1370 Pyrotechnics
+1375 Demolition Materials
+1376 Bulk Explosives
+1377 Cartridge - Propellant Actuated Devices and Components
+1390 Fuzes and Primers
+1395 Miscellaneous Ammunition
+1410 Guided Missiles
+1420 Guided Missile Components
+1430 Guided Missile Remote Control System
+1440 Launchers, Guided Missile
+1510 Aircraft, Fixed Wing
+1520 Aircraft, Rotary Wing
+1540 Gliders
+1550 Drones
+1560 Airframe Structural Components
+1610 Aircraft Propellers
+1615 Helicopter Rotor Blades, Drive Mechanisms and Components
+1620 Aircraft Landing Gear Components
+1630 Aircraft Wheel and Brake Systems
+1650 Aircraft Hydraulic, Vacuum, and De-Icing System Components
+1660 Aircraft, Air Conditioning, Heating and Pressurizing Equipment
+1670 Parachutes: Aerial Pick-Up, Delivery, Recovery System and Cargo Tie Down Equipment
+1680 Miscellaneous Aircraft Accessories and Components
+1710 Aircraft Landing Equipment
+1720 Aircraft Launching Equipment
+1730 Aircraft Ground Servicing Equipment
+1740 Airfield Specialized Trucks and Trailers
+1810 Space Vehicles
+1820 Space Vehicle Components
+1830 Space Vehicle Remote Control Systems
+1850 Space Vehicle Handling and Servicing Equipment
+1905 Combat Ships and Landing Vessels
+1925 Special Service Vessels
+1930 Barges and Lighters, Cargo
+1935 Barges and Lighters, Special Purpose
+1940 Small Craft
+1945 Pontoons and Floating Docks
+1950 Floating Dry-docks
+1990 Miscellaneous Vessels
+2010 Ship and Boat Propulsion Equipment
+2030 Deck Machinery
+2040 Marine Hardware and Hull Items
+2050 Buoys
+2090 Miscellaneous Ship and Marine Equipment
+2210 Locomotives
+2220 Rail Cars
+2230 Right-of-Way Construction and Maintenance Equipment, Railroad
+2240 Locomotive and Rail Car Accessories and Components
+2250 Track Materials, Railroad
+2310 Passenger Motor Vehicles
+2320 Trucks and Truck Tractors, Wheeled
+2330 Trailers
+2340 Motorcycles, Motor Scooters, and Bicycles
+2350 Combat, Assault and Tactical Vehicles, Tracked
+2410 Tractors, Full Tracked, Low Speed-3
+2420 Tractors, Wheeled-3
+2510 Vehicular Cab, Body and Frame Structural Components-10
+2520 Vehicular Power Transmission Components-10
+2530 Vehicular Brake, Steering, Axle, Wheel and Track Components-10
+2540 Vehicular Furniture and Accessories-10
+2541 Weapons System Specific Vehicular Accessories
+2590 Miscellaneous Vehicular Components-10
+2610 Tires and Tubes, Pneumatic, Except Aircraft
+2620 Tires and Tubes, Pneumatic, Aircraft
+2630 Tires, Solid and Cushion
+2640 Tire Rebuilding and Tire and Tube Repair
+2805 Gasoline Reciprocating Engines Except Aircraft and Components
+2810 Gasoline Reciprocating Engines, Aircraft and Components
+2815 Diesel Engines and Components
+2820 Steam Engines, Reciprocating and Components
+2825 Steam Turbines and Components
+2835 Gas Turbines and Jet Engines, Except Aircraft and Components
+2840 Gas Turbines and Jet Engines, Aircraft and Components
+2845 Rocket Engines and Components
+2895 Miscellaneous Engines and Components
+2910 Engine Fuel System Components, Non-Aircraft-10
+2915 Engine Fuel System Components, Aircraft
+2920 Engine Electrical System Components, Non-Aircraft-10
+2925 Engine Electrical System Components, Aircraft
+2930 Engine Cooling System Components, Non-Aircraft-10
+2935 Engine Cooling System Components, Aircraft
+2940 Engine Air and Oil Filters, Strainers and Cleaners, Non-Aircraft
+2945 Engine Air and Oil Filters, Strainers and Cleaners, Aircraft
+2990 Miscellaneous Engine Accessories, Non-Aircraft-10
+2995 Miscellaneous Engine Accessories Aircraft
+3010 Torque Converters and Speed Changers
+3020 Gears, Pulleys, Sprockets and Transmission Chain 
+3030 Belting, Drive Belts, Fan Belts and Accessories
+3040 Miscellaneous Power Transmission Equipment
+3110 Bearings, Antifriction Unmounted
+3120 Bearings, Plain, Unmounted
+3130 Bearings, Mounted
+3210 Sawmill and Planing Mill Machinery
+3220 Woodworking Machines
+3230 Tools and Attachments for Woodworking Machinery
+3405 Saws and Filing Machines-4
+3408 Machining Centers and Way-Type Machines-4
+3411 Boring Machines-4
+3416 Lathes-4
+3424 Metal Heat Treating and Non-Thermal Treating Equipment-4
+3426 Metal Finishing Equipment-4
+3431 Electric Arc Welding Equipment-4
+3432 Electric Resistance Welding Equipment-4
+3433 Gas Welding, Heat Cutting and Metalizing Equipment-4
+3436 Welding Positioners and Manipulators-4
+3439 Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4
+3441 Bending and Forming Machines-4
+3445 Punching and Shearing Machines-4
+3448 Riveting Machines-4
+3455 Cutting Tools for Machine Tools
+3460 Machine Tool Accessories
+3510 Laundry and Dry Cleaning Equipment
+3530 Industrial Sewing Machines and Mobile Textile Repair Shops
+3540 Wrapping and Packaging Machinery
+3610 Printing, Duplicating and Bookbinding Equipment
+3611 Industrial Marking Machines-4
+3620 Rubber and Plastics Working Machinery-4
+3625 Textile Industries Machinery
+3630 Clay and Concrete Products Industries Machinery
+3640 Tobacco Manufacturing Machinery
+3655 Gas Generating and Dispensing Systems, Fixed or Mobile
+3660 Industrial Size Reduction Machinery-4
+3694 Clean Work Stations, Controlled Environment and Related Equipment-4
+3740 Pest, Disease and Frost Control Equipment
+3750 Gardening Implements and Tools
+3770 Saddlery, Harness, Whips and Related Animal Furnishings
+3805 Earth Moving and Excavating Equipment=5
+3810 Cranes and Crane-Shovels-5
+3815 Crane and Crane-Shovel Attachments-5
+3820 Mining, Rock Drilling, Earth Boring and Related Equipment-5
+3825 Road Clearing and Cleaning Equipment-5
+3830 Truck and Tractor Attachments-5
+3895 Miscellaneous Construction Equipment-5
+3910 Conveyors
+3920 Materiel Handling Equipment Non-Self-Propelled-5
+3930 Warehouse Trucks and Tractors, Self-Propelled
+3940 Blocks, Tackle, Rigging and Slings
+3950 Winches, Hoists, Cranes and Derricks
+3960 Elevators and Escalators
+3990 Miscellaneous Materiel Handling Equipment-5
+4010 Chain and Wire Rope
+4020 Fiber Rope, Cordage and Twine
+4030 Fittings for Rope, Cable and Chain
+4110 Refrigeration Equipment
+4120 Air Conditioning Equipment
+4130 Refrigeration and Air Conditioning Components
+4140 Fans, Air Circulators, Blower Equipment
+4150 Vartex Tubes and Other Related Cooling Tubes
+4210 Fire Fighting Equipment
+4220 Marine Lifesaving and Diving Equipment
+4230 Decontaminating and Impregnating Equipment
+4240 Safety and Rescue Equipment
+4250 Recycling and Reclamation Equipment
+4310 Compressors and Vacuum Pumps
+4320 Power and Hand Pumps
+4330 Centrifugals, Separators and Pressure and Vacuum Filters
+4410 Industrial Boilers
+4420 Heat Exchangers and Steam Condensers
+4440 Dryers, Dehydrators and Anhydrators
+4460 Air Purification Equipment
+4510 Plumbing Fixtures and Accessories
+4520 Space Heating Equipment and Domestic Water Heaters
+4530 Fuel Burning Equipment Units
+4540 Miscellaneous Plumbing, Heating and Sanitation Equipment
+4610 Water Purification Equipment
+4620 Water Distillation Equipment, Marine and Industrial
+4630 Sewage Treatment Equipment
+4710 Pipe and Tube
+4720 Hose and Tubing, Flexible
+4730 Fittings and Specialties; Hose, Pipe and Tube
+4810 Valves, Powered
+4820 Valves, Non-Powered
+4910 Motor Vehicle Maintenance and Repair Shop Specialized Equipment
+4920 Aircraft Maintenance and Repair Shop Specialized Equip ment
+4925 Ammunition Maintenance, Repair and Checkout Specialized Equipment
+4930 Lubrication and Fuel Dispensing Equipment
+4931 Fire Control Maintenance and Repair Shop Specialized Equipment
+4935 Guided Missile Maintenance, Repair and Checkout Specialized
+4940 Shop Specialized Equipment
+5110 Hand Tools, Edged, Non-Powered
+5120 Hand Tools, Non-Edged, Non-Powered
+5130 Hand Tools, Power Driven
+5133 Drill, Bits, Counterbores and Countersinks: Hand and Machine
+5136 Taps, Dies and Collets: Hand and Machine
+5140 Tool and Hardware Boxes
+5180 Sets, Kits and Outfits of Hand Tools
+5210 Measuring Tools, Craftmens
+5220 Inspection Gages and Precision Layout Tools
+5305 Screws
+5306 Bolts
+5307 Studs
+5310 Nuts and Washers
+5315 Nails, Keys and Pins
+5320 Rivets
+5325 Fastening Devices
+5330 Packing and Gasket Materials
+5335 Metal Screening
+5340 Miscellaneous Hardware
+5345 Disks and Stones, Abrasive
+5350 Abrasive Materials
+5355 Knobs and Pointers
+5360 Coil, Flat and Wire Springs
+5365 Rings, Shims and Spacers
+5410 Prefabricated and Portable Buildings
+5411 Rigid Wall Shelters
+5420 Bridges, Fixed and Floating
+5430 Storage Tanks
+5440 Scaffolding Equipment and Concrete Forms
+5450 Miscellaneous Prefabricated Structures
+5510 Lumber and Related Basic Wood Materials
+5530 Plywood and Veneer
+5610 Mineral Construction Materials, Bulk
+5620 Building Glass, Tile, Brick and Block
+5630 Pipe and Conduit, Nonmetallic
+5640 Wallboard, Building Paper and Thermal Insulation Materials
+5650 Roofing and Siding Materials
+5660 Fencing, Fences and Gates
+5670 Architectural and Related Metal Products
+5675 Non-Wood Construction Lumber and Related Materials
+5680 Miscellaneous Construction Materials
+5805 Telephone and Telegraph Equipment
+5810 Communications Security Equipment and Components
+5815 Teletype and Facsimile Equipment
+5820 Radio and Television Communication Equipment, Except Airborne
+5821 Radio and Television Communication Equipment, Airborne
+5825 Radio Navigation Equipment, Except Airborne
+5826 Radio Navigation Equipment, Airborne
+5830 Intercommunication and Public Address Systems, Except Airborne
+5831 Intercommunication and Public Address Systems, Airborne
+5835 Sound Recording and Reproducing Equipment
+5840 Radar Equipment, Except Airborne
+5841 Radar Equipment, Airborne
+5845 Underwater Sound Equipment
+5855 Night Vision Equipment, Emitted and Reflected Radiation
+5865 Electronic Countermeasures (ECM), Electronic Counter Countermeasures (ECCM), and Quick Reaction Capability (QRC) Equipment
+5895 Miscellaneous Communication Equipment (Less ECM, ECCM and QRC)
+5905 Resistors
+5910 Capacitors
+5915 Filters and Networks
+5920 Fuses and Lightning Arresters
+5925 Circuit Breakers
+5930 Switches
+5935 Connectors, Electrical
+5940 Lugs, Terminals and Terminal Strips
+5945 Relays and Solenoids
+5950 Coils and Transformers
+5955 Oscillators and Piezoelectric Crystals
+5960 Electron Tubes and Associated Hardware
+5961 Semiconductor Devices and Associated Hardware
+5962 Microcircuits, Electronic
+5963 Electronic Modules
+5965 Headsets, Handsets, Microphones and Speakers
+5970 Electrical Insulators and Insulating Materials
+5975 Electrical Hardware and Supplies
+5977 Electrical Contact Brushes and Electrodes
+5980 Optoelectronic Devices and Associated Hardware
+5985 Antennas, Wayeguides and Related Equipment
+5990 Synchros and Resolvers
+5995 Cable, Cord and Wire Assembles: Communication Equipment
+5996 Amplifiers
+5998 Electrical and Electrical Assemblies, Boards, Cards, and Associated
+5999 Miscellaneous Electrical and Electronic Components
+6004 Rotary Joints
+6010 Fiber Optic Conductors
+6015 Fiber Optic Cables
+6020 Fiber Optic Cable Assemblies and Harnesses
+6025 Fiber Optic Transmitters
+6026 Fiber Optic Receivers
+6030 Fiber Optic Devices
+6040 Fiber Optic Sensors
+6060 Fiber Optic Interconnectors and Supplies
+6070 Fiber Optic Accessories and Supplies
+6099 Miscellaneous Fiber Optic Components
+6105 Motors, Electrical
+6110 Electrical Control Equipment
+6115 Generators and Generator Sets, Electrical
+6120 Transformer: Distribution and Power Station
+6125 Converters, Electrical, Rotating
+6130 Converters, Electrical, Non-Rotating
+6135 Batteries, Primary
+6140 Batteries, Rechargeable
+6145 Wire and Cable, Electrical
+6150 Miscellaneous Electrical Power and Distribution Equipment
+6160 Miscellaneous Battery Retaining Fixtures and Liners
+6210 Indoor and Outdoor Electrical Lighting Fixture
+6220 Electrical Vehicular Lights and Fixtures
+6230 Electric Portable and Hand Lighting Equipment
+6240 Electric Lamps
+6250 Ballast, Lamp Holders and Starters
+6260 Non-Electric Lighting Fixtures
+6310 Traffic and Transit Signal Systems
+6320 Shipboard Alarm and Signal Systems
+6330 Railroad Signal and Warning Devices
+6340 Aircraft Alarm and Signal Systems
+6350 Miscellaneous Alarm and Signal Systems
+6505 Drugs and Biologicals
+6510 Surgical Dressing Materials
+6515 Medical and Surgical Instruments, Equipment and Supplies
+6520 Dental Instruments, Equipment and Supplies
+6525 X-Ray Equipment and Supplies: Medical, Dental, Veterinary
+6530 Hospital Furniture, Equipment, Utensils and Supplies
+6532 Hospital and Surgical Clothing and Related Special Purpose Items
+6540 Opticians; Instruments, Equipment and Supplies
+6545 Medical Sets, Kits and Outfits
+6605 Navigational Instruments
+6610 Flight Instruments
+6615 Automatic Pilot Mechanisms and Airborne Gyro Components
+6620 Engine Instruments
+6625 Electrical and Electronic Properties Measuring and Testing Instruments
+6630 Chemical Analysis Instruments
+6635 Physical Properties Testing Equipment
+6640 Laboratory Equipment and Supplies
+6645 Time Measuring Instruments
+6650 Optical Instruments
+6655 Geophysical and Astronomical Instruments
+6660 Meteorological Instruments and Apparatus
+6665 Hazard-Detecting Instruments and Apparatus
+6670 Scales and Balances
+6675 Drafting, Surveying and Mapping Instruments
+6680 Liquid and Gas Flow, Liquid Level and Mechanical Motion Measuring
+6685 Pressure, Temperature and Humidity Measuring and Controlling Instruments
+6695 Combination and Miscellaneous Instruments
+6730 Photographic Projection Equipment
+6740 Photographic Developing and Finishing Equipment
+6750 Photographic Supplies
+6760 Photographic Equipment and Accessories
+6770 Film, Processed
+6810 Chemicals
+6820 Dyes
+6830 Gases: Compressed and Liquefied
+6840 Pest Control Agents and Disinfectants
+6850 Miscellaneous Chemical Specialties
+6910 Training Aids
+6920 Armament Training Devices
+6930 Operational Training Devices
+7025 ADP Input/Out and Storage Devices-8
+7035 ADP Accessorial Equipment-8
+7105 Household Furniture
+7110 Office Furniture
+7125 Cabinets, Lockers, Bins and Shelving
+7195 Miscellaneous Furniture and Fixtures
+7210 Household Furnishings
+7220 Floor Coverings
+7230 Draperies, Awnings and Shades
+7240 Household and Commercial Utility Containers
+7290 Miscellaneous Household and Commercial Furnishings and Appliances
+7310 Food Cooking, Baking and Serving Equipment
+7320 Kitchen Equipment and Appliances
+7330 Kitchen Hand Tools and Utensils
+7340 Cutlery and Flatware
+7350 Tableware
+7360 Sets, Kits and Outfits: Food Preparation and Serving
+7420 Accounting and Calculating Machines
+7435 Office Information System Equipment
+7490 Miscellaneous Office Machines
+7510 Office Supplies
+7520 Office Devices and Accessories
+7530 Stationery and Record Forms
+7610 Books and Pamphlets
+7640 Maps, Atlases, Charts and Globes
+7650 Drawings and Specifications
+7690 Miscellaneous Printed Matter
+7920 Brooms, Brushes, Mops and Sponges
+7930 Cleaning and Polishing Compounds and Preparations
+8010 Paints, Dopes, Varnishes and Related Products
+8020 Paint and Artists Brushes
+8030 Preservative and Sealing Compounds
+8040 Adhesives
+8105 Bags and Sacks
+8110 Drums and Cans
+8115 Boxes, Cartons and Crates
+8120 Commercial and Industrial Gas Cylinders
+8125 Bottles and Jars
+8130 Reels and Spools
+8135 Packaging and Packing Bulk Materials
+8140 Ammunition and Nuclear Ordnance Boxes, Packages and Special Containers
+8145 Specialized Shipping and Storage Containers
+8305 Textile Fabrics
+8310 Yarn and Thread
+8315 Notions and Apparel Fittings
+8320 Padding and Stuffing Material
+8330 Leather
+8335 Shoe Fittings and Soling Materials
+8340 Tents and Tarpaulins
+8345 Flags and Pennants
+8405 Outerwear, Mens
+8410 Outerwear, Womens
+8415 Clothing, Special Purpose
+8420 Underwear and Nightwear, Mens
+8430 Footwear Mens
+8440 Hosiery, Handwear and Clothing Accessories, Mens
+8445 Hosiery, Handwear and Clothing Accessories, Womens
+8455 Badges and Insignia
+8460 Luggage
+8465 Individual Equipment
+8470 Armor, Personal
+8475 Specialized Flight Clothing and Accessories
+8510 Perfume, Toilet Preparations and Powders
+8520 Toilet Soap, Shaving Preparations and Dentifrice
+8530 Personal Toiletry Articles
+8540 Toiletry Paper Products
+8720 Fertilizers
+8905 Meat, Poultry and Fish
+8910 Dairy Foods and Eggs
+8915 Fruits and Vegetables
+8920 Bakery and Cereal Products
+8925 Sugar, Confectionery, and Nuts
+8930 Jams, Jellies and Preserves
+8935 Soups and Bouillon
+8940 Special Dietary Foods and Food Specialty Preparations
+8945 Food Oil and Fats
+8950 Condiments and Related Products
+8955 Coffee, Tea and Cocoa
+8960 Beverages, Nonalcoholic
+8970 Composite Food Packages
+9110 Fuels, Solid
+9130 Liquid Propellants and Fuels, Petroleum Base
+9135 Liquid Propellants Fuels and Oxidizers, Chemical Base
+9140 Fuel Oils
+9150 Oil and Grease: Cutting, Lubricating and Hydraulic
+9160 Miscellaneous Waxes, Oils and Fats
+9310 Paper and Paperboard
+9320 Rubber Fabricated Materials
+9330 Plastics Fabricated Materials
+9340 Glass Fabricated Materials
+9350 Refractors and Fire Surfacing Materials
+9390 Miscellaneous Fabricated Nonmetallic Materials
+9410 Crude Grades of Plant Material
+9420 Fibers: Vegetable, Animal and Synthetic
+9430 Miscellaneous Crude Animal Products, Inedible
+9450 Nonmetallic Scrap, Except Textile
+9505 Wire, Non-Electrical, Iron and Steel
+9510 Bars and Rods, Iron and Steel
+9515 Plate, Sheet, Strip and Foil: Iron and Steel
+9520 Structural Shapes, Iron and Steel
+9525 Wire, Non-Electrical, Nonferrous Base Metal
+9530 Bars and Rods, Nonferrous Base Metal
+9535 Plate, Sheet, Strip and Foil: Nonferrous Base Metal
+9540 Structural Shapes, Nonferrous Base Metal
+9545 Plate, Sheet, Strip, Foil and Wire: Precious
+9620 Minerals, Natural and Synthetic
+9630 Additive Metal Materials and Master Alloys
+9640 Iron and Steel Primary and Semi-finished Products
+9650 Nonferrous Base Metal Refinery and Intermediate Forms
+9905 Signs, Advertising Displays and Identifications Plates
+9920 Smokers Articles and Matches
+9925 Ecclesiastical Equipment, Furnishings and Supplies
+9930 Memorials: Cemetery and Mortuary Equipment and Supplies
+9999 Miscellaneous Items

@@ -29,7 +29,7 @@ public class DataSheetImporter {
     @Value("${dataSetPath:./hazard-ds/hazard-dataset}")
     private String dataSetPath;
 
-    @Value("${fscMapPath:./hazard-ds/fscMapaa.txt}")
+    @Value("${fscMapPath:./hazard-ds/fscMap.txt}")
     private String fscMapPath;
 
     @Value("${fsgMapPath:./hazard-ds/fsgMap.txt}")
@@ -44,8 +44,9 @@ public class DataSheetImporter {
     private List<String> excludes;
 
     private HashMap<Integer, String> fscMap;
-
     private HashMap<Integer, String> fsgMap;
+    private Set<String> unmappedFscs;
+    private Set<String> unmappedFsgs;
 
     private DataSheetIndexService indexService;
 
@@ -57,6 +58,8 @@ public class DataSheetImporter {
         this.dataSheetRepository = dataSheetRepository;
         excludes = new ArrayList<>();
         excludes.add("index.txt");
+        unmappedFscs = new HashSet<>();
+        unmappedFsgs = new HashSet<>();
     }
 
     private static final Logger log = LoggerFactory.getLogger(DataSheetImporter.class);
@@ -77,6 +80,14 @@ public class DataSheetImporter {
         } else {
             log.info("Data is already indexed. Wont import again.");
         }
+
+        if (unmappedFscs.size() > 0){
+            log.warn("Couldn't map the following FSCs: {}", unmappedFscs);
+        }
+        if (unmappedFsgs.size() > 0){
+            log.warn("Couldn't map the following FSGs: {}", unmappedFsgs);
+        }
+
     }
 
     /**
@@ -89,7 +100,8 @@ public class DataSheetImporter {
             return;
         }
         File[] files = folder.listFiles();
-        Arrays.stream(files).forEach(file -> importFolder(file));
+        if (files == null) return;
+        Arrays.stream(files).forEach(this::importFolder);
     }
 
     /**
@@ -104,7 +116,16 @@ public class DataSheetImporter {
         }
         String rawContent = readFile(file);
         DataSheetDocument document = new DataSheetDocument();
-        document.setId(UUID.randomUUID().toString());
+
+        String idToEncde = file.getParentFile().getName()+"/"+file.getName();
+        String id = Base64.getEncoder().encodeToString(idToEncde.getBytes());
+
+        /**
+         * Don't use uuids here for now.
+         * uuids are not the same through multiple imports or multiple instances
+         */
+        //document.setId(UUID.randomUUID().toString());
+        document.setId(id);
         document.setDocType("datasheet");
 
         //Get infos from first line
@@ -122,19 +143,26 @@ public class DataSheetImporter {
             {
                 String fsgString = "";
                 String fscString = "";
+                String fsg = fsc.substring(0, 2);
                 try {
-                    fsgString = fsgMap.get(Integer.parseInt(fsc.substring(0, 2)));
+                    fsgString = fsgMap.get(Integer.parseInt(fsg));
                     fscString = fscMap.get(Integer.parseInt(fsc));
                 } catch (NumberFormatException e){
                     log.error("Tried to parse {} as fsc in file: {} , Got {}", fsc, file.getPath(), e);
                 }
                 if (fsgString == null || fsgString.equals("")){
-                    log.warn("Couldn't set FSG for document {}", file.getPath());
+                    unmappedFsgs.add(fsg);
+                    if (debug) {
+                        log.warn("Couldn't set FSG for document {}, fsg: {}", file.getPath(), fsg);
+                    }
                 } else {
                     document.setFsgString(fsgString);
                 }
                 if (fscString == null || fscString.equals("")) {
-                    log.warn("Couldn't set FSC for document {}", file.getPath());
+                    unmappedFscs.add(fsc);
+                    if (debug) {
+                        log.warn("Couldn't set FSC for document {}, fsc: {}", file.getPath(), fsc);
+                    }
                 } else {
                     document.setFscString(fscString);
                 }
@@ -259,7 +287,9 @@ public class DataSheetImporter {
                 if (m4.find()){
                     ingredientDocument.setIngredName(m4.group(1));
                 } else {
-                    //log.info("Ingredient of file " + file.getName() + " has no name.");
+                    if (debug){
+                        log.warn("Ingredient of file " + file.getName() + " has no name.");
+                    }
                 }
 
                 //Match CAS
@@ -268,20 +298,24 @@ public class DataSheetImporter {
                 if (m5.find()){
                     ingredientDocument.setCas(m5.group(1));
                 } else {
-                    //log.info("Ingredient of file " + file.getName() + " has no CAS.");
+                    if (debug){
+                        log.warn("Ingredient of file " + file.getName() + " has no CAS.");
+                    }
                 }
 
                 ingredientDocuments.add(ingredientDocument);
             }
         }
-        /*if (ingredientDocuments.size() == 0) {
+        if (debug && ingredientDocuments.size() == 0){
             log.info("No ingredients found for file: " + file.getName());
-        }*/
+        }
         document.setIngredients(ingredientDocuments);
 
         //Send to bulk import
         indexService.addBulk(document);
-        //log.info("Imported {} {}", document.getId(), file.getName());
+        if (debug){
+            log.info("Imported {} {}", document.getId(), file.getName());
+        }
     }
 
     /**
