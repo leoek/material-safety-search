@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ansible_role="playbook-deployment.yml"
-if [ "$1" != "reset-volumes" ]; then
+if [ "$1" == "reset-volumes" ]; then
     ansible_role="playbook-deployment-reset-volumes.yml"
 fi
 
@@ -24,4 +24,4 @@ docker pull leoek/ansible:2.4-did
 docker run --rm -v $(pwd):/ansible/playbooks \
 	-v /srv/docker/mss:/srv/docker/mss \
     -v  /var/run/docker.sock:/var/run/docker.sock:ro \
-    leoek/ansible:next playbook-deployment.yml -i hosts-deployment --connection=local
+    leoek/ansible:next $ansible_role -i hosts-deployment --connection=local
