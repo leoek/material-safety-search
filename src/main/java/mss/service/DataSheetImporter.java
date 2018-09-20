@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,8 +26,14 @@ import java.util.regex.Pattern;
 @Configuration
 public class DataSheetImporter {
 
-    @Value("${dataSetPath:./hazard-dataset}")
+    @Value("${dataSetPath:./hazard-ds/hazard-dataset}")
     private String dataSetPath;
+
+    @Value("${fscMapPath:./hazard-ds/fscMapaa.txt}")
+    private String fscMapPath;
+
+    @Value("${fsgMapPath:./hazard-ds/fsgMap.txt}")
+    private String fsgMapPath;
 
     @Value("${info:false}")
     private Boolean info;
@@ -54,8 +57,6 @@ public class DataSheetImporter {
         this.dataSheetRepository = dataSheetRepository;
         excludes = new ArrayList<>();
         excludes.add("index.txt");
-        this.fscMap = this.getFSCMap();
-        this.fsgMap = this.getFSGMap();
     }
 
     private static final Logger log = LoggerFactory.getLogger(DataSheetImporter.class);
@@ -64,8 +65,12 @@ public class DataSheetImporter {
      * Starter logic for importing the dataset
      */
     public void importDataSet(){
-        if (dataSheetRepository.count() == 0) {
+        if (dataSheetRepository.count() != 0) {
             log.info("No data found. Starting to import from \"" + dataSetPath + "\".");
+
+            fscMap = getFSCMap();
+            fsgMap = getFSGMap();
+
             importFolder(new File(dataSetPath));
             indexService.addRestStillInCache();
             log.info("Import done!");
@@ -115,8 +120,24 @@ public class DataSheetImporter {
             document.setFsc(fsc);
             if(fsc.matches("\\d*") && fsc.length() > 2)
             {
-            	document.setFsgString(this.fsgMap.get(Integer.parseInt(fsc.substring(0, 2))));
-            	document.setFscString(this.fscMap.get(Integer.parseInt(fsc)));
+                String fsgString = "";
+                String fscString = "";
+                try {
+                    fsgString = fsgMap.get(Integer.parseInt(fsc.substring(0, 2)));
+                    fscString = fscMap.get(Integer.parseInt(fsc));
+                } catch (NumberFormatException e){
+                    log.error("Tried to parse {} as fsc in file: {} , Got {}", fsc, file.getPath(), e);
+                }
+                if (fsgString == null || fsgString.equals("")){
+                    log.warn("Couldn't set FSG for document {}", file.getPath());
+                } else {
+                    document.setFsgString(fsgString);
+                }
+                if (fscString == null || fscString.equals("")) {
+                    log.warn("Couldn't set FSC for document {}", file.getPath());
+                } else {
+                    document.setFscString(fscString);
+                }
             }
             document.setNiin(niin);
         } else {
@@ -291,13 +312,21 @@ public class DataSheetImporter {
      */
     private HashMap<Integer, String> getFSGMap(){
     	Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
-    	HashMap<Integer, String> fsgmap = new HashMap<Integer, String>();
-    	for (String line : splitter.split(readFile(new File("./src/main/resources/fsg.txt")))){
+    	HashMap<Integer, String> fsgMap = new HashMap<Integer, String>();
+
+    	String fsgMapString = readFile(new File(fsgMapPath));
+
+    	if (fsgMapString == null){
+            log.error("FSG Map was not found or is empty. Please check that it is available at: {}", fsgMapPath);
+    	    return fsgMap;
+        }
+
+    	for (String line : splitter.split(fsgMapString)){
     		int key = Integer.parseInt(line.substring(0, 2));
 			String value = line.substring(3,line.length());
-    		fsgmap.put(key, value);
+            fsgMap.put(key, value);
     	}
-    	return fsgmap;
+    	return fsgMap;
     }
 
     /**
@@ -306,12 +335,20 @@ public class DataSheetImporter {
      */
     private HashMap<Integer, String> getFSCMap(){
 	    Splitter splitter = Splitter.on(System.getProperty("line.separator")).trimResults().omitEmptyStrings();
-		HashMap<Integer, String> fscmap = new HashMap<Integer, String>();
-		for (String line : splitter.split(readFile(new File("./src/main/resources/fsc.txt")))){
+		HashMap<Integer, String> fscMap = new HashMap<Integer, String>();
+
+        String fscMapString = readFile(new File(fscMapPath));
+
+        if (fscMapString == null){
+            log.error("FSC Map was not found or is empty. Please check that it is available at: {}", fscMapPath);
+            return fscMap;
+        }
+
+		for (String line : splitter.split(fscMapString)){
 			int key = Integer.parseInt(line.substring(0, 4));
 			String value = line.substring(5,line.length());
-			fscmap.put(key, value);
+            fscMap.put(key, value);
 		}
-		return fscmap;
+		return fscMap;
     }
 }
