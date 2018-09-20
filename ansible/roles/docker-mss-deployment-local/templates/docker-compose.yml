@@ -18,8 +18,10 @@ services:
       - solr
     environment:
       - VIRTUAL_HOST=${SERVER_DOMAIN}
-      - VIRTUAL_NETWORK=proxy-tier
+      - VIRTUAL_NETWORK=${NETWORK}
       - VIRTUAL_PORT=8080
+      - LETSENCRYPT_HOST=${SERVER_DOMAIN}
+      - LETSENCRYPT_EMAIL=webmaster@leoek.tech
     volumes:
       - ./hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
     networks:
@@ -30,33 +32,18 @@ services:
     image: materialsafetysearch/private:frontend-next
     environment:
       - VIRTUAL_HOST=${CLIENT_DOMAIN}
-      - VIRTUAL_NETWORK=proxy-tier
+      - VIRTUAL_NETWORK=${NETWORK}
       - VIRTUAL_PORT=80
-    networks:
-      - proxy-tier
-
-  proxy:
-    image: jwilder/nginx-proxy:alpine-0.7.0
-    restart: always
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - certs:/etc/nginx/certs:ro
-      - conf.d:/etc/nginx/conf.d
-      - vhost.d:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - LETSENCRYPT_HOST=${CLIENT_DOMAIN}
+      - LETSENCRYPT_EMAIL=webmaster@leoek.tech
     networks:
       - proxy-tier
 
 volumes:
   data:
-  certs:
-  conf.d:
-  vhost.d:
-  html:
 
 networks:
   backend:
   proxy-tier:
+    external:
+      name: ${NETWORK}

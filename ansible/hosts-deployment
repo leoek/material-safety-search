@@ -1,0 +1,4 @@
+net1 ansible_host=localhost
+
+[mss]
+net1
