@@ -1,9 +1,7 @@
 version: '3'
 services:
   solr:
-    image: solr
-    ports:
-     - "8983:8983"
+    image: solr:7.4.0
     volumes:
       - data:/opt/solr/server/solr/mycores
       - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
@@ -11,15 +9,55 @@ services:
       - docker-entrypoint.sh
       - solr-precreate
       - dataSheet
+    networks:
+      - backend
 
   mss-server:
-    image: materialsafetysearch/private:0.1.0-7
+    image: materialsafetysearch/private:backend-stable
     depends_on:
       - solr
-    links:
-      - solr
+    environment:
+      - VIRTUAL_HOST=${SERVER_DOMAIN}
+      - VIRTUAL_NETWORK=proxy-tier
+      - VIRTUAL_PORT=8080
     volumes:
       - ./hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
+    networks:
+      - backend
+      - proxy-tier
+
+  mss-client:
+    image: materialsafetysearch/private:frontend-stable
+    environment:
+      - API_BASE_URL=${SERVER_DOMAIN}
+      - VIRTUAL_HOST=${CLIENT_DOMAIN}
+      - VIRTUAL_NETWORK=proxy-tier
+      - VIRTUAL_PORT=80
+    networks:
+      - proxy-tier
+
+  proxy:
+    image: jwilder/nginx-proxy:alpine-0.7.0
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - certs:/etc/nginx/certs:ro
+      - conf.d:/etc/nginx/conf.d
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy-tier
 
 volumes:
   data:
+  certs:
+  conf.d:
+  vhost.d:
+  html:
+
+networks:
+  backend:
+  proxy-tier:
