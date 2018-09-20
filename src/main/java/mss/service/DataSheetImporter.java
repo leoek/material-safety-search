@@ -68,7 +68,7 @@ public class DataSheetImporter {
      * Starter logic for importing the dataset
      */
     public void importDataSet(){
-        if (dataSheetRepository.count() != 0) {
+        if (dataSheetRepository.count() == 0) {
             log.info("No data found. Starting to import from \"" + dataSetPath + "\".");
 
             fscMap = getFSCMap();
