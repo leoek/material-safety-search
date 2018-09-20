@@ -16,14 +16,6 @@
     mode: 0644
   notify: rebuild_containers
 
-- name: Copy db.env template
-  become: true
-  template:
-    src: db.env
-    dest: "{{ mss_path }}/"
-    mode: 0644
-  notify: rebuild_containers
-
 - name: Copy docker-compose.yml template
   become: true
   template:
