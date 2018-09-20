@@ -16,6 +16,6 @@ sed -i -e "s/$DOCKER_USER_TO_REPLACE/$dockerUser_esc/g" roles/docker-mss-deploym
 
 docker pull leoek/ansible:2.4-did
 docker run --rm -v $(pwd):/ansible/playbooks \
-	-v /srv/docker/swt:/srv/docker/swt \
+	-v /srv/docker/mss:/srv/docker/mss \
     -v  /var/run/docker.sock:/var/run/docker.sock:ro \
     leoek/ansible:next playbook-deployment.yml -i hosts-deployment --connection=local

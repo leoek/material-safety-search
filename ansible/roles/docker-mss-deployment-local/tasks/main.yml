@@ -28,7 +28,7 @@
   become: true
   copy:
     src: solr.in.sh
-    dest: "{{ mss_path }}/docker/solr.in.sh"
+    dest: "{{ mss_path }}/docker/"
     mode: 0644
   notify: rebuild_containers
 

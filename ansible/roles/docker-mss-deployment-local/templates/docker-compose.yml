@@ -4,7 +4,7 @@ services:
     image: solr:7.4.0
     volumes:
       - data:/opt/solr/server/solr/mycores
-      - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
+      - {{ mss_path }}/docker/solr.in.sh:/opt/solr/bin/solr.in.sh
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -23,7 +23,7 @@ services:
       - LETSENCRYPT_HOST=${SERVER_DOMAIN}
       - LETSENCRYPT_EMAIL=webmaster@leoek.tech
     volumes:
-      - ./hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
+      - {{ mss_path }}/hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
     networks:
       - backend
       - proxy-tier
