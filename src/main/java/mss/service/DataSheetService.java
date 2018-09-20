@@ -53,7 +53,7 @@ public class DataSheetService {
         //Regex
         AdvancedTerm advancedTerm = new AdvancedTerm();
         //NIIN (only first match)
-        Pattern p1 = Pattern.compile("([0-9]{2}[0-9a-zA-Z][0-9]{6}|[0-9]{2}-[0-9]{3}-[0-9]{4})");
+        Pattern p1 = Pattern.compile("(!?[0-9]{2}[0-9a-zA-Z][0-9]{6}|[0-9]{2}-[0-9]{3}-[0-9]{4})");
         Matcher m1 = p1.matcher(searchTerm);
         if (m1.find()) {
             log.info("Found NIIN: " + m1.group(1));
@@ -62,7 +62,7 @@ public class DataSheetService {
             searchTerm = searchTerm.replace(m1.group(1), " ");
         }
 
-        Pattern p2 = Pattern.compile("([0-9]{2,7}-[0-9]{2}-[0-9])");
+        Pattern p2 = Pattern.compile("(!?[0-9]{2,7}-[0-9]{2}-[0-9])");
         Matcher m2 = p2.matcher(searchTerm);
         List<AdvancedTermIngredient> ingredients = new ArrayList<>();
         while (m2.find()) {
@@ -78,7 +78,7 @@ public class DataSheetService {
 
         //FSC (only first match, because of building advancedTerm object)
         //Regex looks for common demarcations ( .,/) between Terms for higher accuracy
-        Pattern p3 = Pattern.compile("(?:^|[ .,\\/]+)([0-9]{4})(?:[ .,\\/]+|$)");
+        Pattern p3 = Pattern.compile("(?:^|[ .,\\/]+)(!?[0-9]{4})(?:[ .,\\/]+|$)");
         Matcher m3 = p3.matcher(searchTerm);
         if (m3.find()) {
             log.info("Found FSC: " + m3.group(1));
@@ -144,10 +144,20 @@ public class DataSheetService {
         if (ingredients != null) {
             for (AdvancedTermIngredient ingredient : ingredients) {
                 if (ingredient.getCas() != null) {
-                    filters.add("{!parent which=docType:datasheet}cas:(" + ingredient.getCas() + ")");
+                    String cas = ingredient.getCas();
+                    if (cas.startsWith("!")){
+                        log.info("Negation of CAS numbers currently not supported.");
+                        cas = cas.substring(1);
+                    }
+                    filters.add("{!parent which=docType:datasheet}cas:(" + cas + ")");
                 }
                 if (ingredient.getIngredName() != null) {
-                    filters.add("{!parent which=docType:datasheet}ingredName:(" + ingredient.getIngredName() + ")");
+                    String ingredName = ingredient.getIngredName();
+                    if (ingredName.startsWith("!")){
+                        log.info("Negation of ingredient names currently not supported.");
+                        ingredName = ingredName.substring(1);
+                    }
+                    filters.add("{!parent which=docType:datasheet}ingredName:(" + ingredName + ")");
                 }
             }
         }
