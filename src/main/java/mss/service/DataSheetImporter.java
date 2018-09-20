@@ -148,7 +148,6 @@ public class DataSheetImporter {
             {
                 String fsgString = "";
                 String fscString = "";
-                String fsg = fsc.substring(0, 2);
                 try {
                     fsgString = fsgMap.get(Integer.parseInt(fsg));
                     fscString = fscMap.get(Integer.parseInt(fsc));
