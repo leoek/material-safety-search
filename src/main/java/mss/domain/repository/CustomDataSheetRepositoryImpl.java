@@ -1,15 +1,18 @@
 package mss.domain.repository;
 
 import mss.domain.entity.DataSheetDocument;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.SolrOperations;
-import org.springframework.data.solr.core.query.SimpleFilterQuery;
-import org.springframework.data.solr.core.query.SimpleQuery;
-import org.springframework.data.solr.core.query.SimpleStringCriteria;
+import org.springframework.data.solr.core.query.*;
+import org.springframework.data.solr.core.query.result.FacetEntry;
+import org.springframework.data.solr.core.query.result.FacetFieldEntry;
+import org.springframework.data.solr.core.query.result.FacetPage;
+import org.springframework.data.solr.core.query.result.SolrResultPage;
 
 import java.util.List;
 
@@ -75,5 +78,28 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         simpleQuery.addProjectionOnField("[child parentFilter=docType:datasheet]");
         simpleQuery.setPageRequest(pageable).setDefType("lucene");
         return solrTemplate.queryForPage("dataSheet", simpleQuery, DataSheetDocument.class);
+    }
+
+    @Override
+    public FacetPage<DataSheetDocument> generalSearchFacet(List<String> criteria, List<String> filters, Pageable pageable) {
+        //Add Query
+        FacetQuery simpleFacetQuery = new SimpleFacetQuery();
+        for (String c: criteria){
+            simpleFacetQuery.addCriteria(new SimpleStringCriteria(c));
+        }
+        //Add Filter Queries
+        for (String filter: filters) {
+            simpleFacetQuery.addFilterQuery(new SimpleFilterQuery(new SimpleStringCriteria(filter)));
+        }
+        //Further configuration
+        simpleFacetQuery.addProjectionOnField(new SimpleField("*"));
+        simpleFacetQuery.addProjectionOnField(new SimpleField("[child parentFilter=docType:datasheet]"));
+        simpleFacetQuery.setPageRequest(pageable).setDefType("lucene");
+
+        FacetOptions facetOptions = new FacetOptions("fsc");
+        facetOptions.setFacetLimit(100);
+        facetOptions.addFacetOnField("niin");
+        simpleFacetQuery.setFacetOptions(facetOptions);
+        return solrTemplate.queryForFacetPage("dataSheet", simpleFacetQuery, DataSheetDocument.class);
     }
 }

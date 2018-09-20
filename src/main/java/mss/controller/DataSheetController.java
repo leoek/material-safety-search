@@ -7,6 +7,9 @@ import mss.service.DataSheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.core.query.result.FacetPage;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +31,19 @@ public class DataSheetController {
 
     @RequestMapping(path = "/search", method = RequestMethod.GET)
     public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam String s) {
-        Page<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
+        FacetPage<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
         return new PageResponse<>(result);
     }
 
-    @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
+    /*@RequestMapping(path = "/search", method = RequestMethod.GET)
+    public ResponseEntity<Page<DataSheetDocument>> generalSearch(Pageable p, @RequestParam String s) {
+        FacetPage<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }*/
+
+    /*@RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
         Page<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
         return new PageResponse<>(result);
-    }
+    }*/
 }

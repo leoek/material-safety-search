@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -43,12 +44,12 @@ public class DataSheetService {
      * @param searchTerm Term to be analyzed and turned into a query
      * @return Page of result documents
      */
-    public Page<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
+    public FacetPage<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
         log.info("Search term: \"" + searchTerm + "\"");
 
-        if (searchTerm.isEmpty()) {
+        /*if (searchTerm.isEmpty()) {
             return dataSheetRepository.getAllDocuments(p);
-        }
+        }*/
 
         //Regex
         AdvancedTerm advancedTerm = new AdvancedTerm();
@@ -117,7 +118,7 @@ public class DataSheetService {
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.generalSearch(criteria, filters, p);
+        return dataSheetRepository.generalSearchFacet(criteria, filters, p);
     }
 
     /**
