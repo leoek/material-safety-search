@@ -7,12 +7,14 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrRequest;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.request.GenericSolrRequest;
+import org.apache.solr.client.solrj.request.schema.SchemaRequest;
 import org.apache.solr.client.solrj.response.SimpleSolrResponse;
 import org.apache.solr.common.util.ContentStream;
 import org.apache.solr.common.util.ContentStreamBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.solr.core.query.UpdateField;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -44,7 +46,116 @@ public class SolrSetupService {
 
         //Check if this schema is already imported
         if(!response.getResponse().toString().contains("productId")){
-            String fieldTypeText = "text_en_splitting";
+
+            String addModifiedFieldTypes = "{ \"add-field-type\": {\n" +
+                    "            \"name\": \"text_en_splitting_mod\",\n" +
+                    "            \"class\": \"solr.TextField\",\n" +
+                    "            \"autoGeneratePhraseQueries\": \"true\",\n" +
+                    "            \"positionIncrementGap\": \"100\",\n" +
+                    "            \"indexAnalyzer\": {\n" +
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
+                    "                },\n" +
+                    "                \"filters\": [\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.StopFilterFactory\",\n" +
+                    "                        \"words\": \"lang/stopwords_en.txt\",\n" +
+                    "                        \"ignoreCase\": \"true\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.WordDelimiterGraphFilterFactory\",\n" +
+                    "                        \"catenateNumbers\": \"1\",\n" +
+                    "                        \"generateNumberParts\": \"1\",\n" +
+                    "                        \"splitOnCaseChange\": \"1\",\n" +
+                    "                        \"generateWordParts\": \"1\",\n" +
+                    "                        \"catenateAll\": \"0\",\n" +
+                    "                        \"catenateWords\": \"1\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.LowerCaseFilterFactory\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.KeywordMarkerFilterFactory\",\n" +
+                    "                        \"protected\": \"protwords.txt\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.PorterStemFilterFactory\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.FlattenGraphFilterFactory\"\n" +
+                    "                    },\n" +
+                    "                    {\"class\": \"solr.EdgeNGramFilterFactory\",\n" +
+                    "                    \"minGramSize\": \"2\",\n" +
+                    "                    \"maxGramSize\": \"15\"\n" +
+                    "                    }\n" +
+                    "                ]\n" +
+                    "            },\n" +
+                    "            \"queryAnalyzer\": {\n" +
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
+                    "                },\n" +
+                    "                \"filters\": [\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.SynonymGraphFilterFactory\",\n" +
+                    "                        \"expand\": \"true\",\n" +
+                    "                        \"ignoreCase\": \"true\",\n" +
+                    "                        \"synonyms\": \"synonyms.txt\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.StopFilterFactory\",\n" +
+                    "                        \"words\": \"lang/stopwords_en.txt\",\n" +
+                    "                        \"ignoreCase\": \"true\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.WordDelimiterGraphFilterFactory\",\n" +
+                    "                        \"catenateNumbers\": \"0\",\n" +
+                    "                        \"generateNumberParts\": \"1\",\n" +
+                    "                        \"splitOnCaseChange\": \"1\",\n" +
+                    "                        \"generateWordParts\": \"1\",\n" +
+                    "                        \"catenateAll\": \"0\",\n" +
+                    "                        \"catenateWords\": \"0\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.LowerCaseFilterFactory\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.KeywordMarkerFilterFactory\",\n" +
+                    "                        \"protected\": \"protwords.txt\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.PorterStemFilterFactory\"\n" +
+                    "                    }\n" +
+                    "                ]\n" +
+                    "            }\n" +
+                    "        }, \"add-field-type\": " +
+                    "           {\n" +
+                    "            \"name\": \"string_mod\",\n" +
+                    "            \"class\": \"solr.TextField\",\n" +
+                    "            \"sortMissingLast\": true,\n" +
+                    "            \"docValues\": true\n" +
+                    "            \"indexAnalyzer\": {\n" +
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
+                    "                },\n" +
+                    "                \"filters\": [\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.EdgeNGramFilterFactory\",\n" +
+                    "                        \"minGramSize\": \"2\",\n" +
+                    "                        \"maxGramSize\": \"15\"\n" +
+                    "                    }" +
+                    "                 ]\n" +
+                    "              }" +
+                    "            }" +
+                    " }";
+
+
+
+            GenericSolrRequest genericSolrModifyRequest = new GenericSolrRequest(SolrRequest.METHOD.POST, "/schema", null);
+            ContentStream contentModifyStream = new ContentStreamBase.StringStream(addModifiedFieldTypes);
+            genericSolrModifyRequest.setContentStreams(Collections.singleton(contentModifyStream));
+            genericSolrModifyRequest.process(solrClient);
+
+            String fieldTypeText = "text_en_splitting_mod";
             String fieldTypeRawText = "string";
 
             //Create Schema
@@ -55,16 +166,16 @@ public class SolrSetupService {
             //fieldArray.add(fieldObjectJson("score"));
             //fieldArray.add(fieldObjectJson("docType"));
             fieldArray.add(fieldObjectJson("productId", fieldTypeText, true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("fsc", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fsc", "string_mod", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fscString", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsg", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsgString", fieldTypeText, true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("niin", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("niin", "string_mod", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("companyName", fieldTypeText,true, true, false, false, false));
             fieldArray.add(fieldObjectJson("msdsDate", "pdate", true, true, false, false, false));
             //fieldArray.add(fieldObjectJson("ingredients"));
             fieldArray.add(fieldObjectJson("ingredName", fieldTypeText,true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("cas", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("cas", "string_mod", true, true, false, false, false));
 
             fieldArray.add(fieldObjectJson("rawIdentification", fieldTypeRawText, false, true, false, false, false));
             fieldArray.add(fieldObjectJson("rawComposition", fieldTypeRawText, false, true, false, false, false));

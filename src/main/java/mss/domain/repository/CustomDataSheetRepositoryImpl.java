@@ -1,7 +1,6 @@
 package mss.domain.repository;
 
 import mss.domain.entity.DataSheetDocument;
-import org.apache.solr.client.solrj.SolrQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.SolrOperations;
 import org.springframework.data.solr.core.query.*;
-import org.springframework.data.solr.core.query.result.FacetEntry;
-import org.springframework.data.solr.core.query.result.FacetFieldEntry;
 import org.springframework.data.solr.core.query.result.FacetPage;
-import org.springframework.data.solr.core.query.result.SolrResultPage;
 
 import java.util.List;
 
@@ -103,5 +99,36 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         facetOptions.addFacetOnField("niin");
         simpleFacetQuery.setFacetOptions(facetOptions);
         return solrTemplate.queryForFacetPage("dataSheet", simpleFacetQuery, DataSheetDocument.class);
+    }
+
+    /**
+     *
+     * Generated 10 Suggestions (or less if there are less than 10 available)
+     *
+     * @param searchTerm
+     * @param field
+     * @return
+     */
+    @Override
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field) {
+        return autocompleteList(searchTerm, field, 10);
+    }
+
+    @Override
+    public List<DataSheetDocument> autocompleteList(String searchTerm, String field, Integer count) {
+        //Add Query
+        SimpleQuery simpleQuery = new SimpleQuery(new SimpleStringCriteria(field + ":" +searchTerm));
+
+        //Further configuration
+        simpleQuery.addProjectionOnField("*");
+
+        GroupOptions groupOptions = new GroupOptions();
+        groupOptions.addGroupByField(field);
+        groupOptions.setLimit(1);
+        groupOptions.setGroupMain(true);
+        simpleQuery.setGroupOptions(groupOptions);
+
+        simpleQuery.setRows(count);
+        return solrTemplate.query("dataSheet", simpleQuery, DataSheetDocument.class).getContent();
     }
 }

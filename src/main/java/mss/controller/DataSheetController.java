@@ -3,16 +3,14 @@ package mss.controller;
 import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.entity.GeneralTerm;
+import mss.domain.entity.Suggestions;
 import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
+import mss.service.SuggestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.FacetPage;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,9 +24,12 @@ public class DataSheetController {
 
     private DataSheetService dataSheetService;
 
+    private SuggestService suggestService;
+
     @Autowired
-    public DataSheetController(DataSheetService dataSheetService){
+    public DataSheetController(DataSheetService dataSheetService, SuggestService suggestService){
         this.dataSheetService = dataSheetService;
+        this.suggestService = suggestService;
     }
 
     @RequestMapping(path = "/search", method = RequestMethod.POST)
@@ -42,5 +43,11 @@ public class DataSheetController {
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
         FacetPage<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
         return new PageResponse<>(result);
+    }
+
+    @RequestMapping(path = "/suggest", method = RequestMethod.GET)
+    public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {
+        Suggestions result = suggestService.createSuggestions(s, field, count);
+        return result;
     }
 }

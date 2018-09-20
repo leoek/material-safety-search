@@ -13,6 +13,11 @@ RUN ./gradlew build
 RUN cp /usr/app/build/libs/*.jar /usr/app/app.jar
 
 FROM openjdk:10.0.1-10-jre-slim-sid
-COPY --from=builder /usr/app/app.jar /opt/app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=prod","-jar","/opt/app.jar"]
 EXPOSE 8080
+RUN apt-get update && \
+    apt-get install -y curl bash && \
+    rm -rf /var/lib/apt/lists/*
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+COPY --from=builder /usr/app/app.jar /opt/app.jar
+ENTRYPOINT ["/docker-entrypoint.sh"]
