@@ -14,32 +14,15 @@ info:
 host: 'localhost:8080'
 basePath: /
 tags:
-  - name: API
-    description: Information about the API
   - name: Search
     description: Main search endpoint
   - name: Logging
     description: Logging endpoint
+  - name: Suggestions
+    description: Retrieve suggested terms for partial search terms
 schemes:
   - http
 paths:
-  /api:
-    get:
-      tags:
-        - API
-      summary: Get Information about the API
-      description: API information is not available at the moment
-      operationId: api
-      produces:
-        - application/json
-      parameters: []
-      responses:
-        '200':
-          description: Successful operation
-        '400':
-          description: API is currently unavailable
-          schema:
-            $ref: '#/definitions/ApiInfo'
   /search:
     post:
       tags:
@@ -393,9 +376,3 @@ definitions:
         description: >-
           "True" if search returns one ore more results, "False" if search
           returns no results
-  ApiInfo:
-    type: object
-    properties:
-      info:
-        type: string
-        description: API Info
