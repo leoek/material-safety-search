@@ -14,34 +14,17 @@ info:
 host: 'localhost:8080'
 basePath: /
 tags:
-  - name: API
-    description: Information about the API
   - name: Search
     description: Main search endpoint
   - name: Logging
     description: Logging endpoint
+  - name: Suggestions
+    description: Retrieve suggested terms for partial search terms
 schemes:
   - http
 paths:
-  /api:
-    get:
-      tags:
-        - API
-      summary: Get Information about the API
-      description: API information is not available at the moment
-      operationId: api
-      produces:
-        - application/json
-      parameters: []
-      responses:
-        '200':
-          description: Successful operation
-        '400':
-          description: API is currently unavailable
-          schema:
-            $ref: '#/definitions/ApiInfo'
   /search:
-    get:
+    post:
       tags:
         - Search
       summary: >-
@@ -52,11 +35,47 @@ paths:
       produces:
         - application/json
       parameters:
-        - in: query
-          name: s
-          type: string
-          description: Search term
+        - in: body
+          name: body
+          description: Log object to be added to the database
           required: true
+          schema:
+            $ref: '#/definitions/GeneralTerm'
+        - in: query
+          name: page
+          type: string
+          description: Number of page
+          required: false
+        - in: query
+          name: size
+          type: string
+          description: Number of items per page
+          required: false
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/Results'
+        '400':
+          description: Page out of range
+  /advancedSearch:
+    get:
+      tags:
+        - Search
+      summary: >-
+        Retrieve search results for a given advanced search term. Supports paging and
+        sorting.
+      description: ''
+      operationId: advancedSearch
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Log object to be added to the database
+          required: true
+          schema:
+            $ref: '#/definitions/AdvancedTerm'
         - in: query
           name: page
           type: string
@@ -93,13 +112,20 @@ paths:
         - in: query
           name: field
           type: string
-          description: advanced search field (productId, fsc, fscString, fsgString, companyName)
+          description: Advanced search field (productId, fsc, fscString, fsgString, niin, companyName)
           required: true
+        - in: query
+          name: cound
+          type: string
+          description: Number of terms to be returned (defaults to 10)
+          required: false
       responses:
         '200':
-          description: Request successful, Caution! list can be empty
+          description: Request successful. Caution, list may be empty.
+          schema:
+            $ref: '#/definitions/Suggestions'
   /log:
-    put:
+    post:
       tags:
         - Logging
       summary: Send logging data here
@@ -214,6 +240,86 @@ definitions:
       cas:
         type: string
         description: Chemical Abstracts Service Registry Number
+  GeneralTerm:
+    type: object
+    properties:
+      searchTerm:
+        type: string
+        description: 'Query the user types in'
+      fsgFacet:
+        type: string
+        description: 'Two-digit number. Iff not containing FSG number or "null", results are not filtered and FSG facets are returned. Iff containing FSG number, results are filtered by that FSG number and FSC facets are returned.'
+      fscFacet:
+        type: string
+        description: 'Four-digit number. Iff not containing FSC number or "null", results are not filtered by FSC (may still be filtered by FSG). Iff containing FSC number, results are filtered by that FSC number.'
+      fuzzy:
+        type: boolean
+        description: 'If true, search is fuzzy, not fuzzy otherwise (remember that through tokenization results could still look like search is fuzzy even if it is not).'
+        default: false
+      wholeDoc:
+        type: boolean
+        description: 'If true, the whole document will be searched instead of just the structured parameters.'
+        default: false
+  AdvancedTerm:
+    type: object
+    properties:
+      productId:
+        type: string
+        description: 'Name of product to be retrieved'
+      fscString:
+        type: string
+        description: 'FSC category of the result products'
+      fsgString:
+        type: string
+        description: 'FSG category of the result products'
+      niin:
+        type: string
+        description: 'NIIN of the product to be retrieved'
+      companyName:
+        type: string
+        description: 'Company name to search for'
+      beginDate:
+        type: string
+        description: 'Filtering results by date. Must have UTC format (e.g. "1991-01-16T23:00:00Z") with clock at "23:00:00:000Z". Both begin AND end date must be specified for filtering to have an effect.'
+      endDate:
+        type: string
+        description: 'Filtering results by date. Must have UTC format (e.g. "1991-01-16T23:00:00Z") with clock at "23:00:00:000Z". Both begin AND end date must be specified for filtering to have an effect.'
+      ingredients:
+        type: array
+        description: 'List of ingredients to be retrieved. CAS or ingredName may be "null"'
+        items:
+          $ref: '#/definitions/AdvancedTermIngredient'
+      fsgFacet:
+        type: string
+        description: 'Two-digit number. Iff not containing FSG number or "null", results are not filtered and FSG facets are returned. Iff containing FSG number, results are filtered by that FSG number and FSC facets are returned. User should be able to enter this himself when using advanced search.'
+      fscFacet:
+        type: string
+        description: 'Four-digit number. Iff not containing FSC number or "null", results are not filtered by FSC (may still be filtered by FSG). Iff containing FSC number, results are filtered by that FSC number. User should be able to enter this himself when using advanced search.'
+      fuzzy:
+        type: boolean
+        description: 'If true, search is fuzzy, not fuzzy otherwise (remember that through tokenization results could still look like search is fuzzy even if it is not).'
+        default: false
+      wholeDoc:
+        type: boolean
+        description: 'If true, the whole document will be searched instead of just the structured parameters.'
+        default: false
+  AdvancedTermIngredient:
+    type: object
+    properties:
+      ingredName:
+        type: string
+        description: 'Name of the searched ingredient'
+      cas:
+        type: string
+        description: 'CAS number of the searched ingredient'
+  Suggestions:
+    type: object
+    properties:
+      suggestions:
+        type: array
+        description: 'List of suggested autocompletions'
+        items:
+          type: string
   Meta:
     type: object
     properties:
@@ -270,9 +376,3 @@ definitions:
         description: >-
           "True" if search returns one ore more results, "False" if search
           returns no results
-  ApiInfo:
-    type: object
-    properties:
-      info:
-        type: string
-        description: API Info
