@@ -5,7 +5,6 @@ import java.util.List;
 
 public class AdvancedTerm {
     private String productId;
-    private String fsc;
     private String fscString;
     private String fsgString;
     private String niin;
@@ -22,14 +21,6 @@ public class AdvancedTerm {
 
     public void setProductId(String productId) {
         this.productId = productId;
-    }
-
-    public String getFsc() {
-        return fsc;
-    }
-
-    public void setFsc(String fsc) {
-        this.fsc = fsc;
     }
 
     public String getFscString() {

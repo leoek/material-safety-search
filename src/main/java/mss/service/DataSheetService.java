@@ -83,7 +83,7 @@ public class DataSheetService {
         Matcher m3 = p3.matcher(searchTerm);
         if (m3.find()) {
             log.info("Found FSC: " + m3.group(1));
-            advancedTerm.setFsc(m3.group(1));
+            advancedTerm.setFscFacet(m3.group(1));
 
             searchTerm = searchTerm.replace(m3.group(1), " ");
         }
@@ -178,7 +178,7 @@ public class DataSheetService {
             }
         }
 
-        String fsc = advancedTerm.getFsc();
+        String fsc = advancedTerm.getFscFacet();
         if (fsc != null) {
             if (fsc.startsWith("!")) {
                 queryList.add("(!fsc:(" + fsc.substring(1) + ") && docType:datasheet)");
