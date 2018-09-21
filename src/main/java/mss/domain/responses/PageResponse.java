@@ -1,12 +1,11 @@
 package mss.domain.responses;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.solr.core.query.Field;
-import org.springframework.data.solr.core.query.result.FacetEntry;
+import org.springframework.data.solr.core.query.result.FacetFieldEntry;
 import org.springframework.data.solr.core.query.result.FacetPage;
 
-import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Response class for formatting a custom response
@@ -16,7 +15,7 @@ import java.util.List;
 public class PageResponse<T> {
 
     private List<T> items;
-    private Collection<Page<? extends FacetEntry>> facets;
+    private List<SingleFacetResponse> facets;
     private PageMeta meta;
 
     public PageResponse(List<T> items, PageMeta meta) {
@@ -24,9 +23,11 @@ public class PageResponse<T> {
         this.meta = meta;
     }
 
-    public PageResponse(FacetPage<T> page) {
+    public PageResponse(FacetPage<T> page, Page<FacetFieldEntry> resultFacetPage) {
         this.items = page.getContent();
-        this.facets = page.getAllFacets();
+
+        this.facets = resultFacetPage.getContent().stream().map(facetFieldEntry -> new SingleFacetResponse(facetFieldEntry.getField().toString(), facetFieldEntry.getValue(), facetFieldEntry.getValueCount())).collect(Collectors.toList());
+
         this.meta = new PageMeta(
                 page.getSize(),
                 page.getNumber(),
@@ -45,7 +46,7 @@ public class PageResponse<T> {
         return items;
     }
 
-    public Collection<Page<? extends FacetEntry>> getFacets() {
+    public List<SingleFacetResponse> getFacets() {
         return facets;
     }
 }

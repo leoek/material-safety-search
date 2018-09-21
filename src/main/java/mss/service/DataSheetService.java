@@ -4,6 +4,7 @@ import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.AdvancedTermIngredient;
 import mss.domain.entity.DataSheetDocument;
 import mss.domain.repository.DataSheetRepository;
+import mss.domain.responses.PageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class DataSheetService {
      * @param searchTerm Term to be analyzed and turned into a query
      * @return Page of result documents
      */
-    public FacetPage<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
         log.info("Search term: \"" + searchTerm + "\"");
 
         /*if (searchTerm.isEmpty()) {
@@ -118,7 +119,7 @@ public class DataSheetService {
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.generalSearchFacet(criteria, filters, p);
+        return dataSheetRepository.generalSearchFacet(criteria, filters, p, false);
     }
 
     /**

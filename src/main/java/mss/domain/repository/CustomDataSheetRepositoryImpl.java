@@ -1,6 +1,7 @@
 package mss.domain.repository;
 
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.responses.PageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,12 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
     }
 
     @Override
-    public FacetPage<DataSheetDocument> generalSearchFacet(List<String> criteria, List<String> filters, Pageable pageable) {
+    public PageResponse generalSearchFacet(List<String> criteria, List<String> filters, Pageable pageable, Boolean facetForFsc) {
+        //Check facet field
+        String facetField = "fsgFacet";
+        if(facetForFsc) {
+            facetField = "fscFacet";
+        }
         //Add Query
         FacetQuery simpleFacetQuery = new SimpleFacetQuery();
         for (String c: criteria){
@@ -94,11 +100,14 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         simpleFacetQuery.addProjectionOnField(new SimpleField("[child parentFilter=docType:datasheet]"));
         simpleFacetQuery.setPageRequest(pageable).setDefType("lucene");
 
-        FacetOptions facetOptions = new FacetOptions("fsc");
+        FacetOptions facetOptions = new FacetOptions(new FacetOptions.FieldWithFacetParameters(facetField).setMissing(true));
+
         facetOptions.setFacetLimit(100);
-        facetOptions.addFacetOnField("niin");
         simpleFacetQuery.setFacetOptions(facetOptions);
-        return solrTemplate.queryForFacetPage("dataSheet", simpleFacetQuery, DataSheetDocument.class);
+
+        FacetPage<DataSheetDocument> facetPage = solrTemplate.queryForFacetPage("dataSheet", simpleFacetQuery, DataSheetDocument.class);
+
+        return new PageResponse<DataSheetDocument>(facetPage, facetPage.getFacetResultPage(facetField));
     }
 
     /**

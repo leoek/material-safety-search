@@ -35,15 +35,14 @@ public class DataSheetController {
     @RequestMapping(path = "/search", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody GeneralTerm generalTerm) {
         //Assert.notEmpty(generalTerm.getSearchTerm());
-        FacetPage<DataSheetDocument> result = dataSheetService.generalSearch(p, generalTerm.getSearchTerm());
-        return new PageResponse<>(result);
+        return dataSheetService.generalSearch(p, generalTerm.getSearchTerm());
     }
 
-    @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
+    /*@RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
         FacetPage<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
         return new PageResponse<>(result);
-    }
+    }*/
 
     @RequestMapping(path = "/suggest", method = RequestMethod.GET)
     public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {

@@ -144,8 +144,7 @@ public class DataSheetImporter {
             document.setProductId(prod);
             document.setFsc(fsc);
             document.setFsg(fsg);
-            if(fsc.matches("\\d*") && fsc.length() > 2)
-            {
+            if(fsc.matches("\\d*") && fsc.length() > 2) {
                 String fsgString = "";
                 String fscString = "";
                 try {
@@ -159,16 +158,22 @@ public class DataSheetImporter {
                     if (debug) {
                         log.warn("Couldn't set FSG for document {}, fsg: {}", file.getPath(), fsg);
                     }
+                    document.setFsgString("FSG Group " + fsg);
+                    document.setFsgFacet(document.getFsgString() + "_" + document.getFsg());
                 } else {
                     document.setFsgString(fsgString);
+                    document.setFsgFacet(document.getFsgString() + "_" + document.getFsg());
                 }
                 if (fscString == null || fscString.equals("")) {
                     unmappedFscs.add(fsc);
                     if (debug) {
                         log.warn("Couldn't set FSC for document {}, fsc: {}", file.getPath(), fsc);
                     }
+                    document.setFscString("FSC Group " + fsc);
+                    document.setFscFacet(document.getFscString() + "_" + document.getFsc());
                 } else {
                     document.setFscString(fscString);
+                    document.setFscFacet(document.getFscString() + "_" + document.getFsc());
                 }
             }
             document.setNiin(niin);
