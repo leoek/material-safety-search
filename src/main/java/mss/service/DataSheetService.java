@@ -3,6 +3,7 @@ package mss.service;
 import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.AdvancedTermIngredient;
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.entity.GeneralTerm;
 import mss.domain.repository.DataSheetRepository;
 import mss.domain.responses.PageResponse;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,11 +43,12 @@ public class DataSheetService {
      * This allows users to use the General Search for exact document retrieval without needing to pay attention to detailed formatting.
      * Less strict than {@link #advancedSearch(Pageable, AdvancedTerm)} as recognized numbers are aggregated in a disjunctive term.
      *
-     * @param p          Spring {@link Pageable} object
-     * @param searchTerm Term to be analyzed and turned into a query
+     * @param p           Spring {@link Pageable} object
+     * @param generalTerm Term object to be analyzed and turned into a query
      * @return Page of result documents
      */
-    public PageResponse<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, GeneralTerm generalTerm) {
+        String searchTerm = generalTerm.getSearchTerm();
         log.info("Search term: \"" + searchTerm + "\"");
 
         /*if (searchTerm.isEmpty()) {
@@ -116,15 +119,38 @@ public class DataSheetService {
             }
         }
 
+        //Determine faceting & filter results if wished
+        Boolean facetForFsc = false;
+        if (generalTerm.getFsgFacet() != null) {
+            if (generalTerm.getFsgFacet().matches("\\d{2}")) {
+                //Now facet for FSCs instead
+                facetForFsc = true;
+                //And filter for FSG
+                filters.add("fsg:" + generalTerm.getFsgFacet());
+            } else {
+                log.error("fsgFacet in supplied GeneralTerm object is not of length 2! Will ignore fsgFacet.");
+            }
+        }
+        if (generalTerm.getFscFacet() != null) {
+            if (generalTerm.getFscFacet().matches("\\d{4}")) {
+                facetForFsc = true;
+                //Add filter for FSC
+                filters.add("fsc:" + generalTerm.getFscFacet());
+            } else {
+                log.error("fscFacet in supplied GeneralTerm object is not of length 4! Will ignore fscFacet.");
+            }
+        }
+
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.generalSearchFacet(criteria, filters, p, false);
+        return dataSheetRepository.generalSearchFacet(criteria, filters, p, facetForFsc);
     }
 
     /**
      * Turns the given {@link AdvancedTerm} object into SolrTemplate-digestable information and triggers a query for paged results.
-     * More strict than {@link #generalSearch(Pageable, String)} as it requires all specified search terms to be present in their respective fields.
+     * More strict than {@link #generalSearch(Pageable, GeneralTerm)} as it requires all specified search terms to be present in their respective fields.
+     *
      * @param p            Spring {@link Pageable} object
      * @param advancedTerm {@link AdvancedTerm} object representing an advanced query term with multiple fields
      * @return Page of result documents
@@ -147,7 +173,7 @@ public class DataSheetService {
             for (AdvancedTermIngredient ingredient : ingredients) {
                 if (ingredient.getCas() != null) {
                     String cas = ingredient.getCas();
-                    if (cas.startsWith("!")){
+                    if (cas.startsWith("!")) {
                         log.info("Negation of CAS numbers currently not supported.");
                         cas = cas.substring(1);
                     }
@@ -155,7 +181,7 @@ public class DataSheetService {
                 }
                 if (ingredient.getIngredName() != null) {
                     String ingredName = ingredient.getIngredName();
-                    if (ingredName.startsWith("!")){
+                    if (ingredName.startsWith("!")) {
                         log.info("Negation of ingredient names currently not supported.");
                         ingredName = ingredName.substring(1);
                     }

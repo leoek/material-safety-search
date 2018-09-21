@@ -132,7 +132,7 @@ public class SolrSetupService {
                     "            \"name\": \"string_mod\",\n" +
                     "            \"class\": \"solr.TextField\",\n" +
                     "            \"sortMissingLast\": true,\n" +
-                    "            \"docValues\": true\n" +
+                    "            \"docValues\": true, \n" +
                     "            \"indexAnalyzer\": {\n" +
                     "                \"tokenizer\": {\n" +
                     "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
@@ -144,8 +144,13 @@ public class SolrSetupService {
                     "                        \"maxGramSize\": \"15\"\n" +
                     "                    }" +
                     "                 ]\n" +
+                    "              }, " +
+                    "            \"queryAnalyzer\": {\n" +
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
+                    "                }\n" +
                     "              }" +
-                    "            }" +
+                    "           }" +
                     " }";
 
 

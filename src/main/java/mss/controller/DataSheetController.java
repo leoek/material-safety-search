@@ -35,7 +35,7 @@ public class DataSheetController {
     @RequestMapping(path = "/search", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody GeneralTerm generalTerm) {
         //Assert.notEmpty(generalTerm.getSearchTerm());
-        return dataSheetService.generalSearch(p, generalTerm.getSearchTerm());
+        return dataSheetService.generalSearch(p, generalTerm);
     }
 
     /*@RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
