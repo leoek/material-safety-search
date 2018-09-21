@@ -1,0 +1,65 @@
+{
+    "querystring": "omnilube precautions",
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "OMNILUBE (R) 550",
+                "niin": "00B210014",
+                "companyName": "ULTRACHEM, INC.",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "HED SERIES CELLS (SEE SUPPLEMENTAL)",
+                "niin": "00D007562",
+                "companyName": "SAFT AMERICA INC(AMERICAD INFO SEE OTHER PRECAUT)",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "GROUP B:MILD STEEL LOW HYDROGEN COVERED ELECTRODES",
+                "niin": "00N087403",
+                "companyName": "MCKAY WELDING PRODUCTS",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "GROUP A: LOW ALLOY LOW HYDROGEN COVERED ELECTRODES",
+                "niin": "00N087402",
+                "companyName": "MCKAY WELDING PRODUCTS",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "TITANIUM AND TITANIUM ALLOY",
+                "niin": "00N052897",
+                "companyName": "PRESIDENT TITANIUM AND STEEL CO INC",
+                "fsc": "9650",
+                "fscString": "Nonferrous Base Metal Refinery and Intermediate Forms",
+                "fsgString": "Ores, Minerals, and Their Primary Products"
+            },
+            "relevant": false
+        }
+    ]
+}

@@ -13,7 +13,7 @@ for i in range(0, len(data)):
     results = data[i]["results"]
     count = 0
     relevants = []
-    precisisions = []
+    precs = []
     for j in range(1, len(results)+1):
         
         if results[j-1]["relevant"]:
@@ -23,7 +23,7 @@ for i in range(0, len(data)):
         else:
             current = (float)(count)/(float)(j)
 
-        precisisions.append(current)
+        precs.append(current)
     if relevants:
         avgprecs[i] = mean(relevants)
     print(avgprecs)
