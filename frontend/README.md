@@ -70,7 +70,7 @@ You can use redux-forms to speed up the process of making forms.
 
 You can find a good example on how to use redux-forms with the material-ui components here: https://github.com/erikras/redux-form/blob/master/examples/material-ui/src/MaterialUiForm.js
 
-# The folloeing is the Guide which was produced by create-react-app
+# The following is the Guide which was produced by create-react-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
