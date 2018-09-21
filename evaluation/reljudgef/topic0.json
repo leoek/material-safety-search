@@ -7,9 +7,7 @@
                 "productId": "OXYGEN",
                 "niin": "00N054025",
                 "companyName": "ACETYLENE OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": true
         },
@@ -19,9 +17,7 @@
                 "productId": "ACETYLENE",
                 "niin": "00N054026",
                 "companyName": "ACETYLENE OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": true
         },
@@ -31,9 +27,7 @@
                 "productId": "ARGON",
                 "niin": "00N054027",
                 "companyName": "ACETYLENE OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": false
         },
@@ -43,9 +37,7 @@
                 "productId": "HELIUM",
                 "niin": "00N054028",
                 "companyName": "ACETYLENE OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": false
         },
@@ -55,9 +47,7 @@
                 "productId": "AIR",
                 "niin": "00N028548",
                 "companyName": "INDUSTRIAL OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": false
         },
@@ -67,9 +57,7 @@
                 "productId": "ANHYDROUS AMMONIA, 5B81-83",
                 "niin": "00N012633",
                 "companyName": "INDUSTRIAL OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": true
         },
@@ -79,9 +67,7 @@
                 "productId": "ACETYLENE, ETHYNE",
                 "niin": "00N043577",
                 "companyName": "INDIANA OXYGEN CO",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": true
         },
@@ -91,9 +77,7 @@
                 "productId": "CARBON DIOXIDE, REFRIGERATED LIQUID",
                 "niin": "00-292-0142",
                 "companyName": "INDIANA OXYGEN COMPANY",
-                "fsc": "6830",
-                "fscString": "Gases: Compressed and Liquefied",
-                "fsgString": "Chemicals and Chemical Products"
+                "fsc": "6830"
             },
             "relevant": true
         },
@@ -103,9 +87,7 @@
                 "productId": "INTAL INHALER",
                 "niin": "01-239-4689",
                 "companyName": "FISONS CORP,PRESCRIPTION DIV",
-                "fsc": "6505",
-                "fscString": "Drugs and Biologicals",
-                "fsgString": "Medical, Dental, and Veterinary Equipment and Supplies"
+                "fsc": "6505"
             },
             "relevant": false
         },
@@ -115,9 +97,7 @@
                 "productId": "BRETHAIRE INHALER",
                 "niin": "01-202-2226",
                 "companyName": "CIBA-GEIGY CORP, CIBA PHARMACEUTICALS DIV.",
-                "fsc": "6505",
-                "fscString": "Drugs and Biologicals",
-                "fsgString": "Medical, Dental, and Veterinary Equipment and Supplies"
+                "fsc": "6505"
             },
             "relevant": true
         }

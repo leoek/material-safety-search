@@ -1,0 +1,53 @@
+{
+    "querystring": "protective gloves required",
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "PROTECT ALL",
+                "niin": "00F037751",
+                "companyName": "PROTECT ALL INC",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "PROTECT ALL AEROSOL",
+                "niin": "00F037753",
+                "companyName": "PROTECT ALL INC",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "CONTRACT REQUIRED DETECTION LIMITS STANDARD",
+                "niin": "00F023642",
+                "companyName": "SPEX INDUSTRIES INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "MITTENS, CLOTH, NATURAL, ASBESTOS",
+                "niin": "00-266-8843",
+                "companyName": "SAGER GLOVE CORP",
+                "fsc": "8415",
+                "fscString": "Clothing, Special Purpose",
+                "fsgString": "Clothing, Individual Equipment, and Insignia"
+            },
+            "relevant": false
+        }
+    ]
+}

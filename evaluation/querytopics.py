@@ -12,36 +12,59 @@ keylist = [
     'niin',
     'companyName',
     'fsc',
-    'fscString',
-    'fsgString'
+    #'fscString',
+    #'fsgString',
+    #'ingredients',
+    #'rawDisposal',
+    #'rawChemicalProperties',
+    #'rawComposition',
+    #'rawAccidentalRelease',
+    #'rawEco',
+    #'rawFireFighting',
+    #'rawFirstAid',
+    #'rawHandlingStorage',
+    #'rawHazards',
+    #'rawIdentification',
+    #'rawOther',
+    #'rawProtection',
+    #'rawRegulatory',
+    #'rawStabilityReactivity',
+    #'rawToxic',
+    #'rawTransport'
 ]
 
 
-
 #iterate through topics and send queries and print the results, adapt numsearchresults as wanted
-def querytopics(filename, requesttype, numsearchresults, fuzzy=None, wholeDoc=None):
+def querytopics(filename, requesttype, numsearchresults, fuzzy=False, wholeDoc=False):
 
     #read in topics
     with open(filename) as f:
         data = json.load(f)
 
     judgement = None
+    
+    pathadaption = ''
+    if fuzzy:
+        pathadaption += 'f'
+    if wholeDoc:
+        pathadaption += 'w'
 
     #start dialog
     topicnumber = (int)(input("\nq to quit and save progress\nenter topicnumber to start at (null-based): "))
+    print()
     for i in range(topicnumber, len(data)):
         query = yaml.safe_load(data[i]["query"])
 
         #for post with json
         if requesttype == 'post':
             payload = {
-                        'searchTerm': query,
-                        'fsgFacet': None,
-                        'fscFacet': None,
-                        'fuzzy': fuzzy,
-                        'wholeDoc': wholeDoc
-                        }
-            r = requests.post("http://localhost:8080/search", json=payload, headers={'content-type': 'application/json'})            
+                            'searchTerm': query,
+                            'fsgFacet': '',
+                            'fscFacet': '',
+                            'fuzzy': fuzzy,
+                            'wholeDoc': wholeDoc
+                    }
+            r = requests.post("http://localhost:8080/search", json=payload)            
         
         #for get request with params (temporary)
         elif requesttype == 'get':
@@ -53,13 +76,14 @@ def querytopics(filename, requesttype, numsearchresults, fuzzy=None, wholeDoc=No
 
         #check if request successfull
         if r.status_code == requests.codes.ok:
-            print('query: ' + query + '\n')
+            print('query#' + str(topicnumber) + ': ' + query + '\n')
             reljudges = {
                         'querystring': query,
                         'results': []
                         }
             for j in range(0, numsearchresults):
                 retrieved = {key : r.json()['items'][j][key] for key in keylist }
+                print('query: ' + query)
                 pprint(retrieved)
                 line = input('y/n: ')
                 
@@ -80,16 +104,38 @@ def querytopics(filename, requesttype, numsearchresults, fuzzy=None, wholeDoc=No
                     })
                 print('\n')
 
+            
+
+            print('./reljudge' + pathadaption + '/topic' + str(data[i]["number"]) + '.json')
             #write to json file with topicnumber
-            with open('./reljudge/topic' + str(data[i]["number"]) + '.json', 'w') as fp:   
+            with open('./reljudge' + pathadaption + '/topic' + str(data[i]["number"]) + '.json', 'w') as fp:   
                 json.dump(reljudges, fp, indent=4)
 
+            line = input('query finished, enter to start next query or q to quit ')
             if line == 'q':
                 break
 
         #request to solr failed
         else:
-            print(r.status_code + " request failed")
+            print(str(r.status_code) + " request failed")
+            break
  
+requestmethod = input('enable requestmethod search get/post: ')
 
-querytopics('topics.json', 'get', numsearchresults, fuzzy=None, wholeDoc=None)
+fuzzy = input('enable fuzzy search y/n: ')
+if fuzzy == "y":
+    fuzzy = True
+    print('yes saved')
+elif fuzzy == "n":
+    fuzzy = False
+    print('no saved')
+
+wholeDoc = input('enable wholeDoc search y/n: ')
+if wholeDoc == "y":
+    wholeDoc = True
+    print('yes saved')
+elif wholeDoc == "n":
+    wholeDoc = False
+    print('no saved')
+
+querytopics('topics.json', requestmethod, numsearchresults, fuzzy, wholeDoc)
