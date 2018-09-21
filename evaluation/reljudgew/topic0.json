@@ -1,0 +1,105 @@
+{
+    "querystring": "oxygen inhaled",
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "OXYGEN",
+                "niin": "00N054025",
+                "companyName": "ACETYLENE OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "ACETYLENE",
+                "niin": "00N054026",
+                "companyName": "ACETYLENE OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "ARGON",
+                "niin": "00N054027",
+                "companyName": "ACETYLENE OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "HELIUM",
+                "niin": "00N054028",
+                "companyName": "ACETYLENE OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "AIR",
+                "niin": "00N028548",
+                "companyName": "INDUSTRIAL OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "ANHYDROUS AMMONIA, 5B81-83",
+                "niin": "00N012633",
+                "companyName": "INDUSTRIAL OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "ACETYLENE, ETHYNE",
+                "niin": "00N043577",
+                "companyName": "INDIANA OXYGEN CO",
+                "fsc": "6830"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "CARBON DIOXIDE, REFRIGERATED LIQUID",
+                "niin": "00-292-0142",
+                "companyName": "INDIANA OXYGEN COMPANY",
+                "fsc": "6830"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "INTAL INHALER",
+                "niin": "01-239-4689",
+                "companyName": "FISONS CORP,PRESCRIPTION DIV",
+                "fsc": "6505"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "BRETHAIRE INHALER",
+                "niin": "01-202-2226",
+                "companyName": "CIBA-GEIGY CORP, CIBA PHARMACEUTICALS DIV.",
+                "fsc": "6505"
+            },
+            "relevant": true
+        }
+    ]
+}
