@@ -1,0 +1,72 @@
+[
+    {
+        "querystring": "oxygen inhaled",
+        "results": [
+            {
+                "doc": "Product ID:OXYGEN\nMSDS Date:04/01/1984\nFSC:6830\nNIIN:00N054025\nMSDS Number: BVWCN\n=== Responsible Party ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:430\nCity:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nInfo Phone Num:512-423-4237\nEmergency Phone Num:512-423-4237\nCAGE:19196\n=== Contractor Identification ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:City:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nPhone:512-423-4237\nCAGE:19196",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:ACETYLENE\nMSDS Date:04/01/1984\nFSC:6830\nNIIN:00N054026\nMSDS Number: BVWCP\n=== Responsible Party ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:430\nCity:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nInfo Phone Num:512-423-4237\nEmergency Phone Num:512-423-4237\nCAGE:19196\n=== Contractor Identification ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:City:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nPhone:512-423-4237\nCAGE:19196",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:ARGON\nMSDS Date:04/01/1984\nFSC:6830\nNIIN:00N054027\nMSDS Number: BVWCQ\n=== Responsible Party ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:430\nCity:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nInfo Phone Num:512-423-4237\nEmergency Phone Num:512-423-4237\nCAGE:19196\n=== Contractor Identification ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:City:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nPhone:512-423-4237\nCAGE:19196",
+                "relevant": false
+            },
+            {
+                "doc": "Product ID:HELIUM\nMSDS Date:04/01/1984\nFSC:6830\nNIIN:00N054028\nMSDS Number: BVWCR\n=== Responsible Party ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:430\nCity:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nInfo Phone Num:512-423-4237\nEmergency Phone Num:512-423-4237\nCAGE:19196\n=== Contractor Identification ===\nCompany Name:ACETYLENE OXYGEN CO\nBox:City:HARLINGEN\nState:TX\nZIP:79651\nCountry:US\nPhone:512-423-4237\nCAGE:19196",
+                "relevant": false
+            },
+            {
+                "doc": "Product ID:AIR\nMSDS Date:02/23/1981\nFSC:6830\nNIIN:00N028548\nMSDS Number: BMYCH\n=== Responsible Party ===\nCompany Name:INDUSTRIAL OXYGEN CO\nAddress:SEVENTH & MYRTLE\nCity:LOUISVILLE\nState:KY\nZIP:40208\nCountry:US\nInfo Phone Num:502-635-5201\nEmergency Phone Num:502-635-5201\nCAGE:2N973\n=== Contractor Identification ===\nCompany Name:INDUSTRIAL OXYGEN CO\nAddress:SEVENTH & MYRTLE\nBox:City:LOUISVILLE\nState:KY\nZIP:40208\nCountry:US\nPhone:502-635-5201\nCAGE:2N973",
+                "relevant": false
+            },
+            {
+                "doc": "Product ID:ANHYDROUS AMMONIA, 5B81-83\nMSDS Date:11/01/1985\nFSC:6830\nNIIN:00N012633\nMSDS Number: BSXFX\n=== Responsible Party ===\nCompany Name:INDUSTRIAL OXYGEN CO\nAddress:SEVENTH & MYRTLE\nCity:LOUISVILLE\nState:KY\nZIP:40208\nCountry:US\nInfo Phone Num:502-635-5201\nEmergency Phone Num:502-635-5201\nCAGE:2N973\n=== Contractor Identification ===\nCompany Name:INDUSTRIAL OXYGEN CO\nAddress:SEVENTH & MYRTLE\nBox:City:LOUISVILLE\nState:KY\nZIP:40208\nCountry:US\nPhone:502-635-5201\nCAGE:2N973",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:ACETYLENE, ETHYNE\nMSDS Date:02/01/1991\nFSC:6830\nNIIN:00N043577\nMSDS Number: BSBTM\n=== Responsible Party ===\nCompany Name:INDIANA OXYGEN CO\nAddress:6099 W CORPORATE WAY\nBox:76588\nCity:INDIANAPOLIS\nState:IN\nZIP:46278\nCountry:US\nInfo Phone Num:317-632-4525\nEmergency Phone Num:317-632-4525\nCAGE:30470\n=== Contractor Identification ===\nCompany Name:INDIANA OXYGEN CO\nAddress:6099 W CORPORATE WAY\nBox:78588\nCity:INDIANAPOLIS\nState:IN\nZIP:46278\nCountry:US\nPhone:317-632-4525\nCAGE:30470",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:CARBON DIOXIDE, REFRIGERATED LIQUID\nMSDS Date:08/09/1989\nFSC:6830\nNIIN:00-292-0142\nMSDS Number: CHMBT\n=== Responsible Party ===\nCompany Name:INDIANA OXYGEN COMPANY\nAddress:6098 W. CORPORATE WAY\nCity:INDIANNAPOLIS\nState:IN\nZIP:46279\nCountry:US\nCAGE:30470\n=== Contractor Identification ===\nCompany Name:INDIANA OXYGEN CO\nAddress:6099 W CORPORATE WAY\nBox:78588\nCity:INDIANAPOLIS\nState:IN\nZIP:46278\nCountry:US\nPhone:317-632-4525\nCAGE:30470",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:INTAL INHALER\nMSDS Date:10/01/1991\nFSC:6505\nNIIN:01-239-4689\nMSDS Number: BMXLD\n=== Responsible Party ===\nCompany Name:FISONS CORP,PRESCRIPTION DIV\nAddress:755 JEFFERSON RD\nBox:1766\nCity:ROCHESTER\nState:NY\nZIP:14603\nCountry:US\nInfo Phone Num:716-475-9000\nEmergency Phone Num:716-475-9000\nCAGE:NO278\n=== Contractor Identification ===\nCompany Name:FISONS CORP\nAddress:755 JEFFERSON RD\nBox:1766\nCity:ROCHESTER\nState:NY\nZIP:14603\nCountry:US\nCAGE:58827\nCompany Name:FISONS CORP,PRESCRIPTION DIV\nAddress:755 JEFFERSON RD\nBox:1766\nCity:ROCHESTER\nState:NY\nZIP:14603\nCountry:US\nPhone:716-475-9000\nCAGE:NO278",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:BRETHAIRE INHALER\nMSDS Date:07/01/1991\nFSC:6505\nNIIN:01-202-2226\nMSDS Number: BPQXY\n=== Responsible Party ===\nCompany Name:CIBA-GEIGY CORP, CIBA PHARMACEUTICALS DIV.\nAddress:556 MORRIS AVENUE\nCity:SUMMIT\nState:NJ\nZIP:07901-1303\nCountry:US\nInfo Phone Num:201-277-5405\nEmergency Phone Num:201-277-5405\nPreparer's Name:WRIGHT\nCAGE:04482\n=== Contractor Identification ===\nCompany Name:CIBA-GEIGY CORP, CIBA PHARMACEUTICALS DIV.\nAddress:556 MORRIS AVENUE\nBox:City:SUMMIT\nState:NJ\nZIP:07901-1303\nCountry:US\nPhone:201-277-5405\nCAGE:04482",
+                "relevant": false
+            }
+        ]
+    },
+    {
+        "querystring": "liquid on fire",
+        "results": [
+            {
+                "doc": "Product ID:EXTINGUISHER,FIRE,VAPORIZING LIQUID\nMSDS Date:06/20/1996\nFSC:4210\nNIIN:00-288-8268\nMSDS Number: BZPGJ\n=== Responsible Party ===\nCompany Name:STOP-FIRE INC.\nCity:HOUSTON\nState:TX\nCountry:US\nInfo Phone Num:OUT OF BUSINESS\nEmergency Phone Num:800-424-9300\nPreparer's Name:HMIS-VBA\nCAGE:LO185\n=== Contractor Identification ===\nCompany Name:STOP-FIRE INC.\nBox:City:HOUSTON\nState:TX\nCountry:US\nPhone:OUT OF BUSINESS\nCAGE:LO185\nCompany Name:TRANSPORTATION ONLY\nCAGE:87590",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:EXTINGUISHER,FIRE,VAPORIZING LIQUID\nMSDS Date:07/12/1989\nFSC:4210\nNIIN:01-087-4989\nMSDS Number: BJRRK\n=== Responsible Party ===\nCompany Name:GENERAL FIRE EXTINGUISHER COMPANY\nAddress:1685 SHERMER ROAD\nCity:NORTHBROOK\nState:IL\nZIP:60062-5315\nCountry:US\nInfo Phone Num:312-272-7500\nEmergency Phone Num:312-272-7500\nPreparer's Name:DGSC-SLM/ DOD-HMIS\nCAGE:99539\n=== Contractor Identification ===\nCompany Name:GENERAL FIRE EXTINGUISHER CORP\nAddress:1685 SHERMER RD\nBox:City:NORTHBROOK\nState:IL\nZIP:60062-5315\nCountry:US\nPhone:(708)  847-272-7500; 847-272-7500\nCAGE:99539",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:EXTINGUISHER,FIRE,VAPORIZING LIQUID\nMSDS Date:07/12/1989\nFSC:4210\nNIIN:00-708-0031\nMSDS Number: BKBLJ\n=== Responsible Party ===\nCompany Name:GENERAL FIRE EXTINGUISHER CORP.\nAddress:1685 SHERMER ROAD\nCity:NORTHBROOK\nState:IL\nZIP:60062-5315\nCountry:US\nInfo Phone Num:312-272-7500\nEmergency Phone Num:312-272-7500\nPreparer's Name:DGSC-SLM/ DOD-HMIS\nCAGE:99539\n=== Contractor Identification ===\nCompany Name:GENERAL FIRE EXTINGUISHER CORP\nAddress:1685 SHERMER RD\nBox:City:NORTHBROOK\nState:IL\nZIP:60062-5315\nCountry:US\nPhone:(708)  847-272-7500; 847-272-7500\nCAGE:99539",
+                "relevant": false
+            },
+            {
+                "doc": "Product ID:LORCON 6% FOAM LIQUID FIRE EXTINGUISHING\nMSDS Date:01/01/1985\nFSC:4210\nNIIN:00-223-9877\nMSDS Number: BDKKF\n=== Responsible Party ===\nCompany Name:LORCON INC. FIRE FOAM DIV.\nEmergency Phone Num:(613)224-8753\nCAGE:KO669\n=== Contractor Identification ===\nCompany Name:LORCON INC. FIRE FOAM DIV.\nCAGE:KO669\nCompany Name:WORMALD CDN\nAddress:2421 HOLLY LN\nBox:City:OTTAWA\nState:ON\nCountry:CA\nCAGE:37194",
+                "relevant": true
+            },
+            {
+                "doc": "Product ID:LORCON 6% FOAM LIQUID FIRE EXTINGUISHING\nMSDS Date:01/01/1985\nFSC:4210\nNIIN:00-273-8585\nMSDS Number: BDSBH\n=== Responsible Party ===\nCompany Name:LORCON INC. FIRE FOAM DIV.\nEmergency Phone Num:(613)224-8753\nCAGE:KO669\n=== Contractor Identification ===\nCompany Name:LORCON INC. FIRE FOAM DIV.\nCAGE:KO669\nCompany Name:WORMALD CDN\nAddress:2421 HOLLY LN\nBox:City:OTTAWA\nState:ON\nCountry:CA\nCAGE:37194",
+                "relevant": true
+            }
+        ]
+    }
+]
