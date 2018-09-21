@@ -14,6 +14,8 @@ public class AdvancedTerm {
     private List<AdvancedTermIngredient> ingredients;
     public String fsgFacet;
     public String fscFacet;
+    public Boolean fuzzy;
+    public Boolean wholeDoc;
 
     public String getProductId() {
         return productId;
@@ -93,5 +95,21 @@ public class AdvancedTerm {
 
     public void setFscFacet(String fscFacet) {
         this.fscFacet = fscFacet;
+    }
+
+    public Boolean getFuzzy() {
+        return fuzzy;
+    }
+
+    public void setFuzzy(Boolean fuzzy) {
+        this.fuzzy = fuzzy;
+    }
+
+    public Boolean getWholeDoc() {
+        return wholeDoc;
+    }
+
+    public void setWholeDoc(Boolean wholeDoc) {
+        this.wholeDoc = wholeDoc;
     }
 }
