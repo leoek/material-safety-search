@@ -98,7 +98,12 @@ public class DataSheetService {
         }
 
         searchTerm = searchTerm.trim().replaceAll("\\s{2,}", " ");
+
         if (!searchTerm.isEmpty()) {
+            //Enable fuzzy search if desired
+            if (generalTerm.getFuzzy()){
+                searchTerm = fuzzItUp(searchTerm);
+            }
             criteria.add("productId:(" + searchTerm + ") || " +
                     "companyName:(" + searchTerm + ") || " +
                     "fscString:(" + searchTerm + ") || " +
@@ -135,12 +140,12 @@ public class DataSheetService {
             }
         }
 
-        log.info("Query criteria: " + criteria);
-        log.info("Filter Queries: " + filters);
-
         if (criteria.isEmpty()) {
             criteria.add("*:* && docType:datasheet");
         }
+
+        log.info("Query criteria: " + criteria);
+        log.info("Filter Queries: " + filters);
 
         return dataSheetRepository.facetedSearch(criteria, filters, p, facetForFsc);
     }
@@ -170,7 +175,7 @@ public class DataSheetService {
                 //And filter for FSG
                 filters.add("fsg:" + advancedTerm.getFsgFacet());
             } else {
-                log.error("fsgFacet in supplied GeneralTerm object is not of length 2! Will ignore fsgFacet.");
+                log.error("fsgFacet in supplied GeneralTerm object is not of length 2! Will ignore fsgFacet. (\"" + advancedTerm.getFscFacet() + "\")");
             }
         }
         if (advancedTerm.getFscFacet() != null) {
@@ -179,7 +184,7 @@ public class DataSheetService {
                 //Add filter for FSC
                 filters.add("fsc:" + advancedTerm.getFscFacet());
             } else {
-                log.error("fscFacet in supplied GeneralTerm object is not of length 4! Will ignore fscFacet.");
+                log.error("fscFacet in supplied GeneralTerm object is not of length 4! Will ignore fscFacet. (\"" + advancedTerm.getFscFacet() + "\")");
             }
         }
 
@@ -206,11 +211,15 @@ public class DataSheetService {
             for (AdvancedTermIngredient ingredient : ingredients) {
                 if (ingredient.getCas() != null && !ingredient.getCas().isEmpty()) {
                     String cas = ingredient.getCas();
-                    if (cas.startsWith("!")) {
-                        log.info("Negation of CAS numbers currently not supported.");
-                        cas = cas.substring(1);
+                    if (cas.matches("(!?[0-9]{2,7}-[0-9]{2}-[0-9])")) {
+                        if (cas.startsWith("!")) {
+                            log.info("Negation of CAS numbers currently not supported.");
+                            cas = cas.substring(1);
+                        }
+                        filters.add("{!parent which=docType:datasheet}cas:(" + cas + ")");
+                    } else {
+                        log.info("Supplied CAS number has wrong format. Ignoring CAS. (\"" + cas + "\")");
                     }
-                    filters.add("{!parent which=docType:datasheet}cas:(" + cas + ")");
                 }
                 if (ingredient.getIngredName() != null && !ingredient.getIngredName().isEmpty()) {
                     String ingredName = ingredient.getIngredName();
@@ -218,6 +227,7 @@ public class DataSheetService {
                         log.info("Negation of ingredient names currently not supported.");
                         ingredName = ingredName.substring(1);
                     }
+                    ingredName = fuzzItUp(ingredName);
                     filters.add("{!parent which=docType:datasheet}ingredName:(" + ingredName + ")");
                 }
             }
@@ -228,6 +238,7 @@ public class DataSheetService {
 
     /**
      * Turns an {@link AdvancedTerm} object into a query string.
+     * Note that only fields with text content will queried fuzzy.
      *
      * @param advancedTerm {@link AdvancedTerm} object to extract information from
      * @return Query string
@@ -237,6 +248,7 @@ public class DataSheetService {
 
         String productId = advancedTerm.getProductId();
         if (productId != null && !productId.isEmpty()) {
+            if (advancedTerm.getFuzzy()) productId = fuzzItUp(productId);
             if (productId.startsWith("!")) {
                 queryList.add("(!productId:(" + productId.substring(1) + ") && docType:datasheet)");
             } else {
@@ -255,6 +267,7 @@ public class DataSheetService {
 
         String fscString = advancedTerm.getFscString();
         if (fscString != null && !fscString.isEmpty()) {
+            if (advancedTerm.getFuzzy()) fscString = fuzzItUp(fscString);
             if (fscString.startsWith("!")) {
                 queryList.add("(!fscString:(" + fscString.substring(1) + ") && docType:datasheet)");
             } else {
@@ -264,6 +277,7 @@ public class DataSheetService {
 
         String fsgString = advancedTerm.getFsgString();
         if (fsgString != null && !fsgString.isEmpty()) {
+            if (advancedTerm.getFuzzy()) fsgString = fuzzItUp(fsgString);
             if (fsgString.startsWith("!")) {
                 queryList.add("(!fsgString:(" + fsgString.substring(1) + ") && docType:datasheet)");
             } else {
@@ -282,6 +296,7 @@ public class DataSheetService {
 
         String companyName = advancedTerm.getCompanyName();
         if (companyName != null && !companyName.isEmpty()) {
+            if (advancedTerm.getFuzzy()) companyName = fuzzItUp(companyName);
             if (companyName.startsWith("!")) {
                 queryList.add("(!companyName:(" + companyName.substring(1) + ") && docType:datasheet)");
             } else {
@@ -303,6 +318,16 @@ public class DataSheetService {
         }
 
         return queryList.stream().collect(Collectors.joining(" && "));
+    }
+
+    /**
+     * Makes a given string fuzzy, i.e. inserts "~1" into the query
+     * @param string
+     * @return
+     */
+    private String fuzzItUp(String string){
+        //Editing distance must be one of {~0, ~1, ~2}
+        return string.trim().replaceAll("\\s{2,}", " ").replaceAll(" ", "~1 ").concat("~1");
     }
 
 
