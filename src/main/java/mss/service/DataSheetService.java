@@ -47,6 +47,8 @@ public class DataSheetService {
     public PageResponse<DataSheetDocument> generalSearch(Pageable p, GeneralTerm generalTerm) {
         String searchTerm = generalTerm.getSearchTerm();
         if (searchTerm == null) searchTerm = "";
+        if (generalTerm.getFuzzy() == null) generalTerm.setFuzzy(false);
+        if (generalTerm.getWholeDoc() == null) generalTerm.setWholeDoc(false);
         log.info("Search term: \"" + searchTerm + "\"");
 
         //Regex
@@ -104,18 +106,40 @@ public class DataSheetService {
             if (generalTerm.getFuzzy()){
                 searchTerm = fuzzItUp(searchTerm);
             }
-            criteria.add("productId:(" + searchTerm + ") || " +
-                    "companyName:(" + searchTerm + ") || " +
-                    "fscString:(" + searchTerm + ") || " +
-                    "fsgString:(" + searchTerm + ") || " +
-                    "{!parent which=docType:datasheet v='ingredName:(" + searchTerm + ")'}");
+            if (generalTerm.getWholeDoc()) {
+                criteria.add("productId:(" + searchTerm + ") || " +
+                        "companyName:(" + searchTerm + ") || " +
+                        "fscString:(" + searchTerm + ") || " +
+                        "fsgString:(" + searchTerm + ") || " +
+                        "{!parent which=docType:datasheet v='ingredName:(" + searchTerm + ")'} || "+
+                        "rawIdentification:(" + searchTerm + ") || " +
+                        "rawComposition:(" + searchTerm + ") || " +
+                        "rawHazards:(" + searchTerm + ") || " +
+                        "rawFirstAid:(" + searchTerm + ") || " +
+                        "rawFireFighting:(" + searchTerm + ") || " +
+                        "rawAccidentalRelease:(" + searchTerm + ") || " +
+                        "rawHandlingStorage:(" + searchTerm + ") || " +
+                        "rawProtection:(" + searchTerm + ") || " +
+                        "rawChemicalProperties:(" + searchTerm + ") || " +
+                        "rawStabilityReactivity:(" + searchTerm + ") || " +
+                        "rawDisposal:(" + searchTerm + ") || " +
+                        "rawToxic:(" + searchTerm + ") || " +
+                        "rawEco:(" + searchTerm + ") || " +
+                        "rawTransport:(" + searchTerm + ") || " +
+                        "rawRegulatory:(" + searchTerm + ") || " +
+                        "rawOther:(" + searchTerm + ")");
+            } else {
+                criteria.add("productId:(" + searchTerm + ") || " +
+                        "companyName:(" + searchTerm + ") || " +
+                        "fscString:(" + searchTerm + ") || " +
+                        "fsgString:(" + searchTerm + ") || " +
+                        "{!parent which=docType:datasheet v='ingredName:(" + searchTerm + ")'}");
+            }
         }
 
         //Edge case where only CAS numbers are entered.
         if (criteria.isEmpty()) {
-            if (!filters.isEmpty()) {
-                criteria.add("*:* && docType:datasheet");
-            }
+            criteria.add("*:* && docType:datasheet");
         }
 
         //Determine faceting & filter results if wished
@@ -140,10 +164,6 @@ public class DataSheetService {
             }
         }
 
-        if (criteria.isEmpty()) {
-            criteria.add("*:* && docType:datasheet");
-        }
-
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
 
@@ -162,6 +182,7 @@ public class DataSheetService {
         //Generate Query
         String query = advancedTermToQuery(advancedTerm);
         if (query.isEmpty()) query = "*:* && docType:datasheet";
+        if (advancedTerm.getFuzzy() == null) advancedTerm.setFuzzy(false);
 
         //Generate Filters
         List<String> filters = advancedTermToFilterQueries(advancedTerm);

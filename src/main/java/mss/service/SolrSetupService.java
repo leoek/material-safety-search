@@ -35,7 +35,8 @@ public class SolrSetupService {
 
     /**
      * Sets a partial schema with detailed field property information via the solr configuration API
-     * @throws IOException Network error.
+     *
+     * @throws IOException         Network error.
      * @throws SolrServerException Solr error.
      */
     public void setup() throws IOException, SolrServerException {
@@ -45,9 +46,11 @@ public class SolrSetupService {
         SimpleSolrResponse response = request.process(solrClient);
 
         //Check if this schema is already imported
-        if(!response.getResponse().toString().contains("productId")){
+        if (!response.getResponse().toString().contains("productId")) {
 
-            String addModifiedFieldTypes = "{ \"add-field-type\": {\n" +
+            String addModifiedFieldTypes = "{ " +
+                    //Adding field type for main text fields
+                    "\"add-field-type\": {\n" +
                     "            \"name\": \"text_en_splitting_mod\",\n" +
                     "            \"class\": \"solr.TextField\",\n" +
                     "            \"autoGeneratePhraseQueries\": \"true\",\n" +
@@ -127,6 +130,7 @@ public class SolrSetupService {
                     "                    }\n" +
                     "                ]\n" +
                     "            }\n" +
+                    //Adding field type for number text fields
                     "        }, \"add-field-type\": " +
                     "           {\n" +
                     "            \"name\": \"string_mod\",\n" +
@@ -150,9 +154,50 @@ public class SolrSetupService {
                     "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
                     "                }\n" +
                     "              }" +
-                    "           }" +
+                    //Adding field type for raw text fields
+                    "           }\"add-field-type\": {\n" +
+                    "            \"name\": \"text_en_raw_mod\",\n" +
+                    "            \"class\": \"solr.TextField\",\n" +
+                    "            \"autoGeneratePhraseQueries\": \"true\",\n" +
+                    "            \"positionIncrementGap\": \"100\",\n" +
+                    "            \"indexAnalyzer\": {\n" +
+                    //Note: A CharFilter to replace line breaks is not needed as the ClassicTokenizer handles that
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.ClassicTokenizerFactory\"\n" +
+                    "                },\n" +
+                    "                \"filters\": [\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.LowerCaseFilterFactory\",\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    //Can be managed via /solr/dataSheet/schema/analysis/stopwords/raw
+                    "                        \"class\": \"solr.ManagedStopFilterFactory\",\n" +
+                    "                        \"managed\": \"raw\",\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.PorterStemFilterFactory\"\n" +
+                    "                    }\n" +
+                    "                ]\n" +
+                    "            },\n" +
+                    "            \"queryAnalyzer\": {\n" +
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.ClassicTokenizerFactory\"\n" +
+                    "                },\n" +
+                    "                \"filters\": [\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.ManagedStopFilterFactory\",\n" +
+                    "                        \"managed\": \"raw\",\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.LowerCaseFilterFactory\",\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"class\": \"solr.PorterStemFilterFactory\"\n" +
+                    "                    }\n" +
+                    "                ]\n" +
+                    "            }\n" +
+                    "        }" +
                     " }";
-
 
 
             GenericSolrRequest genericSolrModifyRequest = new GenericSolrRequest(SolrRequest.METHOD.POST, "/schema", null);
@@ -160,8 +205,15 @@ public class SolrSetupService {
             genericSolrModifyRequest.setContentStreams(Collections.singleton(contentModifyStream));
             genericSolrModifyRequest.process(solrClient);
 
+            //Add custom stopwords for raw text fields
+            String stopwords = "[\"product\",\"id\",\"msds\",\"date\",\"fsc\",\"niin\",\"status\",\"code\",\"number\",\"responsible\",\"party\",\"company\",\"name\",\"address\",\"box\",\"city\",\"state\",\"zip\",\"country\",\"info\",\"phone\",\"num\",\"emergency\",\"cage\",\"ingred\",\"name\",\"cas\",\"rtecs\",\"osha\",\"pel\",\"acgih\",\"tlv\",\"reports\",\"of\",\"health\",\"hazards\",\"acute\",\"and\",\"chronic\",\"explanation\",\"effects\",\"overexposure\",\"medical\",\"cond\",\"aggravated\",\"by\",\"exposure\",\"first\",\"aid\",\"flash\",\"point\",\"extinguishing\",\"media\",\"fire\",\"fighting\",\"procedures\",\"spill\",\"release\",\"neutralizing\",\"agent\",\"handling\",\"storage\",\"precautions\",\"other\",\"respiratory\",\"protection\",\"ventilation\",\"protective\",\"gloves\",\"equipment\",\"work\",\"hygienic\",\"practices\",\"supplemental\",\"safety\",\"health\",\"stability\",\"indicator\",\"materials\",\"to\",\"avoid\",\"toxocological\",\"information\",\"ecological\",\"waste\",\"disposal\",\"methods\",\"transport\",\"sara\",\"title\",\"iii\",\"federal\",\"regulatory\",\"contractor\",\"identification\",\"us\",\"ey\",\"ye\",\"water\",\"carcinogenicity\",\"routes\",\"entry\",\"flush\",\"remove\",\"fresh\",\"hazard\",\"unusual\",\"explosion\",\"in\",\"keep\",\"store\",\"container\",\"from\",\"or\",\"appearance\",\"odor\",\"products\",\"hazardous\",\"decomposition\",\"condition\",\"toxicological\",\"the\"]";
+            GenericSolrRequest stopWordRequest = new GenericSolrRequest(SolrRequest.METHOD.PUT, "/schema/analysis/stopwords/raw", null);
+            ContentStream stopWordStream = new ContentStreamBase.StringStream(stopwords);
+            stopWordRequest.setContentStreams(Collections.singleton(stopWordStream));
+            stopWordRequest.process(solrClient);
+
             String fieldTypeText = "text_en_splitting_mod";
-            String fieldTypeRawText = "string";
+            String fieldTypeRawText = "text_en_raw_mod";
 
             //Create Schema
             //Maybe custom fieldTypes for productId, companyName and ingredName
@@ -178,28 +230,28 @@ public class SolrSetupService {
             fieldArray.add(fieldObjectJson("fsgString", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsgFacet", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("niin", "string_mod", true, true, false, false, false));
-            fieldArray.add(fieldObjectJson("companyName", fieldTypeText,true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("companyName", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("msdsDate", "pdate", true, true, false, false, false));
             //fieldArray.add(fieldObjectJson("ingredients"));
-            fieldArray.add(fieldObjectJson("ingredName", fieldTypeText,true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("ingredName", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("cas", "string_mod", true, true, false, false, false));
 
-            fieldArray.add(fieldObjectJson("rawIdentification", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawComposition", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawHazards", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawFirstAid", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawFireFighting", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawAccidentalRelease", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawHandlingStorage", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawProtection", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawChemicalProperties", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawStabilityReactivity", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawDisposal", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawToxic", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawEco", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawTransport", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawRegulatory", fieldTypeRawText, false, true, false, false, false));
-            fieldArray.add(fieldObjectJson("rawOther", fieldTypeRawText, false, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawIdentification", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawComposition", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawHazards", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawFirstAid", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawFireFighting", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawAccidentalRelease", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawHandlingStorage", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawProtection", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawChemicalProperties", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawStabilityReactivity", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawDisposal", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawToxic", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawEco", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawTransport", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawRegulatory", fieldTypeRawText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("rawOther", fieldTypeRawText, true, true, false, false, false));
 
             String command = fieldArrayJson(fieldArray);
 
@@ -216,16 +268,17 @@ public class SolrSetupService {
 
     /**
      * Creates a JSON object node from the given input that represents one field configuration
-     * @param name Corresponds to Solr's Field Property parameter "name"
-     * @param type Corresponds to Solr's Field Property parameter "type"
-     * @param indexed Corresponds to Solr's Field Property parameter "indexed"
-     * @param stored Corresponds to Solr's Field Property parameter "stored"
-     * @param required Corresponds to Solr's Field Property parameter "required"
-     * @param docValues Corresponds to Solr's Field Property parameter "docValues"
+     *
+     * @param name        Corresponds to Solr's Field Property parameter "name"
+     * @param type        Corresponds to Solr's Field Property parameter "type"
+     * @param indexed     Corresponds to Solr's Field Property parameter "indexed"
+     * @param stored      Corresponds to Solr's Field Property parameter "stored"
+     * @param required    Corresponds to Solr's Field Property parameter "required"
+     * @param docValues   Corresponds to Solr's Field Property parameter "docValues"
      * @param multiValued Corresponds to Solr's Field Property parameter "multiValued"
      * @return The created field configuration object
      */
-    private ObjectNode fieldObjectJson(String name, String type, Boolean indexed, Boolean stored, Boolean required, Boolean docValues, Boolean multiValued){
+    private ObjectNode fieldObjectJson(String name, String type, Boolean indexed, Boolean stored, Boolean required, Boolean docValues, Boolean multiValued) {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode field = mapper.createObjectNode();
 
@@ -242,14 +295,15 @@ public class SolrSetupService {
 
     /**
      * Turns multiple field configuration objects into a JSON String for adding fields via the Solr configuration API
+     *
      * @param fields List of field configuration objects
      * @return JSON string for Solr config API
      */
-    private String fieldArrayJson(List<ObjectNode> fields){
+    private String fieldArrayJson(List<ObjectNode> fields) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode fieldArray = mapper.createArrayNode();
         ObjectNode finalObject = mapper.createObjectNode();
-        for (ObjectNode field: fields) {
+        for (ObjectNode field : fields) {
             fieldArray.add(field);
         }
         finalObject.putPOJO("add-field", fieldArray);

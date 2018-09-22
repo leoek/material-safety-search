@@ -12,10 +12,9 @@ public class AdvancedTerm {
     private Date beginDate;
     private Date endDate;
     private List<AdvancedTermIngredient> ingredients;
-    public String fsgFacet;
-    public String fscFacet;
-    public Boolean fuzzy;
-    public Boolean wholeDoc;
+    private String fsgFacet;
+    private String fscFacet;
+    private Boolean fuzzy;
 
     public String getProductId() {
         return productId;
@@ -103,13 +102,5 @@ public class AdvancedTerm {
 
     public void setFuzzy(Boolean fuzzy) {
         this.fuzzy = fuzzy;
-    }
-
-    public Boolean getWholeDoc() {
-        return wholeDoc;
-    }
-
-    public void setWholeDoc(Boolean wholeDoc) {
-        this.wholeDoc = wholeDoc;
     }
 }
