@@ -143,15 +143,18 @@ public class DataSheetImporter {
             String comp = m1.group(1);
             String prod = m1.group(2);
             String fsc = m1.group(3);
+            String fsg = "";
+            if (m1.group(3).length() >= 4) {
+                fsg = m1.group(3).substring(0, 2);
+            }
             String niin = m1.group(4);
             document.setCompanyName(comp);
             document.setProductId(prod);
             document.setFsc(fsc);
-            if(fsc.matches("\\d*") && fsc.length() > 2)
-            {
+            document.setFsg(fsg);
+            if(fsc.matches("\\d*") && fsc.length() > 2) {
                 String fsgString = "";
                 String fscString = "";
-                String fsg = fsc.substring(0, 2);
                 try {
                     fsgString = fsgMap.get(Integer.parseInt(fsg));
                     fscString = fscMap.get(Integer.parseInt(fsc));
@@ -163,16 +166,22 @@ public class DataSheetImporter {
                     if (debug) {
                         log.warn("Couldn't set FSG for document {}, fsg: {}", file.getPath(), fsg);
                     }
+                    document.setFsgString("FSG Group " + fsg);
+                    document.setFsgFacet(document.getFsgString() + "_" + document.getFsg());
                 } else {
                     document.setFsgString(fsgString);
+                    document.setFsgFacet(document.getFsgString() + "_" + document.getFsg());
                 }
                 if (fscString == null || fscString.equals("")) {
                     unmappedFscs.add(fsc);
                     if (debug) {
                         log.warn("Couldn't set FSC for document {}, fsc: {}", file.getPath(), fsc);
                     }
+                    document.setFscString("FSC Group " + fsc);
+                    document.setFscFacet(document.getFscString() + "_" + document.getFsc());
                 } else {
                     document.setFscString(fscString);
+                    document.setFscFacet(document.getFscString() + "_" + document.getFsc());
                 }
             }
             document.setNiin(niin);

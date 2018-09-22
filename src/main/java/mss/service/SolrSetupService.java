@@ -132,7 +132,7 @@ public class SolrSetupService {
                     "            \"name\": \"string_mod\",\n" +
                     "            \"class\": \"solr.TextField\",\n" +
                     "            \"sortMissingLast\": true,\n" +
-                    "            \"docValues\": true\n" +
+                    "            \"docValues\": true, \n" +
                     "            \"indexAnalyzer\": {\n" +
                     "                \"tokenizer\": {\n" +
                     "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
@@ -144,8 +144,13 @@ public class SolrSetupService {
                     "                        \"maxGramSize\": \"15\"\n" +
                     "                    }" +
                     "                 ]\n" +
+                    "              }, " +
+                    "            \"queryAnalyzer\": {\n" +
+                    "                \"tokenizer\": {\n" +
+                    "                    \"class\": \"solr.WhitespaceTokenizerFactory\"\n" +
+                    "                }\n" +
                     "              }" +
-                    "            }" +
+                    "           }" +
                     " }";
 
 
@@ -168,7 +173,10 @@ public class SolrSetupService {
             fieldArray.add(fieldObjectJson("productId", fieldTypeText, true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsc", "string_mod", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fscString", fieldTypeText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fscFacet", "string", true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fsg", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("fsgString", fieldTypeText, true, true, false, false, false));
+            fieldArray.add(fieldObjectJson("fsgFacet", "string", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("niin", "string_mod", true, true, false, false, false));
             fieldArray.add(fieldObjectJson("companyName", fieldTypeText,true, true, false, false, false));
             fieldArray.add(fieldObjectJson("msdsDate", "pdate", true, true, false, false, false));
