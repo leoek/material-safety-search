@@ -26,3 +26,9 @@ export const fetchSearchFailure = error => ({
     timeFetched: new Date()
   }
 });
+
+export const SHOW_DATASHEET_SECTION = "MSS/SHOW_DATASHEET_SECTION";
+export const showDatasheetSection = (datasheet, section) => ({
+  type: SHOW_DATASHEET_SECTION,
+  payload: { datasheet, section }
+});

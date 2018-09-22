@@ -43,6 +43,11 @@ export class Screen extends Component {
     };
   }
 
+  componentDidMount = () => {
+    const { fetchSearchRequest } = this.props;
+    fetchSearchRequest({ query: "test" });
+  };
+
   componentWillReceiveProps(nextProps) {
     const { error } = this.props;
     if (error !== nextProps.error) {
@@ -148,13 +153,13 @@ export class Screen extends Component {
           <Grid item xs={12} sm={10} md={8} lg={6}>
             <SearchForm
               ref={form => (this.form = form)}
-              initialValues={{ query: "" }}
+              initialValues={{ query: "test" }}
               onSubmit={this.submit}
               canSubmit={canSubmit}
               quickselect={quickselect}
             />
             <QuickAnswerSection quickAnswer={quickAnswer} />
-            <ResultList />
+            <ResultList hideLoading={false} />
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
         </Grid>
