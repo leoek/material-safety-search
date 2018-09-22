@@ -32,12 +32,25 @@ public class DataSheetController {
         this.suggestService = suggestService;
     }
 
+    /**
+     * Endpoint for simple search. See Swagger file for information about the API.
+     *
+     * @param p
+     * @param generalTerm
+     * @return Formatted page of DataSheetDocuments
+     */
     @RequestMapping(path = "/search", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody GeneralTerm generalTerm) {
-        //Assert.notEmpty(generalTerm.getSearchTerm());
         return dataSheetService.generalSearch(p, generalTerm);
     }
 
+    /**
+     * Endpoint for simple search. See Swagger file for information about the API.
+     *
+     * @param p
+     * @param advancedTerm
+     * @return Formatted page of DataSheetDocuments
+     */
     @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
         return dataSheetService.advancedSearch(p, advancedTerm);
@@ -45,7 +58,6 @@ public class DataSheetController {
 
     @RequestMapping(path = "/suggest", method = RequestMethod.GET)
     public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {
-        Suggestions result = suggestService.createSuggestions(s, field, count);
-        return result;
+        return suggestService.createSuggestions(s, field, count);
     }
 }
