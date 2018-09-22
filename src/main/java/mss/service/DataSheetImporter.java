@@ -89,13 +89,14 @@ public class DataSheetImporter {
             log.info("Data is already indexed. Wont import again.");
         }
 
-        if (unmappedFscs.size() > 0){
-            log.warn("Couldn't map the following FSCs: {}", unmappedFscs);
+        if (debug){
+            if (unmappedFscs.size() > 0){
+                log.warn("Couldn't map the following FSCs: {}", unmappedFscs);
+            }
+            if (unmappedFsgs.size() > 0){
+                log.warn("Couldn't map the following FSGs: {}", unmappedFsgs);
+            }
         }
-        if (unmappedFsgs.size() > 0){
-            log.warn("Couldn't map the following FSGs: {}", unmappedFsgs);
-        }
-
     }
 
     /**
