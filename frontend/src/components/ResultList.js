@@ -9,6 +9,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
+import isEmpty from "lodash/isEmpty";
+
+import Padder from "./common/Padder";
+import SectionSelections from "./SectionSelections";
+import Snippet from "./Snippet";
 
 import { fetchSearchRequest, showDatasheetSection } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
@@ -37,6 +42,19 @@ const styles = theme => ({
     height: 5,
     justifyContent: "center",
     alignItems: "center"
+  },
+  snippetContainer: {
+    paddingTop: 5,
+    paddingBottom: 10
+  },
+  padder: {
+    margin: 5
+  },
+  padLeft: {
+    paddingLeft: theme.spacing.unit * 2
+  },
+  padRight: {
+    paddingRight: theme.spacing.unit * 2
   }
 });
 
@@ -82,7 +100,6 @@ export const RawResultListCard = ({ t, item, classes }) => {
   const { productId, companyName } = item;
 
   const title = `${productId}: ${companyName}`;
-  const snippet = null;
 
   console.log(item);
 
@@ -98,9 +115,10 @@ export const RawResultListCard = ({ t, item, classes }) => {
             {title}
           </Typography>
         </Button>
-        <Typography className={classes.snippet}>{snippet}</Typography>
-        <ConnectedSectionSelections item={item} />
       </CardContent>
+      <Snippet item={item} />
+      <SectionSelections item={item} />
+      <Padder />
     </Card>
   );
 };
@@ -118,9 +136,8 @@ const ResultListCard = translate()(withStyles(styles)(RawResultListCard));
 export class ResultList extends Component {
   render() {
     const { items, isFetching, hideLoading, classes } = this.props;
-    console.log(isFetching, items);
     if (isFetching && hideLoading) return null;
-    if (isFetching) {
+    if (isFetching && (!items || isEmpty(items))) {
       return (
         <div className={classes.loadingContainer}>
           <LinearProgress />
@@ -129,8 +146,10 @@ export class ResultList extends Component {
     }
     if (!items || !Array.isArray(items)) return null;
     return (
-      <div>
-        <div className={classes.loadingContainer} />
+      <div className={classes.root}>
+        <div className={classes.loadingContainer}>
+          {isFetching && <LinearProgress />}
+        </div>
         <div>
           {items.map((item, index) => (
             <ResultListCard key={item.id || index} item={item} />

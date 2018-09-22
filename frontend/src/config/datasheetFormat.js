@@ -1,5 +1,58 @@
 export const datasheetFormat = {
   translationKeyPrefix: "datasheet",
+  oldSnippetPreview: [
+    [
+      {
+        name: "fsg",
+        dataKey: ["fsg", "fsgString"],
+        betweenValues: " - "
+      }
+    ],
+    [
+      {
+        name: "company",
+        dataKey: "companyName"
+      }
+    ]
+  ],
+  snippetPreview: [
+    {
+      name: "fsg",
+      dataKey: "fsg",
+      betweenValues: " - ",
+      ariaDataKey: ["fsg", "fsgString"]
+    },
+    {
+      name: "fsc",
+      dataKey: "fsc",
+      betweenValues: " - ",
+      ariaDataKey: ["fsc", "fscString"]
+    },
+    {
+      name: "niin",
+      dataKey: "niin"
+    }
+  ],
+  snippetProperties: [
+    {
+      name: "niin",
+      dataKey: "niin"
+    },
+    {
+      name: "company",
+      dataKey: "companyName"
+    },
+    {
+      name: "fsg",
+      dataKey: ["fsg", "fsgString"],
+      betweenValues: " - "
+    },
+    {
+      name: "fsc",
+      dataKey: ["fsc", "fscString"],
+      betweenValues: " - "
+    }
+  ],
   sections: [
     {
       name: "AcidentalRelease",

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import Snackbar from "@material-ui/core/Snackbar";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -15,10 +14,16 @@ import { fetchSearchRequest } from "../redux/actions";
 import { getSearchFormValues } from "../redux/selectors";
 import ResultList from "./ResultList";
 import QuickAnswerSection from "./QuickAnswerSection";
+import DatasheetSectionDialog from "./DatasheetSectionDialog";
+import NotificationHandler from "./NotificationHandler";
+
+import config from "../config";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: (config.devEnv && console.log("Used theme: ", theme)) || 1,
+    backgroundColor: theme.palette.background.main,
+    minHeight: "100vh"
   },
   details: {
     flex: 1,
@@ -89,10 +94,6 @@ export class Screen extends Component {
     });
   };
 
-  handleClose = () => {
-    this.setState({ error: null });
-  };
-
   submit = values => {
     const { fetchSearchRequest } = this.props;
     fetchSearchRequest(values);
@@ -125,7 +126,7 @@ export class Screen extends Component {
 
   render() {
     const { values, classes, t } = this.props;
-    const { error, options, quickAnswer } = this.state;
+    const { options, quickAnswer } = this.state;
 
     const canSubmit = !!values;
 
@@ -163,16 +164,8 @@ export class Screen extends Component {
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
         </Grid>
-        <Snackbar
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          open={!!error}
-          onClose={this.handleClose}
-          SnackbarContentProps={{
-            "aria-describedby": "message-id"
-          }}
-          //TODO replace displayed tex with the message from the error object.
-          message={<span id="message-id">{t("failure")}</span>}
-        />
+        <DatasheetSectionDialog />
+        <NotificationHandler />
       </div>
     );
   }

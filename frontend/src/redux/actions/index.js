@@ -32,3 +32,19 @@ export const showDatasheetSection = (datasheet, section) => ({
   type: SHOW_DATASHEET_SECTION,
   payload: { datasheet, section }
 });
+
+export const CLOSE_DATASHEET_SECTION = "MSS/CLOSE_DATASHEET_SECTION";
+export const closeDatasheetSection = () => ({
+  type: CLOSE_DATASHEET_SECTION
+});
+
+export const SHOW_DATASHEET = "MSS/SHOW_DATASHEET";
+export const showDatasheet = datasheet => ({
+  type: SHOW_DATASHEET,
+  payload: { datasheet }
+});
+
+export const CLOSE_DATASHEET = "MSS/CLOSE_DATASHEET";
+export const closeDatasheet = () => ({
+  type: CLOSE_DATASHEET
+});
