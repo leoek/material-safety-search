@@ -3,6 +3,13 @@ Search engine for Material Safety Datasheets based on Solr
 
 ## [Live Demo](https://mss.leoek.tech)
 
+## Status
+
+| Backend | Frontend | Deployment |
+|---|---|---|
+|   |   |   |
+| [![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search_server-build)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search_server-build/) | [![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search-frontend-build)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search-frontend-build/) | [![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search-staging-deploy)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search-staging-deploy/) |
+
 ## How to Run
 **NOTE**: Read the following section carefully! 
 

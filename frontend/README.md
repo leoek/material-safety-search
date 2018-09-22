@@ -1,11 +1,11 @@
 ## Status
 
-[![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=swt/verver-client)](https://ci.net1.leoek.eu/job/swt/verver-client)
+[![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search-frontend-build)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search-frontend-build/)
 
 ## Run
 
-- Latest stable release: `docker run -p 80:80 leoek/swt-webclient:stable`
-- Latest build: `docker run -p 80:80 leoek/swt-webclient:next`
+- Latest stable release: `docker run -p 80:80 leoek/private:frontend-stable`
+- Latest build: `docker run -p 80:80 materialsafetysearch/private:frontend-next`
 
 # Building and Running the App
 
