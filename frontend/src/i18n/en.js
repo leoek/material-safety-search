@@ -17,6 +17,10 @@ export default {
       fsg: "FSG",
       FirstAid: "First Aid Instructions",
       FireFighting: "Firefighting Instructions"
+    },
+    datasheetsectiondialog: {
+      close: "Close",
+      show_dataset: "Show Complete Dataset"
     }
   },
   show_more: "Show More"

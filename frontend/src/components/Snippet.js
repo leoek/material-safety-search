@@ -55,30 +55,6 @@ const getSnippetElementValue = item => (element, keyName = "dataKey") => {
   return content;
 };
 
-const RawSnippetRow = ({ row, item, t }) => {
-  const content = getSnippetElementValue(item)(row);
-  return (
-    <TableRow>
-      <TableCell>
-        <Typography>
-          {t(`${datasheetFormat.translationKeyPrefix}.${row.name}`)}
-        </Typography>
-      </TableCell>
-      <TableCell>
-        <Typography>{content}</Typography>
-      </TableCell>
-    </TableRow>
-  );
-};
-
-RawSnippetRow.propTypes = {
-  row: PropTypes.object.isRequired,
-  item: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
-};
-
-const SnippetRow = translate()(RawSnippetRow);
-
 const OldRawSnippetPreviewRow = ({ item, t, row }) => {
   const generator = getSnippetElementValue(item);
   return (
@@ -142,6 +118,44 @@ RawSnippetPreview.propTypes = {
 
 const SnippetPreview = withStyles(styles)(RawSnippetPreview);
 
+const RawSnippetRow = ({ row, item, t }) => {
+  const content = getSnippetElementValue(item)(row);
+  return (
+    <TableRow>
+      <TableCell>
+        <Typography>
+          {t(`${datasheetFormat.translationKeyPrefix}.${row.name}`)}
+        </Typography>
+      </TableCell>
+      <TableCell>
+        <Typography>{content}</Typography>
+      </TableCell>
+    </TableRow>
+  );
+};
+
+RawSnippetRow.propTypes = {
+  row: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired
+};
+
+const SnippetRow = translate()(RawSnippetRow);
+
+export const SnippetTable = ({ item }) => (
+  <Table>
+    <TableBody>
+      {datasheetFormat.snippetProperties.map(row => (
+        <SnippetRow key={row.name} row={row} item={item} />
+      ))}
+    </TableBody>
+  </Table>
+);
+
+SnippetTable.propTypes = {
+  item: PropTypes.object.isRequired
+};
+
 export const Snippet = props => {
   const { item, classes } = props;
   return (
@@ -150,13 +164,7 @@ export const Snippet = props => {
       moveContentUp
     >
       <div className={classnames([classes.padLeft, classes.padRight])}>
-        <Table>
-          <TableBody>
-            {datasheetFormat.snippetProperties.map(row => (
-              <SnippetRow key={row.name} row={row} item={item} />
-            ))}
-          </TableBody>
-        </Table>
+        <SnippetTable item={item} />
       </div>
     </ExpandableCardContent>
   );
