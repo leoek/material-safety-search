@@ -49,11 +49,8 @@ public class DataSheetService {
      */
     public PageResponse<DataSheetDocument> generalSearch(Pageable p, GeneralTerm generalTerm) {
         String searchTerm = generalTerm.getSearchTerm();
+        if (searchTerm == null) searchTerm = "";
         log.info("Search term: \"" + searchTerm + "\"");
-
-        /*if (searchTerm.isEmpty()) {
-            return dataSheetRepository.getAllDocuments(p);
-        }*/
 
         //Regex
         AdvancedTerm advancedTerm = new AdvancedTerm();
@@ -144,6 +141,10 @@ public class DataSheetService {
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
 
+        if (criteria.isEmpty()) {
+            criteria.add("*:* && docType:datasheet");
+        }
+
         return dataSheetRepository.generalSearchFacet(criteria, filters, p, facetForFsc);
     }
 
@@ -155,14 +156,42 @@ public class DataSheetService {
      * @param advancedTerm {@link AdvancedTerm} object representing an advanced query term with multiple fields
      * @return Page of result documents
      */
-    public FacetPage<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
+    public PageResponse<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
         String query = advancedTermToQuery(advancedTerm);
+
+        if (query.isEmpty()) {
+            query = "*:* && docType:datasheet";
+        }
+
         List<String> filters = advancedTermToFilterQueries(advancedTerm);
+
+
+
+        Boolean facetForFsc = false;
+        if (advancedTerm.getFsgFacet() != null) {
+            if (advancedTerm.getFsgFacet().matches("\\d{2}")) {
+                //Now facet for FSCs instead
+                facetForFsc = true;
+                //And filter for FSG
+                filters.add("fsg:" + advancedTerm.getFsgFacet());
+            } else {
+                log.error("fsgFacet in supplied GeneralTerm object is not of length 2! Will ignore fsgFacet.");
+            }
+        }
+        if (advancedTerm.getFscFacet() != null) {
+            if (advancedTerm.getFscFacet().matches("\\d{4}")) {
+                facetForFsc = true;
+                //Add filter for FSC
+                filters.add("fsc:" + advancedTerm.getFscFacet());
+            } else {
+                log.error("fscFacet in supplied GeneralTerm object is not of length 4! Will ignore fscFacet.");
+            }
+        }
 
         log.info("Query: " + query);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.advancedSearchFacet(query, filters, p);
+        return dataSheetRepository.advancedSearchFacet(query, filters, p, facetForFsc);
     }
 
     public List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {

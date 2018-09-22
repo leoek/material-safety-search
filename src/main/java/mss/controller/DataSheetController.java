@@ -38,11 +38,10 @@ public class DataSheetController {
         return dataSheetService.generalSearch(p, generalTerm);
     }
 
-    /*@RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
+    @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
-        FacetPage<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
-        return new PageResponse<>(result);
-    }*/
+        return dataSheetService.advancedSearch(p, advancedTerm);
+    }
 
     @RequestMapping(path = "/suggest", method = RequestMethod.GET)
     public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {

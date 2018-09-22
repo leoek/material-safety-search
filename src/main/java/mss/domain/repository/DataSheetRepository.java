@@ -12,6 +12,4 @@ import java.util.regex.Pattern;
 
 @Repository
 public interface DataSheetRepository extends SolrCrudRepository<DataSheetDocument, Long>, CustomDataSheetRepository{
-    @Query(value = "*:* && docType:datasheet", fields = {"*", "[child parentFilter=docType:datasheet]"})
-    public Page<DataSheetDocument> getAllDocuments(Pageable pageable);
 }
