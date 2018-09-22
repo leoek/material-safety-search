@@ -17,10 +17,13 @@ import QuickAnswerSection from "./QuickAnswerSection";
 import DatasheetSectionDialog from "./DatasheetSectionDialog";
 import NotificationHandler from "./NotificationHandler";
 
+import config from "../config";
+
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: "#d8d8d8"
+    flexGrow: (config.devEnv && console.log("Used theme: ", theme)) || 1,
+    backgroundColor: theme.palette.background.main,
+    minHeight: "100vh"
   },
   details: {
     flex: 1,

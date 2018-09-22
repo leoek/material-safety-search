@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
+import isEmpty from "lodash/isEmpty";
 
 import Padder from "./common/Padder";
 import SectionSelections from "./SectionSelections";
@@ -92,7 +93,7 @@ export class ResultList extends Component {
   render() {
     const { items, isFetching, hideLoading, classes } = this.props;
     if (isFetching && hideLoading) return null;
-    if (isFetching) {
+    if (isFetching && (!items || isEmpty(items))) {
       return (
         <div className={classes.loadingContainer}>
           <LinearProgress />
@@ -101,8 +102,10 @@ export class ResultList extends Component {
     }
     if (!items || !Array.isArray(items)) return null;
     return (
-      <div>
-        <div className={classes.loadingContainer} />
+      <div className={classes.root}>
+        <div className={classes.loadingContainer}>
+          {isFetching && <LinearProgress />}
+        </div>
         <div>
           {items.map((item, index) => (
             <ResultListCard key={item.id || index} item={item} />
