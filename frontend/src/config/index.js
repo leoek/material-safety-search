@@ -1,3 +1,5 @@
+import datasheetFormat, { ingredientFormat } from "./datasheetFormat";
+
 const devEnv = process.env.NODE_ENV === "development";
 
 const devConfig = {
@@ -16,7 +18,9 @@ export const baseConfig = {
   },
   DEFAULTS: {
     pageSize: 10
-  }
+  },
+  datasheetFormat,
+  ingredientFormat
 };
 
 export const config = {
