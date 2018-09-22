@@ -17,10 +17,6 @@ import Snippet from "./Snippet";
 import { fetchSearchRequest } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 
-import config from "../config";
-
-const { datasheetFormat } = config;
-
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -62,8 +58,6 @@ export const RawResultListCard = ({ t, item, classes }) => {
 
   const title = `${productId}: ${companyName}`;
 
-  console.log(item);
-
   return (
     <Card className={classes.paper}>
       <CardContent>
@@ -97,7 +91,6 @@ const ResultListCard = translate()(withStyles(styles)(RawResultListCard));
 export class ResultList extends Component {
   render() {
     const { items, isFetching, hideLoading, classes } = this.props;
-    console.log(isFetching, items);
     if (isFetching && hideLoading) return null;
     if (isFetching) {
       return (

@@ -94,6 +94,7 @@ export const SectionSelections = ({
             />
           );
         }
+        return null;
       })}
   </div>
 );

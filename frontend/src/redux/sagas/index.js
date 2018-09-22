@@ -6,7 +6,7 @@ import {
   fetchSearchSuccess,
   fetchSearchFailure
 } from "../actions";
-import { get, post } from "../../lib/api";
+import { post } from "../../lib/api";
 import { config } from "../../config";
 
 export function* reduxRehydrateSaga(action) {
