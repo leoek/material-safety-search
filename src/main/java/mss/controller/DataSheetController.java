@@ -40,7 +40,7 @@ public class DataSheetController {
      * @return Formatted page of DataSheetDocuments
      */
     @RequestMapping(path = "/search", method = RequestMethod.POST)
-    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody GeneralTerm generalTerm) {
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody(required=false) GeneralTerm generalTerm) {
         return dataSheetService.generalSearch(p, generalTerm);
     }
 

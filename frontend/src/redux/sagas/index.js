@@ -6,7 +6,7 @@ import {
   fetchSearchSuccess,
   fetchSearchFailure
 } from "../actions";
-import { get } from "../../lib/api";
+import { get, post } from "../../lib/api";
 import { config } from "../../config";
 
 export function* reduxRehydrateSaga(action) {
@@ -32,19 +32,22 @@ export function* fetchSearchSaga(action) {
   const { payload = {} } = action;
   const { query, page = 0, size = config.DEFAULTS.pageSize } = payload;
   const parameters = {
-    s: query,
     page,
     size
   };
-  const response = yield get({
+  const data = {
+    searchTerm: query
+  };
+  const response = yield post({
     endpoint: "search",
-    parameters
+    parameters,
+    data
   });
-  const data = yield response.json().catch(handleResponseJsonError);
+  const reponseData = yield response.json().catch(handleResponseJsonError);
   if (response.ok) {
-    yield put(fetchSearchSuccess(data));
+    yield put(fetchSearchSuccess(reponseData));
   } else {
-    yield put(fetchSearchFailure(data));
+    yield put(fetchSearchFailure(reponseData));
   }
 }
 
