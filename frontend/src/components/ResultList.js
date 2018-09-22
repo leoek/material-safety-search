@@ -10,8 +10,12 @@ import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 
-import { fetchSearchRequest } from "../redux/actions";
+import { fetchSearchRequest, showDatasheetSection } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
+
+import config from "../config";
+
+const { datasheetFormat } = config;
 
 const styles = theme => ({
   root: {
@@ -27,14 +31,60 @@ const styles = theme => ({
   },
   link: {
     fontSize: 10
+  },
+  loadingContainer: {
+    display: "block",
+    height: 5,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
+
+export const SectionSelectButton = ({
+  t,
+  section,
+  label,
+  showDatasheetSection
+}) => (
+  <Button onClick={() => showDatasheetSection(section)}>
+    <Typography>{t(label)}</Typography>
+  </Button>
+);
+
+export const TranslatedSectionSelectButton = translate()(SectionSelectButton);
+
+export const SectionSelections = ({ item, showDatasheetSection }) => (
+  <div>
+    {datasheetFormat.sections.map(section => {
+      const content = item[section.dataKey];
+      if (content) {
+        return (
+          <TranslatedSectionSelectButton
+            section={section}
+            key={section.name}
+            label={`${datasheetFormat.translationKeyPrefix}.${section.name}`}
+            showDatasheetSection={section =>
+              showDatasheetSection(item, section)
+            }
+          />
+        );
+      }
+    })}
+  </div>
+);
+
+export const ConnectedSectionSelections = connect(
+  null,
+  { showDatasheetSection }
+)(SectionSelections);
 
 export const RawResultListCard = ({ t, item, classes }) => {
   const { productId, companyName } = item;
 
   const title = `${productId}: ${companyName}`;
   const snippet = null;
+
+  console.log(item);
 
   return (
     <Card className={classes.paper}>
@@ -49,6 +99,7 @@ export const RawResultListCard = ({ t, item, classes }) => {
           </Typography>
         </Button>
         <Typography className={classes.snippet}>{snippet}</Typography>
+        <ConnectedSectionSelections item={item} />
       </CardContent>
     </Card>
   );
@@ -66,11 +117,12 @@ const ResultListCard = translate()(withStyles(styles)(RawResultListCard));
 
 export class ResultList extends Component {
   render() {
-    const { items, isFetching } = this.props;
+    const { items, isFetching, hideLoading, classes } = this.props;
     console.log(isFetching, items);
+    if (isFetching && hideLoading) return null;
     if (isFetching) {
       return (
-        <div>
+        <div className={classes.loadingContainer}>
           <LinearProgress />
         </div>
       );
@@ -78,9 +130,12 @@ export class ResultList extends Component {
     if (!items || !Array.isArray(items)) return null;
     return (
       <div>
-        {items.map((item, index) => (
-          <ResultListCard key={item.id || index} item={item} />
-        ))}
+        <div className={classes.loadingContainer} />
+        <div>
+          {items.map((item, index) => (
+            <ResultListCard key={item.id || index} item={item} />
+          ))}
+        </div>
       </div>
     );
   }
