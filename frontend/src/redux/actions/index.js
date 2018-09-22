@@ -32,3 +32,9 @@ export const showDatasheetSection = (datasheet, section) => ({
   type: SHOW_DATASHEET_SECTION,
   payload: { datasheet, section }
 });
+
+export const SHOW_DATASHEET = "MSS/SHOW_DATASHEET";
+export const showDatasheet = datasheet => ({
+  type: SHOW_DATASHEET,
+  payload: { datasheet }
+});

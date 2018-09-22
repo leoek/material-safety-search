@@ -10,7 +10,11 @@ import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 
-import { fetchSearchRequest, showDatasheetSection } from "../redux/actions";
+import Padder from "./common/Padder";
+import SectionSelections from "./SectionSelections";
+import Snippet from "./Snippet";
+
+import { fetchSearchRequest } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 
 import config from "../config";
@@ -37,52 +41,26 @@ const styles = theme => ({
     height: 5,
     justifyContent: "center",
     alignItems: "center"
+  },
+  snippetContainer: {
+    paddingTop: 5,
+    paddingBottom: 10
+  },
+  padder: {
+    margin: 5
+  },
+  padLeft: {
+    paddingLeft: theme.spacing.unit * 2
+  },
+  padRight: {
+    paddingRight: theme.spacing.unit * 2
   }
 });
-
-export const SectionSelectButton = ({
-  t,
-  section,
-  label,
-  showDatasheetSection
-}) => (
-  <Button onClick={() => showDatasheetSection(section)}>
-    <Typography>{t(label)}</Typography>
-  </Button>
-);
-
-export const TranslatedSectionSelectButton = translate()(SectionSelectButton);
-
-export const SectionSelections = ({ item, showDatasheetSection }) => (
-  <div>
-    {datasheetFormat.sections.map(section => {
-      const content = item[section.dataKey];
-      if (content) {
-        return (
-          <TranslatedSectionSelectButton
-            section={section}
-            key={section.name}
-            label={`${datasheetFormat.translationKeyPrefix}.${section.name}`}
-            showDatasheetSection={section =>
-              showDatasheetSection(item, section)
-            }
-          />
-        );
-      }
-    })}
-  </div>
-);
-
-export const ConnectedSectionSelections = connect(
-  null,
-  { showDatasheetSection }
-)(SectionSelections);
 
 export const RawResultListCard = ({ t, item, classes }) => {
   const { productId, companyName } = item;
 
   const title = `${productId}: ${companyName}`;
-  const snippet = null;
 
   console.log(item);
 
@@ -98,9 +76,10 @@ export const RawResultListCard = ({ t, item, classes }) => {
             {title}
           </Typography>
         </Button>
-        <Typography className={classes.snippet}>{snippet}</Typography>
-        <ConnectedSectionSelections item={item} />
       </CardContent>
+      <Snippet item={item} />
+      <SectionSelections item={item} />
+      <Padder />
     </Card>
   );
 };

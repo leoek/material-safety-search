@@ -18,7 +18,8 @@ import QuickAnswerSection from "./QuickAnswerSection";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: "#d8d8d8"
   },
   details: {
     flex: 1,
