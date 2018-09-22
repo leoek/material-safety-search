@@ -5,7 +5,6 @@ import java.util.List;
 
 public class AdvancedTerm {
     private String productId;
-    private String fsc;
     private String fscString;
     private String fsgString;
     private String niin;
@@ -13,6 +12,10 @@ public class AdvancedTerm {
     private Date beginDate;
     private Date endDate;
     private List<AdvancedTermIngredient> ingredients;
+    public String fsgFacet;
+    public String fscFacet;
+    public Boolean fuzzy;
+    public Boolean wholeDoc;
 
     public String getProductId() {
         return productId;
@@ -20,14 +23,6 @@ public class AdvancedTerm {
 
     public void setProductId(String productId) {
         this.productId = productId;
-    }
-
-    public String getFsc() {
-        return fsc;
-    }
-
-    public void setFsc(String fsc) {
-        this.fsc = fsc;
     }
 
     public String getFscString() {
@@ -84,5 +79,37 @@ public class AdvancedTerm {
 
     public void setIngredients(List<AdvancedTermIngredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getFsgFacet() {
+        return fsgFacet;
+    }
+
+    public void setFsgFacet(String fsgFacet) {
+        this.fsgFacet = fsgFacet;
+    }
+
+    public String getFscFacet() {
+        return fscFacet;
+    }
+
+    public void setFscFacet(String fscFacet) {
+        this.fscFacet = fscFacet;
+    }
+
+    public Boolean getFuzzy() {
+        return fuzzy;
+    }
+
+    public void setFuzzy(Boolean fuzzy) {
+        this.fuzzy = fuzzy;
+    }
+
+    public Boolean getWholeDoc() {
+        return wholeDoc;
+    }
+
+    public void setWholeDoc(Boolean wholeDoc) {
+        this.wholeDoc = wholeDoc;
     }
 }

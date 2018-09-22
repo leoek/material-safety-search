@@ -48,3 +48,13 @@ export const get = async request => {
     headers
   }).catch(handleFetchErrors);
 };
+
+export const post = async request => {
+  const { endpoint, parameters, data } = request;
+  const query = getQueryFromParams(parameters);
+  return fetch(`${config.apiBaseUrl}/${endpoint}?${query}`, {
+    method: "post",
+    body: JSON.stringify(data),
+    headers: getHeaders()
+  }).catch(handleFetchErrors);
+};

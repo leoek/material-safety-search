@@ -3,13 +3,13 @@ package mss.service;
 import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.AdvancedTermIngredient;
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.entity.GeneralTerm;
 import mss.domain.repository.DataSheetRepository;
+import mss.domain.responses.PageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -40,16 +40,14 @@ public class DataSheetService {
      * This allows users to use the General Search for exact document retrieval without needing to pay attention to detailed formatting.
      * Less strict than {@link #advancedSearch(Pageable, AdvancedTerm)} as recognized numbers are aggregated in a disjunctive term.
      *
-     * @param p          Spring {@link Pageable} object
-     * @param searchTerm Term to be analyzed and turned into a query
+     * @param p           Spring {@link Pageable} object
+     * @param generalTerm Term object to be analyzed and turned into a query
      * @return Page of result documents
      */
-    public Page<DataSheetDocument> generalSearch(Pageable p, String searchTerm) {
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, GeneralTerm generalTerm) {
+        String searchTerm = generalTerm.getSearchTerm();
+        if (searchTerm == null) searchTerm = "";
         log.info("Search term: \"" + searchTerm + "\"");
-
-        if (searchTerm.isEmpty()) {
-            return dataSheetRepository.getAllDocuments(p);
-        }
 
         //Regex
         AdvancedTerm advancedTerm = new AdvancedTerm();
@@ -79,11 +77,11 @@ public class DataSheetService {
 
         //FSC (only first match, because of building advancedTerm object)
         //Regex looks for common demarcations ( .,/) between Terms for higher accuracy
-        Pattern p3 = Pattern.compile("(?:^|[ .,\\/]+)(!?[0-9]{4})(?:[ .,\\/]+|$)");
+        Pattern p3 = Pattern.compile("(?:^|[ .,/]+)(!?[0-9]{4})(?:[ .,/]+|$)");
         Matcher m3 = p3.matcher(searchTerm);
         if (m3.find()) {
             log.info("Found FSC: " + m3.group(1));
-            advancedTerm.setFsc(m3.group(1));
+            advancedTerm.setFscFacet(m3.group(1));
 
             searchTerm = searchTerm.replace(m3.group(1), " ");
         }
@@ -100,7 +98,12 @@ public class DataSheetService {
         }
 
         searchTerm = searchTerm.trim().replaceAll("\\s{2,}", " ");
+
         if (!searchTerm.isEmpty()) {
+            //Enable fuzzy search if desired
+            if (generalTerm.getFuzzy()){
+                searchTerm = fuzzItUp(searchTerm);
+            }
             criteria.add("productId:(" + searchTerm + ") || " +
                     "companyName:(" + searchTerm + ") || " +
                     "fscString:(" + searchTerm + ") || " +
@@ -115,49 +118,116 @@ public class DataSheetService {
             }
         }
 
+        //Determine faceting & filter results if wished
+        Boolean facetForFsc = false;
+        if (generalTerm.getFsgFacet() != null) {
+            if (generalTerm.getFsgFacet().matches("\\d{2}")) {
+                //Now facet for FSCs instead
+                facetForFsc = true;
+                //And filter for FSG
+                filters.add("fsg:" + generalTerm.getFsgFacet());
+            } else {
+                log.error("fsgFacet in supplied GeneralTerm object is not of length 2! Will ignore fsgFacet.");
+            }
+        }
+        if (generalTerm.getFscFacet() != null) {
+            if (generalTerm.getFscFacet().matches("\\d{4}")) {
+                facetForFsc = true;
+                //Add filter for FSC
+                filters.add("fsc:" + generalTerm.getFscFacet());
+            } else {
+                log.error("fscFacet in supplied GeneralTerm object is not of length 4! Will ignore fscFacet.");
+            }
+        }
+
+        if (criteria.isEmpty()) {
+            criteria.add("*:* && docType:datasheet");
+        }
+
         log.info("Query criteria: " + criteria);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.generalSearch(criteria, filters, p);
+        return dataSheetRepository.facetedSearch(criteria, filters, p, facetForFsc);
     }
 
     /**
      * Turns the given {@link AdvancedTerm} object into SolrTemplate-digestable information and triggers a query for paged results.
-     * More strict than {@link #generalSearch(Pageable, String)} as it requires all specified search terms to be present in their respective fields.
+     * More strict than {@link #generalSearch(Pageable, GeneralTerm)} as it requires all specified search terms to be present in their respective fields.
+     *
      * @param p            Spring {@link Pageable} object
      * @param advancedTerm {@link AdvancedTerm} object representing an advanced query term with multiple fields
      * @return Page of result documents
      */
-    public Page<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
+    public PageResponse<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
+        //Generate Query
         String query = advancedTermToQuery(advancedTerm);
+        if (query.isEmpty()) query = "*:* && docType:datasheet";
+
+        //Generate Filters
         List<String> filters = advancedTermToFilterQueries(advancedTerm);
+
+        //Determine faceting & filter results if wished
+        Boolean facetForFsc = false;
+        if (advancedTerm.getFsgFacet() != null) {
+            if (advancedTerm.getFsgFacet().matches("\\d{2}")) {
+                //Now facet for FSCs instead
+                facetForFsc = true;
+                //And filter for FSG
+                filters.add("fsg:" + advancedTerm.getFsgFacet());
+            } else {
+                log.error("fsgFacet in supplied GeneralTerm object is not of length 2! Will ignore fsgFacet. (\"" + advancedTerm.getFscFacet() + "\")");
+            }
+        }
+        if (advancedTerm.getFscFacet() != null) {
+            if (advancedTerm.getFscFacet().matches("\\d{4}")) {
+                facetForFsc = true;
+                //Add filter for FSC
+                filters.add("fsc:" + advancedTerm.getFscFacet());
+            } else {
+                log.error("fscFacet in supplied GeneralTerm object is not of length 4! Will ignore fscFacet. (\"" + advancedTerm.getFscFacet() + "\")");
+            }
+        }
 
         log.info("Query: " + query);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.advancedSearch(query, filters, p);
+        List<String> queryAsList = new ArrayList<>();
+        queryAsList.add(query);
+
+        return dataSheetRepository.facetedSearch(queryAsList, filters, p, facetForFsc);
     }
 
-    public List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {
+    /**
+     * Turns an {@link AdvancedTerm} object into a list of filter queries for filtering by ingredient information.
+     *
+     * @param advancedTerm {@link AdvancedTerm} object to extract filter queries from
+     * @return List of filter queries as Strings. May be empty.
+     */
+    private List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {
         List<String> filters = new ArrayList<>();
         //Ingredients
         List<AdvancedTermIngredient> ingredients = advancedTerm.getIngredients();
         if (ingredients != null) {
             for (AdvancedTermIngredient ingredient : ingredients) {
-                if (ingredient.getCas() != null) {
+                if (ingredient.getCas() != null && !ingredient.getCas().isEmpty()) {
                     String cas = ingredient.getCas();
-                    if (cas.startsWith("!")){
-                        log.info("Negation of CAS numbers currently not supported.");
-                        cas = cas.substring(1);
+                    if (cas.matches("(!?[0-9]{2,7}-[0-9]{2}-[0-9])")) {
+                        if (cas.startsWith("!")) {
+                            log.info("Negation of CAS numbers currently not supported.");
+                            cas = cas.substring(1);
+                        }
+                        filters.add("{!parent which=docType:datasheet}cas:(" + cas + ")");
+                    } else {
+                        log.info("Supplied CAS number has wrong format. Ignoring CAS. (\"" + cas + "\")");
                     }
-                    filters.add("{!parent which=docType:datasheet}cas:(" + cas + ")");
                 }
-                if (ingredient.getIngredName() != null) {
+                if (ingredient.getIngredName() != null && !ingredient.getIngredName().isEmpty()) {
                     String ingredName = ingredient.getIngredName();
-                    if (ingredName.startsWith("!")){
+                    if (ingredName.startsWith("!")) {
                         log.info("Negation of ingredient names currently not supported.");
                         ingredName = ingredName.substring(1);
                     }
+                    ingredName = fuzzItUp(ingredName);
                     filters.add("{!parent which=docType:datasheet}ingredName:(" + ingredName + ")");
                 }
             }
@@ -166,11 +236,19 @@ public class DataSheetService {
         return filters;
     }
 
-    public String advancedTermToQuery(AdvancedTerm advancedTerm) {
+    /**
+     * Turns an {@link AdvancedTerm} object into a query string.
+     * Note that only fields with text content will queried fuzzy.
+     *
+     * @param advancedTerm {@link AdvancedTerm} object to extract information from
+     * @return Query string
+     */
+    private String advancedTermToQuery(AdvancedTerm advancedTerm) {
         List<String> queryList = new ArrayList<>();
 
         String productId = advancedTerm.getProductId();
-        if (productId != null) {
+        if (productId != null && !productId.isEmpty()) {
+            if (advancedTerm.getFuzzy()) productId = fuzzItUp(productId);
             if (productId.startsWith("!")) {
                 queryList.add("(!productId:(" + productId.substring(1) + ") && docType:datasheet)");
             } else {
@@ -178,8 +256,8 @@ public class DataSheetService {
             }
         }
 
-        String fsc = advancedTerm.getFsc();
-        if (fsc != null) {
+        String fsc = advancedTerm.getFscFacet();
+        if (fsc != null && !fsc.isEmpty()) {
             if (fsc.startsWith("!")) {
                 queryList.add("(!fsc:(" + fsc.substring(1) + ") && docType:datasheet)");
             } else {
@@ -188,7 +266,8 @@ public class DataSheetService {
         }
 
         String fscString = advancedTerm.getFscString();
-        if (fscString != null) {
+        if (fscString != null && !fscString.isEmpty()) {
+            if (advancedTerm.getFuzzy()) fscString = fuzzItUp(fscString);
             if (fscString.startsWith("!")) {
                 queryList.add("(!fscString:(" + fscString.substring(1) + ") && docType:datasheet)");
             } else {
@@ -197,7 +276,8 @@ public class DataSheetService {
         }
 
         String fsgString = advancedTerm.getFsgString();
-        if (fsgString != null) {
+        if (fsgString != null && !fsgString.isEmpty()) {
+            if (advancedTerm.getFuzzy()) fsgString = fuzzItUp(fsgString);
             if (fsgString.startsWith("!")) {
                 queryList.add("(!fsgString:(" + fsgString.substring(1) + ") && docType:datasheet)");
             } else {
@@ -206,7 +286,7 @@ public class DataSheetService {
         }
 
         String niin = advancedTerm.getNiin();
-        if (niin != null) {
+        if (niin != null && !niin.isEmpty()) {
             if (niin.startsWith("!")) {
                 queryList.add("(!niin:(" + niin.substring(1) + ") && docType:datasheet)");
             } else {
@@ -215,7 +295,8 @@ public class DataSheetService {
         }
 
         String companyName = advancedTerm.getCompanyName();
-        if (companyName != null) {
+        if (companyName != null && !companyName.isEmpty()) {
+            if (advancedTerm.getFuzzy()) companyName = fuzzItUp(companyName);
             if (companyName.startsWith("!")) {
                 queryList.add("(!companyName:(" + companyName.substring(1) + ") && docType:datasheet)");
             } else {
@@ -237,6 +318,16 @@ public class DataSheetService {
         }
 
         return queryList.stream().collect(Collectors.joining(" && "));
+    }
+
+    /**
+     * Makes a given string fuzzy, i.e. inserts "~1" into the query
+     * @param string
+     * @return
+     */
+    private String fuzzItUp(String string){
+        //Editing distance must be one of {~0, ~1, ~2}
+        return string.trim().replaceAll("\\s{2,}", " ").replaceAll(" ", "~1 ").concat("~1");
     }
 
 

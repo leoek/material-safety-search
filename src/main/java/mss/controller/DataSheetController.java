@@ -2,13 +2,14 @@ package mss.controller;
 
 import mss.domain.entity.AdvancedTerm;
 import mss.domain.entity.DataSheetDocument;
+import mss.domain.entity.GeneralTerm;
 import mss.domain.entity.Suggestions;
 import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
 import mss.service.SuggestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,21 +32,32 @@ public class DataSheetController {
         this.suggestService = suggestService;
     }
 
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestParam String s) {
-        Page<DataSheetDocument> result = dataSheetService.generalSearch(p, s);
-        return new PageResponse<>(result);
+    /**
+     * Endpoint for simple search. See Swagger file for information about the API.
+     *
+     * @param p
+     * @param generalTerm
+     * @return Formatted page of DataSheetDocuments
+     */
+    @RequestMapping(path = "/search", method = RequestMethod.POST)
+    public PageResponse<DataSheetDocument> generalSearch(Pageable p, @RequestBody(required=false) GeneralTerm generalTerm) {
+        return dataSheetService.generalSearch(p, generalTerm);
     }
 
+    /**
+     * Endpoint for simple search. See Swagger file for information about the API.
+     *
+     * @param p
+     * @param advancedTerm
+     * @return Formatted page of DataSheetDocuments
+     */
     @RequestMapping(path = "/advancedSearch", method = RequestMethod.POST)
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, @RequestBody AdvancedTerm advancedTerm) {
-        Page<DataSheetDocument> result = dataSheetService.advancedSearch(p, advancedTerm);
-        return new PageResponse<>(result);
+        return dataSheetService.advancedSearch(p, advancedTerm);
     }
 
     @RequestMapping(path = "/suggest", method = RequestMethod.GET)
     public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {
-        Suggestions result = suggestService.createSuggestions(s, field, count);
-        return result;
+        return suggestService.createSuggestions(s, field, count);
     }
 }

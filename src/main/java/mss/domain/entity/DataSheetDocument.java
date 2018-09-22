@@ -1,6 +1,7 @@
 package mss.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.ChildDocument;
 import org.springframework.data.solr.core.mapping.Indexed;
@@ -34,9 +35,20 @@ public class DataSheetDocument{
 
     @Indexed
     private String fscString;
+
+    @Indexed
+    @JsonIgnore
+    private String fscFacet;
+
+    @Indexed
+    private String fsg;
     
     @Indexed
     private String fsgString;
+
+    @Indexed
+    @JsonIgnore
+    private String fsgFacet;
     
     @Indexed
     private String niin;
@@ -155,6 +167,14 @@ public class DataSheetDocument{
 	public void setFscString(String fscString) {
 		this.fscString = fscString;
 	}
+
+    public String getFsg() {
+        return fsg;
+    }
+
+    public void setFsg(String fsg) {
+        this.fsg = fsg;
+    }
 
 	public String getFsgString() {
 		return fsgString;
@@ -324,4 +344,19 @@ public class DataSheetDocument{
         this.rawOther = rawOther;
     }
 
+    public String getFscFacet() {
+        return fscFacet;
+    }
+
+    public void setFscFacet(String fscFacet) {
+        this.fscFacet = fscFacet;
+    }
+
+    public String getFsgFacet() {
+        return fsgFacet;
+    }
+
+    public void setFsgFacet(String fsgFacet) {
+        this.fsgFacet = fsgFacet;
+    }
 }
