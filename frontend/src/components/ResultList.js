@@ -26,10 +26,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1
   },
-  details: {
-    flex: 1,
-    flexDirection: "column"
-  },
   paper: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
@@ -43,10 +39,6 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center"
   },
-  snippetContainer: {
-    paddingTop: 5,
-    paddingBottom: 10
-  },
   padder: {
     margin: 5
   },
@@ -57,44 +49,6 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 2
   }
 });
-
-export const SectionSelectButton = ({
-  t,
-  section,
-  label,
-  showDatasheetSection
-}) => (
-  <Button onClick={() => showDatasheetSection(section)}>
-    <Typography>{t(label)}</Typography>
-  </Button>
-);
-
-export const TranslatedSectionSelectButton = translate()(SectionSelectButton);
-
-export const SectionSelections = ({ item, showDatasheetSection }) => (
-  <div>
-    {datasheetFormat.sections.map(section => {
-      const content = item[section.dataKey];
-      if (content) {
-        return (
-          <TranslatedSectionSelectButton
-            section={section}
-            key={section.name}
-            label={`${datasheetFormat.translationKeyPrefix}.${section.name}`}
-            showDatasheetSection={section =>
-              showDatasheetSection(item, section)
-            }
-          />
-        );
-      }
-    })}
-  </div>
-);
-
-export const ConnectedSectionSelections = connect(
-  null,
-  { showDatasheetSection }
-)(SectionSelections);
 
 export const RawResultListCard = ({ t, item, classes }) => {
   const { productId, companyName } = item;

@@ -147,6 +147,9 @@ export class Screen extends Component {
             <Typography variant="title" color="inherit">
               {t("title")}
             </Typography>
+            <Typography color="inherit">
+              {`${config.version}-${config.buildNumber}`}
+            </Typography>
           </Toolbar>
         </AppBar>
         <Grid container>
