@@ -1,0 +1,16 @@
+---
+#tasks file for role
+- name: delete_containers_and_volumes
+  become: true
+  docker_service:
+    project_src: "{{ mss_path }}/"
+    project_name: "mss-server"
+    state: absent
+    remove_volumes: yes
+
+- name: start_containers
+  become: true
+  docker_service:
+    project_src: "{{ mss_path }}/"
+    project_name: "mss-server"
+    state: present

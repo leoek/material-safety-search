@@ -74,9 +74,17 @@ public class DataSheetImporter {
             fscMap = getFSCMap();
             fsgMap = getFSGMap();
 
-            importFolder(new File(dataSetPath));
-            indexService.addRestStillInCache();
-            log.info("Import done!");
+            File baseFolder = new File(dataSetPath);
+
+            if (baseFolder.exists() && baseFolder.isDirectory() && baseFolder.listFiles() != null && baseFolder.listFiles().length > 0){
+                importFolder(baseFolder);
+                indexService.addRestStillInCache();
+                log.info("Import done!");
+            } else {
+                log.error("Cannot Import Data, Please check that the dataset is available at this location:, {}", dataSetPath);
+                log.error("Exiting. There is no data available.");
+                System.exit(1);
+            }
         } else {
             log.info("Data is already indexed. Wont import again.");
         }
