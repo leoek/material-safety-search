@@ -77,7 +77,7 @@ public class DataSheetService {
 
         //FSC (only first match, because of building advancedTerm object)
         //Regex looks for common demarcations ( .,/) between Terms for higher accuracy
-        Pattern p3 = Pattern.compile("(?:^|[ .,\\/]+)(!?[0-9]{4})(?:[ .,\\/]+|$)");
+        Pattern p3 = Pattern.compile("(?:^|[ .,/]+)(!?[0-9]{4})(?:[ .,/]+|$)");
         Matcher m3 = p3.matcher(searchTerm);
         if (m3.find()) {
             log.info("Found FSC: " + m3.group(1));
@@ -198,7 +198,7 @@ public class DataSheetService {
      * @param advancedTerm {@link AdvancedTerm} object to extract filter queries from
      * @return List of filter queries as Strings. May be empty.
      */
-    public List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {
+    private List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {
         List<String> filters = new ArrayList<>();
         //Ingredients
         List<AdvancedTermIngredient> ingredients = advancedTerm.getIngredients();
@@ -232,7 +232,7 @@ public class DataSheetService {
      * @param advancedTerm {@link AdvancedTerm} object to extract information from
      * @return Query string
      */
-    public String advancedTermToQuery(AdvancedTerm advancedTerm) {
+    private String advancedTermToQuery(AdvancedTerm advancedTerm) {
         List<String> queryList = new ArrayList<>();
 
         String productId = advancedTerm.getProductId();
