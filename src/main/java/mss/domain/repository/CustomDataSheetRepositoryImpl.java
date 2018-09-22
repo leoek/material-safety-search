@@ -37,7 +37,7 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
      * @return
      */
     @Override
-    public PageResponse generalSearchFacet(List<String> criteria, List<String> filters, Pageable pageable, Boolean facetForFsc) {
+    public PageResponse facetedSearch(List<String> criteria, List<String> filters, Pageable pageable, Boolean facetForFsc) {
         //Check facet field
         String facetField = "fsgFacet";
         if(facetForFsc) {
@@ -48,44 +48,6 @@ public class CustomDataSheetRepositoryImpl implements CustomDataSheetRepository 
         for (String c: criteria){
             simpleFacetQuery.addCriteria(new SimpleStringCriteria(c));
         }
-        //Add Filter Queries
-        for (String filter: filters) {
-            simpleFacetQuery.addFilterQuery(new SimpleFilterQuery(new SimpleStringCriteria(filter)));
-        }
-        //Further configuration
-        simpleFacetQuery.addProjectionOnField(new SimpleField("*"));
-        simpleFacetQuery.addProjectionOnField(new SimpleField("[child parentFilter=docType:datasheet]"));
-        simpleFacetQuery.setPageRequest(pageable).setDefType("lucene");
-
-        FacetOptions facetOptions = new FacetOptions(new FacetOptions.FieldWithFacetParameters(facetField).setMissing(true));
-
-        facetOptions.setFacetLimit(100);
-        simpleFacetQuery.setFacetOptions(facetOptions);
-
-        FacetPage<DataSheetDocument> facetPage = solrTemplate.queryForFacetPage("dataSheet", simpleFacetQuery, DataSheetDocument.class);
-
-        return new PageResponse<DataSheetDocument>(facetPage, facetPage.getFacetResultPage(facetField));
-    }
-
-
-    /**
-     * Generates an appropriate query from query critera and filter queries and sets the field list.
-     * Also the Solr query parser is chosen (lucene/standard).
-     * @param queryString simple query string
-     * @param filters List of filter query strings
-     * @param pageable
-     * @param facetForFsc If false, FSG facets are returned, otherwise FSC facets are returned
-     * @return
-     */
-    @Override
-    public PageResponse advancedSearchFacet(String queryString, List<String> filters, Pageable pageable, Boolean facetForFsc) {
-        //Check facet field
-        String facetField = "fsgFacet";
-        if(facetForFsc) {
-            facetField = "fscFacet";
-        }
-        //Add Query
-        FacetQuery simpleFacetQuery = new SimpleFacetQuery(new SimpleStringCriteria(queryString));
         //Add Filter Queries
         for (String filter: filters) {
             simpleFacetQuery.addFilterQuery(new SimpleFilterQuery(new SimpleStringCriteria(filter)));

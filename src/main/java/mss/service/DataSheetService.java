@@ -9,11 +9,8 @@ import mss.domain.responses.PageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -145,7 +142,7 @@ public class DataSheetService {
             criteria.add("*:* && docType:datasheet");
         }
 
-        return dataSheetRepository.generalSearchFacet(criteria, filters, p, facetForFsc);
+        return dataSheetRepository.facetedSearch(criteria, filters, p, facetForFsc);
     }
 
     /**
@@ -157,16 +154,14 @@ public class DataSheetService {
      * @return Page of result documents
      */
     public PageResponse<DataSheetDocument> advancedSearch(Pageable p, AdvancedTerm advancedTerm) {
+        //Generate Query
         String query = advancedTermToQuery(advancedTerm);
+        if (query.isEmpty()) query = "*:* && docType:datasheet";
 
-        if (query.isEmpty()) {
-            query = "*:* && docType:datasheet";
-        }
-
+        //Generate Filters
         List<String> filters = advancedTermToFilterQueries(advancedTerm);
 
-
-
+        //Determine faceting & filter results if wished
         Boolean facetForFsc = false;
         if (advancedTerm.getFsgFacet() != null) {
             if (advancedTerm.getFsgFacet().matches("\\d{2}")) {
@@ -191,16 +186,25 @@ public class DataSheetService {
         log.info("Query: " + query);
         log.info("Filter Queries: " + filters);
 
-        return dataSheetRepository.advancedSearchFacet(query, filters, p, facetForFsc);
+        List<String> queryAsList = new ArrayList<>();
+        queryAsList.add(query);
+
+        return dataSheetRepository.facetedSearch(queryAsList, filters, p, facetForFsc);
     }
 
+    /**
+     * Turns an {@link AdvancedTerm} object into a list of filter queries for filtering by ingredient information.
+     *
+     * @param advancedTerm {@link AdvancedTerm} object to extract filter queries from
+     * @return List of filter queries as Strings. May be empty.
+     */
     public List<String> advancedTermToFilterQueries(AdvancedTerm advancedTerm) {
         List<String> filters = new ArrayList<>();
         //Ingredients
         List<AdvancedTermIngredient> ingredients = advancedTerm.getIngredients();
         if (ingredients != null) {
             for (AdvancedTermIngredient ingredient : ingredients) {
-                if (ingredient.getCas() != null) {
+                if (ingredient.getCas() != null && !ingredient.getCas().isEmpty()) {
                     String cas = ingredient.getCas();
                     if (cas.startsWith("!")) {
                         log.info("Negation of CAS numbers currently not supported.");
@@ -208,7 +212,7 @@ public class DataSheetService {
                     }
                     filters.add("{!parent which=docType:datasheet}cas:(" + cas + ")");
                 }
-                if (ingredient.getIngredName() != null) {
+                if (ingredient.getIngredName() != null && !ingredient.getIngredName().isEmpty()) {
                     String ingredName = ingredient.getIngredName();
                     if (ingredName.startsWith("!")) {
                         log.info("Negation of ingredient names currently not supported.");
@@ -222,11 +226,17 @@ public class DataSheetService {
         return filters;
     }
 
+    /**
+     * Turns an {@link AdvancedTerm} object into a query string.
+     *
+     * @param advancedTerm {@link AdvancedTerm} object to extract information from
+     * @return Query string
+     */
     public String advancedTermToQuery(AdvancedTerm advancedTerm) {
         List<String> queryList = new ArrayList<>();
 
         String productId = advancedTerm.getProductId();
-        if (productId != null) {
+        if (productId != null && !productId.isEmpty()) {
             if (productId.startsWith("!")) {
                 queryList.add("(!productId:(" + productId.substring(1) + ") && docType:datasheet)");
             } else {
@@ -235,7 +245,7 @@ public class DataSheetService {
         }
 
         String fsc = advancedTerm.getFscFacet();
-        if (fsc != null) {
+        if (fsc != null && !fsc.isEmpty()) {
             if (fsc.startsWith("!")) {
                 queryList.add("(!fsc:(" + fsc.substring(1) + ") && docType:datasheet)");
             } else {
@@ -244,7 +254,7 @@ public class DataSheetService {
         }
 
         String fscString = advancedTerm.getFscString();
-        if (fscString != null) {
+        if (fscString != null && !fscString.isEmpty()) {
             if (fscString.startsWith("!")) {
                 queryList.add("(!fscString:(" + fscString.substring(1) + ") && docType:datasheet)");
             } else {
@@ -253,7 +263,7 @@ public class DataSheetService {
         }
 
         String fsgString = advancedTerm.getFsgString();
-        if (fsgString != null) {
+        if (fsgString != null && !fsgString.isEmpty()) {
             if (fsgString.startsWith("!")) {
                 queryList.add("(!fsgString:(" + fsgString.substring(1) + ") && docType:datasheet)");
             } else {
@@ -262,7 +272,7 @@ public class DataSheetService {
         }
 
         String niin = advancedTerm.getNiin();
-        if (niin != null) {
+        if (niin != null && !niin.isEmpty()) {
             if (niin.startsWith("!")) {
                 queryList.add("(!niin:(" + niin.substring(1) + ") && docType:datasheet)");
             } else {
@@ -271,7 +281,7 @@ public class DataSheetService {
         }
 
         String companyName = advancedTerm.getCompanyName();
-        if (companyName != null) {
+        if (companyName != null && !companyName.isEmpty()) {
             if (companyName.startsWith("!")) {
                 queryList.add("(!companyName:(" + companyName.substring(1) + ") && docType:datasheet)");
             } else {
