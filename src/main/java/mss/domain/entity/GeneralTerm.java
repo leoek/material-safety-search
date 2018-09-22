@@ -1,11 +1,11 @@
 package mss.domain.entity;
 
 public class GeneralTerm {
-    public String searchTerm;
-    public String fsgFacet;
-    public String fscFacet;
-    public Boolean fuzzy;
-    public Boolean wholeDoc;
+    private String searchTerm;
+    private String fsgFacet;
+    private String fscFacet;
+    private Boolean fuzzy;
+    private Boolean wholeDoc;
 
     public String getSearchTerm() {
         return searchTerm;
