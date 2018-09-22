@@ -15,12 +15,8 @@ import Padder from "./common/Padder";
 import SectionSelections from "./SectionSelections";
 import Snippet from "./Snippet";
 
-import { fetchSearchRequest, showDatasheetSection } from "../redux/actions";
+import { fetchSearchRequest } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
-
-import config from "../config";
-
-const { datasheetFormat } = config;
 
 const styles = theme => ({
   root: {
@@ -54,8 +50,6 @@ export const RawResultListCard = ({ t, item, classes }) => {
   const { productId, companyName } = item;
 
   const title = `${productId}: ${companyName}`;
-
-  console.log(item);
 
   return (
     <Card className={classes.paper}>
