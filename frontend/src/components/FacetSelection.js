@@ -14,8 +14,12 @@ import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import Grow from "@material-ui/core/Grow";
 
-import { selectFacet } from "../redux/actions";
-import { getSearchFacets, getSearchIsFetching } from "../redux/selectors";
+import { selectFacet, deselectFacet } from "../redux/actions";
+import {
+  getSearchFacets,
+  getSearchIsFetching,
+  getSearchInputSelectedFacet
+} from "../redux/selectors";
 import ExpandableCardContent from "./common/ExpandableCardContent";
 import Padder from "./common/Padder";
 
@@ -48,7 +52,7 @@ const styles = theme => ({
   }
 });
 
-const RawFacetChips = ({ classes, facets, isFetching }) => {
+const RawFacetChips = ({ classes, facets, isFetching, selected }) => {
   return (
     <div className={classnames([classes.smallPadLeft, classes.smallPadRight])}>
       {facets &&
@@ -58,16 +62,39 @@ const RawFacetChips = ({ classes, facets, isFetching }) => {
             in={!isFetching}
             {...(!isFetching ? { timeout: 1000 } : {})}
           >
-            <FacetChip facet={facet} />
+            <FacetChip
+              facet={facet}
+              isSelected={selected === facet.facetNumber}
+            />
           </Grow>
         ))}
     </div>
   );
 };
 
-const FacetChips = withStyles(styles)(RawFacetChips);
+const facetChipsMapStateToProps = (state, ownProps) => {
+  const { facets = [] } = ownProps;
+  const type = facets[0] && facets[0].type;
+  return {
+    isFetching: getSearchIsFetching(state),
+    selected: getSearchInputSelectedFacet(type)(state)
+  };
+};
 
-const RawFacetChip = ({ facet, classes, t, selectFacet, style }) => {
+const FacetChips = compose(
+  withStyles(styles),
+  connect(facetChipsMapStateToProps)
+)(RawFacetChips);
+
+const RawFacetChip = ({
+  facet,
+  classes,
+  t,
+  selectFacet,
+  deselectFacet,
+  style,
+  isSelected = false
+}) => {
   const { facetNumber, facetString, count } = facet;
   const isLong = facetNumber && facetNumber.length > 2;
 
@@ -84,12 +111,17 @@ const RawFacetChip = ({ facet, classes, t, selectFacet, style }) => {
       }
       label={label}
       clickable
+      onDelete={isSelected ? () => deselectFacet(facet) : undefined}
       onClick={() => selectFacet(facet)}
       className={classes.chip}
       color="primary"
       variant="outlined"
       aria-label={label}
       title={label}
+      /**
+       * We need the style here for the transition.
+       * It is injected by the Transitions component (Grow)
+       */
       style={style}
     />
   );
@@ -100,13 +132,16 @@ const FacetChip = compose(
   withStyles(styles),
   connect(
     null,
-    { selectFacet }
+    {
+      selectFacet,
+      deselectFacet
+    }
   )
 )(RawFacetChip);
 
 export class FacetSelection extends Component {
   render() {
-    const { classes, t, facets, isFetching } = this.props;
+    const { classes, t, facets } = this.props;
 
     if (!facets || !Array.isArray(facets) || isEmpty(facets)) {
       return null;
@@ -122,19 +157,11 @@ export class FacetSelection extends Component {
           </Typography>
         </CardContent>
         <ExpandableCardContent
-          previewContent={
-            <FacetChips
-              facets={facets.slice(0, previewCount)}
-              isFetching={isFetching}
-            />
-          }
+          previewContent={<FacetChips facets={facets.slice(0, previewCount)} />}
           expandable={Boolean(facets.length > 2)}
         >
           <div className={classnames([classes.padLeft, classes.padRight])}>
-            <FacetChips
-              facets={facets.slice(previewCount)}
-              isFetching={isFetching}
-            />
+            <FacetChips facets={facets.slice(previewCount)} />
             <Padder />
           </div>
         </ExpandableCardContent>
@@ -155,8 +182,7 @@ FacetSelection.defaultProps = {
 };
 
 const mapStateToRrops = state => ({
-  facets: getSearchFacets(state),
-  isFetching: getSearchIsFetching(state)
+  facets: getSearchFacets(state)
 });
 
 const mapDispatchToProps = {};

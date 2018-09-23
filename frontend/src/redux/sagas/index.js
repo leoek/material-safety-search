@@ -8,7 +8,8 @@ import {
   UPDATE_SEARCH_INPUT,
   updateSearchInput,
   fetchSearchRequest,
-  SELECT_FACET
+  SELECT_FACET,
+  DESELECT_FACET
 } from "../actions";
 import { getSearchInput } from "../selectors";
 import { post } from "../../lib/api";
@@ -69,10 +70,10 @@ export function* updateSearchInputSaga(action) {
 }
 
 export function* handleSelectFacetSaga(action) {
-  const { payload } = action;
+  const { payload, type } = action;
   const { facet } = payload || {};
   const update = {
-    [facet.type]: facet.facetNumber
+    [facet.type]: type === SELECT_FACET ? facet.facetNumber : null
   };
   yield put(updateSearchInput(update));
 }
@@ -82,6 +83,6 @@ export default function* root() {
     takeLatest(REHYDRATE, reduxRehydrateSaga),
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
-    takeEvery(SELECT_FACET, handleSelectFacetSaga)
+    takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga)
   ]);
 }

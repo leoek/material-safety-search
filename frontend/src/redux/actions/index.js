@@ -57,6 +57,14 @@ export const selectFacet = facet => ({
   }
 });
 
+export const DESELECT_FACET = "MSS/DESELECT_FACET";
+export const deselectFacet = facet => ({
+  type: DESELECT_FACET,
+  payload: {
+    facet
+  }
+});
+
 export const UPDATE_SEARCH_INPUT = "MSS/UPDATE_SEARCH_INPUT";
 export const updateSearchInput = update => ({
   type: UPDATE_SEARCH_INPUT,
