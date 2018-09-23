@@ -168,8 +168,8 @@ export class Screen extends Component {
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
         </Grid>
-        <DatasheetDialog />
         <DatasheetSectionDialog />
+        <DatasheetDialog />
         <NotificationHandler />
       </div>
     );

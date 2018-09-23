@@ -4,6 +4,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import CloseIcon from "@material-ui/icons/Close";
 
 import { compose } from "redux";
 import { translate } from "react-i18next";
@@ -24,8 +25,8 @@ import config from "../config";
 const { datasheetFormat } = config;
 
 class DatasheetSectionDialog extends React.Component {
-  handleClickOpen = () => {
-    const { datasheet } = this.props;
+  handleShowDatasheet = () => {
+    const { showDatasheet, datasheet } = this.props;
     showDatasheet(datasheet);
   };
 
@@ -45,6 +46,11 @@ class DatasheetSectionDialog extends React.Component {
         fullWidth
         maxWidth="md"
       >
+        <DialogActions style={{ marginBottom: -36 }}>
+          <Button onClick={this.handleClose} color="primary">
+            <CloseIcon />
+          </Button>
+        </DialogActions>
         <DialogTitle id="dialog-title">
           <ResultTitle item={datasheet} />
         </DialogTitle>
