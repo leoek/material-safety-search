@@ -24,7 +24,8 @@ const styles = theme => ({
   root: {
     flexGrow: (config.devEnv && console.log("Used theme: ", theme)) || 1,
     backgroundColor: theme.palette.background.main,
-    minHeight: "100vh"
+    //TDOO fix this scrollbar normalizing hack
+    minHeight: "101vh"
   },
   details: {
     flex: 1,
