@@ -49,7 +49,6 @@ const styles = theme => ({
 });
 
 const RawFacetChips = ({ classes, facets, isFetching }) => {
-  console.log(isFetching);
   return (
     <div className={classnames([classes.smallPadLeft, classes.smallPadRight])}>
       {facets &&
