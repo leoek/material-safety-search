@@ -37,12 +37,16 @@ repositories {
 }
 
 dependencies {
+	compile("com.google.guava:guava:25.0-jre")
+	compile("joda-time:joda-time:2.9.4")
 	compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter")
 	compile("org.springframework.data:spring-data-solr")
+	// Mariadb with Jpa
+	compile 'org.mariadb.jdbc:mariadb-java-client:2.3.0'
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Solr
     compile("org.springframework.boot:spring-boot-starter-data-solr:2.0.4.RELEASE")
-	compile("com.google.guava:guava:25.0-jre")
-	compile("joda-time:joda-time:2.9.4")
 
     testCompile("junit:junit")
 }
