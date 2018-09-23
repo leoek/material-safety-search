@@ -3,12 +3,17 @@ package mss.controller;
 import mss.domain.entity.*;
 import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
+import mss.service.LoggingService;
 import mss.service.SuggestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.FacetPage;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  * Controller for exposing certain methods to the frontend
@@ -23,10 +28,13 @@ public class DataSheetController {
 
     private SuggestService suggestService;
 
+    private LoggingService loggingService;
+
     @Autowired
-    public DataSheetController(DataSheetService dataSheetService, SuggestService suggestService){
+    public DataSheetController(DataSheetService dataSheetService, SuggestService suggestService, LoggingService loggingService){
         this.dataSheetService = dataSheetService;
         this.suggestService = suggestService;
+        this.loggingService = loggingService;
     }
 
     /**
@@ -59,7 +67,9 @@ public class DataSheetController {
     }
 
     @RequestMapping(path = "/logging", method = RequestMethod.POST)
-    public PageResponse<DataSheetDocument> addLog(@RequestBody Log log) {
-        return null;
+    @ResponseBody
+    public ResponseEntity<Optional<Log>> addLog(@RequestBody Log logObject) {
+        Optional<Log> result = loggingService.addLog(logObject);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
