@@ -67,17 +67,19 @@ const RawFacetChips = ({ classes, facets, isFetching }) => {
 
 const FacetChips = withStyles(styles)(RawFacetChips);
 
-const RawFacetChip = ({ facet, classes, t, selectFacet, ...props }) => {
+const RawFacetChip = ({ facet, classes, t, selectFacet, style }) => {
   const { facetNumber, facetString, count } = facet;
   const isLong = facetNumber && facetNumber.length > 2;
 
-  const label = `${facetString} x${count}`;
+  if (!count) return <div />;
+
+  const label = `${facetString || t("facetselection.no_facet")} x${count}`;
 
   return (
     <Chip
       avatar={
         <Avatar className={classnames({ [classes.wideAvatar]: isLong })}>
-          {facetNumber}
+          {facetNumber || "--"}
         </Avatar>
       }
       label={label}
@@ -88,12 +90,13 @@ const RawFacetChip = ({ facet, classes, t, selectFacet, ...props }) => {
       variant="outlined"
       aria-label={label}
       title={label}
-      {...props}
+      style={style}
     />
   );
 };
 
 const FacetChip = compose(
+  translate(),
   withStyles(styles),
   connect(
     null,

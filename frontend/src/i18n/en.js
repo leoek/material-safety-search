@@ -27,7 +27,8 @@ export default {
       close: "Close"
     },
     facetselection: {
-      title: "Select a category to filter the results."
+      title: "Select a category to filter the results.",
+      no_facet: "Uncategorized"
     },
     fromCompany_label: "from",
     show_more: "Show More"
