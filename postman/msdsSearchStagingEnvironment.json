@@ -1,0 +1,16 @@
+{
+  "id": "0f374f79-b849-8ad3-158d-d4e795582a7c",
+  "name": "MSDS Search Staging",
+  "values": [
+    {
+      "enabled": true,
+      "key": "url",
+      "value": "api.mss.leoek.tech",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1537706073662,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-09-23T12:42:08.684Z",
+  "_postman_exported_using": "Postman/5.5.0"
+}
