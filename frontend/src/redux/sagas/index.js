@@ -1,11 +1,16 @@
-import { all, put, takeLatest, takeEvery } from "redux-saga/effects";
+import { all, put, takeLatest, takeEvery, select } from "redux-saga/effects";
 import { REHYDRATE } from "redux-persist";
 import {
   reduxRehydrationCompleted,
   FETCH_SEARCH_REQUEST,
   fetchSearchSuccess,
-  fetchSearchFailure
+  fetchSearchFailure,
+  UPDATE_SEARCH_INPUT,
+  updateSearchInput,
+  fetchSearchRequest,
+  SELECT_FACET
 } from "../actions";
+import { getSearchInput } from "../selectors";
 import { post } from "../../lib/api";
 import { config } from "../../config";
 
@@ -30,13 +35,14 @@ const handleResponseJsonError = (errorMessage, statusCode) => {
 
 export function* fetchSearchSaga(action) {
   const { payload = {} } = action;
-  const { query, page = 0, size = config.DEFAULTS.pageSize } = payload;
+  const { query, page = 0, size = config.DEFAULTS.pageSize, ...rest } = payload;
   const parameters = {
     page,
     size
   };
   const data = {
-    searchTerm: query
+    searchTerm: query,
+    ...rest
   };
   const response = yield post({
     endpoint: "search",
@@ -51,9 +57,31 @@ export function* fetchSearchSaga(action) {
   }
 }
 
+export function* updateSearchInputSaga(action) {
+  const { payload } = action;
+  const { update } = payload || {};
+  const oldSearchInput = yield select(getSearchInput);
+  const searchInput = {
+    ...oldSearchInput,
+    ...update
+  };
+  yield put(fetchSearchRequest(searchInput));
+}
+
+export function* handleSelectFacetSaga(action) {
+  const { payload } = action;
+  const { facet } = payload || {};
+  const update = {
+    [facet.type]: facet.facetNumber
+  };
+  yield put(updateSearchInput(update));
+}
+
 export default function* root() {
   yield all([
     takeLatest(REHYDRATE, reduxRehydrateSaga),
-    takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga)
+    takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
+    takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
+    takeEvery(SELECT_FACET, handleSelectFacetSaga)
   ]);
 }

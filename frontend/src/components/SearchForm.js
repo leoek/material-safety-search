@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Typography from "@material-ui/core/Typography";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import withWidth from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
 import { Field, reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 import classnames from "classnames";
+import { getSearchIsFetching } from "../redux/selectors";
 
 const styles = theme => ({
   root: {
@@ -21,7 +24,10 @@ const styles = theme => ({
     width: "100%"
   },
   formItemContainer: {
-    padding: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2
   },
   buttonContainer: {
     display: "flex",
@@ -30,20 +36,76 @@ const styles = theme => ({
   },
   paper: {
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2
   },
   title: {
     fontSize: 14
+  },
+  loadingContainer: {
+    display: "block",
+    height: 5,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
-const renderTextField = ({ input, meta: { touched, error }, ...rest }) => (
+const RenderTextField = ({ input, meta: { touched, error }, ...rest }) => (
   <TextField {...rest} {...input} error={touched && error} />
 );
 
-export class SearhForm extends Component {
+const RenderCheckbox = ({
+  label,
+  input,
+  meta: { touched, error },
+  ...rest
+}) => (
+  <FormControlLabel
+    control={<Checkbox {...rest} {...input} value="checkedB" color="primary" />}
+    label={label}
+  />
+);
+
+const RawSearchButton = ({ classes, canSubmit, t }) => (
+  <Grid
+    item
+    xs={12}
+    sm={4}
+    md={4}
+    lg={2}
+    className={classnames(classes.formItemContainer, classes.buttonContainer)}
+  >
+    <Button
+      variant="contained"
+      color="primary"
+      type="submit"
+      disabled={!canSubmit}
+      className={classnames(classes.formItem, classes.searchButton)}
+    >
+      {t("searchform.search.submit")}
+    </Button>
+  </Grid>
+);
+
+const SearchButton = compose(
+  withStyles(styles),
+  translate()
+)(RawSearchButton);
+
+export class SearchForm extends Component {
   render() {
-    const { handleSubmit, canSubmit, classes, t, quickselect } = this.props;
+    const {
+      handleSubmit,
+      canSubmit,
+      classes,
+      t,
+      loading,
+      isFetching,
+      width
+    } = this.props;
+    const isLoading = isFetching || loading;
+    const searchButtonTopWidths = ["xs", "md", "lg"];
+    const searchButtonTop = searchButtonTopWidths.includes(width);
     return (
       <div className={classes.root}>
         <form onSubmit={handleSubmit} className={classes.form}>
@@ -51,8 +113,8 @@ export class SearhForm extends Component {
             <Grid container>
               <Grid
                 item
-                xs={6}
-                sm={8}
+                xs={12}
+                sm={12}
                 md={8}
                 lg={10}
                 className={classes.formItemContainer}
@@ -60,8 +122,25 @@ export class SearhForm extends Component {
                 <Field
                   label={t("searchform.search.querylbl")}
                   name="query"
-                  component={renderTextField}
+                  component={RenderTextField}
                   className={classes.formItem}
+                />
+              </Grid>
+              {searchButtonTop && <SearchButton canSubmit={canSubmit} />}
+              <Grid
+                item
+                xs={6}
+                sm={4}
+                md={4}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <Field
+                  label={t("searchform.search.fuzzylbl")}
+                  name="fuzzy"
+                  component={RenderCheckbox}
+                  className={classes.checkboxField}
+                  type="checkbox"
                 />
               </Grid>
               <Grid
@@ -69,61 +148,50 @@ export class SearhForm extends Component {
                 xs={6}
                 sm={4}
                 md={4}
-                lg={2}
-                className={classnames(
-                  classes.formItemContainer,
-                  classes.buttonContainer
-                )}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
               >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  disabled={!canSubmit}
-                  className={classnames(classes.formItem, classes.searchButton)}
-                >
-                  {t("searchform.search.submit")}
-                </Button>
+                <Field
+                  label={t("searchform.search.wholedoclbl")}
+                  name="wholeDoc"
+                  component={RenderCheckbox}
+                  className={classes.checkboxField}
+                  type="checkbox"
+                />
               </Grid>
+              {!searchButtonTop && <SearchButton canSubmit={canSubmit} />}
             </Grid>
+            <div className={classes.loadingContainer}>
+              {isLoading && <LinearProgress />}
+            </div>
           </Paper>
-          {quickselect &&
-            quickselect.options && (
-              <Card className={classes.paper}>
-                <CardContent>
-                  <Typography className={classes.title}>
-                    {t("searchform.quickselect.title")}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  {Array.isArray(quickselect.options) &&
-                    quickselect.options.map(
-                      ({ active, lbl, handler }, index) => (
-                        <Button
-                          variant={active ? "outlined" : "flat"}
-                          key={index}
-                          color="primary"
-                          className={classes.button}
-                          onClick={handler}
-                        >
-                          {lbl}
-                        </Button>
-                      )
-                    )}
-                </CardActions>
-              </Card>
-            )}
         </form>
       </div>
     );
   }
 }
 
-SearhForm.propTypes = {
+SearchForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool
 };
 
-export default reduxForm({ form: "search" })(
-  withStyles(styles)(translate()(SearhForm))
-);
+SearchForm.defaultProps = {
+  isFetching: false
+};
+
+const mapStateToProps = state => ({
+  isFetching: getSearchIsFetching(state)
+});
+
+export default compose(
+  reduxForm({ form: "search" }),
+  withWidth(),
+  withStyles(styles),
+  translate(),
+  connect(
+    mapStateToProps,
+    null
+  )
+)(SearchForm);

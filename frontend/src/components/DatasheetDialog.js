@@ -6,16 +6,15 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
 
+import isEmpty from "lodash/isEmpty";
 import { compose } from "redux";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
+import { closeDatasheet } from "../redux/actions";
 import {
-  getDatasheetSectionDialogName,
-  getDatasheetSectionDialogDatasheet,
-  getDatasheetSectionDialogRaw,
-  getDatasheetSectionDialogIsOpen
-} from "../redux/selectors/uiSelectors";
-import { closeDatasheetSection, showDatasheet } from "../redux/actions";
+  getDatasheetDialogDatasheet,
+  getDatasheetDialogIsOpen
+} from "../redux/selectors";
 
 import RawText from "./common/RawText";
 import { SnippetTable } from "./Snippet";
@@ -24,19 +23,27 @@ import { ResultTitle } from "./ResultList";
 import config from "../config";
 const { datasheetFormat } = config;
 
-class DatasheetSectionDialog extends React.Component {
-  handleShowDatasheet = () => {
-    const { showDatasheet, datasheet } = this.props;
-    showDatasheet(datasheet);
-  };
+const RawDataSheetSection = ({ t, section, datasheet }) => {
+  const content = datasheet && datasheet[section.dataKey];
+  if (!content || isEmpty(content)) return null;
+  return (
+    <div key={section.name}>
+      <h3>{t(`${datasheetFormat.translationKeyPrefix}.${section.name}`)}</h3>
+      <RawText text={content} />
+    </div>
+  );
+};
 
+const DataSheetSection = translate()(RawDataSheetSection);
+
+class DatasheetDialog extends React.Component {
   handleClose = () => {
-    const { closeDatasheetSection } = this.props;
-    closeDatasheetSection();
+    const { closeDatasheet } = this.props;
+    closeDatasheet();
   };
 
   render() {
-    const { isOpen, rawSection, name, t, datasheet = {} } = this.props;
+    const { isOpen, t, datasheet = {} } = this.props;
     return (
       <Dialog
         open={isOpen}
@@ -57,20 +64,18 @@ class DatasheetSectionDialog extends React.Component {
         {datasheet && (
           <DialogContent>
             <SnippetTable item={datasheet} />
+            {datasheetFormat.sections.map(section => (
+              <DataSheetSection
+                key={section.name}
+                section={section}
+                datasheet={datasheet}
+              />
+            ))}
           </DialogContent>
         )}
-        <DialogTitle id="dialog-title-section">
-          {t(`${datasheetFormat.translationKeyPrefix}.${name}`)}
-        </DialogTitle>
-        <DialogContent>
-          <RawText text={rawSection} />
-        </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleShowDatasheet} color="primary">
-            {t("datasheetsectiondialog.show_dataset")}
-          </Button>
           <Button onClick={this.handleClose} color="primary" autoFocus>
-            {t("datasheetsectiondialog.close")}
+            {t("datasheetdialog.close")}
           </Button>
         </DialogActions>
       </Dialog>
@@ -79,15 +84,12 @@ class DatasheetSectionDialog extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  name: getDatasheetSectionDialogName(state),
-  datasheet: getDatasheetSectionDialogDatasheet(state),
-  rawSection: getDatasheetSectionDialogRaw(state),
-  isOpen: getDatasheetSectionDialogIsOpen(state)
+  datasheet: getDatasheetDialogDatasheet(state),
+  isOpen: getDatasheetDialogIsOpen(state)
 });
 
 const mapDispatchToProps = {
-  closeDatasheetSection,
-  showDatasheet
+  closeDatasheet
 };
 
 export default compose(
@@ -96,4 +98,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   )
-)(DatasheetSectionDialog);
+)(DatasheetDialog);

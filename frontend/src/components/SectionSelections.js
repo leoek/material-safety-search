@@ -107,7 +107,7 @@ export const ConnectedSectionSelections = compose(
   )
 )(SectionSelections);
 
-export const ExpandableSectionSelections = ({ item }) => {
+export const ExpandableSectionSelections = ({ item, showDatasheetSection }) => {
   const firstAidSection = datasheetFormat.sections.find(
     section => section.name === "FirstAid"
   );
@@ -154,4 +154,12 @@ export const ExpandableSectionSelections = ({ item }) => {
   );
 };
 
-export default ExpandableSectionSelections;
+ExpandableSectionSelections.propTypes = {
+  showDatasheetSection: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+};
+
+export default connect(
+  null,
+  { showDatasheetSection }
+)(ExpandableSectionSelections);
