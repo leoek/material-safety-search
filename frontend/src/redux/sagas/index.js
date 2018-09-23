@@ -9,7 +9,11 @@ import {
   updateSearchInput,
   fetchSearchRequest,
   SELECT_FACET,
-  DESELECT_FACET
+  DESELECT_FACET,
+  REDUX_FORM_SUBMIT,
+  REDUX_FORM_SUBMIT_SUCCEEDED,
+  deselectFacets,
+  DESELECT_FACETS
 } from "../actions";
 import { getSearchInput } from "../selectors";
 import { post } from "../../lib/api";
@@ -78,11 +82,33 @@ export function* handleSelectFacetSaga(action) {
   yield put(updateSearchInput(update));
 }
 
+export function* handleDeselectFacetsSaga(action) {
+  yield put(
+    updateSearchInput({
+      fsgFacet: null,
+      fscFacet: null
+    })
+  );
+}
+
+export function* handleSubmitSaga(action) {
+  const { meta, error } = action;
+  const { form } = meta || {};
+  if (form === "search" && !error) {
+    yield put(deselectFacets());
+  }
+}
+
 export default function* root() {
   yield all([
     takeLatest(REHYDRATE, reduxRehydrateSaga),
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
-    takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga)
+    takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga),
+    takeEvery(DESELECT_FACETS, handleDeselectFacetsSaga),
+    takeLatest(
+      [REDUX_FORM_SUBMIT, REDUX_FORM_SUBMIT_SUCCEEDED],
+      handleSubmitSaga
+    )
   ]);
 }

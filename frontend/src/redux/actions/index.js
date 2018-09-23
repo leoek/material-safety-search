@@ -1,3 +1,9 @@
+import { actionTypes as reduxFormActionTypes } from "redux-form";
+
+export const REDUX_FORM_SUBMIT = reduxFormActionTypes.SUBMIT;
+export const REDUX_FORM_SUBMIT_SUCCEEDED =
+  reduxFormActionTypes.SET_SUBMIT_SUCCEEDED;
+
 export const REDUX_REHYDRATION_COMPLETED = "MSS/REDUX_REHYDRATION_COMPLETED";
 export const reduxRehydrationCompleted = () => ({
   type: REDUX_REHYDRATION_COMPLETED
@@ -63,6 +69,11 @@ export const deselectFacet = facet => ({
   payload: {
     facet
   }
+});
+
+export const DESELECT_FACETS = "MSS/DESELECT_FACETS";
+export const deselectFacets = facet => ({
+  type: DESELECT_FACETS
 });
 
 export const UPDATE_SEARCH_INPUT = "MSS/UPDATE_SEARCH_INPUT";
