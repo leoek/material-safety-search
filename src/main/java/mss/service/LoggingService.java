@@ -35,9 +35,6 @@ public class LoggingService {
     }
 
     public TopTerms getTopTerms(Integer count) {
-        TopTerms topTerms = new TopTerms();
-        List<String> resultTerms = logRepository.getAll(PageRequest.of(0, count)).getContent().stream().map(logEntry -> logEntry.getSearchTerm()).collect(Collectors.toList());
-        topTerms.setTopTerms(resultTerms);
-        return topTerms;
+        return new TopTerms(logRepository.getAll(PageRequest.of(0, count)).getContent());
     }
 }
