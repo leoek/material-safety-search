@@ -21,7 +21,8 @@ export default {
     datasheetsectiondialog: {
       close: "Close",
       show_dataset: "Show Complete Dataset"
-    }
-  },
-  show_more: "Show More"
+    },
+    fromCompany_label: "from",
+    show_more: "Show More"
+  }
 };

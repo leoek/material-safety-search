@@ -10,12 +10,13 @@ import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 import isEmpty from "lodash/isEmpty";
+import classnames from "classnames";
 
 import Padder from "./common/Padder";
 import SectionSelections from "./SectionSelections";
 import Snippet from "./Snippet";
 
-import { fetchSearchRequest } from "../redux/actions";
+import { fetchSearchRequest, showDatasheet } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 
 const styles = theme => ({
@@ -43,26 +44,83 @@ const styles = theme => ({
   },
   padRight: {
     paddingRight: theme.spacing.unit * 2
+  },
+  titleContainer: {
+    display: "flex",
+    flex: 1,
+    alignItems: "flex-end"
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: theme.typography.fontWeightMedium
+  },
+  presubtitle: {
+    fontSize: 14,
+    marginLeft: theme.spacing.unit * 0.5
+  },
+  subtitle: {
+    fontSize: 14,
+    fontWeight: theme.typography.fontWeightMedium,
+    marginLeft: theme.spacing.unit
+  },
+  subtitleButton: {
+    marginBottom: 3
   }
 });
 
-export const RawResultListCard = ({ t, item, classes }) => {
+const RawResultTitle = ({
+  t,
+  item,
+  classes,
+  companyAction,
+  productIdAction
+}) => {
   const { productId, companyName } = item;
 
-  const title = `${productId}: ${companyName}`;
+  return (
+    <div className={classes.titleContainer}>
+      <Button className={classes.titleButton} onClick={productIdAction}>
+        <Typography className={classes.title}>{productId}</Typography>
+      </Button>
+      <Button className={classes.subtitleButton} onClick={companyAction}>
+        <Typography className={classnames([classes.presubtitle])}>
+          {t("fromCompany_label")}
+        </Typography>
+        <Typography className={classnames([classes.subtitle])}>
+          {companyName}
+        </Typography>
+      </Button>
+    </div>
+  );
+};
 
+RawResultTitle.propTypes = {
+  item: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired,
+  companyAction: PropTypes.func,
+  productIdAction: PropTypes.func
+};
+
+RawResultTitle.defaultProps = {
+  companyAction: () => false,
+  productIdAction: () => false
+};
+
+export const ResultTitle = compose(
+  translate(),
+  withStyles(styles)
+)(RawResultTitle);
+
+export const RawResultListCard = ({ item, classes, showDatasheet }) => {
   return (
     <Card className={classes.paper}>
       <CardContent>
-        <Button>
-          <Typography
-            variant="headline"
-            component="h2"
-            className={classes.title}
-          >
-            {title}
-          </Typography>
-        </Button>
+        <ResultTitle
+          item={item}
+          companyAction={() => showDatasheet(item)}
+          productIdAction={() => showDatasheet(item)}
+        />
       </CardContent>
       <Snippet item={item} />
       <SectionSelections item={item} />
@@ -79,7 +137,14 @@ RawResultListCard.propTypes = {
 
 RawResultListCard.defaultProps = {};
 
-const ResultListCard = translate()(withStyles(styles)(RawResultListCard));
+const ResultListCard = compose(
+  translate(),
+  withStyles(styles),
+  connect(
+    null,
+    { showDatasheet }
+  )
+)(RawResultListCard);
 
 export class ResultList extends Component {
   render() {
