@@ -14,8 +14,8 @@ public class SingleFacetResponse {
 
     public SingleFacetResponse(String type, String facetInfo, Long count) {
         this.type = type;
-        this.facetString = "No Facet String Found";
-        this.facetNumber = "No Facet Number Found";
+        this.facetString = null;
+        this.facetNumber = null;
         if (facetInfo != null) {
             this.facetString = facetInfo.substring(0, facetInfo.indexOf("_"));
             this.facetNumber = facetInfo.substring(facetInfo.indexOf("_") + 1, facetInfo.length());

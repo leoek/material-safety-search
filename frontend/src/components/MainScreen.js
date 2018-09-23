@@ -13,7 +13,6 @@ import SearchForm from "./SearchForm";
 import { updateSearchInput } from "../redux/actions";
 import { getSearchFormValues } from "../redux/selectors";
 import ResultList from "./ResultList";
-import QuickAnswerSection from "./QuickAnswerSection";
 import DatasheetSectionDialog from "./DatasheetSectionDialog";
 import NotificationHandler from "./NotificationHandler";
 import FacetSelection from "./FacetSelection";
@@ -25,7 +24,8 @@ const styles = theme => ({
   root: {
     flexGrow: (config.devEnv && console.log("Used theme: ", theme)) || 1,
     backgroundColor: theme.palette.background.main,
-    minHeight: "100vh"
+    //TDOO fix this scrollbar normalizing hack
+    minHeight: "101vh"
   },
   details: {
     flex: 1,
@@ -41,15 +41,6 @@ const styles = theme => ({
 });
 
 export class Screen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      options: null,
-      quickAnswer: null
-    };
-  }
-
   componentDidMount = () => {
     const { updateSearchInput } = this.props;
     updateSearchInput({ query: "test" });
@@ -64,87 +55,19 @@ export class Screen extends Component {
     }
   }
 
-  setMockOptions = () => {
-    this.setState({
-      options: {
-        0: { lbl: "on fire" },
-        1: { lbl: "spilled" },
-        2: { lbl: "ingested" }
-      }
-    });
-  };
-
-  setMockAnswer = () => {
-    const { quickAnswer } = this.state;
-    if (quickAnswer) return false;
-    this.setState({
-      quickAnswer: {
-        summary: "first aid measures",
-        details: [
-          "Lorem ipsum dolor sit amet.",
-          "consectetur adipiscing elit.",
-          "Suspendisse malesuada lacus ex",
-          "sit amet blandit leo lobortis eget."
-        ]
-      }
-    });
-  };
-
-  resetMockAnswer = () => {
-    this.setState({
-      quickAnswer: null
-    });
-  };
-
   submit = values => {
     const { updateSearchInput } = this.props;
     updateSearchInput(values);
-    this.setMockOptions();
-  };
-
-  handleQuickSelect = id => () => {
-    const { options } = this.state;
-    const selected = options[id];
-    const newOptions = {
-      ...options,
-      [id]: {
-        ...selected,
-        active: !selected.active
-      }
-    };
-    this.setState({
-      options: newOptions
-    });
-    const isActive = Object.values(newOptions).reduce(
-      (result, option) => result || option.active,
-      false
-    );
-    if (isActive) {
-      this.setMockAnswer();
-    } else {
-      this.resetMockAnswer();
-    }
   };
 
   render() {
     const { values, classes, t } = this.props;
-    const { options, quickAnswer } = this.state;
 
     const canSubmit = !!values;
 
-    const quickselect = {
-      options:
-        options &&
-        Object.keys(options).map(id => ({
-          ...options[id],
-          id,
-          handler: this.handleQuickSelect(id)
-        }))
-    };
-
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="sticky" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
               {t("title")}
@@ -162,11 +85,9 @@ export class Screen extends Component {
               initialValues={{ query: "test" }}
               onSubmit={this.submit}
               canSubmit={canSubmit}
-              quickselect={quickselect}
             />
-            <QuickAnswerSection quickAnswer={quickAnswer} />
             <FacetSelection />
-            <ResultList hideLoading={false} />
+            <ResultList hideLoading />
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
         </Grid>

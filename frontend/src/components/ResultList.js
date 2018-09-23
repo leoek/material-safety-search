@@ -160,9 +160,11 @@ export class ResultList extends Component {
     if (!items || !Array.isArray(items)) return null;
     return (
       <div className={classes.root}>
-        <div className={classes.loadingContainer}>
-          {isFetching && <LinearProgress />}
-        </div>
+        {!hideLoading && (
+          <div className={classes.loadingContainer}>
+            {isFetching && <LinearProgress />}
+          </div>
+        )}
         <div>
           {items.map((item, index) => (
             <ResultListCard key={item.id || index} item={item} />

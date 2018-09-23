@@ -1,0 +1,154 @@
+{
+	"info": {
+		"name": "MSDS Search",
+		"_postman_id": "b6fae966-f6e0-32e7-ed87-a227af165c7e",
+		"description": "Requests for all existing endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Log",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": null,\n\t\"timestamp\": \"1991-01-16T23:00:00Z\",\n\t\"ipAddress\": \"testIpAddress\",\n\t\"dwellTime\": 30.5,\n\t\"resultClicks\": 15,\n\t\"anyResults\": true\n}"
+				},
+				"url": {
+					"raw": "{{url}}/logging",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logging"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\": null,\n\t\"fsc\": null,\n\t\"fscString\": null,\n\t\"fsgString\": null,\n\t\"niin\": null,\n\t\"companyName\": null,\n\t\"beginDate\":null,\n\t\"endDate\":null,\n\t\"ingredients\":[\n\t\t{\n\t\t\t\"cas\": null,\n\t\t\t\"ingredName\": null\n\t\t}\n\t],\n\t\"fsgFacet\": null,\n\t\"fscFacet\": null,\n\t\"fuzzy\":false,\n\t\"wholeDoc\":false\n}"
+				},
+				"url": {
+					"raw": "{{url}}/advancedSearch?size=20&page=0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"advancedSearch"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "20",
+							"equals": true
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "General Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"searchTerm\": null,\n\t\"fsgFacet\": null,\n\t\"fscFacet\": null,\n\t\"fuzzy\": false,\n\t\"wholeDoc\": false\n}"
+				},
+				"url": {
+					"raw": "{{url}}/search?size=20&page=0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "20",
+							"equals": true
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get suggestions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"searchTerm\": \"grey paint\",\n\t\"fsgFacet\": 75,\n\t\"fscFacet\": 7520,\n\t\"fuzzy\": false,\n\t\"wholeDoc\": false\n}"
+				},
+				"url": {
+					"raw": "{{url}}/suggest?s=test&field=productId",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"suggest"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "test",
+							"equals": true
+						},
+						{
+							"key": "field",
+							"value": "productId",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
