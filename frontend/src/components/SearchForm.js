@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Typography from "@material-ui/core/Typography";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 import { Field, reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 import classnames from "classnames";
+import { getSearchIsFetching } from "../redux/selectors";
 
 const styles = theme => ({
   root: {
@@ -43,7 +43,15 @@ const renderTextField = ({ input, meta: { touched, error }, ...rest }) => (
 
 export class SearchForm extends Component {
   render() {
-    const { handleSubmit, canSubmit, classes, t, quickselect } = this.props;
+    const {
+      handleSubmit,
+      canSubmit,
+      classes,
+      t,
+      loading,
+      isFetching
+    } = this.props;
+    const isLoading = isFetching || loading;
     return (
       <div className={classes.root}>
         <form onSubmit={handleSubmit} className={classes.form}>
@@ -86,33 +94,10 @@ export class SearchForm extends Component {
                 </Button>
               </Grid>
             </Grid>
+            <div className={classes.loadingContainer}>
+              {isLoading && <LinearProgress />}
+            </div>
           </Paper>
-          {quickselect &&
-            quickselect.options && (
-              <Card className={classes.paper}>
-                <CardContent>
-                  <Typography className={classes.title}>
-                    {t("searchform.quickselect.title")}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  {Array.isArray(quickselect.options) &&
-                    quickselect.options.map(
-                      ({ active, lbl, handler }, index) => (
-                        <Button
-                          variant={active ? "outlined" : "flat"}
-                          key={index}
-                          color="primary"
-                          className={classes.button}
-                          onClick={handler}
-                        >
-                          {lbl}
-                        </Button>
-                      )
-                    )}
-                </CardActions>
-              </Card>
-            )}
         </form>
       </div>
     );
@@ -121,9 +106,24 @@ export class SearchForm extends Component {
 
 SearchForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool
 };
 
-export default reduxForm({ form: "search" })(
-  withStyles(styles)(translate()(SearchForm))
-);
+SearchForm.defaultProps = {
+  isFetching: false
+};
+
+const mapStateToProps = state => ({
+  isFetching: getSearchIsFetching(state)
+});
+
+export default compose(
+  reduxForm({ form: "search" }),
+  withStyles(styles),
+  translate(),
+  connect(
+    mapStateToProps,
+    null
+  )
+)(SearchForm);
