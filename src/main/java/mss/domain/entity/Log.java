@@ -9,6 +9,7 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String searchTerm;
     private Date timestamp;
     private String ipAddress;
     private Float dwellTime;
@@ -22,6 +23,14 @@ public class Log {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
     }
 
     public Date getTimestamp() {
