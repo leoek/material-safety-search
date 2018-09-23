@@ -115,7 +115,7 @@ paths:
           description: Advanced search field (productId, fsc, fscString, fsgString, niin, companyName)
           required: true
         - in: query
-          name: cound
+          name: count
           type: string
           description: Number of terms to be returned (defaults to 10)
           required: false
@@ -145,6 +145,27 @@ paths:
       responses:
         '200':
           description: Successful operation
+  /top:
+    get:
+      tags:
+        - Logging
+      summary: >-
+        Retrieve a list of most popular search terms.
+      description: ''
+      operationId: topTerms
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: count
+          type: string
+          description: Number of terms to be returned (defaults to 10)
+          required: false
+      responses:
+        '200':
+          description: Request successful. Caution, list may be empty.
+          schema:
+            $ref: '#/definitions/Suggestions'
 definitions:
   DataSheetDocument:
     type: object
@@ -318,6 +339,14 @@ definitions:
       suggestions:
         type: array
         description: 'List of suggested autocompletions'
+        items:
+          type: string
+  TopTerms:
+    type: object
+    properties:
+      suggestions:
+        type: array
+        description: 'List of terms most often searched for'
         items:
           type: string
   Meta:

@@ -3,13 +3,23 @@ services:
   solr:
     image: solr:7.4.0
     volumes:
-      - data:/opt/solr/server/solr/mycores
+      - solr_data:/opt/solr/server/solr/mycores
       - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
       - dataSheet
     networks:
+      - backend
+
+  logdb:
+    image: mariadb:10.3.9
+    restart: always
+    env_file:
+      - logdb.env
+    volumes:
+      - logdb_data:/var/lib/mysql
+    networks: 
       - backend
 
   mss-server:
@@ -52,7 +62,8 @@ services:
       - proxy-tier
 
 volumes:
-  data:
+  solr_data:
+  logdb_data:
   certs:
   conf.d:
   vhost.d:

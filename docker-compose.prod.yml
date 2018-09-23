@@ -3,7 +3,7 @@ services:
   solr:
     image: solr:7.4.0
     volumes:
-      - data:/opt/solr/server/solr/mycores
+      - solr_data:/opt/solr/server/solr/mycores
       - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
     entrypoint:
       - docker-entrypoint.sh
@@ -12,10 +12,21 @@ services:
     networks:
       - backend
 
+  logdb:
+    image: mariadb:10.3.9
+    restart: always
+    env_file:
+      - logdb.env
+    volumes:
+      - logdb_data:/var/lib/mysql
+    networks: 
+      - backend
+
   mss-server:
     image: materialsafetysearch/private:backend-stable
     depends_on:
       - solr
+      - logdb
     environment:
       - VIRTUAL_HOST=${SERVER_DOMAIN}
       - VIRTUAL_NETWORK=proxy-tier
@@ -52,7 +63,8 @@ services:
       - proxy-tier
 
 volumes:
-  data:
+  solr_data:
+  logdb_data:
   certs:
   conf.d:
   vhost.d:
