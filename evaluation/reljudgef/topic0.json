@@ -1,5 +1,6 @@
 {
     "querystring": "oxygen inhaled",
+    "totalcount": 2054,
     "results": [
         {
             "doc": {
@@ -14,9 +15,9 @@
         {
             "doc": {
                 "docType": "datasheet",
-                "productId": "ACETYLENE",
-                "niin": "00N054026",
-                "companyName": "ACETYLENE OXYGEN CO",
+                "productId": "OXYGEN,O2",
+                "niin": "01-124-1435",
+                "companyName": "SELOX,INC;DIVISION OF AIRCO INC",
                 "fsc": "6830"
             },
             "relevant": true
@@ -24,9 +25,9 @@
         {
             "doc": {
                 "docType": "datasheet",
-                "productId": "ARGON",
-                "niin": "00N054027",
-                "companyName": "ACETYLENE OXYGEN CO",
+                "productId": "OXYGEN,G-1",
+                "niin": "00-077-1247",
+                "companyName": "OXNARD WELDING SUPPLIES",
                 "fsc": "6830"
             },
             "relevant": false
@@ -34,70 +35,70 @@
         {
             "doc": {
                 "docType": "datasheet",
-                "productId": "HELIUM",
-                "niin": "00N054028",
-                "companyName": "ACETYLENE OXYGEN CO",
-                "fsc": "6830"
+                "productId": "OXYGEN;OXYGEN, COMPRESSED (D.O.T.)",
+                "niin": "00-559-5287",
+                "companyName": "AGA GAS INC",
+                "fsc": "9135"
             },
             "relevant": false
         },
         {
             "doc": {
                 "docType": "datasheet",
-                "productId": "AIR",
-                "niin": "00N028548",
-                "companyName": "INDUSTRIAL OXYGEN CO",
-                "fsc": "6830"
-            },
-            "relevant": false
-        },
-        {
-            "doc": {
-                "docType": "datasheet",
-                "productId": "ANHYDROUS AMMONIA, 5B81-83",
-                "niin": "00N012633",
-                "companyName": "INDUSTRIAL OXYGEN CO",
-                "fsc": "6830"
-            },
-            "relevant": true
-        },
-        {
-            "doc": {
-                "docType": "datasheet",
-                "productId": "ACETYLENE, ETHYNE",
-                "niin": "00N043577",
-                "companyName": "INDIANA OXYGEN CO",
-                "fsc": "6830"
-            },
-            "relevant": true
-        },
-        {
-            "doc": {
-                "docType": "datasheet",
-                "productId": "CARBON DIOXIDE, REFRIGERATED LIQUID",
-                "niin": "00-292-0142",
-                "companyName": "INDIANA OXYGEN COMPANY",
-                "fsc": "6830"
-            },
-            "relevant": true
-        },
-        {
-            "doc": {
-                "docType": "datasheet",
-                "productId": "INTAL INHALER",
-                "niin": "01-239-4689",
-                "companyName": "FISONS CORP,PRESCRIPTION DIV",
+                "productId": "GASEOUS OXYGEN,OXYGEN,GOX",
+                "niin": "00-132-5181",
+                "companyName": "PURITAN-BENNETT AERO SYSTEMS CO",
                 "fsc": "6505"
             },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "OXYGEN,TECHNICAL",
+                "niin": "00-169-0803",
+                "companyName": "AGA BURDOX",
+                "fsc": "6830"
+            },
             "relevant": false
         },
         {
             "doc": {
                 "docType": "datasheet",
-                "productId": "BRETHAIRE INHALER",
-                "niin": "01-202-2226",
-                "companyName": "CIBA-GEIGY CORP, CIBA PHARMACEUTICALS DIV.",
+                "productId": "GASEOUS OXYGEN,OXYGEN GAS,GOX",
+                "niin": "00-132-5225",
+                "companyName": "PURITAN-BENNETT",
                 "fsc": "6505"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "OXYGEN,REFRIGERATED LIQUID",
+                "niin": "00-781-8194",
+                "companyName": "BOC GROUP,INC,AIRCO,DIV",
+                "fsc": "6830"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "OXYGEN,LOX,GOX",
+                "niin": "00-300-4965",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC.",
+                "fsc": "6830"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "productId": "OXYGEN,REFRIGERATED LIQUID",
+                "niin": "00N011474",
+                "companyName": "AGA GAS,INC",
+                "fsc": "6850"
             },
             "relevant": true
         }

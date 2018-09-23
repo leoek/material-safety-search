@@ -20,7 +20,7 @@ and you can say which fields should be displayed when you judge so you can make 
 `python3 querytopics.py`
 to query the specified topics and judge them regarding to relevance
 
-* at the start you are asked which requestmethod you want to use, if you want to use fuzzy search or wholeDoc search, currently neither is implemented and only `get` works as requestmethod
+* at the start you are asked which requestmethod you want to use, if you want to use fuzzy search or wholeDoc search
 
 **NOTE**: if you dont quit with q but stop the programm, your judgements wont be saved.
 **NOTE**: judging a topic again will override the old file completly in /reljudge, so its recommended to at least finish the topic.
@@ -37,3 +37,10 @@ to display a table with the average precisions of the topics and the mean averag
 (/reljudgef) = fuzzy on
 (/reljudgew) = wholeDoc on
 (/reljudgefw) = both on
+
+### statistics
+
+* call 
+`python3 stats.py` 
+to display the % difference of mean average precision of with fuzzy, wholeDoc, and both enabled to normal search,
+aswell as what the ratio of total search results (over all queries) the configurations had compared to normal search

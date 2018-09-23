@@ -35,7 +35,7 @@ keylist = [
 
 
 #iterate through topics and send queries and print the results, adapt numsearchresults as wanted
-def querytopics(filename, requesttype, numsearchresults, fuzzy=False, wholeDoc=False):
+def querytopics(filename, numsearchresults, fuzzy=False, wholeDoc=False, requesttype='post'):
 
     #read in topics
     with open(filename) as f:
@@ -77,13 +77,16 @@ def querytopics(filename, requesttype, numsearchresults, fuzzy=False, wholeDoc=F
         #check if request successfull
         if r.status_code == requests.codes.ok:
             print('query#' + str(topicnumber) + ': ' + query + '\n')
+            print('total count of results: ' + str(r.json()['meta']['totalCount']))
             reljudges = {
                         'querystring': query,
+                        'totalcount': r.json()['meta']['totalCount'],
                         'results': []
                         }
             for j in range(0, numsearchresults):
                 retrieved = {key : r.json()['items'][j][key] for key in keylist }
-                print('query: ' + query)
+                
+                print('query#' + str(topicnumber) + ': ' + query + '\n')
                 pprint(retrieved)
                 line = input('y/n: ')
                 
@@ -120,7 +123,7 @@ def querytopics(filename, requesttype, numsearchresults, fuzzy=False, wholeDoc=F
             print(str(r.status_code) + " request failed")
             break
  
-requestmethod = input('enable requestmethod search get/post: ')
+#requestmethod = input('enable requestmethod search get/post: ')
 
 fuzzy = input('enable fuzzy search y/n: ')
 if fuzzy == "y":
@@ -138,4 +141,4 @@ elif wholeDoc == "n":
     wholeDoc = False
     print('no saved')
 
-querytopics('topics.json', requestmethod, numsearchresults, fuzzy, wholeDoc)
+querytopics('topics.json', numsearchresults, fuzzy, wholeDoc)

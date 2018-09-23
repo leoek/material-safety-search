@@ -1,0 +1,47 @@
+{
+    "": {
+        "mean average precision": 0.8761904761904762,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.8761904761904762,
+                "totalcount": 5905
+            }
+        ]
+    },
+    "f": {
+        "mean average precision": 0.7327380952380952,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.7327380952380952,
+                "totalcount": 2054
+            }
+        ]
+    },
+    "w": {
+        "mean average precision": 0.7327380952380952,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.7327380952380952,
+                "totalcount": 219265
+            }
+        ]
+    },
+    "fw": {
+        "mean average precision": 0.7523611111111111,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.7958333333333334,
+                "totalcount": 63192
+            },
+            {
+                "querystring": "liquid on fire",
+                "average precision": 0.7088888888888889,
+                "totalcount": 235891
+            }
+        ]
+    }
+}
