@@ -11,5 +11,26 @@ services:
       - docker-entrypoint.sh
       - solr-precreate
       - dataSheet
+    networks:
+      - backend
+
+  logdb:
+    image: mariadb:10.3.9
+    expose:
+      - 3306
+    ports:
+     - "3306:3306"
+    restart: always
+    env_file:
+      - logdb.env
+    volumes:
+      - log_db:/var/lib/mysql
+    networks: 
+      - backend
+
 volumes:
   data:
+  log_db:
+
+networks:
+  backend:
