@@ -1,9 +1,6 @@
 package mss.controller;
 
-import mss.domain.entity.AdvancedTerm;
-import mss.domain.entity.DataSheetDocument;
-import mss.domain.entity.GeneralTerm;
-import mss.domain.entity.Suggestions;
+import mss.domain.entity.*;
 import mss.domain.responses.PageResponse;
 import mss.service.DataSheetService;
 import mss.service.SuggestService;
@@ -59,5 +56,10 @@ public class DataSheetController {
     @RequestMapping(path = "/suggest", method = RequestMethod.GET)
     public Suggestions suggest(@RequestParam String s, @RequestParam String field, @RequestParam(required = false) Integer count) {
         return suggestService.createSuggestions(s, field, count);
+    }
+
+    @RequestMapping(path = "/logging", method = RequestMethod.POST)
+    public PageResponse<DataSheetDocument> addLog(@RequestBody Log log) {
+        return null;
     }
 }
