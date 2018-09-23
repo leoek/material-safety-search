@@ -115,3 +115,7 @@ Procedure:
 1. The Backend will check whether documents are already imported to Solr. If the solr core is not empty it will skip the import of the documents.
 2. Solr data is in a named docker volume, which will prevent losing the Solr core with the indexed documents in between container restarts.
 3. The Solr data volume can be deleted with the `-v` flag: `docker-compose down -v`
+
+#### Postman
+
+Postman can be used to talk to the backend directly. [Import](https://medium.com/@codebyjeff/using-postman-environment-variables-auth-tokens-ea9c4fe9d3d7) the supplied collection and environments and you should be good to go.
