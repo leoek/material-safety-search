@@ -2,8 +2,7 @@ package mss.domain.entity;
 
 import java.util.List;
 
-public class
-Suggestions {
+public class Suggestions {
 
     private List<String> suggestions;
 

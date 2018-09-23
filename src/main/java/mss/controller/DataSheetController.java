@@ -72,4 +72,11 @@ public class DataSheetController {
         Optional<Log> result = loggingService.addLog(logObject);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/top", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<TopTerms> getTopTerms(@RequestParam(required = false, defaultValue = "10") Integer count) {
+        return new ResponseEntity<>(loggingService.getTopTerms(count), HttpStatus.OK);
+    }
+
 }

@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface LogRepository extends JpaRepository<Log, Long> {
-    @Query(value = "select t.searchTerm, count(t.searchTerm) as occurance from mariadb.log as t group by t.searchTerm order by occurance desc")
-    public Page<String> getAll(Pageable p);
+    @Query(value = "select t from Log as t group by t.searchTerm order by count(t.searchTerm) desc")
+    Page<Log> getAll(Pageable p);
 }
