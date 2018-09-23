@@ -8,7 +8,9 @@ export default {
       },
       search: {
         submit: "Search",
-        querylbl: "Search"
+        querylbl: "Search",
+        fuzzylbl: "Enable Fuzzysearch",
+        wholedoclbl: "Search Whole Datasheet"
       }
     },
     datasheet: {
