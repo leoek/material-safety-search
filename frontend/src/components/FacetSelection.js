@@ -12,9 +12,10 @@ import isEmpty from "lodash/isEmpty";
 
 import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
+import Grow from "@material-ui/core/Grow";
 
 import { selectFacet } from "../redux/actions";
-import { getSearchFacets } from "../redux/selectors";
+import { getSearchFacets, getSearchIsFetching } from "../redux/selectors";
 import ExpandableCardContent from "./common/ExpandableCardContent";
 import Padder from "./common/Padder";
 
@@ -47,12 +48,19 @@ const styles = theme => ({
   }
 });
 
-const RawFacetChips = ({ classes, facets }) => {
+const RawFacetChips = ({ classes, facets, isFetching }) => {
+  console.log(isFetching);
   return (
     <div className={classnames([classes.smallPadLeft, classes.smallPadRight])}>
       {facets &&
         facets.map(facet => (
-          <FacetChip key={facet.facetNumber} facet={facet} />
+          <Grow
+            key={facet.facetNumber}
+            in={!isFetching}
+            {...(!isFetching ? { timeout: 1000 } : {})}
+          >
+            <FacetChip facet={facet} />
+          </Grow>
         ))}
     </div>
   );
@@ -60,7 +68,7 @@ const RawFacetChips = ({ classes, facets }) => {
 
 const FacetChips = withStyles(styles)(RawFacetChips);
 
-const RawFacetChip = ({ facet, classes, t, selectFacet }) => {
+const RawFacetChip = ({ facet, classes, t, selectFacet, ...props }) => {
   const { facetNumber, facetString, count } = facet;
   const isLong = facetNumber && facetNumber.length > 2;
 
@@ -81,6 +89,7 @@ const RawFacetChip = ({ facet, classes, t, selectFacet }) => {
       variant="outlined"
       aria-label={label}
       title={label}
+      {...props}
     />
   );
 };
@@ -95,7 +104,7 @@ const FacetChip = compose(
 
 export class FacetSelection extends Component {
   render() {
-    const { classes, t, facets } = this.props;
+    const { classes, t, facets, isFetching } = this.props;
 
     if (!facets || !Array.isArray(facets) || isEmpty(facets)) {
       return null;
@@ -111,10 +120,19 @@ export class FacetSelection extends Component {
           </Typography>
         </CardContent>
         <ExpandableCardContent
-          previewContent={<FacetChips facets={facets.slice(0, previewCount)} />}
+          previewContent={
+            <FacetChips
+              facets={facets.slice(0, previewCount)}
+              isFetching={isFetching}
+            />
+          }
+          expandable={Boolean(facets.length > 2)}
         >
           <div className={classnames([classes.padLeft, classes.padRight])}>
-            <FacetChips facets={facets.slice(previewCount)} />
+            <FacetChips
+              facets={facets.slice(previewCount)}
+              isFetching={isFetching}
+            />
             <Padder />
           </div>
         </ExpandableCardContent>
@@ -135,7 +153,8 @@ FacetSelection.defaultProps = {
 };
 
 const mapStateToRrops = state => ({
-  facets: getSearchFacets(state)
+  facets: getSearchFacets(state),
+  isFetching: getSearchIsFetching(state)
 });
 
 const mapDispatchToProps = {};

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { compose } from "redux";
-
+import PropTypes from "prop-types";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import Collapse from "@material-ui/core/Collapse";
@@ -48,8 +48,10 @@ class ExpandableCardContent extends Component {
   };
 
   render = () => {
-    const { classes, children, previewContent, t } = this.props;
+    const { classes, children, previewContent, t, expandable } = this.props;
     const { expanded } = this.state;
+
+    const isExpanded = expanded && expandable;
 
     return (
       <div>
@@ -63,22 +65,31 @@ class ExpandableCardContent extends Component {
           <div>{previewContent}</div>
           <IconButton
             className={classnames(classes.expand, {
-              [classes.expandOpen]: expanded
+              [classes.expandOpen]: isExpanded
             })}
             onClick={this.handleExpandClick}
-            aria-expanded={expanded}
+            aria-expanded={isExpanded}
             aria-label={t("show_more")}
+            disabled={!expandable}
           >
             <ExpandMoreIcon />
           </IconButton>
         </div>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse in={isExpanded} timeout="auto" unmountOnExit>
           {children}
         </Collapse>
       </div>
     );
   };
 }
+
+ExpandableCardContent.proptypes = {
+  expandable: PropTypes.bool
+};
+
+ExpandableCardContent.defaultProps = {
+  expandable: true
+};
 
 export default compose(
   withStyles(styles),
