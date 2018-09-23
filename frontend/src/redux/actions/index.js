@@ -83,3 +83,11 @@ export const updateSearchInput = update => ({
     update
   }
 });
+
+export const TOGGLE_ADVANCED_SEARCH = "MSS/TOGGLE_ADVANCED_SEARCH";
+export const toggleAdvancedSearch = value => ({
+  type: TOGGLE_ADVANCED_SEARCH,
+  payload: {
+    value
+  }
+});
