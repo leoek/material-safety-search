@@ -44,6 +44,16 @@ public class DataSheetIndexService {
     }
 
     /**
+     * Flushes the cache. This should be called if the cache was used to index new documents and the last of
+     * the new documents was added. If the cache wont be flushed, some documents will stay in the cache. These
+     * documents would than never be indexed.
+     */
+    public void flushDocuemtCache(){
+        add(documentCache);
+        documentCache = new ArrayList<>();
+    }
+
+    /**
      * Adds the cached {@link DataSheetDocument} to the index
      * @param documents Cache of {@link DataSheetDocument} to add to the index
      */
