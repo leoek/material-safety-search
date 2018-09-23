@@ -1,5 +1,8 @@
 import get from "lodash/get";
 
+/**
+ * datasheetSectionDialog substate
+ */
 export const getDatasheetSectionDialogValue = path => state =>
   get(state, `ui.datasheetSectionDialog.${path}`);
 export const getDatasheetSectionDialogIsOpen = getDatasheetSectionDialogValue(
@@ -21,3 +24,12 @@ export const getDatasheetSectionDialogRaw = state => {
   );
   return rawSection;
 };
+
+/**
+ * datasheetDialog substate
+ */
+
+export const getDatasheetDialogValue = path => state =>
+  get(state, `ui.datasheetDialog.${path}`);
+export const getDatasheetDialogIsOpen = getDatasheetDialogValue("open");
+export const getDatasheetDialogDatasheet = getDatasheetDialogValue("datasheet");

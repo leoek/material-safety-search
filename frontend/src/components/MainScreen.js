@@ -18,6 +18,7 @@ import DatasheetSectionDialog from "./DatasheetSectionDialog";
 import NotificationHandler from "./NotificationHandler";
 
 import config from "../config";
+import DatasheetDialog from "./DatasheetDialog";
 
 const styles = theme => ({
   root: {
@@ -167,6 +168,7 @@ export class Screen extends Component {
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
         </Grid>
+        <DatasheetDialog />
         <DatasheetSectionDialog />
         <NotificationHandler />
       </div>

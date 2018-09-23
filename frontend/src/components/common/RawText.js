@@ -10,6 +10,7 @@ const styles = theme => ({
 });
 
 const RawText = ({ classes, text, innerClassName, ...rest }) => {
+  if (!text || !(typeof text === "string")) return null;
   const enhancedText = text.split("\n").join("<br />");
   return (
     <div
@@ -26,7 +27,7 @@ RawText.propTypes = {
 };
 
 RawText.defaultProps = {
-  text: ""
+  text: null
 };
 
 export default withStyles(styles)(RawText);

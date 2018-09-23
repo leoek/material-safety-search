@@ -1,4 +1,9 @@
-import { SHOW_DATASHEET_SECTION, CLOSE_DATASHEET_SECTION } from "../actions";
+import {
+  SHOW_DATASHEET_SECTION,
+  CLOSE_DATASHEET_SECTION,
+  SHOW_DATASHEET,
+  CLOSE_DATASHEET
+} from "../actions";
 
 const initialState = {
   notifications: {
@@ -9,6 +14,10 @@ const initialState = {
     open: false,
     datasheet: null,
     section: null
+  },
+  datasheetDialog: {
+    open: false,
+    datasheet: null
   }
 };
 
@@ -28,6 +37,22 @@ const ui = (state = initialState, action) => {
     return {
       ...state,
       datasheetSectionDialog: {
+        open: false
+      }
+    };
+  } else if (type === SHOW_DATASHEET) {
+    const { datasheet } = payload || {};
+    return {
+      ...state,
+      datasheetDialog: {
+        open: true,
+        datasheet
+      }
+    };
+  } else if (type === CLOSE_DATASHEET) {
+    return {
+      ...state,
+      datasheetDialog: {
         open: false
       }
     };
