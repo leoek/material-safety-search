@@ -24,6 +24,11 @@ const styles = theme => ({
       marginRight: -8
     }
   },
+  //TODO hiding any overlfow is not optimal
+  previewContent: {
+    maxWidth: "100%",
+    overflow: "hidden"
+  },
   expandOpen: {
     transform: "rotate(180deg)"
   },
@@ -62,7 +67,7 @@ class ExpandableCardContent extends Component {
             classes.padRight
           ])}
         >
-          <div>{previewContent}</div>
+          <div className={classes.previewContent}>{previewContent}</div>
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: isExpanded

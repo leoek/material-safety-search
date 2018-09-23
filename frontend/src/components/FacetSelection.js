@@ -38,7 +38,8 @@ const styles = theme => ({
   },
   paper: {
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
+    maxWidth: "100%"
   },
   title: {
     fontSize: 20
