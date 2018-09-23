@@ -37,12 +37,6 @@ const styles = theme => ({
   },
   link: {
     fontSize: 10
-  },
-  loadingContainer: {
-    display: "block",
-    height: 5,
-    justifyContent: "center",
-    alignItems: "center"
   }
 });
 
@@ -73,7 +67,7 @@ export class Screen extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="sticky" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
               {t("title")}

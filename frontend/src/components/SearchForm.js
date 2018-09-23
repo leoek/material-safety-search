@@ -34,6 +34,12 @@ const styles = theme => ({
   },
   title: {
     fontSize: 14
+  },
+  loadingContainer: {
+    display: "block",
+    height: 5,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
