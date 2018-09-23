@@ -1,0 +1,3 @@
+version: "3"
+volumes:
+  log_db:
