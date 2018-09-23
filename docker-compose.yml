@@ -5,7 +5,7 @@ services:
     ports:
      - "8983:8983"
     volumes:
-      - data:/opt/solr/server/solr/mycores
+      - solr_data:/opt/solr/server/solr/mycores
       - ./docker/solr.in.sh:/opt/solr/bin/solr.in.sh
     entrypoint:
       - docker-entrypoint.sh
@@ -24,13 +24,13 @@ services:
     env_file:
       - logdb.env
     volumes:
-      - log_db:/var/lib/mysql
+      - logdb_data:/var/lib/mysql
     networks: 
       - backend
 
 volumes:
-  data:
-  log_db:
+  solr_data:
+  logdb_data:
 
 networks:
   backend:

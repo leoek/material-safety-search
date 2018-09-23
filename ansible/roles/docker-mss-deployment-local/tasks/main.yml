@@ -16,6 +16,14 @@
     mode: 0644
   notify: rebuild_containers
 
+- name: Copy logdb.env template
+  become: true
+  template:
+    src: logdb.env
+    dest: "{{ mss_path }}/"
+    mode: 0644
+  notify: rebuild_containers
+
 - name: create folder docker inside mss working dir
   become: true
   file:
