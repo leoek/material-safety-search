@@ -48,3 +48,19 @@ export const CLOSE_DATASHEET = "MSS/CLOSE_DATASHEET";
 export const closeDatasheet = () => ({
   type: CLOSE_DATASHEET
 });
+
+export const SELECT_FACET = "MSS/SELECT_FACET";
+export const selectFacet = facet => ({
+  type: SELECT_FACET,
+  payload: {
+    facet
+  }
+});
+
+export const UPDATE_SEARCH_INPUT = "MSS/UPDATE_SEARCH_INPUT";
+export const updateSearchInput = update => ({
+  type: UPDATE_SEARCH_INPUT,
+  payload: {
+    update
+  }
+});

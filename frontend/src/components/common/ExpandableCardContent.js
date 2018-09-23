@@ -35,7 +35,7 @@ const styles = theme => ({
   }
 });
 
-export class ExpandableCardContent extends Component {
+class ExpandableCardContent extends Component {
   state = {
     expanded: !!this.props.defaultExpanded
   };

@@ -10,12 +10,13 @@ import { withStyles } from "@material-ui/core/styles";
 
 import SearchForm from "./SearchForm";
 
-import { fetchSearchRequest } from "../redux/actions";
+import { updateSearchInput } from "../redux/actions";
 import { getSearchFormValues } from "../redux/selectors";
 import ResultList from "./ResultList";
 import QuickAnswerSection from "./QuickAnswerSection";
 import DatasheetSectionDialog from "./DatasheetSectionDialog";
 import NotificationHandler from "./NotificationHandler";
+import FacetSelection from "./FacetSelection";
 
 import config from "../config";
 import DatasheetDialog from "./DatasheetDialog";
@@ -50,8 +51,8 @@ export class Screen extends Component {
   }
 
   componentDidMount = () => {
-    const { fetchSearchRequest } = this.props;
-    fetchSearchRequest({ query: "test" });
+    const { updateSearchInput } = this.props;
+    updateSearchInput({ query: "test" });
   };
 
   componentWillReceiveProps(nextProps) {
@@ -96,8 +97,8 @@ export class Screen extends Component {
   };
 
   submit = values => {
-    const { fetchSearchRequest } = this.props;
-    fetchSearchRequest(values);
+    const { updateSearchInput } = this.props;
+    updateSearchInput(values);
     this.setMockOptions();
   };
 
@@ -164,6 +165,7 @@ export class Screen extends Component {
               quickselect={quickselect}
             />
             <QuickAnswerSection quickAnswer={quickAnswer} />
+            <FacetSelection />
             <ResultList hideLoading={false} />
           </Grid>
           <Grid item xs={false} sm={1} md={2} lg={3} />
@@ -189,7 +191,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchSearchRequest
+  updateSearchInput
 };
 
 export const ConnectedScreen = connect(

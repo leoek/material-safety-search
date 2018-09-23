@@ -41,7 +41,7 @@ const renderTextField = ({ input, meta: { touched, error }, ...rest }) => (
   <TextField {...rest} {...input} error={touched && error} />
 );
 
-export class SearhForm extends Component {
+export class SearchForm extends Component {
   render() {
     const { handleSubmit, canSubmit, classes, t, quickselect } = this.props;
     return (
@@ -119,11 +119,11 @@ export class SearhForm extends Component {
   }
 }
 
-SearhForm.propTypes = {
+SearchForm.propTypes = {
   classes: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 
 export default reduxForm({ form: "search" })(
-  withStyles(styles)(translate()(SearhForm))
+  withStyles(styles)(translate()(SearchForm))
 );

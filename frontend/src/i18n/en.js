@@ -26,6 +26,9 @@ export default {
     datasheetdialog: {
       close: "Close"
     },
+    facetselection: {
+      title: "Select a category to filter the results."
+    },
     fromCompany_label: "from",
     show_more: "Show More"
   }
