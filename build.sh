@@ -17,6 +17,10 @@ newTag="$baseTag:$tagName-$packageVersion-$BUILD_NUMBER"
 
 echo "Building $newTag"
 docker build -t "$newTag" .
+#check build status
+if [ "$?" -gt "0" ]; then
+    exit 1
+fi
 docker push $newTag
 
 docker tag $newTag "$baseTag:$tagName-next"

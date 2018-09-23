@@ -9,6 +9,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
+import isEmpty from "lodash/isEmpty";
+
+import Padder from "./common/Padder";
+import SectionSelections from "./SectionSelections";
+import Snippet from "./Snippet";
 
 import { fetchSearchRequest } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
@@ -17,16 +22,27 @@ const styles = theme => ({
   root: {
     flexGrow: 1
   },
-  details: {
-    flex: 1,
-    flexDirection: "column"
-  },
   paper: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
   },
   link: {
     fontSize: 10
+  },
+  loadingContainer: {
+    display: "block",
+    height: 5,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  padder: {
+    margin: 5
+  },
+  padLeft: {
+    paddingLeft: theme.spacing.unit * 2
+  },
+  padRight: {
+    paddingRight: theme.spacing.unit * 2
   }
 });
 
@@ -34,7 +50,6 @@ export const RawResultListCard = ({ t, item, classes }) => {
   const { productId, companyName } = item;
 
   const title = `${productId}: ${companyName}`;
-  const snippet = null;
 
   return (
     <Card className={classes.paper}>
@@ -48,8 +63,10 @@ export const RawResultListCard = ({ t, item, classes }) => {
             {title}
           </Typography>
         </Button>
-        <Typography className={classes.snippet}>{snippet}</Typography>
       </CardContent>
+      <Snippet item={item} />
+      <SectionSelections item={item} />
+      <Padder />
     </Card>
   );
 };
@@ -66,21 +83,26 @@ const ResultListCard = translate()(withStyles(styles)(RawResultListCard));
 
 export class ResultList extends Component {
   render() {
-    const { items, isFetching } = this.props;
-    console.log(isFetching, items);
-    if (isFetching) {
+    const { items, isFetching, hideLoading, classes } = this.props;
+    if (isFetching && hideLoading) return null;
+    if (isFetching && (!items || isEmpty(items))) {
       return (
-        <div>
+        <div className={classes.loadingContainer}>
           <LinearProgress />
         </div>
       );
     }
     if (!items || !Array.isArray(items)) return null;
     return (
-      <div>
-        {items.map((item, index) => (
-          <ResultListCard key={item.id || index} item={item} />
-        ))}
+      <div className={classes.root}>
+        <div className={classes.loadingContainer}>
+          {isFetching && <LinearProgress />}
+        </div>
+        <div>
+          {items.map((item, index) => (
+            <ResultListCard key={item.id || index} item={item} />
+          ))}
+        </div>
       </div>
     );
   }

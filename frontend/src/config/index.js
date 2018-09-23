@@ -1,3 +1,5 @@
+import datasheetFormat, { ingredientFormat } from "./datasheetFormat";
+
 const devEnv = process.env.NODE_ENV === "development";
 
 const devConfig = {
@@ -6,6 +8,10 @@ const devConfig = {
 
 export const baseConfig = {
   version: "0.1.0",
+  buildNumber:
+    global.MSS && global.MSS.BUILD_NUMBER !== "REPLACE_WITH_BUILD_NUMBER"
+      ? global.MSS.BUILD_NUMBER
+      : 0,
   apiBaseUrl:
     global.MSS && global.MSS.API_BASE_URL !== "REPLACE_WITH_APIBASEURL"
       ? global.MSS.API_BASE_URL
@@ -16,7 +22,9 @@ export const baseConfig = {
   },
   DEFAULTS: {
     pageSize: 10
-  }
+  },
+  datasheetFormat,
+  ingredientFormat
 };
 
 export const config = {

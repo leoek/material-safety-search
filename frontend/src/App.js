@@ -19,7 +19,13 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import MainScreen from "./components/MainScreen";
 
 const { store, history, persistor } = configureStore();
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+  palette: {
+    background: {
+      main: "#ededed"
+    }
+  }
+});
 
 class App extends Component {
   constructor(props) {
