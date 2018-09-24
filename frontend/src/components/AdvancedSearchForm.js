@@ -14,6 +14,10 @@ import { getSearchIsFetching } from "../redux/selectors";
 
 import { RenderTextField, RenderCheckbox } from "./common/InputFields";
 import { SearchButton } from "./SearchForm";
+import AutoSuggest, { formatSuggestions } from "./common/AutoSuggest";
+
+import { fetchSuggestRequest } from "../redux/actions";
+import { getSuggestions } from "../redux/selectors";
 
 const styles = theme => ({
   root: {
@@ -87,7 +91,10 @@ export class SearchForm extends Component {
       t,
       loading,
       isFetching,
-      width
+      width,
+
+      productIdSuggestions,
+      fetchSuggestRequest
     } = this.props;
     const isLoading = isFetching || loading;
     const searchButtonTopWidths = ["xs", "md", "lg"];
@@ -134,6 +141,29 @@ export class SearchForm extends Component {
                   type="checkbox"
                 />
               </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <Field
+                  label="Product Name"
+                  name="productId"
+                  component={AutoSuggest}
+                  className={classes.formItem}
+                  suggestions={formatSuggestions(productIdSuggestions || [])}
+                  handleFetchSuggestions={value =>
+                    fetchSuggestRequest({
+                      s: value,
+                      field: "productId"
+                    })
+                  }
+                  handleClearSuggestions={() => false}
+                />
+              </Grid>
               {searchButtonTop && <SearchButton canSubmit={canSubmit} />}
               {!searchButtonTop && <SearchButton canSubmit={canSubmit} />}
             </Grid>
@@ -158,7 +188,8 @@ SearchForm.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  isFetching: getSearchIsFetching(state)
+  isFetching: getSearchIsFetching(state),
+  productIdSuggestions: getSuggestions("productId")(state)
 });
 
 export default compose(
@@ -168,6 +199,8 @@ export default compose(
   translate(),
   connect(
     mapStateToProps,
-    null
+    {
+      fetchSuggestRequest
+    }
   )
 )(SearchForm);

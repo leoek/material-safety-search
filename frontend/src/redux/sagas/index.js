@@ -55,9 +55,9 @@ export function* fetchSuggestSaga(action) {
   });
   const reponseData = yield response.json().catch(handleResponseJsonError);
   if (response.ok) {
-    yield put(fetchSuggestSuccess(reponseData));
+    yield put(fetchSuggestSuccess({ field, data: reponseData }));
   } else {
-    yield put(fetchSuggestFailure(reponseData));
+    yield put(fetchSuggestFailure({ field, error: reponseData }));
   }
 }
 
