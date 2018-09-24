@@ -7,17 +7,13 @@ import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import withWidth from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 import classnames from "classnames";
 import { getSearchIsFetching } from "../redux/selectors";
 
 import { InputCheckbox, InputAutoSuggest } from "./common/InputFields";
 import { SearchButton } from "./SearchForm";
-import AutoSuggest, { formatSuggestions } from "./common/AutoSuggest";
-
-import { fetchSuggestRequest } from "../redux/actions";
-import { getSuggestions } from "../redux/selectors";
 
 const styles = theme => ({
   root: {
@@ -86,10 +82,7 @@ export class SearchForm extends Component {
       t,
       loading,
       isFetching,
-      width,
-
-      productIdSuggestions,
-      fetchSuggestRequest
+      width
     } = this.props;
     const isLoading = isFetching || loading;
 
@@ -141,8 +134,8 @@ export class SearchForm extends Component {
               </Grid>
             </Grid>
             <Grid container>
-              {[...Array(columns - 1)].map(_ => (
-                <Grid item xs={12} sm={6} md={6} lg={4}>
+              {[...Array(columns - 1)].map((_, i) => (
+                <Grid key={i} item xs={12} sm={6} md={6} lg={4}>
                   {/* Empty container for positioning purposes*/}
                 </Grid>
               ))}
@@ -178,8 +171,7 @@ SearchForm.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  isFetching: getSearchIsFetching(state),
-  productIdSuggestions: getSuggestions("productId")(state)
+  isFetching: getSearchIsFetching(state)
 });
 
 export default compose(
@@ -187,10 +179,5 @@ export default compose(
   withWidth(),
   withStyles(styles),
   translate(),
-  connect(
-    mapStateToProps,
-    {
-      fetchSuggestRequest
-    }
-  )
+  connect(mapStateToProps)
 )(SearchForm);

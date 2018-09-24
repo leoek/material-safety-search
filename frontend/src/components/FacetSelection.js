@@ -48,8 +48,17 @@ const styles = theme => ({
     marginTop: theme.spacing.unit,
     marginRight: theme.spacing.unit
   },
-  wideAvatar: {
-    width: 50
+  avatar: {
+    fontSize: 15
+  },
+  avatar3: {
+    fontSize: 14
+  },
+  avatar4: {
+    fontSize: 12
+  },
+  avatar5: {
+    fontSize: 10
   }
 });
 
@@ -65,7 +74,7 @@ const RawFacetChips = ({ classes, facets, isFetching, selected }) => {
           >
             <FacetChip
               facet={facet}
-              isSelected={selected === facet.facetNumber}
+              isSelected={selected === facet.facetNumber && facet.facetNumber}
             />
           </Grow>
         ))}
@@ -97,26 +106,33 @@ const RawFacetChip = ({
   isSelected = false
 }) => {
   const { facetNumber, facetString, count } = facet;
-  const isLong = facetNumber && facetNumber.length > 2;
 
   if (!count) return <div />;
 
-  const label = `${facetString || t("facetselection.no_facet")} x${count}`;
+  const label = `${facetNumber || ""} - ${facetString ||
+    t("facetselection.no_facet")}`;
+
+  const countLength = `${count}`.length || 0;
 
   return (
     <Chip
       avatar={
-        <Avatar className={classnames({ [classes.wideAvatar]: isLong })}>
-          {facetNumber || "--"}
+        <Avatar
+          className={classnames(
+            classes.avatar,
+            classes[`avatar${countLength}`]
+          )}
+        >
+          {count}
         </Avatar>
       }
       label={label}
-      clickable
+      clickable={!isSelected}
       onDelete={isSelected ? () => deselectFacet(facet) : undefined}
-      onClick={() => selectFacet(facet)}
+      onClick={isSelected ? undefined : () => selectFacet(facet)}
       className={classes.chip}
       color="primary"
-      variant="outlined"
+      variant={isSelected ? "contained" : "outlined"}
       aria-label={label}
       title={label}
       /**
