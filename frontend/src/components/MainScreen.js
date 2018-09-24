@@ -24,6 +24,7 @@ import FacetSelection from "./FacetSelection";
 
 import config from "../config";
 import DatasheetDialog from "./DatasheetDialog";
+import AdvancedSearchForm from "./AdvancedSearchForm";
 
 const styles = theme => ({
   root: {
@@ -77,31 +78,60 @@ const AdvancedSearchToggle = compose(
   translate()
 )(RawAdvancedSearchToggle);
 
+const RawSearchFormWrapper = ({ isAdvancedSearch, ...rest }) => {
+  if (isAdvancedSearch) {
+    return <AdvancedSearchForm {...rest} />;
+  }
+  return <SearchForm {...rest} initialValues={{ query: "test" }} />;
+};
+
+const SearchFormWrapper = connect(state => ({
+  isAdvancedSearch: getAdvancedSearch(state)
+}))(RawSearchFormWrapper);
+
+const getDefaultInputValues = isAdvancedSearch => {
+  const both = {
+    fuzzy: false
+  };
+  if (isAdvancedSearch) {
+    return {
+      ...both,
+      productId: null,
+      fsgString: null,
+      fscString: null,
+      niin: null,
+      companyName: null
+    };
+  }
+  return {
+    ...both,
+    query: "",
+    wholeDoc: false
+  };
+};
+
 export class Screen extends Component {
   componentDidMount = () => {
     const { updateSearchInput } = this.props;
     updateSearchInput({ query: "test" });
   };
 
-  componentWillReceiveProps(nextProps) {
-    const { error } = this.props;
-    if (error !== nextProps.error) {
-      this.setState({
-        error
-      });
-    }
-  }
-
   submit = values => {
-    const { updateSearchInput } = this.props;
-    updateSearchInput(values);
+    const { updateSearchInput, isAdvancedSearch } = this.props;
+    updateSearchInput({
+      ...getDefaultInputValues(isAdvancedSearch),
+      ...values
+    });
   };
 
   render() {
     const { values, classes, t, width } = this.props;
     const phoneWidth = "xs" === width;
 
-    const canSubmit = !!values;
+    /**
+     * For the user can always submit a search
+     */
+    const canSubmit = true || !!values;
 
     return (
       <div className={classes.root}>
@@ -128,9 +158,8 @@ export class Screen extends Component {
         <Grid container>
           <Grid item xs={false} sm={1} md={2} lg={3} />
           <Grid item xs={12} sm={10} md={8} lg={6}>
-            <SearchForm
+            <SearchFormWrapper
               ref={form => (this.form = form)}
-              initialValues={{ query: "test" }}
               onSubmit={this.submit}
               canSubmit={canSubmit}
             />
@@ -155,7 +184,8 @@ Screen.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    values: getSearchFormValues(state)
+    values: getSearchFormValues(state),
+    isAdvancedSearch: getAdvancedSearch(state)
   };
 };
 

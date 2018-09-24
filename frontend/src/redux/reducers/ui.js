@@ -7,7 +7,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  advancedSearch: false,
+  advancedSearch: true,
   notifications: {
     current: null,
     toShow: []

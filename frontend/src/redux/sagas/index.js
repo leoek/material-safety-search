@@ -15,7 +15,7 @@ import {
   deselectFacets,
   DESELECT_FACETS
 } from "../actions";
-import { getSearchInput } from "../selectors";
+import { getSearchInput, getAdvancedSearch } from "../selectors";
 import { post } from "../../lib/api";
 import { config } from "../../config";
 
@@ -39,7 +39,7 @@ const handleResponseJsonError = (errorMessage, statusCode) => {
 };
 
 export function* fetchSearchSaga(action) {
-  const { payload = {} } = action;
+  const { payload = {}, advancedSearch } = action;
   const { query, page = 0, size = config.DEFAULTS.pageSize, ...rest } = payload;
   const parameters = {
     page,
@@ -50,7 +50,7 @@ export function* fetchSearchSaga(action) {
     ...rest
   };
   const response = yield post({
-    endpoint: "search",
+    endpoint: advancedSearch ? "advancedSearch" : "search",
     parameters,
     data
   });
@@ -66,11 +66,12 @@ export function* updateSearchInputSaga(action) {
   const { payload } = action;
   const { update } = payload || {};
   const oldSearchInput = yield select(getSearchInput);
+  const advancedSearch = yield select(getAdvancedSearch);
   const searchInput = {
     ...oldSearchInput,
     ...update
   };
-  yield put(fetchSearchRequest(searchInput));
+  yield put(fetchSearchRequest(searchInput, advancedSearch));
 }
 
 export function* handleSelectFacetSaga(action) {

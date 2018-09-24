@@ -10,9 +10,10 @@ export const reduxRehydrationCompleted = () => ({
 });
 
 export const FETCH_SEARCH_REQUEST = "MSS/FETCH_SEARCH_REQUEST";
-export const fetchSearchRequest = payload => ({
+export const fetchSearchRequest = (payload, advancedSearch) => ({
   type: FETCH_SEARCH_REQUEST,
-  payload
+  payload,
+  advancedSearch
 });
 
 export const FETCH_SEARCH_SUCCESS = "MSS/FETCH_SEARCH_SUCCESS";

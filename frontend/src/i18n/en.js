@@ -11,7 +11,15 @@ export default {
         submit: "Search",
         querylbl: "Search",
         fuzzylbl: "Enable Fuzzysearch",
-        wholedoclbl: "Search Whole Datasheet"
+        wholedoclbl: "Search Whole Datasheet",
+        productIdlbl: "Product Name",
+        fsgStringlbl: "FSG",
+        fscStringlbl: "FSC",
+        niinlbl: "NIIN",
+        companyNamelbl: "Company Name",
+        beginDatelbl: "From",
+        endDatelbl: "To",
+        ingredientslbl: "Ingredients"
       }
     },
     datasheet: {
