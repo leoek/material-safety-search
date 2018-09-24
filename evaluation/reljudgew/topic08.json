@@ -1,0 +1,126 @@
+{
+    "querystring": "military explosives",
+    "totalcount": 29593,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N090104",
+                "companyName": "THIOKOL CORP",
+                "fsc": "1370",
+                "fscString": "Pyrotechnics",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "CL-20 EXPLOSIVE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-328-4732",
+                "companyName": "NORTH AMERICAN EXPLOSIVES",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "ECT, EXPLOSIVE CUTTING TAPE, ROECT, LSCF, SX2, DEMEX 200"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N017403",
+                "companyName": "NORTH AMERICAN EXPLOSIVES",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "EXPLOSIVE CUTTING TAPE, ECT2063MM"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N091777",
+                "companyName": "EXPLOSIVES TECHNOLOGIES INTERNATIONAL",
+                "fsc": "1377",
+                "fscString": "Cartridge - Propellant Actuated Devices and Components",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "NONEL SUPER LP"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N082169",
+                "companyName": "GOEX INTL INC",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "MK 87 MOD O DEMOLITION CHARGE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "EXPLOSIVES TECHNOLOGIES INTERNATIONAL",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "NONEL SL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "EXPLOSIVES TECHNOLOGIES INTERNATIONAL",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "NONEL LIHD SERIES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "EXPLOSIVES TECHNOLOGIES INTERNATIONAL",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "NONEL SUPER SNAPDET SERIES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "EXPLOSIVES TECHNOLOGIES INTERNATIONAL",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "NONEL SUPER MS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "EXPLOSIVES TECHNOLOGIES INTERNATIONAL",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "NONEL SUPER SNAPLINE DELAY SERIES MS CONNECTORS"
+            },
+            "relevant": false
+        }
+    ]
+}

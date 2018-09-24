@@ -1,0 +1,126 @@
+{
+    "querystring": "wood lgue",
+    "totalcount": 1896,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N012103",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD,(K-33 C BRAND CCA-C)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N082040",
+                "companyName": "CONRAD WOOD PRESERVING CO",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "ACZA TREATED WOOD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N012102",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "FLAMEPROOF LHC-HTT WOOD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N071766",
+                "companyName": "THUNDERBOLT WOOD TREATING CO INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "CCA TREATED WOOD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N071400",
+                "companyName": "THUNDERBOLT WOOD TREATING CO INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "ACZA TREATED WOOD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N050664",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD, 2.5PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N050673",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD, 0.4PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N050734",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD, 1.0PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N050685",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD, 0.6PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N056075",
+                "companyName": "NORTH-SOUTH WOOD PRES CO",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PENTACHLOROPHENOL PRESSURE TREATED WOOD"
+            },
+            "relevant": false
+        }
+    ]
+}

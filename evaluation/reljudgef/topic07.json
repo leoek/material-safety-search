@@ -1,0 +1,126 @@
+{
+    "querystring": "ingredients of white powder",
+    "totalcount": 126937,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D004349",
+                "companyName": "CLAIROL INC INTERNATIONAL DIVISION",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "7712 BLEACH POWDER-BASIC WHITE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-817-0295",
+                "companyName": "WHITTAKER, CLARK & DANIELS, INC.",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "TALC - TALCIUM POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N062886",
+                "companyName": "SIRCHIE FINGER PRINT LABORATORIES INC",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "MAGNETIC POWDER-WHITE, M116L"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N062885",
+                "companyName": "SIRCHIE FINGER PRINT LABORATORIES INC",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "MAGNETIC POWDER-WHITE, BPM116L/MSW202"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-817-0295",
+                "companyName": "JOHNSON & JOHNSON; BABY PRODUCTS & TOILETRY DIV.",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "JOHNSON'S BABY POWDER/JBP"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-817-0295",
+                "companyName": "BABY PRODUCTS CO, TOILETRIES DIV.",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "JOHNSON'S BABY POWDER/JBP"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-338-9402",
+                "companyName": "WITE-OUT PRODUCTS, INC.",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "WHITE-OUT FOR EVERYTHING CORRECTION FLUIDS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-381-1876",
+                "companyName": "WITE-OUT PRODUCTS, INC.",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "WHITE-OUT FOR EVERYTHING CORRECTION FLUIDS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D000678",
+                "companyName": "ALCAN INGOT & POWDER,DIR OF ALCAN ALUMINUM CORP.",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "ALCAN 201 ALUM. POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-228-1269",
+                "companyName": "ALUMINUM CO OF AMERICA,POWDER DIVISION.",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "ATOMIZED POWDERS(ALUMINUM)"
+            },
+            "relevant": true
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "querystring": "military explosives",
+    "totalcount": 577,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-036-0444",
+                "companyName": "NORTH AMERICAN EXPLOSIVES,NAX",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PRIMASHEET 1000 CHARGE,DEMOLITION"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-036-0449",
+                "companyName": "NORTH AMERICAN EXPLOSIVES,NAX",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PRIMASHEET 1000"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-756-6644",
+                "companyName": "MILITARY SPEC. PROMULGATED BY MILITARY DEPTS.",
+                "fsc": "5915",
+                "fscString": "Filters and Networks",
+                "fsgString": "Electrical and Electronic Equipment Components",
+                "productId": "FA5660"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-890-2202",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "8415",
+                "fscString": "Clothing, Special Purpose",
+                "fsgString": "Clothing, Individual Equipment, and Insignia",
+                "productId": "UNKNOWN"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-234-2022",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "A-NAPHTHYLAMINE,REAGENT"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-281-7450",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MERCURY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-223-4139",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "MIL-L-6085B; LUBRICATING OIL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-281-3464",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "LIQUID CHLORINE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-555-8837",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MONOBROMOTRIFLUOROMETHANE (FOR FIRE EXTINGUISHER)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-142-9913",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "8040",
+                "fscString": "Adhesives",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "N-1030 ADHESIVE"
+            },
+            "relevant": false
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "querystring": "protective gloves required",
+    "totalcount": 107771,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F023642",
+                "companyName": "SPEX INDUSTRIES INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "CONTRACT REQUIRED DETECTION LIMITS STANDARD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-197-8493",
+                "companyName": "AMERICAN BRAIDING AND MFG CORP",
+                "fsc": "5330",
+                "fscString": "Packing and Gasket Materials",
+                "fsgString": "Hardware and Abrasives",
+                "productId": "STYLE 303 I VALVE PACKING"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-530-5563",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-298-2300",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-296-2287",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-2053",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-3198",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-3199",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-286-9088",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-298-2296",
+                "companyName": "PARKER PAINT",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CONT#TC-GS-10F-40863"
+            },
+            "relevant": true
+        }
+    ]
+}

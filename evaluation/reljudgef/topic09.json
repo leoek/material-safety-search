@@ -1,0 +1,126 @@
+{
+    "querystring": "yellow paint",
+    "totalcount": 78537,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-900-3648",
+                "companyName": "CORONADO PAINT CO., INC.",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "PAINT, TRAFFIC YELLOW-TYPE I"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-900-3647",
+                "companyName": "CORONADO PAINT CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "PAINT, TRAFFIC, YELLOW-TYPE II"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-900-3646",
+                "companyName": "CORONADO PAINT CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TRAFFIC PAINT-YELLOW-TYPE I"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N006750",
+                "companyName": "MARCUS PAINT COMPANY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "651,TRAFFIC PAINT,YELLOW"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-3197",
+                "companyName": "ATLAS PAINT & VARNISH CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TT-E-529C, YELLOW-GREEN PAINT 24533"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-900-3645",
+                "companyName": "CORONADO PAINT CO. INC.",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TRAFFIC PAINT-YELLOW-TYPE I"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N043001",
+                "companyName": "DANIEL BOONE PAINTS INC",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TRAFFIC PAINT-YELLOW, 7302"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-2414",
+                "companyName": "CORONADO PAINT CO., INC",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "PAINT,OIL,FLAT YELLOW"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N008041",
+                "companyName": "BALTIMORE PAINT & CHEMICAL CO.,DIV SHERWIN-WILLIAM",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "SETFAST PREMIUM TRAFFIC PAINT-YELLOW, A-301"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F056109",
+                "companyName": "AERVOE-PACIFIC CO INC",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "17A MARKING PAINT-ALL COLORS 226 YELLOW/FLUORESCENT"
+            },
+            "relevant": true
+        }
+    ]
+}

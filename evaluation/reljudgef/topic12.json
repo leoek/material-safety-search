@@ -1,0 +1,126 @@
+{
+    "querystring": "foto bleach firefighting",
+    "totalcount": 3679,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N023304",
+                "companyName": "MILLER DIAL CORP/FOTOFOIL DIV",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTOCOLOR BLEACH, 86039"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N008406",
+                "companyName": "MILLER DIAL CORP., FOTOFOIL DIVISION",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "FOTOFOIL A ETCHANT"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F019834",
+                "companyName": "MILLER DIAL CORP/FOTOFOIL DIVISION",
+                "fsc": "6740",
+                "fscString": "Photographic Developing and Finishing Equipment",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTOFOIL DEVELOPER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-132-9991",
+                "companyName": "MILLER DIAL CORP.,FOTOFOIL DIV",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTOFOIL A DEVELOPER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F005305",
+                "companyName": "MILLER DIAL CORP/FOTOFOIL DIV",
+                "fsc": "6740",
+                "fscString": "Photographic Developing and Finishing Equipment",
+                "fsgString": "Photographic Equipment",
+                "productId": "MILLER DIAL FOTOFOIL M FIXER CONC."
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F005305",
+                "companyName": "MILLER DIAL CORP/FOTOFOIL DIV",
+                "fsc": "6740",
+                "fscString": "Photographic Developing and Finishing Equipment",
+                "fsgString": "Photographic Equipment",
+                "productId": "MILLER DIAL FOTOFOIL M FIXER CONC."
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-047-8563",
+                "companyName": "MILLER DIAL/FOTOFOIL",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTO FOIL DEVELOPER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F019702",
+                "companyName": "JOBO FOTOTECHNIC INCORPORATED",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "PHOTOCOLOR PRINTMASTER BLEACH FIX"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F019699",
+                "companyName": "JOBO FOTOTECHNIC INC",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "PHOTOCOLOR II, BLEACH FIX"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F019711",
+                "companyName": "JOBO FOTOTECHNIC INC",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "PRINT MASTER II BLEACH FIX"
+            },
+            "relevant": true
+        }
+    ]
+}

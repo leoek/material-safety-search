@@ -1,0 +1,126 @@
+{
+    "querystring": "blue ink brother industries",
+    "totalcount": 61680,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "BROTHER INDUSTRIES LTD",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "ZA0041001 LC01C INK CARTRIDGE FOR MFC-7000FC AND MFC-7200FC"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "BROTHER INDUSTRIES LTD",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "ZA0031001 LC01BK INK CARTRIDGE FOR MFC-7000FC AND MFC-7200FC"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N089509",
+                "companyName": "BROTHER INTERNATIONAL CORP",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "LC01M, ZA0061001"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N089508",
+                "companyName": "BROTHER INTERNATIONAL CORP",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "LC01Y, ZA0051001"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-332-2901",
+                "companyName": "HEWLETT-PACKARD CO,CORPORATE HQ",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "PRINT CARTRIDGES FOR PRINT JET PRINTERS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-442-1276",
+                "companyName": "TEKTRONIX INC",
+                "fsc": "9160",
+                "fscString": "Miscellaneous Waxes, Oils and Fats",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "COLORSTIX INK, MGENTA 016-1757-00, 016-1760-00"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-452-9255",
+                "companyName": "HEWLETT-PACKARD CO INK-JET SUPPLIES BUSINESS UNIT",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "HP CARTRIDGE 51645A"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-004-2531",
+                "companyName": "HEWLETT-PACKARD COMPANY",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "C1823 SERIES (CYAN, MAGENTA AND YELLOW INKS)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-161-4260",
+                "companyName": "AMERICAN WRITING INK CO, INC.",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "NUMBERING MACHINE INK"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N000271",
+                "companyName": "MARSH STENCIL MACHINE COMPANY",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "K-TYPE STENCIL INK,BLUE"
+            },
+            "relevant": false
+        }
+    ]
+}

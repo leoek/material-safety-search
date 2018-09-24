@@ -1,0 +1,126 @@
+{
+    "querystring": "buy ammonium flouride",
+    "totalcount": 80834,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-222-9680",
+                "companyName": "MALLINCKRODT BAKER,  INC.",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "A5724, AMMONIUM CHLORIDE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-091-8676",
+                "companyName": "BARTLETT CHEMICALS",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM NITRATE,TECHNICAL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-974-3621",
+                "companyName": "FISHER SCIENTIFIC, CHEMICAL DIVISION",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM FLOURIDE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "MALLINCKRODT BAKER,  INC.",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "A370-500ML, AMMONIUM SULFIDE SOLUTIONS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-091-8676",
+                "companyName": "PCS NITROGEN INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM NITRATE - 1 - LOW DENSITY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "ALDON CORP.",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "AMMONIUM DICHROMATE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-091-8676",
+                "companyName": "PHOENIX INDUSTRIES INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM NITRATE, PRILLED"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N041895",
+                "companyName": "C-I-L CORP OF AMERICA",
+                "fsc": "6840",
+                "fscString": "Pest Control Agents and Disinfectants",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM NITRATE FERTILIZER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N091347",
+                "companyName": "GENIUM PUBLISHING CORPORATION",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM HYDROXIDE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N014152",
+                "companyName": "ALDRICH CHEMICAL CO INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM SULFATE, 99+% ACS REAGENT, 221252"
+            },
+            "relevant": false
+        }
+    ]
+}

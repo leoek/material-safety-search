@@ -1,0 +1,126 @@
+{
+    "querystring": "blue ink brother industries",
+    "totalcount": 142329,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-062-3116",
+                "companyName": "EAGLE-PICHER INDUSTRIES,INC",
+                "fsc": "6650",
+                "fscString": "Optical Instruments",
+                "fsgString": "Instruments and Laboratory Equipment",
+                "productId": "GERMANIUM"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-247-3739",
+                "companyName": "CONNECTICUT VALLEY INDUSTRIES,INC.",
+                "fsc": "6685",
+                "fscString": "Pressure, Temperature and Humidity Measuring and Controlling Instruments",
+                "fsgString": "Instruments and Laboratory Equipment",
+                "productId": "MERCURY IN GLASS THERMOMETER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-411-5492",
+                "companyName": "CONNECTICUT VALLEY INDUSTRIES,INC.",
+                "fsc": "6685",
+                "fscString": "Pressure, Temperature and Humidity Measuring and Controlling Instruments",
+                "fsgString": "Instruments and Laboratory Equipment",
+                "productId": "MERCURY GLASS THERMOMETER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "CRC INDUSTRIES,INC.",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "RTV SILICON BLUE 14057"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-264-4540",
+                "companyName": "INSULATION INDUSTRIES,INC.",
+                "fsc": "5640",
+                "fscString": "Wallboard, Building Paper and Thermal Insulation Materials",
+                "fsgString": "Construction and Building Materials",
+                "productId": "TRIPLE I INSULATING CEMENT"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N008999",
+                "companyName": "INSULATION INDUSTRIES,INC.",
+                "fsc": "5640",
+                "fscString": "Wallboard, Building Paper and Thermal Insulation Materials",
+                "fsgString": "Construction and Building Materials",
+                "productId": "TRIPLE I INSULATING CEMENT"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-165-5916",
+                "companyName": "INSULATION INDUSTRIES,INC.",
+                "fsc": "5640",
+                "fscString": "Wallboard, Building Paper and Thermal Insulation Materials",
+                "fsgString": "Construction and Building Materials",
+                "productId": "TRIPLE I INSULATING CEMENT"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N009000",
+                "companyName": "INSULATION INDUSTRIES,INC.",
+                "fsc": "5640",
+                "fscString": "Wallboard, Building Paper and Thermal Insulation Materials",
+                "fsgString": "Construction and Building Materials",
+                "productId": "SMOOTH KOTE INSULATING FINISHING CEMENT"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-897-4402",
+                "companyName": "AMERICAN OVERSEAS INDUSTRIES,DIST - DWYER INST,MFR",
+                "fsc": "6685",
+                "fscString": "Pressure, Temperature and Humidity Measuring and Controlling Instruments",
+                "fsgString": "Instruments and Laboratory Equipment",
+                "productId": "RED GAGE OIL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-026-0484",
+                "companyName": "ELECTROCHEM INDUSTRIES,DIV.OF WILSON GREATBATCH",
+                "fsc": "6625",
+                "fscString": "Electrical and Electronic Properties Measuring and Testing Instruments",
+                "fsgString": "Instruments and Laboratory Equipment",
+                "productId": "LITHIUM OXYHALIDE PRIMARY BATTERY (CSC)"
+            },
+            "relevant": false
+        }
+    ]
+}

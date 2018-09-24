@@ -44,6 +44,8 @@ def evaltable(fuzzy=False, wholeDoc=False):
 
             if relevants:
                 avgprecs.append(mean(relevants))
+            elif not relevants:
+                avgprecs.append(0.0)
             t.add_row([querystring, avgprecs[-1], totalcount])
             evaljson['queries'].append(
                 {

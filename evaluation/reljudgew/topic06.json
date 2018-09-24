@@ -1,0 +1,126 @@
+{
+    "querystring": "stainless steel waste disposal",
+    "totalcount": 11105,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N083064",
+                "companyName": "J & L SPECIALTY PRODUCTS CORP",
+                "fsc": "9515",
+                "fscString": "Plate, Sheet, Strip and Foil: Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "STAINLESS STEEL, PLATE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N083063",
+                "companyName": "J & L SPECIALTY PRODUCTS CORP",
+                "fsc": "9515",
+                "fscString": "Plate, Sheet, Strip and Foil: Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "STAINLESS STEEL, STRIP"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N083062",
+                "companyName": "J & L SPECIALTY PRODUCTS CORP",
+                "fsc": "9515",
+                "fscString": "Plate, Sheet, Strip and Foil: Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "STAINLESS STEEL, SHEET"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N034869",
+                "companyName": "MCINNES STEEL CO",
+                "fsc": "9520",
+                "fscString": "Structural Shapes, Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "SPECIALTY/STAINLESS STEEL"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-772-7887",
+                "companyName": "MAGNE CORP",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "410-L, 430-L, 434-L"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N091727",
+                "companyName": "ROBERTS RESEARCH LABORATORY",
+                "fsc": "1377",
+                "fscString": "Cartridge - Propellant Actuated Devices and Components",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "CUTTER, CARTRIDGE ACTUATED, MODEL F1-XX SECONDS (ALL TIME DE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N033776",
+                "companyName": "KILSBY-ROBERTS CO",
+                "fsc": "4710",
+                "fscString": "Pipe and Tube",
+                "fsgString": "Pipe, Tubing, Hose, and Fittings",
+                "productId": "STAINLESS STEELS"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N022713",
+                "companyName": "MARMON/KEYSTONE CORP",
+                "fsc": "9510",
+                "fscString": "Bars and Rods, Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "STAINLESS STEELS"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-276-1771",
+                "companyName": "BSC STAINLESS",
+                "fsc": "9515",
+                "fscString": "Plate, Sheet, Strip and Foil: Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "STAINLESS STEEL"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N051363",
+                "companyName": "METAL DISTRIBUTORS & SUPPLY CO",
+                "fsc": "9650",
+                "fscString": "Nonferrous Base Metal Refinery and Intermediate Forms",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "TYPE 304 STAIN STEEL 1\" DIA X 6', STAINLESS (SUPDAT)"
+            },
+            "relevant": true
+        }
+    ]
+}

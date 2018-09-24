@@ -1,0 +1,126 @@
+{
+    "querystring": "omnilube precautions",
+    "totalcount": 55,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00B210014",
+                "companyName": "ULTRACHEM, INC.",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OMNILUBE (R) 550"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N087403",
+                "companyName": "MCKAY WELDING PRODUCTS",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery",
+                "productId": "GROUP B:MILD STEEL LOW HYDROGEN COVERED ELECTRODES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N087402",
+                "companyName": "MCKAY WELDING PRODUCTS",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery",
+                "productId": "GROUP A: LOW ALLOY LOW HYDROGEN COVERED ELECTRODES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N043017",
+                "companyName": "COURTAULDS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "420HG 1:1 TOPCOAT ACTIVATOR, 930K028"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N061148",
+                "companyName": "PERFECTDATA CORP",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "CASE & CABINET CLEANING SOLUTION (550087-6)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N063285",
+                "companyName": "COURTAULDS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "SD AL POLY 17875 TINTED, 821X495"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-076-6178",
+                "companyName": "DESOTO AEROSPACE COATINGS INC",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "SK CONDUCTIVE CTG BLACK, 529X300"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-029-3207",
+                "companyName": "DESOTO AEROSPACE COATINGS INC",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "HI TEMP PRIMER CURING SOLUTION, 910X357"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N054255",
+                "companyName": "J T BAKER INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "ETHER ANHYDROUS, 9197"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N054258",
+                "companyName": "J T BAKER INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "ETHER ANHYDROUS, 9247"
+            },
+            "relevant": false
+        }
+    ]
+}

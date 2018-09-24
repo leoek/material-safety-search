@@ -1,0 +1,126 @@
+{
+    "querystring": "omnilube precautions",
+    "totalcount": 67,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00B210014",
+                "companyName": "ULTRACHEM, INC.",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OMNILUBE (R) 550"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N039327",
+                "companyName": "AMERICAN SAW & MFG CO",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "LENOX LUBE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F046566",
+                "companyName": "STATE CHEMICAL MFG CO, THE",
+                "fsc": "7930",
+                "fscString": "Cleaning and Polishing Compounds and Preparations",
+                "fsgString": "Cleaning Equipment and Supplies",
+                "productId": "OVEN II BULK"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-195-5338",
+                "companyName": "SURRETTE AMERICA DIV OF ATLANTIC BATTERY CO. INC.",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD/ACID BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-397-2662",
+                "companyName": "WILLIAMETTE INDUSTRIES INC",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD/ACID STORAGE BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-210-6850",
+                "companyName": "J.T.BAKER INC.",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM HYDROXIDE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-181-8284",
+                "companyName": "DESOTO INC PACIFIC PLANT IS COURTLANDTS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "SD AL POLYU #15044 BLUE, P/C 826X321"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-482-5651",
+                "companyName": "COURTAULDS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "DES AL POLY 11136 RED LF, P/C 824X313"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-181-8277",
+                "companyName": "DESOTO INC PACIFIC PLANT IS COURTLANDTS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "SD #17038, P/C 828X309"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-189-3453",
+                "companyName": "DESOTO INC PACIFIC PLANT IS COURTLANDTS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "SD AL POLYU EN #24300 GRN, P/C 825X472"
+            },
+            "relevant": false
+        }
+    ]
+}

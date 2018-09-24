@@ -1,0 +1,126 @@
+{
+    "querystring": "liquid on fire",
+    "totalcount": 235891,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-808-9531",
+                "companyName": "AIR LIQUID AMERICA CORP",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "LIQUID OXYGEN"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "AIR LIQUIDE AMERICA CORPORATION",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "LIQUID NITROGEN"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-107-3298",
+                "companyName": "ANSUL INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "52742, FIRE EXTINGUISHER,VAPORIZING LIQUID."
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-808-9531",
+                "companyName": "AIR LIQUIDE AMERICA CORPORATION",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "LIQUID OXYGEN (LOX, CRYOGENIC LIQUID OXYGEN, ABO)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-087-4989",
+                "companyName": "GENERAL FIRE EXTINGUISHER COMPANY",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "EXTINGUISHER,FIRE,VAPORIZING LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-708-0031",
+                "companyName": "GENERAL FIRE EXTINGUISHER CORP.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "EXTINGUISHER,FIRE,VAPORIZING LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-223-9877",
+                "companyName": "LORCON INC. FIRE FOAM DIV.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "LORCON 6% FOAM LIQUID FIRE EXTINGUISHING"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-273-8585",
+                "companyName": "LORCON INC. FIRE FOAM DIV.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "LORCON 6% FOAM LIQUID FIRE EXTINGUISHING"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-149-1356",
+                "companyName": "FLAG FIRE INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "FIRE EXTINGUISHER BC PURPLE K DRY CHEMICAL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-935-1699",
+                "companyName": "FLAG FIRE INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "FIRE EXTINGUISHER CARBON DIOXIDE (CO2)"
+            },
+            "relevant": false
+        }
+    ]
+}

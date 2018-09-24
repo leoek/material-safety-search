@@ -8,12 +8,11 @@ numsearchresults = 10
 #which keys to be displayed on console when judging document
 keylist = [
     'docType',
-    'productId',
     'niin',
     'companyName',
     'fsc',
-    #'fscString',
-    #'fsgString',
+    'fscString',
+    'fsgString',
     #'ingredients',
     #'rawDisposal',
     #'rawChemicalProperties',
@@ -30,7 +29,8 @@ keylist = [
     #'rawRegulatory',
     #'rawStabilityReactivity',
     #'rawToxic',
-    #'rawTransport'
+    #'rawTransport',
+    'productId'
 ]
 
 
@@ -50,9 +50,9 @@ def querytopics(filename, numsearchresults, fuzzy=False, wholeDoc=False, request
         pathadaption += 'w'
 
     #start dialog
-    topicnumber = (int)(input("\nq to quit and save progress\nenter topicnumber to start at (null-based): "))
+    topicnumoffset = (int)(input("\nq to quit and save progress\nenter topicnumber to start at (null-based): "))
     print()
-    for i in range(topicnumber, len(data)):
+    for i in range(topicnumoffset, len(data)):
         query = yaml.safe_load(data[i]["query"])
 
         #for post with json
@@ -76,17 +76,21 @@ def querytopics(filename, numsearchresults, fuzzy=False, wholeDoc=False, request
 
         #check if request successfull
         if r.status_code == requests.codes.ok:
-            print('query#' + str(topicnumber) + ': ' + query + '\n')
-            print('total count of results: ' + str(r.json()['meta']['totalCount']))
+            totalcount = r.json()['meta']['totalCount']
+
+            print('query#' + str(topicnumoffset) + ': ' + query + '\n')
+            print('total count of results: ' + str(totalcount))
             reljudges = {
                         'querystring': query,
-                        'totalcount': r.json()['meta']['totalCount'],
+                        'totalcount': totalcount,
                         'results': []
                         }
+            if numsearchresults > totalcount:
+                numsearchresults = totalcount
             for j in range(0, numsearchresults):
                 retrieved = {key : r.json()['items'][j][key] for key in keylist }
                 
-                print('query#' + str(topicnumber) + ': ' + query + '\n')
+                pprint(data[i])
                 pprint(retrieved)
                 line = input('y/n: ')
                 
@@ -107,12 +111,16 @@ def querytopics(filename, numsearchresults, fuzzy=False, wholeDoc=False, request
                     })
                 print('\n')
 
-            
-
-            print('./reljudge' + pathadaption + '/topic' + str(data[i]["number"]) + '.json')
-            #write to json file with topicnumber
-            with open('./reljudge' + pathadaption + '/topic' + str(data[i]["number"]) + '.json', 'w') as fp:   
-                json.dump(reljudges, fp, indent=4)
+            topicnumber = data[i]["number"]
+            if topicnumber < 10:
+                #write to json file with topicnumber
+                with open('./reljudge' + pathadaption + '/topic0' + str(data[i]["number"]) + '.json', 'w') as fp:   
+                    json.dump(reljudges, fp, indent=4)
+                print('./reljudge' + pathadaption + '/topic0' + str(data[i]["number"]) + '.json')
+            else:
+                with open('./reljudge' + pathadaption + '/topic' + str(data[i]["number"]) + '.json', 'w') as fp:   
+                    json.dump(reljudges, fp, indent=4)
+                print('./reljudge' + pathadaption + '/topic' + str(data[i]["number"]) + '.json')
 
             line = input('query finished, enter to start next query or q to quit ')
             if line == 'q':
