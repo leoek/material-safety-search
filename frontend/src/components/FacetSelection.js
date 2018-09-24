@@ -144,7 +144,11 @@ export class FacetSelection extends Component {
   render() {
     const { classes, t, facets } = this.props;
 
-    if (!facets || !Array.isArray(facets) || isEmpty(facets)) {
+    if (
+      !facets ||
+      !Array.isArray(facets) ||
+      isEmpty(facets.filter(f => f.count))
+    ) {
       return null;
     }
 

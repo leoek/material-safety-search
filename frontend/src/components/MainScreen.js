@@ -82,7 +82,12 @@ const RawSearchFormWrapper = ({ isAdvancedSearch, ...rest }) => {
   if (isAdvancedSearch) {
     return <AdvancedSearchForm {...rest} />;
   }
-  return <SearchForm {...rest} initialValues={{ query: "test" }} />;
+  return (
+    <SearchForm
+      {...rest}
+      initialValues={config.devEnv ? { query: "test" } : undefined}
+    />
+  );
 };
 
 const SearchFormWrapper = connect(state => ({
