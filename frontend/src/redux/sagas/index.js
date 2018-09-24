@@ -13,10 +13,13 @@ import {
   REDUX_FORM_SUBMIT,
   REDUX_FORM_SUBMIT_SUCCEEDED,
   deselectFacets,
-  DESELECT_FACETS
+  DESELECT_FACETS,
+  FETCH_SUGGEST_REQUEST,
+  fetchSuggestSuccess,
+  fetchSuggestFailure
 } from "../actions";
 import { getSearchInput, getAdvancedSearch } from "../selectors";
-import { post } from "../../lib/api";
+import { post, get } from "../../lib/api";
 import { config } from "../../config";
 
 export function* reduxRehydrateSaga(action) {
@@ -37,6 +40,26 @@ const handleResponseJsonError = (errorMessage, statusCode) => {
     resolve(error);
   });
 };
+
+export function* fetchSuggestSaga(action) {
+  const { payload = {} } = action;
+  const { field, s, count } = payload;
+  const parameters = {
+    field,
+    count,
+    s
+  };
+  const response = yield get({
+    endpoint: "suggest",
+    parameters
+  });
+  const reponseData = yield response.json().catch(handleResponseJsonError);
+  if (response.ok) {
+    yield put(fetchSuggestSuccess(reponseData));
+  } else {
+    yield put(fetchSuggestFailure(reponseData));
+  }
+}
 
 export function* fetchSearchSaga(action) {
   const { payload = {}, advancedSearch } = action;
@@ -104,6 +127,7 @@ export default function* root() {
   yield all([
     takeLatest(REHYDRATE, reduxRehydrateSaga),
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
+    takeEvery(FETCH_SUGGEST_REQUEST, fetchSuggestSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
     takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga),
     takeEvery(DESELECT_FACETS, handleDeselectFacetsSaga),

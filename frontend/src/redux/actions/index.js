@@ -9,6 +9,9 @@ export const reduxRehydrationCompleted = () => ({
   type: REDUX_REHYDRATION_COMPLETED
 });
 
+/**
+ * API Actions /search and /advancedSearch
+ */
 export const FETCH_SEARCH_REQUEST = "MSS/FETCH_SEARCH_REQUEST";
 export const fetchSearchRequest = (payload, advancedSearch) => ({
   type: FETCH_SEARCH_REQUEST,
@@ -28,6 +31,33 @@ export const fetchSearchSuccess = data => ({
 export const FETCH_SEARCH_FAILURE = "MSS/FETCH_SEARCH_FAILURE";
 export const fetchSearchFailure = error => ({
   type: FETCH_SEARCH_FAILURE,
+  payload: {
+    error,
+    timeFetched: new Date()
+  }
+});
+
+/**
+ * API Actions /suggest
+ */
+export const FETCH_SUGGEST_REQUEST = "MSS/FETCH_SUGGEST_REQUEST";
+export const fetchSuggestRequest = payload => ({
+  type: FETCH_SUGGEST_REQUEST,
+  payload
+});
+
+export const FETCH_SUGGEST_SUCCESS = "MSS/FETCH_SUGGEST_SUCCESS";
+export const fetchSuggestSuccess = data => ({
+  type: FETCH_SUGGEST_SUCCESS,
+  payload: {
+    data,
+    timeFetched: new Date()
+  }
+});
+
+export const FETCH_SUGGEST_FAILURE = "MSS/FETCH_SUGGEST_FAILURE";
+export const fetchSuggestFailure = error => ({
+  type: FETCH_SUGGEST_FAILURE,
   payload: {
     error,
     timeFetched: new Date()
