@@ -21,7 +21,8 @@ export const baseConfig = {
     UNPARSABLE_RESPONSE: "UNPARSABLE_RESPONSE"
   },
   DEFAULTS: {
-    pageSize: 10
+    pageSize: 10,
+    suggestionCount: 5
   },
   datasheetFormat,
   ingredientFormat

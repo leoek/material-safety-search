@@ -7,12 +7,12 @@ import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import withWidth from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 import classnames from "classnames";
 import { getSearchIsFetching } from "../redux/selectors";
 
-import { RenderTextField, RenderCheckbox } from "./common/InputFields";
+import { InputCheckbox, InputAutoSuggest } from "./common/InputFields";
 import { SearchButton } from "./SearchForm";
 
 const styles = theme => ({
@@ -66,12 +66,7 @@ const RawTextFieldGrid = ({ children, name, label, classes }) => {
   }
   return (
     <TextFieldGrid>
-      <Field
-        label={label}
-        name={name}
-        component={RenderTextField}
-        className={classes.formItem}
-      />
+      <InputAutoSuggest label={label} name={name} />
     </TextFieldGrid>
   );
 };
@@ -90,8 +85,14 @@ export class SearchForm extends Component {
       width
     } = this.props;
     const isLoading = isFetching || loading;
-    const searchButtonTopWidths = ["xs", "md", "lg"];
-    const searchButtonTop = searchButtonTopWidths.includes(width);
+
+    let columns = 1;
+    if (["sm", "md"].includes(width)) {
+      columns = 2;
+    } else if (["lg"].includes(width)) {
+      columns = 3;
+    }
+
     return (
       <div className={classes.root}>
         <form onSubmit={handleSubmit} className={classes.form}>
@@ -120,22 +121,34 @@ export class SearchForm extends Component {
 
               <Grid
                 item
-                xs={6}
-                sm={4}
-                md={4}
+                xs={12}
+                sm={6}
+                md={6}
                 lg={4}
                 className={classnames(classes.formItemContainer)}
               >
-                <Field
+                <InputCheckbox
                   label={t("searchform.search.fuzzylbl")}
                   name="fuzzy"
-                  component={RenderCheckbox}
-                  className={classes.checkboxField}
-                  type="checkbox"
                 />
               </Grid>
-              {searchButtonTop && <SearchButton canSubmit={canSubmit} />}
-              {!searchButtonTop && <SearchButton canSubmit={canSubmit} />}
+            </Grid>
+            <Grid container>
+              {[...Array(columns - 1)].map((_, i) => (
+                <Grid key={i} item xs={12} sm={6} md={6} lg={4}>
+                  {/* Empty container for positioning purposes*/}
+                </Grid>
+              ))}
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <SearchButton canSubmit={canSubmit} />
+              </Grid>
             </Grid>
             <div className={classes.loadingContainer}>
               {isLoading && <LinearProgress />}
@@ -166,8 +179,5 @@ export default compose(
   withWidth(),
   withStyles(styles),
   translate(),
-  connect(
-    mapStateToProps,
-    null
-  )
+  connect(mapStateToProps)
 )(SearchForm);

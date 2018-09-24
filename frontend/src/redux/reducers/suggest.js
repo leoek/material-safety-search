@@ -24,7 +24,7 @@ const search = (state = initialState, action) => {
       }
     };
   } else if (type === FETCH_SUGGEST_SUCCESS) {
-    const { data, timeFetched } = payload;
+    const { data, timeFetched, field } = payload || {};
     return {
       ...state,
       [field]: {
@@ -35,7 +35,7 @@ const search = (state = initialState, action) => {
       }
     };
   } else if (type === FETCH_SUGGEST_FAILURE) {
-    const { timeFetched, error } = payload;
+    const { timeFetched, error, field } = payload || {};
     return {
       ...state,
       [field]: {
