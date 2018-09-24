@@ -50,6 +50,23 @@ const styles = theme => ({
 });
 
 const RawSearchButton = ({ classes, canSubmit, t }) => (
+  <Button
+    variant="contained"
+    color="primary"
+    type="submit"
+    disabled={!canSubmit}
+    className={classnames(classes.formItem, classes.searchButton)}
+  >
+    {t("searchform.search.submit")}
+  </Button>
+);
+
+export const SearchButton = compose(
+  withStyles(styles),
+  translate()
+)(RawSearchButton);
+
+const RawSearchButtonGrid = ({ classes, ...props }) => (
   <Grid
     item
     xs={12}
@@ -58,23 +75,11 @@ const RawSearchButton = ({ classes, canSubmit, t }) => (
     lg={2}
     className={classnames(classes.formItemContainer, classes.buttonContainer)}
   >
-    <Button
-      variant="contained"
-      color="primary"
-      type="submit"
-      disabled={!canSubmit}
-      className={classnames(classes.formItem, classes.searchButton)}
-    >
-      {t("searchform.search.submit")}
-    </Button>
+    <SearchButton {...props} />
   </Grid>
 );
 
-export const SearchButton = compose(
-  withStyles(styles),
-  translate()
-)(RawSearchButton);
-
+const SearchButtonGrid = withStyles(styles)(RawSearchButtonGrid);
 export class SearchForm extends Component {
   render() {
     const {
@@ -109,7 +114,7 @@ export class SearchForm extends Component {
                   className={classes.formItem}
                 />
               </Grid>
-              {searchButtonTop && <SearchButton canSubmit={canSubmit} />}
+              {searchButtonTop && <SearchButtonGrid canSubmit={canSubmit} />}
               <Grid
                 item
                 xs={6}
@@ -142,7 +147,7 @@ export class SearchForm extends Component {
                   type="checkbox"
                 />
               </Grid>
-              {!searchButtonTop && <SearchButton canSubmit={canSubmit} />}
+              {!searchButtonTop && <SearchButtonGrid canSubmit={canSubmit} />}
             </Grid>
             <div className={classes.loadingContainer}>
               {isLoading && <LinearProgress />}

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import deburr from "lodash/deburr";
 import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
@@ -118,7 +117,7 @@ class IntegrationAutosuggest extends React.Component {
   };
 
   render() {
-    const { classes, input, suggestions } = this.props;
+    const { placeholder, label, classes, input, suggestions } = this.props;
     const { showSuggestions } = this.state;
 
     const autosuggestProps = {
@@ -130,7 +129,7 @@ class IntegrationAutosuggest extends React.Component {
       renderSuggestion
     };
 
-    const { label, placeholder, value } = input || {};
+    const { value } = input || {};
 
     return (
       <Autosuggest
