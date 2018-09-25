@@ -1,6 +1,6 @@
 export default {
   translation: {
-    title: "Material Safety Search",
+    title: "MSDS Search",
     failure: "Failure",
     advanced_search_togglelbl: "Advanced Search",
     searchform: {
