@@ -1,3 +1,4 @@
+import config from "../../config";
 import {
   SHOW_DATASHEET_SECTION,
   CLOSE_DATASHEET_SECTION,
@@ -7,7 +8,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  advancedSearch: true,
+  advancedSearch: config.DEFAULTS.advancedSearchIsDefault,
   notifications: {
     current: null,
     toShow: []

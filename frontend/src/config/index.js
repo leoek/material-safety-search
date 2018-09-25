@@ -24,7 +24,8 @@ export const baseConfig = {
   DEFAULTS: {
     pageSize: 10,
     suggestionCount: 5,
-    dateFormat: "LL"
+    dateFormat: "LL",
+    advancedSearchIsDefault: false
   },
   datasheetFormat,
   ingredientFormat
