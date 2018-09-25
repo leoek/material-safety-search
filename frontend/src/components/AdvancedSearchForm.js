@@ -15,7 +15,8 @@ import { getSearchIsFetching } from "../redux/selectors";
 import {
   InputCheckbox,
   InputAutoSuggest,
-  InputDatePicker
+  InputDatePicker,
+  InputIngredientSelection
 } from "./common/InputFields";
 import { SearchButton } from "./SearchForm";
 
@@ -135,31 +136,35 @@ export class SearchForm extends Component {
                   name="fuzzy"
                 />
               </Grid>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={4}
-              className={classnames(classes.formItemContainer)}
-            >
-              <InputDatePicker
-                name="beginDate"
-                label={t("searchform.search.beginDatelbl")}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={4}
-              className={classnames(classes.formItemContainer)}
-            >
-              <InputDatePicker
-                name="endDate"
-                label={t("searchform.search.endDatelbl")}
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <InputDatePicker
+                  name="beginDate"
+                  label={t("searchform.search.beginDatelbl")}
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <InputDatePicker
+                  name="endDate"
+                  label={t("searchform.search.endDatelbl")}
+                />
+              </Grid>
+              <InputIngredientSelection
+                name="ingredients"
+                label={t("searchform.search.ingredientslbl")}
               />
             </Grid>
             <Grid container>

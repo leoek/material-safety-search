@@ -107,7 +107,8 @@ const getDefaultInputValues = isAdvancedSearch => {
       niin: null,
       companyName: null,
       beginDate: null,
-      endDate: null
+      endDate: null,
+      ingredients: null
     };
   }
   return {

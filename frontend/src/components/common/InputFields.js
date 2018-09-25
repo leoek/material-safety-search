@@ -12,6 +12,7 @@ import DatePicker from "material-ui-pickers/DatePicker";
 import { fetchSuggestRequest } from "../../redux/actions";
 import { getSuggestions } from "../../redux/selectors";
 import AutoSuggest, { formatSuggestions } from "./AutoSuggest";
+import IngredientSelection from "./IngredientSelection";
 import config from "../../config";
 
 const styles = theme => ({
@@ -134,3 +135,15 @@ RawInputDatePicker.defaultProps = {
 };
 
 export const InputDatePicker = withStyles(styles)(RawInputDatePicker);
+
+const RawInputIngredienSelection = ({ classes, ...rest }) => (
+  <Field
+    component={IngredientSelection}
+    className={classes.formItem}
+    {...rest}
+  />
+);
+
+export const InputIngredientSelection = withStyles(styles)(
+  RawInputIngredienSelection
+);

@@ -63,13 +63,26 @@ export function* fetchSuggestSaga(action) {
 
 export function* fetchSearchSaga(action) {
   const { payload = {}, advancedSearch } = action;
-  const { query, page = 0, size = config.DEFAULTS.pageSize, ...rest } = payload;
+  const {
+    query,
+    ingredients,
+    page = 0,
+    size = config.DEFAULTS.pageSize,
+    ...rest
+  } = payload;
   const parameters = {
     page,
     size
   };
   const data = {
     searchTerm: query,
+    ingredients:
+      ingredients && Array.isArray(ingredients)
+        ? ingredients.map(ingr => ({
+            ingredName: ingr.ingredName,
+            cas: ingr.cas
+          }))
+        : undefined,
     ...rest
   };
   const response = yield post({
