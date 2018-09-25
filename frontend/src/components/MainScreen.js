@@ -121,7 +121,9 @@ const getDefaultInputValues = isAdvancedSearch => {
 export class Screen extends Component {
   componentDidMount = () => {
     const { updateSearchInput } = this.props;
-    updateSearchInput({ query: "test" });
+    if (config.devEnv) {
+      updateSearchInput({ query: "test" });
+    }
   };
 
   submit = values => {
