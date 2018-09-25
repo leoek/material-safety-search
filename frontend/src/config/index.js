@@ -3,7 +3,8 @@ import datasheetFormat, { ingredientFormat } from "./datasheetFormat";
 const devEnv = process.env.NODE_ENV === "development";
 
 const devConfig = {
-  apiBaseUrl: "http://localhost:8080"
+  //apiBaseUrl: "http://localhost:8080"
+  apiBaseUrl: "https://api.mss.leoek.tech"
 };
 
 export const baseConfig = {
@@ -22,7 +23,8 @@ export const baseConfig = {
   },
   DEFAULTS: {
     pageSize: 10,
-    suggestionCount: 5
+    suggestionCount: 5,
+    dateFormat: "LL"
   },
   datasheetFormat,
   ingredientFormat

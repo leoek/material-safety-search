@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import TextField from "@material-ui/core/TextField";
@@ -6,10 +7,12 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Field } from "redux-form";
 import { withStyles } from "@material-ui/core/styles";
+import DatePicker from "material-ui-pickers/DatePicker";
 
 import { fetchSuggestRequest } from "../../redux/actions";
 import { getSuggestions } from "../../redux/selectors";
 import AutoSuggest, { formatSuggestions } from "./AutoSuggest";
+import config from "../../config";
 
 const styles = theme => ({
   formItem: {
@@ -87,3 +90,47 @@ export const InputAutoSuggest = compose(
   ),
   withStyles(styles)
 )(RawInputAutoSuggest);
+
+export const RenderDatePicker = ({
+  input: { value, onChange },
+  meta: { touched, error },
+  classes,
+  dateFormat,
+  ...rest
+}) => {
+  return (
+    <DatePicker
+      {...rest}
+      value={value}
+      onChange={onChange}
+      format={dateFormat}
+    />
+  );
+};
+
+const RawInputDatePicker = ({ classes, ...rest }) => (
+  <Field
+    component={RenderDatePicker}
+    className={classes.formItem}
+    classes={classes}
+    {...rest}
+  />
+);
+
+RawInputDatePicker.proptypes = {
+  clearable: PropTypes.bool,
+  emptyLabel: PropTypes.string,
+  invalidDateMessage: PropTypes.node,
+  invalidLabel: PropTypes.string,
+  dateFormat: PropTypes.string
+};
+
+RawInputDatePicker.defaultProps = {
+  clearable: true,
+  emptyLabel: "",
+  invalidDateMessage: undefined,
+  invalidLabel: "",
+  dateFormat: config.DEFAULTS.dateFormat
+};
+
+export const InputDatePicker = withStyles(styles)(RawInputDatePicker);

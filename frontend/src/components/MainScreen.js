@@ -105,7 +105,9 @@ const getDefaultInputValues = isAdvancedSearch => {
       fsgString: null,
       fscString: null,
       niin: null,
-      companyName: null
+      companyName: null,
+      beginDate: null,
+      endDate: null
     };
   }
   return {

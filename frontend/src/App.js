@@ -11,6 +11,10 @@ import { I18nextProvider } from "react-i18next";
 import { ConnectedRouter } from "react-router-redux";
 import { Route } from "react-router";
 
+import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsProvider";
+// pick utils
+import MomentUtils from "material-ui-pickers/utils/moment-utils";
+
 import { changeLanguage, i18n } from "./i18n";
 import configureStore from "./redux/createStore";
 
@@ -43,11 +47,13 @@ class App extends Component {
         <Provider store={store}>
           <I18nextProvider i18n={i18n}>
             <MuiThemeProvider theme={theme}>
-              <ConnectedRouter history={history}>
-                <div>
-                  <Route exact path="/" component={MainScreen} />
-                </div>
-              </ConnectedRouter>
+              <MuiPickersUtilsProvider utils={MomentUtils}>
+                <ConnectedRouter history={history}>
+                  <div>
+                    <Route exact path="/" component={MainScreen} />
+                  </div>
+                </ConnectedRouter>
+              </MuiPickersUtilsProvider>
             </MuiThemeProvider>
           </I18nextProvider>
         </Provider>
