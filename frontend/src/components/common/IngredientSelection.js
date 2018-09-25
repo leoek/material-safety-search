@@ -154,7 +154,9 @@ class RawIngredientSelection extends Component {
     const { currentValue } = this.state;
     /* eslint-enable no-unused-vars */
 
-    const canAdd = currentValue && !isEmpty(currentValue);
+    const inputs = (value || []).map(v => v.ingredName || v.cas);
+    const canAdd =
+      currentValue && !isEmpty(currentValue) && !inputs.includes(currentValue);
 
     return [
       <SelectedIngredients
