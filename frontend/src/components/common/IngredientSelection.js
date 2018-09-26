@@ -37,6 +37,10 @@ const styles = theme => ({
   inputContainer: {
     display: "flex"
   },
+  grow: {
+    display: "flex",
+    flexGrow: 1
+  },
   button: {
     marginTop: 12
   },
@@ -173,10 +177,11 @@ class RawIngredientSelection extends Component {
         lg={4}
         className={classnames(classes.formItemContainer)}
       >
-        <div className={classes.inputContainer}>
+        <div className={classnames([classes.inputContainer, classes.grow])}>
           <TextField
             label={label}
             value={currentValue}
+            className={classes.grow}
             onChange={event => this.handleChangeCurrent(event.target.value)}
           />
           <IconButton
