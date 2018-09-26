@@ -330,7 +330,7 @@ public class DataSheetService {
         Date endDate = advancedTerm.getEndDate();
         if ((beginDate != null) && (endDate != null)) {
             if (beginDate.before(endDate) || beginDate.equals(endDate)) {
-                queryList.add("msdsDate:[(" + beginDate.toInstant().toString() + ") TO (" + endDate.toInstant().toString() + ")]");
+                queryList.add("msdsDate:[" + beginDate.toInstant().toString() + " TO " + endDate.toInstant().toString() + "]");
             } else {
                 log.info("End date is before begin date. Ignoring dates.");
             }
