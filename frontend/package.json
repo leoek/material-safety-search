@@ -32,7 +32,8 @@
     "redux-persist": "^5.10.0",
     "redux-persist-transform-filter": "^0.0.18",
     "redux-saga": "^0.16.0",
-    "typeface-roboto": "^0.0.54"
+    "typeface-roboto": "^0.0.54",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start:mockServer": "cd ../mockServer/ && yarn && yarn start &",
