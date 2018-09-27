@@ -15,6 +15,7 @@ import classnames from "classnames";
 import Padder from "./common/Padder";
 import SectionSelections from "./SectionSelections";
 import Snippet from "./Snippet";
+import Pagination from "./Pagination";
 
 import { fetchSearchRequest, showDatasheet } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
@@ -166,10 +167,13 @@ export class ResultList extends Component {
           </div>
         )}
         <div>
-          {items.map((item, index) => (
-            <ResultListCard key={item.id || index} item={item} />
-          ))}
+          {items
+            .slice(0, 1)
+            .map((item, index) => (
+              <ResultListCard key={item.id || index} item={item} />
+            ))}
         </div>
+        <Pagination />
       </div>
     );
   }
