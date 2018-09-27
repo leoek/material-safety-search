@@ -9,7 +9,7 @@ import { translate } from "react-i18next";
 import classnames from "classnames";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
-import Chip from "leoek-material-ui-core/Chip";
+import Chip from "leoek-material-ui-core-fork/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import isEmpty from "lodash/isEmpty";
 
