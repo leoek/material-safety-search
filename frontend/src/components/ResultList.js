@@ -147,34 +147,39 @@ const ResultListCard = compose(
   )
 )(RawResultListCard);
 
+const ResultListContainer = ({
+  hideLoading,
+  isFetching,
+  classes,
+  children = null
+}) => (
+  <div className={classes.root}>
+    <Pagination />
+    {!hideLoading && (
+      <div className={classes.loadingContainer}>
+        {isFetching && <LinearProgress />}
+      </div>
+    )}
+    {children}
+    <Pagination />
+  </div>
+);
+
 export class ResultList extends Component {
   render() {
-    const { items, isFetching, hideLoading, classes } = this.props;
-    if (isFetching && hideLoading) return null;
-    if (isFetching && (!items || isEmpty(items))) {
-      return (
-        <div className={classes.loadingContainer}>
-          <LinearProgress />
-        </div>
-      );
-    }
-    if (!items || !Array.isArray(items)) return null;
+    const { items } = this.props;
+
+    if (!items || !Array.isArray(items) || isEmpty(items))
+      return <ResultListContainer {...this.props} />;
+
     return (
-      <div className={classes.root}>
-        {!hideLoading && (
-          <div className={classes.loadingContainer}>
-            {isFetching && <LinearProgress />}
-          </div>
-        )}
+      <ResultListContainer {...this.props}>
         <div>
-          {items
-            .slice(0, 1)
-            .map((item, index) => (
-              <ResultListCard key={item.id || index} item={item} />
-            ))}
+          {items.map((item, index) => (
+            <ResultListCard key={item.id || index} item={item} />
+          ))}
         </div>
-        <Pagination />
-      </div>
+      </ResultListContainer>
     );
   }
 }
