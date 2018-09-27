@@ -9,12 +9,19 @@ public class DwellTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="logId")
     private Log log;
     private LocalDateTime start;
     private LocalDateTime end;
     private String datasheetId;
+    private String section;
+
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (!(obj instanceof DwellTime )) return false;
+        return (obj == this || ((DwellTime) obj).getId().equals(this.getId()));
+    }
 
     public Long getId() {
         return id;
@@ -54,5 +61,13 @@ public class DwellTime {
 
     public void setDatasheetId(String datasheetId) {
         this.datasheetId = datasheetId;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
     }
 }

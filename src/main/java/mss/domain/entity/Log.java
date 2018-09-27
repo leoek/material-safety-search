@@ -13,12 +13,22 @@ public class Log {
     private String searchTerm;
     private LocalDateTime start;
     private LocalDateTime end;
-    private String ipAddress;
-    @OneToMany(mappedBy = "log")
+    private String publicIp;
+    private String localIp;
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "log")
     private List<DwellTime> dwellTimes;
     private Integer resultClicks;
     private Boolean anyResults;
     private Integer resultCount;
+    private String session;
+
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (!(obj instanceof Log )) return false;
+        return (obj == this || ((Log) obj).getId().equals(this.getId()));
+    }
 
     public Long getId() {
         return id;
@@ -52,12 +62,28 @@ public class Log {
         this.end = end;
     }
 
-    public String getIpAddress() {
-        return ipAddress;
+    public String getPublicIp() {
+        return publicIp;
     }
 
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
+    public void setPublicIp(String publicIp) {
+        this.publicIp = publicIp;
+    }
+
+    public String getLocalIp() {
+        return localIp;
+    }
+
+    public void setLocalIp(String localIp) {
+        this.localIp = localIp;
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
     }
 
     public List<DwellTime> getDwellTimes() {
@@ -91,4 +117,6 @@ public class Log {
     public void setResultCount(Integer resultCount) {
         this.resultCount = resultCount;
     }
+
+
 }

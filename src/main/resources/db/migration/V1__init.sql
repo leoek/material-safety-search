@@ -4,17 +4,20 @@ CREATE TABLE log (
   requestStart timestamp,
   start timestamp,
   end TIMESTAMP,
-  ipAddress varchar(39),
+  publicIp varchar(39),
+  localIp varchar(39),
   resultClicks integer,
   anyResults BOOLEAN,
   resultCount INTEGER,
+  session VARCHAR(100),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE dwelltime (
   id bigint not null auto_increment,
   logId bigint,
-  datasheetId varchar(255),
+  datasheetId varchar(100),
+  section VARCHAR(20),
   start timestamp,
   end timestamp,
   PRIMARY KEY (id)

@@ -30,6 +30,7 @@ public class LoggingService {
 
     public Optional<Log> addLog(Log logObject) {
         log.info("Added log: " + logObject);
+        logObject.getDwellTimes().forEach(dt -> dt.setLog(logObject));
         Log savedLog = logRepository.save(logObject);
         return logRepository.findById(savedLog.getId());
     }

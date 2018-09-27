@@ -112,10 +112,13 @@ export function* fetchLogSaga(action) {
   const { payload } = action;
   if (!payload) return;
   const { session, ip, search } = payload;
+  const { query, ...rest } = search || {};
+  if (!query) fetchLogFailure("We will only log those with query for now.");
   const data = {
     session,
-    localIpAddress: ip,
-    ...search
+    localIp: ip,
+    searchTerm: query,
+    ...rest
   };
   const response = yield post({
     endpoint: "logging",

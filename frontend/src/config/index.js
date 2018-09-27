@@ -3,8 +3,8 @@ import datasheetFormat, { ingredientFormat } from "./datasheetFormat";
 const devEnv = process.env.NODE_ENV === "development";
 
 const devConfig = {
-  //apiBaseUrl: "http://localhost:8080"
-  apiBaseUrl: "https://api.mss.leoek.tech"
+  apiBaseUrl: "http://localhost:8080"
+  //apiBaseUrl: "https://api.mss.leoek.tech"
 };
 
 export const baseConfig = {
