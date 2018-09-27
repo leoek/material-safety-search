@@ -10,8 +10,8 @@ export default {
       search: {
         submit: "Search",
         querylbl: "Search",
-        fuzzylbl: "Enable Fuzzysearch",
-        wholedoclbl: "Search Whole Datasheet",
+        fuzzylbl: "Enable Fuzzy Search",
+        wholedoclbl: "Search in Entire Datasheet",
         productIdlbl: "Product Name",
         fsgStringlbl: "FSG",
         fscStringlbl: "FSC",
@@ -26,13 +26,27 @@ export default {
       niin: "NIIN",
       fsc: "FSC",
       fsg: "FSG",
-      company: "Company",
-      FirstAid: "First Aid Instructions",
-      FireFighting: "Firefighting Instructions"
+      company: "Company Name",
+      Identification: "Product Identification",
+      Composition: "Composition/Information on Ingredients",
+      Hazards: "Hazards Identification",
+      FirstAid: "First Aid Measures",
+      FireFighting: "Fire Fighting Measures",
+      AcidentalRelease: "Accidental Release Measures",
+      HandlingStorage: "Handling and Storage",
+      Protection: "Exposure Controls/Personal Protection",
+      ChemicalProperties: "Physical/Chemical Properties",
+      StabilityReactivity: "Stability and Reactivity Data",
+      Toxic: "Toxicological Information",
+      Eco: "Ecological Information",
+      Disposal: "Disposal Considerations",
+      Transport: "MSDS Transport Information",
+      Regulatory: "Regulatory Information",
+      Other: "Other Information"
     },
     datasheetsectiondialog: {
       close: "Close",
-      show_dataset: "Show Complete Dataset"
+      show_dataset: "Show Full Datasheet"
     },
     datasheetdialog: {
       close: "Close"
@@ -41,7 +55,7 @@ export default {
       title: "Select a category to filter the results.",
       no_facet: "Uncategorized"
     },
-    fromCompany_label: "from",
+    fromCompany_label: "by:",
     show_more: "Show More"
   }
 };
