@@ -15,6 +15,20 @@ export const reduxRehydrationCompleted = () => ({
   type: REDUX_REHYDRATION_COMPLETED
 });
 
+export const REPORT_APP_START = "MSS/REPORT_APP_START";
+export const reportAppStart = () => ({
+  type: REPORT_APP_START
+});
+
+export const REPORT_NEW_LOCAL_IP = "MSS/REPORT_NEW_LOCAL_IP";
+export const reportNewLocalIp = (ip, localIps) => ({
+  type: REPORT_NEW_LOCAL_IP,
+  payload: {
+    ip,
+    localIps
+  }
+});
+
 /**
  * API Actions /search and /advancedSearch
  */

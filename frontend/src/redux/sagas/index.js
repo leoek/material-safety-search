@@ -1,4 +1,12 @@
-import { all, put, takeLatest, takeEvery, select } from "redux-saga/effects";
+import {
+  all,
+  put,
+  takeLatest,
+  takeEvery,
+  select,
+  take,
+  fork
+} from "redux-saga/effects";
 import { REHYDRATE } from "redux-persist";
 import {
   reduxRehydrationCompleted,
@@ -19,14 +27,32 @@ import {
   fetchSuggestFailure,
   SELECT_PAGE,
   RESET_SEARCH_INPUT,
-  reduxFormResetSearchForm
+  reduxFormResetSearchForm,
+  REPORT_APP_START,
+  REDUX_REHYDRATION_COMPLETED,
+  reportNewLocalIp
 } from "../actions";
-import { getSearchInput, getAdvancedSearch } from "../selectors";
+import {
+  getSearchInput,
+  getAdvancedSearch,
+  isReduxRehydrationComplete
+} from "../selectors";
 import { post, get } from "../../lib/api";
 import { config } from "../../config";
+import { findIP } from "../../lib/localIp";
 
 export function* reduxRehydrateSaga(action) {
   yield put(reduxRehydrationCompleted());
+}
+
+export function* appStartSaga(dispatch, action) {
+  const rehydrated = yield select(isReduxRehydrationComplete);
+  if (!rehydrated) {
+    yield take(REDUX_REHYDRATION_COMPLETED);
+  }
+  yield fork(() =>
+    findIP((ip, localIps) => dispatch(reportNewLocalIp(ip, localIps)))
+  );
 }
 
 /**
@@ -160,9 +186,10 @@ export function* handleSubmitSaga(action) {
   }
 }
 
-export default function* root() {
+export default function* root(dispatch) {
   yield all([
     takeLatest(REHYDRATE, reduxRehydrateSaga),
+    takeLatest(REPORT_APP_START, appStartSaga, dispatch),
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
     takeEvery(FETCH_SUGGEST_REQUEST, fetchSuggestSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),

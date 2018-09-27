@@ -21,6 +21,7 @@ import configureStore from "./redux/createStore";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import MainScreen from "./components/MainScreen";
+import { reportAppStart } from "./redux/actions";
 
 const { store, history, persistor } = configureStore();
 const theme = createMuiTheme({
@@ -40,6 +41,11 @@ class App extends Component {
       //console.log(i18n);
     }
   }
+
+  componentDidMount = () => {
+    const { dispatch } = store;
+    dispatch(reportAppStart());
+  };
 
   render() {
     return (
