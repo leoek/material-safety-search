@@ -1,7 +1,8 @@
 package mss.domain.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "log")
@@ -10,9 +11,11 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String searchTerm;
-    private Date timestamp;
+    private LocalDateTime start;
+    private LocalDateTime end;
     private String ipAddress;
-    private Float dwellTime;
+    @OneToMany(mappedBy = "log")
+    private List<DwellTime> dwellTimes;
     private Integer resultClicks;
     private Boolean anyResults;
     private Integer resultCount;
@@ -33,12 +36,20 @@ public class Log {
         this.searchTerm = searchTerm;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public LocalDateTime getStart() {
+        return start;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
+    }
+
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
     }
 
     public String getIpAddress() {
@@ -49,12 +60,12 @@ public class Log {
         this.ipAddress = ipAddress;
     }
 
-    public Float getDwellTime() {
-        return dwellTime;
+    public List<DwellTime> getDwellTimes() {
+        return dwellTimes;
     }
 
-    public void setDwellTime(Float dwellTime) {
-        this.dwellTime = dwellTime;
+    public void setDwellTimes(List<DwellTime> dwellTimes) {
+        this.dwellTimes = dwellTimes;
     }
 
     public Integer getResultClicks() {

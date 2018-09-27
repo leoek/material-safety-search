@@ -5,15 +5,14 @@
  */
 export const findIP = onNewIP => {
   //  onNewIp - your listener function for new IPs
-  var myPeerConnection =
+  let myPeerConnection =
     window.RTCPeerConnection ||
     window.mozRTCPeerConnection ||
     window.webkitRTCPeerConnection; //compatibility for firefox and chrome
-  var pc = new myPeerConnection({ iceServers: [] }),
+  let pc = new myPeerConnection({ iceServers: [] }),
     noop = function() {},
     localIPs = {},
-    ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
-    key;
+    ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g;
 
   const ipIterate = ip => {
     if (!localIPs[ip]) {

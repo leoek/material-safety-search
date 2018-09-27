@@ -17,7 +17,7 @@ import SectionSelections from "./SectionSelections";
 import Snippet from "./Snippet";
 import Pagination from "./Pagination";
 
-import { fetchSearchRequest, showDatasheet } from "../redux/actions";
+import { showDatasheet } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 
 const styles = theme => ({
@@ -197,9 +197,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  fetchSearchRequest
-};
+const mapDispatchToProps = null;
 
 export default compose(
   connect(

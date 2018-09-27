@@ -30,7 +30,8 @@ import {
   reduxFormResetSearchForm,
   REPORT_APP_START,
   REDUX_REHYDRATION_COMPLETED,
-  reportNewLocalIp
+  reportNewLocalIp,
+  startNewSession
 } from "../actions";
 import {
   getSearchInput,
@@ -53,6 +54,7 @@ export function* appStartSaga(dispatch, action) {
   yield fork(() =>
     findIP((ip, localIps) => dispatch(reportNewLocalIp(ip, localIps)))
   );
+  yield put(startNewSession());
 }
 
 /**

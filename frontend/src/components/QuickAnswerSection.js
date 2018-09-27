@@ -9,7 +9,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import { withStyles } from "@material-ui/core/styles";
 
-import { fetchSearchRequest } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 
 const styles = theme => ({
@@ -66,9 +65,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  fetchSearchRequest
-};
+const mapDispatchToProps = null;
 
 export default compose(
   connect(

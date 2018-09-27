@@ -1,3 +1,4 @@
+import uuidv1 from "uuid/v1";
 import {
   actionTypes as reduxFormActionTypes,
   reset as _reduxFormReset
@@ -26,6 +27,14 @@ export const reportNewLocalIp = (ip, localIps) => ({
   payload: {
     ip,
     localIps
+  }
+});
+
+export const START_NEW_SESSION = "MSS/START_NEW_SESSION";
+export const startNewSession = () => ({
+  type: START_NEW_SESSION,
+  payload: {
+    session: uuidv1()
   }
 });
 
