@@ -17,7 +17,9 @@ import {
   FETCH_SUGGEST_REQUEST,
   fetchSuggestSuccess,
   fetchSuggestFailure,
-  SELECT_PAGE
+  SELECT_PAGE,
+  RESET_SEARCH_INPUT,
+  reduxFormResetSearchForm
 } from "../actions";
 import { getSearchInput, getAdvancedSearch } from "../selectors";
 import { post, get } from "../../lib/api";
@@ -119,6 +121,12 @@ export function* updateSearchInputSaga(action) {
   yield put(fetchSearchRequest({ searchInput, advancedSearch }));
 }
 
+export function* resetSearchInputSaga(action) {
+  const advancedSearch = yield select(getAdvancedSearch);
+  yield put(reduxFormResetSearchForm());
+  yield put(fetchSearchRequest({ advancedSearch }));
+}
+
 export function* updateSearchMetaSaga(action) {
   const { type, payload } = action;
   if (type === SELECT_PAGE) {
@@ -158,6 +166,7 @@ export default function* root() {
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
     takeEvery(FETCH_SUGGEST_REQUEST, fetchSuggestSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
+    takeEvery(RESET_SEARCH_INPUT, resetSearchInputSaga),
     takeEvery(SELECT_PAGE, updateSearchMetaSaga),
     takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga),
     takeEvery(DESELECT_FACETS, handleDeselectFacetsSaga),

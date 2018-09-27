@@ -1,10 +1,14 @@
-import { actionTypes as reduxFormActionTypes } from "redux-form";
-
+import {
+  actionTypes as reduxFormActionTypes,
+  reset as _reduxFormReset
+} from "redux-form";
 import config from "../../config";
 
 export const REDUX_FORM_SUBMIT = reduxFormActionTypes.SUBMIT;
 export const REDUX_FORM_SUBMIT_SUCCEEDED =
   reduxFormActionTypes.SET_SUBMIT_SUCCEEDED;
+export const reduxFormReset = _reduxFormReset;
+export const reduxFormResetSearchForm = () => reduxFormReset("search");
 
 export const REDUX_REHYDRATION_COMPLETED = "MSS/REDUX_REHYDRATION_COMPLETED";
 export const reduxRehydrationCompleted = () => ({
@@ -137,6 +141,11 @@ export const updateSearchInput = update => ({
   payload: {
     update
   }
+});
+
+export const RESET_SEARCH_INPUT = "MSS/RESET_SEARCH_INPUT";
+export const resetSearchInput = () => ({
+  type: RESET_SEARCH_INPUT
 });
 
 export const TOGGLE_ADVANCED_SEARCH = "MSS/TOGGLE_ADVANCED_SEARCH";
