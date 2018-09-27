@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "leoek-material-ui-core-fork/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { translate } from "react-i18next";
 import RawText from "./common/RawText";
 import config from "../config";

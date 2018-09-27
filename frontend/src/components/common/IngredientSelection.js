@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
-import Grid from "leoek-material-ui-core-fork/Grid";
-import withWidth from "leoek-material-ui-core-fork/withWidth";
-import { withStyles } from "leoek-material-ui-core-fork/styles";
-import TextField from "leoek-material-ui-core-fork/TextField";
+import Grid from "@material-ui/core/Grid";
+import withWidth from "@material-ui/core/withWidth";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 import { translate } from "react-i18next";
 import classnames from "classnames";
 import AddIcon from "@material-ui/icons/Add";
-import IconButton from "leoek-material-ui-core-fork/IconButton";
-import Chip from "leoek-material-ui-core-fork/Chip";
-import Avatar from "leoek-material-ui-core-fork/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Chip from "@material-ui/core/Chip";
+import Avatar from "@material-ui/core/Avatar";
 import isEmpty from "lodash/isEmpty";
 
 const styles = theme => ({

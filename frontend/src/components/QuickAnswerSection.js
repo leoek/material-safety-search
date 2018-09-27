@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
-import Typography from "leoek-material-ui-core-fork/Typography";
-import ExpansionPanel from "leoek-material-ui-core-fork/ExpansionPanel";
-import ExpansionPanelSummary from "leoek-material-ui-core-fork/ExpansionPanelSummary";
+import Typography from "@material-ui/core/Typography";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpansionPanelDetails from "leoek-material-ui-core-fork/ExpansionPanelDetails";
-import { withStyles } from "leoek-material-ui-core-fork/styles";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import { withStyles } from "@material-ui/core/styles";
 
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 

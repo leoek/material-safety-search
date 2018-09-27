@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "leoek-material-ui-core-fork/Button";
-import Dialog from "leoek-material-ui-core-fork/Dialog";
-import DialogActions from "leoek-material-ui-core-fork/DialogActions";
-import DialogContent from "leoek-material-ui-core-fork/DialogContent";
-import DialogTitle from "leoek-material-ui-core-fork/DialogTitle";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
-import withMobileDialog from "leoek-material-ui-core-fork/withMobileDialog";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 
 import { compose } from "redux";
 import { translate } from "react-i18next";

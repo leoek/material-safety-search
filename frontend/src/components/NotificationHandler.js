@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import Snackbar from "leoek-material-ui-core-fork/Snackbar";
+import Snackbar from "@material-ui/core/Snackbar";
 
 export class NotificationHandler extends Component {
   handleClose = () => {
