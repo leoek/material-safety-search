@@ -112,7 +112,9 @@ export class Screen extends Component {
     const { updateSearchInput, isAdvancedSearch } = this.props;
     updateSearchInput({
       ...getDefaultInputValues(isAdvancedSearch),
-      ...values
+      ...values,
+      fsgFacet: null,
+      fscFacet: null
     });
   };
 

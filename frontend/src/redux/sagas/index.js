@@ -184,7 +184,11 @@ export function* handleSubmitSaga(action) {
   const { meta, error } = action;
   const { form } = meta || {};
   if (form === "search" && !error) {
-    yield put(deselectFacets());
+    /**
+     * Reset them with the submit in MainScreen.js
+     * We dont want to send two requests
+     */
+    //yield put(deselectFacets());
   }
 }
 
