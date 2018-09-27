@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "leoek-material-ui-core-fork/styles";
 import { compose } from "redux";
 import PropTypes from "prop-types";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import Collapse from "@material-ui/core/Collapse";
+import Collapse from "leoek-material-ui-core-fork/Collapse";
 
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "leoek-material-ui-core-fork/IconButton";
 import classnames from "classnames";
 import translate from "react-i18next/dist/commonjs/translate";
 

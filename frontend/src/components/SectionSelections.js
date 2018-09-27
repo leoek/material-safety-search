@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
+import Typography from "leoek-material-ui-core-fork/Typography";
+import Button from "leoek-material-ui-core-fork/Button";
+import { withStyles } from "leoek-material-ui-core-fork/styles";
 
 import classnames from "classnames";
 

@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
+import Card from "leoek-material-ui-core-fork/Card";
+import CardContent from "leoek-material-ui-core-fork/CardContent";
+import Button from "leoek-material-ui-core-fork/Button";
+import { withStyles } from "leoek-material-ui-core-fork/styles";
 import classnames from "classnames";
 
 import lodashMin from "lodash/min";

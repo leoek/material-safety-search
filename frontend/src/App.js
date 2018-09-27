@@ -18,7 +18,10 @@ import MomentUtils from "material-ui-pickers/utils/moment-utils";
 import { changeLanguage, i18n } from "./i18n";
 import configureStore from "./redux/createStore";
 
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import {
+  MuiThemeProvider,
+  createMuiTheme
+} from "leoek-material-ui-core-fork/styles";
 
 import MainScreen from "./components/MainScreen";
 import { reportAppStart } from "./redux/actions";

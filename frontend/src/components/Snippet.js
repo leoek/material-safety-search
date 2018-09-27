@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { translate } from "react-i18next";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import Typography from "leoek-material-ui-core-fork/Typography";
+import { withStyles } from "leoek-material-ui-core-fork/styles";
 
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
+import Table from "leoek-material-ui-core-fork/Table";
+import TableBody from "leoek-material-ui-core-fork/TableBody";
+import TableCell from "leoek-material-ui-core-fork/TableCell";
+import TableRow from "leoek-material-ui-core-fork/TableRow";
 import Chip from "leoek-material-ui-core-fork/Chip";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "leoek-material-ui-core-fork/Avatar";
 
 import ExpandableCardContent from "./common/ExpandableCardContent";
 
