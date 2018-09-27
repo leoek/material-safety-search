@@ -94,7 +94,7 @@ export class SearchForm extends Component {
     let columns = 1;
     if (["sm", "md"].includes(width)) {
       columns = 2;
-    } else if (["lg"].includes(width)) {
+    } else if (["lg", "xl"].includes(width)) {
       columns = 3;
     }
 

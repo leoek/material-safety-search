@@ -92,7 +92,7 @@ export class SearchForm extends Component {
       width
     } = this.props;
     const isLoading = isFetching || loading;
-    const searchButtonTopWidths = ["xs", "md", "lg"];
+    const searchButtonTopWidths = ["xs", "md", "lg", "xl"];
     const searchButtonTop = searchButtonTopWidths.includes(width);
     return (
       <div className={classes.root}>
