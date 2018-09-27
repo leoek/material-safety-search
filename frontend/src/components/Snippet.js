@@ -9,7 +9,7 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import Chip from "@material-ui/core/Chip";
+import Chip from "leoek-material-ui-core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 
 import ExpandableCardContent from "./common/ExpandableCardContent";

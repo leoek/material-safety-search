@@ -10,7 +10,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 
-import Chip from "@material-ui/core/Chip";
+import Chip from "leoek-material-ui-core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import Grow from "@material-ui/core/Grow";
 
