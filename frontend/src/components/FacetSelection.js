@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import Card from "leoek-material-ui-core-fork/Card";
+import CardContent from "leoek-material-ui-core-fork/CardContent";
+import Typography from "leoek-material-ui-core-fork/Typography";
+import { withStyles } from "leoek-material-ui-core-fork/styles";
 import { translate } from "react-i18next";
 import classnames from "classnames";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 
-import Chip from "@material-ui/core/Chip";
-import Avatar from "@material-ui/core/Avatar";
-import Grow from "@material-ui/core/Grow";
+import Chip from "leoek-material-ui-core-fork/Chip";
+import Avatar from "leoek-material-ui-core-fork/Avatar";
+import Grow from "leoek-material-ui-core-fork/Grow";
 
 import { selectFacet, deselectFacet } from "../redux/actions";
 import {

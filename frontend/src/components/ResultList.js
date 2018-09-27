@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import { withStyles } from "@material-ui/core/styles";
+import Typography from "leoek-material-ui-core-fork/Typography";
+import Card from "leoek-material-ui-core-fork/Card";
+import CardContent from "leoek-material-ui-core-fork/CardContent";
+import Button from "leoek-material-ui-core-fork/Button";
+import LinearProgress from "leoek-material-ui-core-fork/LinearProgress";
+import { withStyles } from "leoek-material-ui-core-fork/styles";
 import isEmpty from "lodash/isEmpty";
 import classnames from "classnames";
 
