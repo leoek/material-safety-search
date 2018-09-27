@@ -7,7 +7,8 @@ import {
   SHOW_DATASHEET,
   CLOSE_DATASHEET_SECTION,
   CLOSE_DATASHEET,
-  START_NEW_SESSION
+  START_NEW_SESSION,
+  REPORT_SEARCH_END
 } from "../actions";
 
 const initialState = {
@@ -25,7 +26,9 @@ const initialState = {
     dwellTimes: [],
     page: 0
   },
-  current: {},
+  current: {
+    isDirty: false
+  },
   prevSearch: null
 };
 
@@ -41,6 +44,11 @@ const log = (state = initialState, action) => {
   } else if (type === FETCH_SEARCH_REQUEST) {
     const { searchInput = {} } = action;
     const { query } = searchInput;
+    const { isDirty } = state.current || {};
+    const prevSearch = {
+      ...state.search,
+      end: new Date()
+    };
     return {
       ...state,
       search: {
@@ -48,10 +56,20 @@ const log = (state = initialState, action) => {
         requestStart: new Date(),
         query
       },
+      prevSearch: isDirty ? prevSearch : initialState.prevSearch,
+      current: {
+        isDirty: true
+      }
+    };
+  } else if (type === REPORT_SEARCH_END) {
+    return {
+      ...state,
+      search: initialState.search,
       prevSearch: {
         ...state.search,
         end: new Date()
-      }
+      },
+      current: initialState.current
     };
   } else if (type === FETCH_SEARCH_SUCCESS) {
     const { data = {}, timeFetched } = payload;

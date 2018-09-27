@@ -20,7 +20,6 @@ import {
   DESELECT_FACET,
   REDUX_FORM_SUBMIT,
   REDUX_FORM_SUBMIT_SUCCEEDED,
-  deselectFacets,
   DESELECT_FACETS,
   FETCH_SUGGEST_REQUEST,
   fetchSuggestSuccess,
@@ -31,12 +30,20 @@ import {
   REPORT_APP_START,
   REDUX_REHYDRATION_COMPLETED,
   reportNewLocalIp,
-  startNewSession
+  startNewSession,
+  REPORT_SEARCH_END,
+  fetchLogRequest,
+  FETCH_LOG_REQUEST,
+  fetchLogSuccess,
+  fetchLogFailure
 } from "../actions";
 import {
   getSearchInput,
   getAdvancedSearch,
-  isReduxRehydrationComplete
+  isReduxRehydrationComplete,
+  getLogPrevSearch,
+  getLogSession,
+  getLogIp
 } from "../selectors";
 import { post, get } from "../../lib/api";
 import { config } from "../../config";
@@ -89,6 +96,36 @@ export function* fetchSuggestSaga(action) {
     yield put(fetchSuggestSuccess({ field, data: reponseData }));
   } else {
     yield put(fetchSuggestFailure({ field, error: reponseData }));
+  }
+}
+
+export function* handleSearchEndSaga(action) {
+  const prevSearch = yield select(getLogPrevSearch);
+  const session = yield select(getLogSession);
+  const ip = yield select(getLogIp);
+  if (prevSearch) {
+    yield put(fetchLogRequest({ search: prevSearch, session, ip }));
+  }
+}
+
+export function* fetchLogSaga(action) {
+  const { payload } = action;
+  if (!payload) return;
+  const { session, ip, search } = payload;
+  const data = {
+    session,
+    localIpAddress: ip,
+    ...search
+  };
+  const response = yield post({
+    endpoint: "logging",
+    data
+  });
+  const reponseData = yield response.json().catch(handleResponseJsonError);
+  if (response.ok) {
+    yield put(fetchLogSuccess(reponseData));
+  } else {
+    yield put(fetchLogFailure(reponseData));
   }
 }
 
@@ -179,7 +216,7 @@ export function* handleDeselectFacetsSaga(action) {
     })
   );
 }
-
+/* eslint-disable require-yield */
 export function* handleSubmitSaga(action) {
   const { meta, error } = action;
   const { form } = meta || {};
@@ -191,13 +228,16 @@ export function* handleSubmitSaga(action) {
     //yield put(deselectFacets());
   }
 }
+/* eslint-enable require-yield */
 
 export default function* root(dispatch) {
   yield all([
     takeLatest(REHYDRATE, reduxRehydrateSaga),
     takeLatest(REPORT_APP_START, appStartSaga, dispatch),
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
+    takeEvery([FETCH_SEARCH_REQUEST, REPORT_SEARCH_END], handleSearchEndSaga),
     takeEvery(FETCH_SUGGEST_REQUEST, fetchSuggestSaga),
+    takeEvery(FETCH_LOG_REQUEST, fetchLogSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
     takeEvery(RESET_SEARCH_INPUT, resetSearchInputSaga),
     takeEvery(SELECT_PAGE, updateSearchMetaSaga),

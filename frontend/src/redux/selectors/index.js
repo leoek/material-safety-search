@@ -5,6 +5,7 @@ export * from "./searchSelectors";
 export * from "./searchInputSelectors";
 export * from "./uiSelectors";
 export * from "./suggestSelectors";
+export * from "./logSelectors.js";
 
 export const isReduxRehydrationComplete = state =>
   get(state, "_persist.rehydrated");

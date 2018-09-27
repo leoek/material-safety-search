@@ -38,6 +38,11 @@ export const startNewSession = () => ({
   }
 });
 
+export const REPORT_SEARCH_END = "MSS/REPORT_SEARCH_END";
+export const reportSearchEnd = () => ({
+  type: REPORT_SEARCH_END
+});
+
 /**
  * API Actions /search and /advancedSearch
  */
@@ -110,6 +115,33 @@ export const fetchSuggestFailure = ({ field, error }) => ({
   type: FETCH_SUGGEST_FAILURE,
   payload: {
     field,
+    error,
+    timeFetched: new Date()
+  }
+});
+
+/**
+ * API Actions send logs
+ */
+export const FETCH_LOG_REQUEST = "MSS/FETCH_LOG_REQUEST";
+export const fetchLogRequest = ({ ip, session, search }) => ({
+  type: FETCH_LOG_REQUEST,
+  payload: { ip, session, search }
+});
+
+export const FETCH_LOG_SUCCESS = "MSS/FETCH_LOG_SUCCESS";
+export const fetchLogSuccess = ({ data }) => ({
+  type: FETCH_LOG_SUCCESS,
+  payload: {
+    data,
+    timeFetched: new Date()
+  }
+});
+
+export const FETCH_LOG_FAILURE = "MSS/FETCH_LOG_FAILURE";
+export const fetchLogFailure = ({ error }) => ({
+  type: FETCH_LOG_FAILURE,
+  payload: {
     error,
     timeFetched: new Date()
   }
