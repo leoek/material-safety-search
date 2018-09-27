@@ -18,7 +18,8 @@ import { selectFacet, deselectFacet } from "../redux/actions";
 import {
   getSearchFacets,
   getSearchIsFetching,
-  getSearchInputSelectedFacet
+  getSearchInputSelectedFacet,
+  getUiSelectedFsgFacet
 } from "../redux/selectors";
 import ExpandableCardContent from "./common/ExpandableCardContent";
 import Padder from "./common/Padder";
@@ -62,9 +63,25 @@ const styles = theme => ({
   }
 });
 
-const RawFacetChips = ({ classes, facets, isFetching, selected }) => {
+const RawFacetChips = ({
+  preSelectedFacets = [],
+  classes,
+  facets,
+  isFetching,
+  selected
+}) => {
   return (
     <div className={classnames([classes.smallPadLeft, classes.smallPadRight])}>
+      {preSelectedFacets &&
+        preSelectedFacets.map(facet => (
+          <Grow
+            key={`preselected${facet.facetNumber}`}
+            in={!isFetching}
+            {...(!isFetching ? { timeout: 1000 } : {})}
+          >
+            <FacetChip facet={facet} isSelected={true} />
+          </Grow>
+        ))}
       {facets &&
         facets.map(facet => (
           <Grow
@@ -158,7 +175,12 @@ const FacetChip = compose(
 
 export class FacetSelection extends Component {
   render() {
-    const { classes, t, facets } = this.props;
+    const { classes, t, facets, selectedFsgFacet } = this.props;
+
+    const preSelectedFacets = [];
+    if (selectedFsgFacet) {
+      preSelectedFacets.push(selectedFsgFacet);
+    }
 
     if (
       !facets ||
@@ -168,7 +190,7 @@ export class FacetSelection extends Component {
       return null;
     }
 
-    const previewCount = 2;
+    const previewCount = 2 - preSelectedFacets.length;
 
     return (
       <Card className={classes.paper}>
@@ -178,7 +200,12 @@ export class FacetSelection extends Component {
           </Typography>
         </CardContent>
         <ExpandableCardContent
-          previewContent={<FacetChips facets={facets.slice(0, previewCount)} />}
+          previewContent={
+            <FacetChips
+              preSelectedFacets={preSelectedFacets}
+              facets={facets.slice(0, previewCount)}
+            />
+          }
           expandable={Boolean(facets.length > 2)}
         >
           <div className={classnames([classes.padLeft, classes.padRight])}>
@@ -195,15 +222,18 @@ export class FacetSelection extends Component {
 FacetSelection.propTypes = {
   classes: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
-  facets: PropTypes.array
+  facets: PropTypes.array,
+  selectedFsgFacet: PropTypes.object
 };
 
 FacetSelection.defaultProps = {
-  facets: null
+  facets: null,
+  selectedFsgFacet: null
 };
 
 const mapStateToRrops = state => ({
-  facets: getSearchFacets(state)
+  facets: getSearchFacets(state),
+  selectedFsgFacet: getUiSelectedFsgFacet(state)
 });
 
 const mapDispatchToProps = {};
