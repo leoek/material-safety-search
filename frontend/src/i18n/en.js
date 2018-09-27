@@ -42,7 +42,8 @@ export default {
       Disposal: "Disposal Considerations",
       Transport: "MSDS Transport Information",
       Regulatory: "Regulatory Information",
-      Other: "Other Information"
+      Other: "Other Information",
+      disclaimer: "Disclaimer"
     },
     datasheetsectiondialog: {
       close: "Close",
