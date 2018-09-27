@@ -3,28 +3,17 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
-import isEmpty from "lodash/isEmpty";
 import classnames from "classnames";
 
 import lodashMin from "lodash/min";
 import lodashMax from "lodash/max";
 
-import Padder from "./common/Padder";
-import SectionSelections from "./SectionSelections";
-import Snippet from "./Snippet";
-
-import { fetchSearchRequest, showDatasheet } from "../redux/actions";
-import {
-  getSearchItems,
-  getSearchIsFetching,
-  getSearchMeta
-} from "../redux/selectors";
+import { selectPage } from "../redux/actions";
+import { getSearchIsFetching, getSearchMeta } from "../redux/selectors";
 
 const styles = theme => ({
   root: {
@@ -73,31 +62,35 @@ const styles = theme => ({
   }
 });
 
-const LeftButton = ({ classes, page, firstPage, fetchPage }) => (
+const LeftButton = ({ classes, page, firstPage, selectPage }) => (
   <Button
     classes={{ label: classes.buttonLabel }}
     className={classes.button}
     disabled={page <= firstPage}
-    onClick={() => fetchPage(page - 1)}
+    onClick={() => selectPage(page - 1)}
   >
     {"<"}
   </Button>
 );
-const RightButton = ({ classes, page, lastPage, fetchPage }) => (
+const RightButton = ({ classes, page, lastPage, selectPage }) => (
   <Button
     classes={{ label: classes.buttonLabel }}
     className={classes.button}
     disabled={page >= lastPage}
-    onClick={() => fetchPage(page + 1)}
+    onClick={() => selectPage(page + 1)}
   >
     {">"}
   </Button>
 );
-const PageButton = ({ classes, pageNumber, fetchPage }) => (
+const PageButton = ({ classes, pageNumber, selectPage, page }) => (
   <Button
+    variant={page === pageNumber ? "outlined" : "text"}
     classes={{ label: classes.buttonLabel }}
-    className={classes.button}
-    onClick={() => fetchPage(pageNumber)}
+    className={classnames({
+      [classes.button]: true,
+      [classes.activeButton]: page === pageNumber
+    })}
+    onClick={() => selectPage(pageNumber)}
   >
     {pageNumber}
   </Button>
@@ -150,12 +143,11 @@ const PageButtons = props => {
 
 export class Pagination extends Component {
   render() {
-    const fetchPage = page => console.log("fetch page", page);
-    const { items, isFetching, hideLoading, classes, meta } = this.props;
-    const { page, totalPages } = meta;
+    const { classes, meta, selectPage } = this.props;
+    const { page, totalPages } = meta || {};
 
     const pageButtonProps = {
-      fetchPage,
+      selectPage,
       page,
       totalPages,
       classes,
@@ -163,16 +155,17 @@ export class Pagination extends Component {
       lastPage: totalPages - 1
     };
 
+    if (!totalPages) return null;
+
     return (
       <Card className={classes.paper}>
-        <CardContent>
+        <CardContent style={{ paddingBottom: 16 }}>
           <div className={classes.center}>
             <LeftButton {...pageButtonProps} />
             <PageButtons {...pageButtonProps} />
             <RightButton {...pageButtonProps} />
           </div>
         </CardContent>
-        <Padder />
       </Card>
     );
   }
@@ -198,7 +191,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchSearchRequest
+  selectPage
 };
 
 export default compose(

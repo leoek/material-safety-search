@@ -22,6 +22,7 @@ export const baseConfig = {
     UNPARSABLE_RESPONSE: "UNPARSABLE_RESPONSE"
   },
   DEFAULTS: {
+    page: 0,
     pageSize: 10,
     suggestionCount: 5,
     dateFormat: "LL",

@@ -15,9 +15,10 @@ export const reduxRehydrationCompleted = () => ({
  * API Actions /search and /advancedSearch
  */
 export const FETCH_SEARCH_REQUEST = "MSS/FETCH_SEARCH_REQUEST";
-export const fetchSearchRequest = (payload, advancedSearch) => ({
+export const fetchSearchRequest = ({ searchInput, meta, advancedSearch }) => ({
   type: FETCH_SEARCH_REQUEST,
-  payload,
+  searchInput,
+  meta,
   advancedSearch
 });
 
@@ -36,6 +37,17 @@ export const fetchSearchFailure = error => ({
   payload: {
     error,
     timeFetched: new Date()
+  }
+});
+
+/**
+ * API Action Select Page
+ */
+export const SELECT_PAGE = "MSS/SELECT_PAGE";
+export const selectPage = page => ({
+  type: SELECT_PAGE,
+  payload: {
+    page
   }
 });
 

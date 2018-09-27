@@ -16,7 +16,8 @@ import {
   DESELECT_FACETS,
   FETCH_SUGGEST_REQUEST,
   fetchSuggestSuccess,
-  fetchSuggestFailure
+  fetchSuggestFailure,
+  SELECT_PAGE
 } from "../actions";
 import { getSearchInput, getAdvancedSearch } from "../selectors";
 import { post, get } from "../../lib/api";
@@ -62,14 +63,22 @@ export function* fetchSuggestSaga(action) {
 }
 
 export function* fetchSearchSaga(action) {
-  const { payload = {}, advancedSearch } = action;
-  const {
-    query,
-    ingredients,
-    page = 0,
-    size = config.DEFAULTS.pageSize,
-    ...rest
-  } = payload;
+  let { searchInput, meta, advancedSearch } = action;
+  if (!searchInput) {
+    searchInput = yield select(getSearchInput) || {};
+  }
+  if (!advancedSearch) {
+    advancedSearch = yield select(getAdvancedSearch) ||
+      config.DEFAULTS.advancedSearchIsDefault;
+  }
+  if (!meta) {
+    meta = {
+      page: config.DEFAULTS.page,
+      size: config.DEFAULTS.pageSize
+    };
+  }
+  const { page = config.DEFAULTS.page, size = config.DEFAULTS.pageSize } = meta;
+  const { query, ingredients, ...rest } = searchInput;
   const parameters = {
     page,
     size
@@ -107,7 +116,14 @@ export function* updateSearchInputSaga(action) {
     ...oldSearchInput,
     ...update
   };
-  yield put(fetchSearchRequest(searchInput, advancedSearch));
+  yield put(fetchSearchRequest({ searchInput, advancedSearch }));
+}
+
+export function* updateSearchMetaSaga(action) {
+  const { type, payload } = action;
+  if (type === SELECT_PAGE) {
+    yield put(fetchSearchRequest({ meta: payload }));
+  }
 }
 
 export function* handleSelectFacetSaga(action) {
@@ -142,6 +158,7 @@ export default function* root() {
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
     takeEvery(FETCH_SUGGEST_REQUEST, fetchSuggestSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
+    takeEvery(SELECT_PAGE, updateSearchMetaSaga),
     takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga),
     takeEvery(DESELECT_FACETS, handleDeselectFacetsSaga),
     takeLatest(
