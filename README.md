@@ -126,7 +126,7 @@ Procedure:
 
 #### Frontend
 
-The frontend can be found within the [/frontend](/frontend) folder. Check out the [/frontend/README.md](Frontend Readme)
+The frontend can be found within the [frontend/](frontend/) folder. Check out the [frontend/README.md](Frontend Readme)
 
 Requirements:
 1. Yarn 1.8+
