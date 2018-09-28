@@ -8,7 +8,7 @@ const devConfig = {
 };
 
 export const baseConfig = {
-  version: "0.1.0",
+  version: "1.0.0",
   buildNumber:
     global.MSS && global.MSS.BUILD_NUMBER !== "REPLACE_WITH_BUILD_NUMBER"
       ? global.MSS.BUILD_NUMBER
