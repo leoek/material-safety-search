@@ -12,7 +12,7 @@ Search engine for Material Safety Datasheets based on Solr
 
 ## Report und Zwischenpräsentationen
 
-Der Report und die Zwischenpräsentationen sind in [docs/]](docs/) zu finden.
+Der Report und die Zwischenpräsentationen sind in [docs/](docs/) zu finden.
 ___
 
 ## How to Run
