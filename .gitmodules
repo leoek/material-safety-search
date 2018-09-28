@@ -1,6 +1,6 @@
 [submodule "hazard-ds"]
 	path = hazard-ds
-	url = git@github.com:fxj9a/hazard-ds.git
+	url = https://github.com/fxj9a/hazard-ds.git
 
 [submodule "ansible-role-common"]
 	path = ansible/roles/common
