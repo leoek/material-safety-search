@@ -1,0 +1,16 @@
+{
+  "id": "2ebfd016-cf5a-f229-9c11-882d742bcd34",
+  "name": "MSDS Search Development",
+  "values": [
+    {
+      "enabled": true,
+      "key": "url",
+      "value": "http://localhost:8080",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1537705997397,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-09-23T12:41:41.138Z",
+  "_postman_exported_using": "Postman/5.5.0"
+}

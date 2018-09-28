@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Material Safety Search</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						## Material Safety Search
+
+						Adrian Fichtner, Leonard Krause, Salomo Pflugradt, David Reinartz
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Technologies
+						- Solr
+						- Java, Spring
+						- React, Redux
+					</textarea>
+				</section>
+				<section>
+					<pre>
+						<code data-trim data-noescape class="no-max-height">
+							FISCHER SCIENTIFIC COMPANY -- T-349 TRIKETOHYDRINDENE HYDRATE  -- 6810-00D000202
+							=====================  Product Identification  =====================
+
+							Product ID:T-349 TRIKETOHYDRINDENE HYDRATE
+							MSDS Date:01/01/1985
+							FSC:6810
+							NIIN:00D000202
+							MSDS Number: BBCLM
+							=== Responsible Party ===
+							Company Name:FISCHER SCIENTIFIC COMPANY
+							Emergency Phone Num:201-796-7100
+							CAGE:80015
+							=== Contractor Identification ===
+							Company Name:FISCHER SCIENTIFIC
+							CAGE:80015
+							Company Name:FISHER SCIENTIFIC COMPANY
+							Address:52 FADEM ROAD.DOMESTIC DIVISION
+							City:SPRINGFIELD
+							State:NJ
+							ZIP:07081
+							Country:US
+							Phone:201-796-7100
+							CAGE:94480
+						</code>
+					</pre>
+				</section>
+				<section>
+					<pre>
+						<code data-trim data-noescape class="no-max-height">
+							=====================  Hazards Identification  =====================
+
+							LD50 LC50 Mixture:NONE SPECIFIED BY MANUFACTURER.
+							Routes of Entry: Inhalation:YES  Skin:YES  Ingestion:YES
+							Health Hazards Acute and Chronic:ACUTE:INHAL: IRRIT,HDCH,
+							    DIZZ,NAUS,POSS UNCON & ASPHYX.EYE: IRRIT.SKIN: PRLNGD/RPTD CONT MAY
+							    CAUSE DEFAT OF SKIN,LEADING TO IRRIT & DERM.CHRONIC:ING 4:MAY CAUSE
+							    CARBOXYHEMOGLOB NA    , I  EI     X OND &[ @B$ $(2P     %  $
+							    @@    B   "    @&   L @  @D "   B     L @"   B
+							       $N  @D "  F   @$@
+							Explanation of Carcinogenicity: $   @ B    LB  @$ $     $
+							      B     $         @    @ B     $ LB  @$ $     $        B
+							     $
+							Effects of Overexposure:     @           B D     @@"
+							       @ $  $    "    " @D  @     @N           @   F  L$@    ?
+							        6S  D  @ 6 F  F    F D  & ?   D  & ?]  D  &   & O
+							    D  &   & O   F   D  & G & G   ]KU    &@ 8@0 XFF[HGF/    F P
+							    FZP  FZP   S  D    8[#P   ,  F/    F    D     N FF[H F -D
+							Medical Cond Aggravated by Exposure:F  F    F/  F P  FZP  FZP  S  D
+							  8/#P   ,  FZ  F  F  F GF   8 @P3@P   Z?P  6S  D  F  F
+							  F   F  GF    F 1 S P  Z?P    @6S  D  F  F  F )F      9
+							    FF[I F   F   F P  FZP  FZ
+						</code>
+					</pre>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Document Structure
+						- Product Identification
+						- Stability and Reactivity Data
+						- Hazards Identification
+						- First Aid Measures
+						- Fire Fighting Measures
+						- Accidental Release Measures
+						- Disposal Considerations
+						- Handling and Storage
+						- Exposure Controls/Personal Protection
+						- ...
+
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![text](./ir.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Done
+						- settled for technologies
+						- analyzed data
+						- set up backend prototype
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## To Do
+						- expand document object
+						- improve indexing / Solr configuration
+						- query parsing
+						- API / Website
+						- CI (hosted Solr)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Demo
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

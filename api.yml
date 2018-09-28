@@ -1,0 +1,407 @@
+swagger: '2.0'
+info:
+  title: MSDS Search API
+  version: 1.0.0
+  description: >-
+    MSDS by Adrian Fichtner, Leonard Krause, Salomo Pflugradt, David Reinartz @
+    Universität Leipzig, 2018
+  termsOfService: 'http://localhost:8080/terms'
+  contact:
+    email: lek@outlook.de
+  license:
+    name: License
+    url: 'http://localhost/licenses'
+host: 'localhost:8080'
+basePath: /
+tags:
+  - name: Search
+    description: Main search endpoint
+  - name: Logging
+    description: Logging endpoint
+  - name: Suggestions
+    description: Retrieve suggested terms for partial search terms
+schemes:
+  - http
+paths:
+  /search:
+    post:
+      tags:
+        - Search
+      summary: >-
+        Retrieve search results for a given search term. Supports paging and
+        sorting.
+      description: ''
+      operationId: search
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Log object to be added to the database
+          required: true
+          schema:
+            $ref: '#/definitions/GeneralTerm'
+        - in: query
+          name: page
+          type: string
+          description: Number of page
+          required: false
+        - in: query
+          name: size
+          type: string
+          description: Number of items per page
+          required: false
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/Results'
+        '400':
+          description: Page out of range
+  /advancedSearch:
+    post:
+      tags:
+        - Search
+      summary: >-
+        Retrieve search results for a given advanced search term. Supports paging and
+        sorting.
+      description: ''
+      operationId: advancedSearch
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Log object to be added to the database
+          required: true
+          schema:
+            $ref: '#/definitions/AdvancedTerm'
+        - in: query
+          name: page
+          type: string
+          description: Number of page
+          required: false
+        - in: query
+          name: size
+          type: string
+          description: Number of items per page
+          required: false
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/Results'
+        '400':
+          description: Page out of range
+  /suggest:
+    get:
+      tags:
+        - Suggestions
+      summary: >-
+        Retrieve autocomplete suggestions for advanced search.
+      description: ''
+      operationId: suggest
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: s
+          type: string
+          description: Search term
+          required: true
+        - in: query
+          name: field
+          type: string
+          description: Advanced search field (productId, fsc, fscString, fsgString, niin, companyName)
+          required: true
+        - in: query
+          name: count
+          type: string
+          description: Number of terms to be returned (defaults to 10)
+          required: false
+      responses:
+        '200':
+          description: Request successful. Caution, list may be empty.
+          schema:
+            $ref: '#/definitions/Suggestions'
+  /log:
+    post:
+      tags:
+        - Logging
+      summary: Send logging data here
+      description: >-
+        Endpoint for collecting user behaviour data. Everything sent here is
+        automatically added to the logging database.
+      operationId: addLog
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Log object to be added to the database
+          required: true
+          schema:
+            $ref: '#/definitions/Log'
+      responses:
+        '200':
+          description: Successful operation
+  /top:
+    get:
+      tags:
+        - Logging
+      summary: >-
+        Retrieve a list of most popular search terms.
+      description: ''
+      operationId: topTerms
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: count
+          type: string
+          description: Number of terms to be returned (defaults to 10)
+          required: false
+      responses:
+        '200':
+          description: Request successful. Caution, list may be empty.
+          schema:
+            $ref: '#/definitions/Suggestions'
+definitions:
+  DataSheetDocument:
+    type: object
+    description: Values are \"null\" if information is not on MSDS
+    properties:
+      score:
+        type: number
+        description: Score of the retrieved document in context of given search term
+      docType:
+        type: string
+        description: >-
+          Marks that object is a datasheet, thus value will always be
+          "datasheet"
+      productId:
+        type: string
+        description: Product name
+      fsc:
+        type: string
+        description: Federal Supply Class
+      niin:
+        type: string
+        description: National Item Identification Number
+      companyName:
+        type: string
+        description: Name of the responsible party
+      msdsDate:
+        type: string
+        description: MSDS date
+      ingredients:
+        type: array
+        description: Product composition
+        items:
+          $ref: '#/definitions/IngredientDocument'
+      rawIdentification:
+        type: string
+        description: Raw text for category "Product Identification"
+      rawComposition:
+        type: string
+        description: Raw text for category "Composition/Information on Ingredients"
+      rawHazards:
+        type: string
+        description: Raw text for category "Hazards Identification"
+      rawFirstaid:
+        type: string
+        description: Raw text for category "First Aid Measures"
+      rawFireFighting:
+        type: string
+        description: Raw text for category "Fire Fighting Measures"
+      rawAccidentalRelease:
+        type: string
+        description: Raw text for category "Accidental Release Measures"
+      rawHandlingStorage:
+        type: string
+        description: Raw text for category "Handling and Storage"
+      rawProtection:
+        type: string
+        description: Raw text for category "Exposure Controls/Personal Protection"
+      rawChemicalProperties:
+        type: string
+        description: Raw text for category "Physical/Chemical Properties"
+      rawStabilityReactivity:
+        type: string
+        description: Raw text for category "Stability and Reactivity Data"
+      rawDisposal:
+        type: string
+        description: Raw text for category "Disposal Considerations"
+      rawToxic:
+        type: string
+        description: Raw text for category "Toxicological Information"
+      rawEco:
+        type: string
+        description: Raw text for category "Ecological Information"
+      rawTransport:
+        type: string
+        description: Raw text for category "MSDS Transport Information"
+      rawRegulatory:
+        type: string
+        description: Raw text for category "Regulatory Information"
+      rawOther:
+        type: string
+        description: Raw text for category "Other Information"
+  IngredientDocument:
+    type: object
+    properties:
+      docType:
+        type: string
+        description: >-
+          Marks that object is an ingredient, thus value will always be
+          "ingredient"
+      ingredName:
+        type: string
+        description: Ingredient name
+      cas:
+        type: string
+        description: Chemical Abstracts Service Registry Number
+  GeneralTerm:
+    type: object
+    properties:
+      searchTerm:
+        type: string
+        description: 'Query the user types in'
+      fsgFacet:
+        type: string
+        description: 'Two-digit number. Iff not containing FSG number or "null", results are not filtered and FSG facets are returned. Iff containing FSG number, results are filtered by that FSG number and FSC facets are returned.'
+      fscFacet:
+        type: string
+        description: 'Four-digit number. Iff not containing FSC number or "null", results are not filtered by FSC (may still be filtered by FSG). Iff containing FSC number, results are filtered by that FSC number.'
+      fuzzy:
+        type: boolean
+        description: 'If true, search is fuzzy, not fuzzy otherwise (remember that through tokenization results could still look like search is fuzzy even if it is not).'
+        default: false
+      wholeDoc:
+        type: boolean
+        description: 'If true, the whole document will be searched instead of just the structured parameters.'
+        default: false
+  AdvancedTerm:
+    type: object
+    properties:
+      productId:
+        type: string
+        description: 'Name of product to be retrieved'
+      fscString:
+        type: string
+        description: 'FSC category of the result products'
+      fsgString:
+        type: string
+        description: 'FSG category of the result products'
+      niin:
+        type: string
+        description: 'NIIN of the product to be retrieved'
+      companyName:
+        type: string
+        description: 'Company name to search for'
+      beginDate:
+        type: string
+        description: 'Filtering results by date. Must have UTC format (e.g. "1991-01-16T23:00:00Z") with clock at "23:00:00:000Z". Both begin AND end date must be specified for filtering to have an effect.'
+      endDate:
+        type: string
+        description: 'Filtering results by date. Must have UTC format (e.g. "1991-01-16T23:00:00Z") with clock at "23:00:00:000Z". Both begin AND end date must be specified for filtering to have an effect.'
+      ingredients:
+        type: array
+        description: 'List of ingredients to be retrieved. CAS or ingredName may be "null"'
+        items:
+          $ref: '#/definitions/AdvancedTermIngredient'
+      fsgFacet:
+        type: string
+        description: 'Two-digit number. Iff not containing FSG number or "null", results are not filtered and FSG facets are returned. Iff containing FSG number, results are filtered by that FSG number and FSC facets are returned. User should be able to enter this himself when using advanced search.'
+      fscFacet:
+        type: string
+        description: 'Four-digit number. Iff not containing FSC number or "null", results are not filtered by FSC (may still be filtered by FSG). Iff containing FSC number, results are filtered by that FSC number. User should be able to enter this himself when using advanced search.'
+      fuzzy:
+        type: boolean
+        description: 'If true, search is fuzzy, not fuzzy otherwise (remember that through tokenization results could still look like search is fuzzy even if it is not).'
+        default: false
+      wholeDoc:
+        type: boolean
+        description: 'If true, the whole document will be searched instead of just the structured parameters.'
+        default: false
+  AdvancedTermIngredient:
+    type: object
+    properties:
+      ingredName:
+        type: string
+        description: 'Name of the searched ingredient'
+      cas:
+        type: string
+        description: 'CAS number of the searched ingredient'
+  Suggestions:
+    type: object
+    properties:
+      suggestions:
+        type: array
+        description: 'List of suggested autocompletions'
+        items:
+          type: string
+  TopTerms:
+    type: object
+    properties:
+      suggestions:
+        type: array
+        description: 'List of terms most often searched for'
+        items:
+          type: string
+  Meta:
+    type: object
+    properties:
+      totalCount:
+        type: integer
+        description: Total number of retrieved documents
+      pageSize:
+        type: integer
+        description: Number of documents per page
+      count:
+        type: integer
+        description: Number of items on the current page
+      page:
+        type: integer
+        description: Current page number
+      hasNext:
+        type: boolean
+        description: '"True" if next page exists, "False" otherwise'
+      totalPages:
+        type: integer
+        description: Total number of pages
+  Results:
+    type: object
+    properties:
+      items:
+        type: array
+        description: List of retrieved datasheets
+        items:
+          $ref: '#/definitions/DataSheetDocument'
+      meta:
+        $ref: '#/definitions/Meta'
+  Log:
+    type: object
+    properties:
+      searchTerm:
+        type: string
+        description: Search term
+      timestamp:
+        type: string
+        description: Timestamp of the search
+      ipAddress:
+        type: string
+        description: Users IP address
+      dwellTime:
+        type: number
+        description: >-
+          Amount of time a user spends on a retrieved document. Should be "null"
+          if user does not return to search page.
+      resultClicks:
+        type: integer
+        description: Number of documents user clicks on
+      anyResults:
+        type: boolean
+        description: >-
+          "True" if search returns one ore more results, "False" if search
+          returns no results

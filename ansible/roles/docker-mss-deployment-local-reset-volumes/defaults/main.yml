@@ -1,0 +1,4 @@
+---
+# defaults file for role
+
+mss_path: /srv/docker/mss

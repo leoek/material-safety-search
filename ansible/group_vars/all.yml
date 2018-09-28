@@ -1,0 +1,13 @@
+---
+#global vars file
+
+ansible_user: ansible
+
+server_country_key: DE
+server_province: Sachsen
+server_city: Leipzig
+server_org: LeoEK
+server_mail: webmaster@leoek.tech
+server_ou: Leo
+server_name: ansibleDefaultServerName
+server_domain: leoek.tech

@@ -1,0 +1,15 @@
+[submodule "hazard-ds"]
+	path = hazard-ds
+	url = git@github.com:fxj9a/hazard-ds.git
+
+[submodule "ansible-role-common"]
+	path = ansible/roles/common
+	url = https://github.com/leoek/ansible-role-common.git
+
+[submodule "ansible-role-docker"]
+	path = ansible/roles/docker
+	url = https://github.com/leoek/ansible-role-docker.git
+
+[submodule "ansible-role-docker-nginx-proxy"]
+	path = ansible/roles/docker-nginx-proxy
+	url = https://github.com/leoek/ansible-role-docker-nginx-proxy.git

@@ -1,0 +1,10 @@
+---
+#vars file for net1
+
+server_name: net1
+server_domain: net1.leoek.tech
+docker:
+  virtual_network_nginx: nginx-proxy
+mss:
+  domain_client: mss.leoek.tech
+  domain_server: api.mss.leoek.tech
