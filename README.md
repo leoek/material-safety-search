@@ -77,6 +77,12 @@ Their default paths are `<repo-root>/hazard-ds/fscMap.txt` and `<repo-root>/haza
     * `docker-mss-deployment-local`: This is the role which will deploy the search engine.
     * `docker-mss-deployment-local-reset-volumes`: This role can be used to clear the docker volumes. Use this if you want to re-index the dataset and clear all logs.
 
+
+---
+## OpenApi Specification
+
+The Api is defined by an [penapi specification]api.yml).
+
 ----
 ## Development / Building from Source
 
@@ -126,7 +132,7 @@ Procedure:
 
 #### Frontend
 
-The frontend can be found within the [frontend/](frontend/) folder. Check out the [frontend/README.md](Frontend Readme)
+The frontend can be found within the [frontend/](frontend/) folder. Check out the [rontend Readme](ontend/README.md)
 
 Requirements:
 1. Yarn 1.8+
