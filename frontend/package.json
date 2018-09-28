@@ -36,7 +36,6 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start:mockServer": "cd ../mockServer/ && yarn && yarn start &",
     "start": "react-scripts start",
     "start:develop": "yarn start:mockServer && yarn start",
     "build": "react-scripts build",
