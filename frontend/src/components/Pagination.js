@@ -10,7 +10,6 @@ import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 
 import lodashMin from "lodash/min";
-import lodashMax from "lodash/max";
 
 import { selectPage } from "../redux/actions";
 import { getSearchIsFetching, getSearchMeta } from "../redux/selectors";
@@ -92,7 +91,7 @@ const PageButton = ({ classes, pageNumber, selectPage, page }) => (
     })}
     onClick={() => selectPage(pageNumber)}
   >
-    {pageNumber}
+    {pageNumber + 1}
   </Button>
 );
 const OmittedPagesButton = ({ classes }) => (
@@ -121,10 +120,8 @@ const PageButtons = props => {
   //TODO add some proper testing for this
   const correctionBefore = lodashMin([0, page - defaultBefore - 1]);
   const correctionAfter = lodashMin([0, lastPage - (page + defaultAfter) - 1]);
-  const before =
-    defaultBefore + correctionBefore + lodashMax([-(correctionAfter + 1), 0]);
-  const after =
-    defaultAfter + correctionAfter + lodashMax([-(correctionBefore + 1), 0]);
+  const before = defaultBefore + correctionBefore;
+  const after = defaultAfter + correctionAfter;
 
   if (before > 0 && page - before > 1) {
     items.push(<OmittedPagesButton key={"omit1"} classes={classes} />);
