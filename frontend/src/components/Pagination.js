@@ -92,7 +92,7 @@ const PageButton = ({ classes, pageNumber, selectPage, page }) => (
     })}
     onClick={() => selectPage(pageNumber)}
   >
-    {pageNumber}
+    {pageNumber + 1}
   </Button>
 );
 const OmittedPagesButton = ({ classes }) => (
