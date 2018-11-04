@@ -12,6 +12,8 @@ fi
 versionFile=./src/config/index.js
 packageVersion=$(awk '/version/{gsub(/("|",)/,"",$2);print $2};' $versionFile)
 
+. ./gitvars.sh
+
 if [ "$BUILD_NUMBER" != "" ]; then
     echo "replacing BUILD_NUMBER with $BUILD_NUMBER"
     BUILD_NUMBER_TO_REPLACE="REPLACE_WITH_BUILD_NUMBER"
@@ -36,5 +38,19 @@ if [ "$?" -gt "0" ]; then
 fi
 docker push $newTag
 
-docker tag $newTag "$baseTag:$tagName-next"
-docker push "$baseTag:$tagName-next"
+if [ "$git_first" == "feature" ]; then
+    if [ "$featureTag" != "" ]; then
+        docker tag $newTag "$baseTag:$tagName-$featureTag"
+        docker push "$baseTag:$tagName-$featureTag"
+    fi
+fi
+
+if [ "$git_first" == "develop" ]; then
+    docker tag $newTag "$baseTag:$tagName-next"
+    docker push "$baseTag:$tagName-next"
+fi
+
+if [ "$git_first" == "master" ]; then
+    docker tag $newTag "$baseTag:$tagName-stable"
+    docker push "$baseTag:$tagName-stable"
+fi
