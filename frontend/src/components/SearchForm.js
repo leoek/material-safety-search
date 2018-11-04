@@ -11,9 +11,9 @@ import { withStyles } from "@material-ui/core/styles";
 import { Field, reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 import classnames from "classnames";
-import { getSearchIsFetching } from "../redux/selectors";
+import { getSearchIsFetching, getSuggestValue } from "../redux/selectors";
 
-import { RenderTextField, RenderCheckbox } from "./common/InputFields";
+import { RenderCheckbox, InputAutoSuggest } from "./common/InputFields";
 
 const styles = theme => ({
   root: {
@@ -107,10 +107,13 @@ export class SearchForm extends Component {
                 lg={10}
                 className={classes.formItemContainer}
               >
-                <Field
+                <InputAutoSuggest
                   label={t("searchform.search.querylbl")}
                   name="query"
-                  component={RenderTextField}
+                  options={{
+                    endpoint: "top"
+                  }}
+                  suggestionsSelector={getSuggestValue("topTerms")("query")}
                   className={classes.formItem}
                 />
               </Grid>

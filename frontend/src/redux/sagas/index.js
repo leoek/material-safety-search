@@ -81,14 +81,15 @@ const handleResponseJsonError = (errorMessage, statusCode) => {
 
 export function* fetchSuggestSaga(action) {
   const { payload = {} } = action;
-  const { field, s, count } = payload;
+  const { field, s, count, options = {} } = payload;
+  const { endpoint = "suggest" } = options;
   const parameters = {
     field,
     count,
     s
   };
   const response = yield get({
-    endpoint: "suggest",
+    endpoint,
     parameters
   });
   const reponseData = yield response.json().catch(handleResponseJsonError);

@@ -90,13 +90,15 @@ export const FETCH_SUGGEST_REQUEST = "MSS/FETCH_SUGGEST_REQUEST";
 export const fetchSuggestRequest = ({
   s,
   field,
-  count = config.DEFAULTS.suggestionCount
+  count = config.DEFAULTS.suggestionCount,
+  options
 }) => ({
   type: FETCH_SUGGEST_REQUEST,
   payload: {
     s,
     field,
-    count
+    count,
+    options
   }
 });
 

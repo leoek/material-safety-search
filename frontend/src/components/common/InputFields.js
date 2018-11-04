@@ -60,7 +60,8 @@ const RawInputAutoSuggest = ({
   count,
   suggestions,
   classes,
-  fetchSuggestRequest
+  fetchSuggestRequest,
+  options
 }) => (
   <Field
     label={label}
@@ -72,7 +73,8 @@ const RawInputAutoSuggest = ({
       fetchSuggestRequest({
         s: value,
         field: name,
-        count
+        count,
+        options
       })
     }
     handleClearSuggestions={() => false}
@@ -82,9 +84,11 @@ const RawInputAutoSuggest = ({
 export const InputAutoSuggest = compose(
   connect(
     (state, ownProps) => {
-      const { name } = ownProps;
+      const { name, suggestionsSelector } = ownProps;
       return {
-        suggestions: getSuggestions(name)(state)
+        suggestions: suggestionsSelector
+          ? suggestionsSelector(state)
+          : getSuggestions(name)(state)
       };
     },
     { fetchSuggestRequest }
