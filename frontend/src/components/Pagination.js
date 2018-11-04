@@ -10,7 +10,6 @@ import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 
 import lodashMin from "lodash/min";
-import lodashMax from "lodash/max";
 
 import { selectPage } from "../redux/actions";
 import { getSearchIsFetching, getSearchMeta } from "../redux/selectors";
