@@ -121,10 +121,8 @@ const PageButtons = props => {
   //TODO add some proper testing for this
   const correctionBefore = lodashMin([0, page - defaultBefore - 1]);
   const correctionAfter = lodashMin([0, lastPage - (page + defaultAfter) - 1]);
-  const before =
-    defaultBefore + correctionBefore + lodashMax([-(correctionAfter + 1), 0]);
-  const after =
-    defaultAfter + correctionAfter + lodashMax([-(correctionBefore + 1), 0]);
+  const before = defaultBefore + correctionBefore;
+  const after = defaultAfter + correctionAfter;
 
   if (before > 0 && page - before > 1) {
     items.push(<OmittedPagesButton key={"omit1"} classes={classes} />);
