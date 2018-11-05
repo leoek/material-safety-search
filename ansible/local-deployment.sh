@@ -17,7 +17,7 @@ if [ "$1" == "only-frontend" ]; then
     sed -i -e "s/$MSS_PATH_TO_REPLACE_esc/$mssPath_esc/g" $defaults_yaml_path
     DOMAIN_PREFIX_TO_REPLACE="mss_domain_prefix: frontend"
     DOMAIN_PREFIX_TO_REPLACE_esc=$(echo "$DOMAIN_PREFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssDomainPrefix="mss_domain_prefix: mssDomainPrefix"
+    mssDomainPrefix="mss_domain_prefix: $git_esc"
     mssDomainPrefix_esc=$(echo "$mssDomainPrefix" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$DOMAIN_PREFIX_TO_REPLACE_esc/$mssDomainPrefix_esc/g" $defaults_yaml_path
     ansible_role="playbook-deployfrontend.yml"
@@ -25,7 +25,7 @@ if [ "$1" == "only-frontend" ]; then
     IMAGE_SUFFIX_TO_REPLACE_esc=$(echo "$IMAGE_SUFFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
     mssImageSuffix="image: materialsafetysearch/private:frontend-$git_esc"
     mssImageSuffix_esc=$(echo "$mssImageSuffix" | sed -e 's/[\/&]/\\&/g');
-    sed -i -e "s/$IMAGE_SUFFIX_TO_REPLACE_esc/$mssImageSuffix_esc/g" roles/docker-mss-deployfrontend-local/templates/main.yml
+    sed -i -e "s/$IMAGE_SUFFIX_TO_REPLACE_esc/$mssImageSuffix_esc/g" roles/docker-mss-deployfrontend-local/templates/docker-compose.yml
 fi
 
 ip=$(docker network inspect --format='{{range .IPAM.Config}}{{.Gateway}}{{end}}' nginx-proxy | awk -F '/' 'NR==1{print $1}')
