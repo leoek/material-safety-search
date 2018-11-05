@@ -2,6 +2,7 @@ version: '3'
 services:
   solr:
     image: solr:7.4.0
+    restart: always
     volumes:
       - solr_data:/opt/solr/server/solr/mycores
       - {{ mss_path }}/docker/solr.in.sh:/opt/solr/bin/solr.in.sh
@@ -24,6 +25,7 @@ services:
 
   mss-server:
     image: materialsafetysearch/private:backend-next
+    restart: always
     depends_on:
       - solr
     environment:
@@ -40,6 +42,7 @@ services:
 
   mss-client:
     image: materialsafetysearch/private:frontend-next
+    restart: always
     environment:
       - API_BASE_URL=https://${SERVER_DOMAIN}
       - VIRTUAL_HOST=${CLIENT_DOMAIN}
