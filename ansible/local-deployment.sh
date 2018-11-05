@@ -22,7 +22,8 @@ if [ "$1" == "only-frontend" ]; then
     sed -i -e "s/$MSS_PATH_TO_REPLACE_esc/$mssPath_esc/g" $defaults_yaml_path
     DOMAIN_PREFIX_TO_REPLACE="mss_domain_prefix: frontend"
     DOMAIN_PREFIX_TO_REPLACE_esc=$(echo "$DOMAIN_PREFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssDomainPrefix="mss_domain_prefix: $TO_BE_BUILD"
+    mssDomainPrefix_temp=$(echo "$TO_BE_BUILD" | sed -e 's/_//g')
+    mssDomainPrefix="mss_domain_prefix: $mssDomainPrefix_temp"
     mssDomainPrefix_esc=$(echo "$mssDomainPrefix" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$DOMAIN_PREFIX_TO_REPLACE_esc/$mssDomainPrefix_esc/g" $defaults_yaml_path
     ansible_role="playbook-deployfrontend.yml"
