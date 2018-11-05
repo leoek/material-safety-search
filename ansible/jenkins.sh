@@ -7,7 +7,7 @@ if [ "$git_first" != "develop" ] && [ "$git_first" != "master" ]; then
 fi
 
 if [ "$ONLY_FRONTEND" == "true"  ]; then
-  ./local-deployment.sh "only-frontend"
+  ./local-deployment.sh "only-frontend" "$FRONTEND_TAG"
 else
   if [ "$RESET_VOLUMES" == "true" ]; then
       ./local-deployment.sh "reset-volumes"

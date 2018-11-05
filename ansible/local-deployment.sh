@@ -7,23 +7,28 @@ if [ "$1" == "reset-volumes" ]; then
 fi
 if [ "$1" == "only-frontend" ]; then
     . ./gitvars.sh
+    if [ "$2" != ""]; then
+        TO_BE_BUILD="$2"
+    else
+        TO_BE_BUILD="$git_esc"
+    fi
     ansible_role="playbook-deployfrontend.yml"
     defaults_yaml_path="roles/docker-mss-deployfrontend-local/defaults/main.yml"
     # Replace stuff according to this build
     MSS_PATH_TO_REPLACE="mss_path: /srv/docker/mssfrontend"
     MSS_PATH_TO_REPLACE_esc=$(echo "$MSS_PATH_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssPath="mss_path: /srv/docker/mssfrontend-$git_esc"
+    mssPath="mss_path: /srv/docker/mssfrontend-$TO_BE_BUILD"
     mssPath_esc=$(echo "$mssPath" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$MSS_PATH_TO_REPLACE_esc/$mssPath_esc/g" $defaults_yaml_path
     DOMAIN_PREFIX_TO_REPLACE="mss_domain_prefix: frontend"
     DOMAIN_PREFIX_TO_REPLACE_esc=$(echo "$DOMAIN_PREFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssDomainPrefix="mss_domain_prefix: $git_esc"
+    mssDomainPrefix="mss_domain_prefix: $TO_BE_BUILD"
     mssDomainPrefix_esc=$(echo "$mssDomainPrefix" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$DOMAIN_PREFIX_TO_REPLACE_esc/$mssDomainPrefix_esc/g" $defaults_yaml_path
     ansible_role="playbook-deployfrontend.yml"
     IMAGE_SUFFIX_TO_REPLACE="image: materialsafetysearch/private:frontend-next"
     IMAGE_SUFFIX_TO_REPLACE_esc=$(echo "$IMAGE_SUFFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssImageSuffix="image: materialsafetysearch/private:frontend-$git_esc"
+    mssImageSuffix="image: materialsafetysearch/private:frontend-$TO_BE_BUILD"
     mssImageSuffix_esc=$(echo "$mssImageSuffix" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$IMAGE_SUFFIX_TO_REPLACE_esc/$mssImageSuffix_esc/g" roles/docker-mss-deployfrontend-local/templates/docker-compose.yml
 fi
