@@ -38,9 +38,13 @@ if [ "$?" -gt "0" ]; then
 fi
 docker push $newTag
 
+rm material-safety-search-staging-deploy.env
+
 if [ "$git_esc" != "" ]; then
     docker tag $newTag "$baseTag:$tagName-$git_esc"
     docker push "$baseTag:$tagName-$git_esc"
+    echo "ONLY_FRONTEND=true" >> material-safety-search-staging-deploy.env
+    echo "FRONTEND_TAG=$git_esc" >> material-safety-search-staging-deploy.env
 fi
 
 if [ "$git_first" == "develop" ]; then
