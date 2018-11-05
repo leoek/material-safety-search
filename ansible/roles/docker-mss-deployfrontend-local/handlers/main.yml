@@ -5,7 +5,7 @@
   become: true
   docker_service:
     project_src: "{{ mss_path }}/"
-    project_name: "mss-server"
+    project_name: "mss-{{ mss_domain_prefix }}"
     pull: yes
   listen: rebuild_containers
 
@@ -13,7 +13,7 @@
   become: true
   docker_service:
     project_src: "{{ mss_path }}/"
-    project_name: "mss-server"
+    project_name: "mss-{{ mss_domain_prefix }}"
     state: absent
     pull: yes
   listen: rebuild_containers
@@ -22,7 +22,7 @@
   become: true
   docker_service:
     project_src: "{{ mss_path }}/"
-    project_name: "mss-server"
+    project_name: "mss-{{ mss_domain_prefix }}"
     state: present
     pull: yes
   listen: rebuild_containers
