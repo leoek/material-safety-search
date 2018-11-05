@@ -1,7 +1,7 @@
 ---
 # defaults file for role
 
-mss_path: /srv/docker/mssfrontend
+mss_path: /srv/docker/mss/frontends
 mss_domain_prefix: frontend
 
 docker_hub_user: MSS_DEPLOY_DOCKER_HUB_USER_TO_BE_REPLACE

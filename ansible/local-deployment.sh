@@ -15,9 +15,9 @@ if [ "$1" == "only-frontend" ]; then
     ansible_role="playbook-deployfrontend.yml"
     defaults_yaml_path="roles/docker-mss-deployfrontend-local/defaults/main.yml"
     # Replace stuff according to this build
-    MSS_PATH_TO_REPLACE="mss_path: /srv/docker/mssfrontend"
+    MSS_PATH_TO_REPLACE="mss_path: /srv/docker/mss/frontends"
     MSS_PATH_TO_REPLACE_esc=$(echo "$MSS_PATH_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssPath="mss_path: /srv/docker/mssfrontend-$TO_BE_BUILD"
+    mssPath="mss_path: /srv/docker/mss/frontends/frontend_$TO_BE_BUILD"
     mssPath_esc=$(echo "$mssPath" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$MSS_PATH_TO_REPLACE_esc/$mssPath_esc/g" $defaults_yaml_path
     DOMAIN_PREFIX_TO_REPLACE="mss_domain_prefix: frontend"
