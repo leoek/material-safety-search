@@ -7,7 +7,7 @@ if [ "$1" == "reset-volumes" ]; then
 fi
 if [ "$1" == "only-frontend" ]; then
     . ./gitvars.sh
-    if [ "$2" != ""]; then
+    if [ "$2" != "" ]; then
         TO_BE_BUILD="$2"
     else
         TO_BE_BUILD="$git_esc"
