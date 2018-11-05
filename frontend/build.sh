@@ -39,9 +39,9 @@ fi
 docker push $newTag
 
 if [ "$git_first" == "feature" ]; then
-    if [ "$featureTag" != "" ]; then
-        docker tag $newTag "$baseTag:$tagName-$featureTag"
-        docker push "$baseTag:$tagName-$featureTag"
+    if [ "$git_esc" != "" ]; then
+        docker tag $newTag "$baseTag:$tagName-$git_esc"
+        docker push "$baseTag:$tagName-$git_esc"
     fi
 fi
 

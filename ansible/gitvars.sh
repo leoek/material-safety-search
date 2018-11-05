@@ -14,8 +14,3 @@ else
     git_esc=$(echo "$git_branch" | awk -F/ '{print $2"_"$3}')
 fi
 echo "Escaped git branch $git_esc"
-echo "detected first relevant git branch part $git_first"
-if [ "$git_first" == "feature" ]; then
-    BUILD_NUMBER="${BUILD_NUMBER}-${git_esc}"
-    echo "new enhanced build number $BUILD_NUMBER"
-fi
