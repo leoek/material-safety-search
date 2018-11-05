@@ -33,7 +33,7 @@ services:
       - LETSENCRYPT_HOST=${SERVER_DOMAIN}
       - LETSENCRYPT_EMAIL=webmaster@leoek.tech
     volumes:
-      - {{ mss_base_path }}/hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
+      - {{ mss_path }}/hazard-ds/hazard-dataset:/hazard-ds/hazard-dataset:ro
     networks:
       - backend
       - proxy-tier
