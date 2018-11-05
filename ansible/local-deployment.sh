@@ -14,8 +14,15 @@ if [ "$1" == "only-frontend" ]; then
     sed -i -e "s/$MSS_PATH_TO_REPLACE_esc/$mssPath_esc/g" roles/docker-mss-deployfrontend-local/defaults/main.yml
     DOMAIN_PREFIX_TO_REPLACE="mss_domain_prefix: frontend"
     DOMAIN_PREFIX_TO_REPLACE_esc=$(echo "$DOMAIN_PREFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
-    mssDomainPrefix_esc=$(echo "$git_esc" | sed -e 's/[\/&]/\\&/g');
+    mssDomainPrefix="mss_domain_prefix: mssDomainPrefix"
+    mssDomainPrefix_esc=$(echo "$mssDomainPrefix" | sed -e 's/[\/&]/\\&/g');
     sed -i -e "s/$DOMAIN_PREFIX_TO_REPLACE_esc/$mssDomainPrefix_esc/g" roles/docker-mss-deployfrontend-local/defaults/main.yml
+    ansible_role="playbook-deployfrontend.yml"
+    IMAGE_SUFFIX_TO_REPLACE="image: materialsafetysearch/private:frontend-next"
+    IMAGE_SUFFIX_TO_REPLACE_esc=$(echo "$IMAGE_SUFFIX_TO_REPLACE" | sed -e 's/[\/&]/\\&/g');
+    mssImageSuffix="image: materialsafetysearch/private:frontend-$git_esc"
+    mssImageSuffix_esc=$(echo "$mssImageSuffix" | sed -e 's/[\/&]/\\&/g');
+    sed -i -e "s/$IMAGE_SUFFIX_TO_REPLACE_esc/$mssImageSuffix_esc/g" roles/docker-mss-deployfrontend-local/templates/main.yml
     ansible_role="playbook-deployfrontend.yml"
 fi
 
