@@ -1,0 +1,28 @@
+---
+# handlers file for role
+
+- name: pull_new_images
+  become: true
+  docker_service:
+    project_src: "{{ mss_path }}/"
+    project_name: "mss-server"
+    pull: yes
+  listen: rebuild_containers
+
+- name: delete_containers
+  become: true
+  docker_service:
+    project_src: "{{ mss_path }}/"
+    project_name: "mss-server"
+    state: absent
+    pull: yes
+  listen: rebuild_containers
+
+- name: start_containers
+  become: true
+  docker_service:
+    project_src: "{{ mss_path }}/"
+    project_name: "mss-server"
+    state: present
+    pull: yes
+  listen: rebuild_containers
