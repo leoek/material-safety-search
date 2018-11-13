@@ -2,6 +2,7 @@ export default {
   translation: {
     title: "Material Safety Search",
     failure: "Failure",
+    advanced_search_togglelbl: "Advanced Search",
     searchform: {
       quickselect: {
         title: "What happened?"
@@ -10,7 +11,15 @@ export default {
         submit: "Search",
         querylbl: "Search",
         fuzzylbl: "Enable Fuzzysearch",
-        wholedoclbl: "Search Whole Datasheet"
+        wholedoclbl: "Search Whole Datasheet",
+        productIdlbl: "Product Name",
+        fsgStringlbl: "FSG",
+        fscStringlbl: "FSC",
+        niinlbl: "NIIN",
+        companyNamelbl: "Company Name",
+        beginDatelbl: "From",
+        endDatelbl: "To",
+        ingredientslbl: "Ingredients"
       }
     },
     datasheet: {

@@ -2,10 +2,12 @@ import {
   SHOW_DATASHEET_SECTION,
   CLOSE_DATASHEET_SECTION,
   SHOW_DATASHEET,
-  CLOSE_DATASHEET
+  CLOSE_DATASHEET,
+  TOGGLE_ADVANCED_SEARCH
 } from "../actions";
 
 const initialState = {
+  advancedSearch: true,
   notifications: {
     current: null,
     toShow: []
@@ -55,6 +57,12 @@ const ui = (state = initialState, action) => {
       datasheetDialog: {
         open: false
       }
+    };
+  } else if (type === TOGGLE_ADVANCED_SEARCH) {
+    const { value } = payload || {};
+    return {
+      ...state,
+      advancedSearch: value === undefined ? !state.advancedSearch : !!value
     };
   }
   return state;

@@ -8,10 +8,18 @@ import {
   UPDATE_SEARCH_INPUT,
   updateSearchInput,
   fetchSearchRequest,
-  SELECT_FACET
+  SELECT_FACET,
+  DESELECT_FACET,
+  REDUX_FORM_SUBMIT,
+  REDUX_FORM_SUBMIT_SUCCEEDED,
+  deselectFacets,
+  DESELECT_FACETS,
+  FETCH_SUGGEST_REQUEST,
+  fetchSuggestSuccess,
+  fetchSuggestFailure
 } from "../actions";
-import { getSearchInput } from "../selectors";
-import { post } from "../../lib/api";
+import { getSearchInput, getAdvancedSearch } from "../selectors";
+import { post, get } from "../../lib/api";
 import { config } from "../../config";
 
 export function* reduxRehydrateSaga(action) {
@@ -33,8 +41,28 @@ const handleResponseJsonError = (errorMessage, statusCode) => {
   });
 };
 
-export function* fetchSearchSaga(action) {
+export function* fetchSuggestSaga(action) {
   const { payload = {} } = action;
+  const { field, s, count } = payload;
+  const parameters = {
+    field,
+    count,
+    s
+  };
+  const response = yield get({
+    endpoint: "suggest",
+    parameters
+  });
+  const reponseData = yield response.json().catch(handleResponseJsonError);
+  if (response.ok) {
+    yield put(fetchSuggestSuccess({ field, data: reponseData }));
+  } else {
+    yield put(fetchSuggestFailure({ field, error: reponseData }));
+  }
+}
+
+export function* fetchSearchSaga(action) {
+  const { payload = {}, advancedSearch } = action;
   const { query, page = 0, size = config.DEFAULTS.pageSize, ...rest } = payload;
   const parameters = {
     page,
@@ -45,7 +73,7 @@ export function* fetchSearchSaga(action) {
     ...rest
   };
   const response = yield post({
-    endpoint: "search",
+    endpoint: advancedSearch ? "advancedSearch" : "search",
     parameters,
     data
   });
@@ -61,27 +89,51 @@ export function* updateSearchInputSaga(action) {
   const { payload } = action;
   const { update } = payload || {};
   const oldSearchInput = yield select(getSearchInput);
+  const advancedSearch = yield select(getAdvancedSearch);
   const searchInput = {
     ...oldSearchInput,
     ...update
   };
-  yield put(fetchSearchRequest(searchInput));
+  yield put(fetchSearchRequest(searchInput, advancedSearch));
 }
 
 export function* handleSelectFacetSaga(action) {
-  const { payload } = action;
+  const { payload, type } = action;
   const { facet } = payload || {};
   const update = {
-    [facet.type]: facet.facetNumber
+    [facet.type]: type === SELECT_FACET ? facet.facetNumber : null
   };
   yield put(updateSearchInput(update));
+}
+
+export function* handleDeselectFacetsSaga(action) {
+  yield put(
+    updateSearchInput({
+      fsgFacet: null,
+      fscFacet: null
+    })
+  );
+}
+
+export function* handleSubmitSaga(action) {
+  const { meta, error } = action;
+  const { form } = meta || {};
+  if (form === "search" && !error) {
+    yield put(deselectFacets());
+  }
 }
 
 export default function* root() {
   yield all([
     takeLatest(REHYDRATE, reduxRehydrateSaga),
     takeEvery(FETCH_SEARCH_REQUEST, fetchSearchSaga),
+    takeEvery(FETCH_SUGGEST_REQUEST, fetchSuggestSaga),
     takeEvery(UPDATE_SEARCH_INPUT, updateSearchInputSaga),
-    takeEvery(SELECT_FACET, handleSelectFacetSaga)
+    takeEvery([SELECT_FACET, DESELECT_FACET], handleSelectFacetSaga),
+    takeEvery(DESELECT_FACETS, handleDeselectFacetsSaga),
+    takeLatest(
+      [REDUX_FORM_SUBMIT, REDUX_FORM_SUBMIT_SUCCEEDED],
+      handleSubmitSaga
+    )
   ]);
 }

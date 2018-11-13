@@ -5,6 +5,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 
 import { compose } from "redux";
 import { translate } from "react-i18next";
@@ -36,9 +37,17 @@ class DatasheetSectionDialog extends React.Component {
   };
 
   render() {
-    const { isOpen, rawSection, name, t, datasheet = {} } = this.props;
+    const {
+      isOpen,
+      rawSection,
+      name,
+      t,
+      datasheet = {},
+      fullScreen
+    } = this.props;
     return (
       <Dialog
+        fullScreen={fullScreen}
         open={isOpen}
         onClose={this.handleClose}
         aria-labelledby="dialog-title"
@@ -95,5 +104,6 @@ export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )
+  ),
+  withMobileDialog()
 )(DatasheetSectionDialog);

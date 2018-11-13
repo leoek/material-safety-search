@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import withWidth from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 import classnames from "classnames";
 import { getSearchIsFetching } from "../redux/selectors";
 
-import { RenderTextField, RenderCheckbox } from "./common/InputFields";
+import { InputCheckbox, InputAutoSuggest } from "./common/InputFields";
+import { SearchButton } from "./SearchForm";
 
 const styles = theme => ({
   root: {
@@ -49,37 +49,30 @@ const styles = theme => ({
   }
 });
 
-const RawSearchButton = ({ classes, canSubmit, t }) => (
-  <Button
-    variant="contained"
-    color="primary"
-    type="submit"
-    disabled={!canSubmit}
-    className={classnames(classes.formItem, classes.searchButton)}
-  >
-    {t("searchform.search.submit")}
-  </Button>
-);
+const RawTextFieldGrid = ({ children, name, label, classes }) => {
+  if (children) {
+    return (
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={6}
+        lg={4}
+        className={classes.formItemContainer}
+      >
+        {children}
+      </Grid>
+    );
+  }
+  return (
+    <TextFieldGrid>
+      <InputAutoSuggest label={label} name={name} />
+    </TextFieldGrid>
+  );
+};
 
-export const SearchButton = compose(
-  withStyles(styles),
-  translate()
-)(RawSearchButton);
+const TextFieldGrid = withStyles(styles)(RawTextFieldGrid);
 
-const RawSearchButtonGrid = ({ classes, ...props }) => (
-  <Grid
-    item
-    xs={12}
-    sm={4}
-    md={4}
-    lg={2}
-    className={classnames(classes.formItemContainer, classes.buttonContainer)}
-  >
-    <SearchButton {...props} />
-  </Grid>
-);
-
-const SearchButtonGrid = withStyles(styles)(RawSearchButtonGrid);
 export class SearchForm extends Component {
   render() {
     const {
@@ -92,62 +85,70 @@ export class SearchForm extends Component {
       width
     } = this.props;
     const isLoading = isFetching || loading;
-    const searchButtonTopWidths = ["xs", "md", "lg"];
-    const searchButtonTop = searchButtonTopWidths.includes(width);
+
+    let columns = 1;
+    if (["sm", "md"].includes(width)) {
+      columns = 2;
+    } else if (["lg"].includes(width)) {
+      columns = 3;
+    }
+
     return (
       <div className={classes.root}>
         <form onSubmit={handleSubmit} className={classes.form}>
           <Paper className={classnames(classes.paper)}>
             <Grid container>
+              <TextFieldGrid
+                label={t("searchform.search.productIdlbl")}
+                name="productId"
+              />
+              <TextFieldGrid
+                label={t("searchform.search.fsgStringlbl")}
+                name="fsgString"
+              />
+              <TextFieldGrid
+                label={t("searchform.search.fscStringlbl")}
+                name="fscString"
+              />
+              <TextFieldGrid
+                label={t("searchform.search.niinlbl")}
+                name="niin"
+              />
+              <TextFieldGrid
+                label={t("searchform.search.companyNamelbl")}
+                name="companyName"
+              />
+
               <Grid
                 item
                 xs={12}
-                sm={12}
-                md={8}
-                lg={10}
-                className={classes.formItemContainer}
-              >
-                <Field
-                  label={t("searchform.search.querylbl")}
-                  name="query"
-                  component={RenderTextField}
-                  className={classes.formItem}
-                />
-              </Grid>
-              {searchButtonTop && <SearchButtonGrid canSubmit={canSubmit} />}
-              <Grid
-                item
-                xs={6}
-                sm={4}
-                md={4}
+                sm={6}
+                md={6}
                 lg={4}
                 className={classnames(classes.formItemContainer)}
               >
-                <Field
+                <InputCheckbox
                   label={t("searchform.search.fuzzylbl")}
                   name="fuzzy"
-                  component={RenderCheckbox}
-                  className={classes.checkboxField}
-                  type="checkbox"
                 />
               </Grid>
+            </Grid>
+            <Grid container>
+              {[...Array(columns - 1)].map((_, i) => (
+                <Grid key={i} item xs={12} sm={6} md={6} lg={4}>
+                  {/* Empty container for positioning purposes*/}
+                </Grid>
+              ))}
               <Grid
                 item
-                xs={6}
-                sm={4}
-                md={4}
+                xs={12}
+                sm={6}
+                md={6}
                 lg={4}
                 className={classnames(classes.formItemContainer)}
               >
-                <Field
-                  label={t("searchform.search.wholedoclbl")}
-                  name="wholeDoc"
-                  component={RenderCheckbox}
-                  className={classes.checkboxField}
-                  type="checkbox"
-                />
+                <SearchButton canSubmit={canSubmit} />
               </Grid>
-              {!searchButtonTop && <SearchButtonGrid canSubmit={canSubmit} />}
             </Grid>
             <div className={classes.loadingContainer}>
               {isLoading && <LinearProgress />}
@@ -178,8 +179,5 @@ export default compose(
   withWidth(),
   withStyles(styles),
   translate(),
-  connect(
-    mapStateToProps,
-    null
-  )
+  connect(mapStateToProps)
 )(SearchForm);

@@ -1,6 +1,12 @@
 import get from "lodash/get";
 
 /**
+ * advancedSearch
+ */
+
+export const getAdvancedSearch = state => get(state, `ui.advancedSearch`);
+
+/**
  * datasheetSectionDialog substate
  */
 export const getDatasheetSectionDialogValue = path => state =>

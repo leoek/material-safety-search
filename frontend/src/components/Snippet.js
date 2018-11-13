@@ -33,7 +33,9 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 2
   },
   chip: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 0.5,
+    marginBottom: theme.spacing.unit * 0.5
   }
 });
 
