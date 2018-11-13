@@ -30,6 +30,8 @@ services:
 
 volumes:
   solr_data:
+    external:
+      name: solr_data
   logdb_data:
 
 networks:

@@ -20,6 +20,7 @@ import {
 import RawText from "./common/RawText";
 import { SnippetTable } from "./Snippet";
 import { ResultTitle } from "./ResultList";
+import Disclaimer from "./Disclaimer";
 
 import config from "../config";
 const { datasheetFormat } = config;
@@ -73,6 +74,7 @@ class DatasheetDialog extends React.Component {
                 datasheet={datasheet}
               />
             ))}
+            <Disclaimer />
           </DialogContent>
         )}
         <DialogActions>

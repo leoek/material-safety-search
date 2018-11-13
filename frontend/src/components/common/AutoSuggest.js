@@ -142,9 +142,6 @@ class IntegrationAutosuggest extends React.Component {
           onChange: this.handleChange("popper"),
           inputRef: node => {
             this.popperNode = node;
-          },
-          InputLabelProps: {
-            shrink: true
           }
         }}
         theme={{
@@ -170,7 +167,12 @@ class IntegrationAutosuggest extends React.Component {
 }
 
 IntegrationAutosuggest.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  placeholder: PropTypes.string
+};
+
+IntegrationAutosuggest.defaultProps = {
+  placeholder: undefined
 };
 
 export default withStyles(styles)(IntegrationAutosuggest);

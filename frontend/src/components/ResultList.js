@@ -15,8 +15,9 @@ import classnames from "classnames";
 import Padder from "./common/Padder";
 import SectionSelections from "./SectionSelections";
 import Snippet from "./Snippet";
+import Pagination from "./Pagination";
 
-import { fetchSearchRequest, showDatasheet } from "../redux/actions";
+import { showDatasheet } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
 
 const styles = theme => ({
@@ -146,31 +147,39 @@ const ResultListCard = compose(
   )
 )(RawResultListCard);
 
+const ResultListContainer = ({
+  hideLoading,
+  isFetching,
+  classes,
+  children = null
+}) => (
+  <div className={classes.root}>
+    <Pagination />
+    {!hideLoading && (
+      <div className={classes.loadingContainer}>
+        {isFetching && <LinearProgress />}
+      </div>
+    )}
+    {children}
+    <Pagination />
+  </div>
+);
+
 export class ResultList extends Component {
   render() {
-    const { items, isFetching, hideLoading, classes } = this.props;
-    if (isFetching && hideLoading) return null;
-    if (isFetching && (!items || isEmpty(items))) {
-      return (
-        <div className={classes.loadingContainer}>
-          <LinearProgress />
-        </div>
-      );
-    }
-    if (!items || !Array.isArray(items)) return null;
+    const { items } = this.props;
+
+    if (!items || !Array.isArray(items) || isEmpty(items))
+      return <ResultListContainer {...this.props} />;
+
     return (
-      <div className={classes.root}>
-        {!hideLoading && (
-          <div className={classes.loadingContainer}>
-            {isFetching && <LinearProgress />}
-          </div>
-        )}
+      <ResultListContainer {...this.props}>
         <div>
           {items.map((item, index) => (
             <ResultListCard key={item.id || index} item={item} />
           ))}
         </div>
-      </div>
+      </ResultListContainer>
     );
   }
 }
@@ -188,9 +197,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  fetchSearchRequest
-};
+const mapDispatchToProps = null;
 
 export default compose(
   connect(

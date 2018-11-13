@@ -55,56 +55,40 @@ export const datasheetFormat = {
   ],
   sections: [
     {
-      name: "AcidentalRelease",
-      dataKey: "rawAccidentalRelease"
-    },
-    {
-      name: "ChemicalProperties",
-      dataKey: "rawChemicalProperties"
+      name: "Identification",
+      dataKey: "rawIdentification"
     },
     {
       name: "Composition",
       dataKey: "rawComposition"
     },
     {
-      name: "Disposal",
-      dataKey: "rawDisposal"
-    },
-    {
-      name: "Eco",
-      dataKey: "rawEco"
-    },
-    {
-      name: "FireFighting",
-      dataKey: "rawFireFighting"
+      name: "Hazards",
+      dataKey: "rawHazards"
     },
     {
       name: "FirstAid",
       dataKey: "rawFirstAid"
     },
     {
+      name: "FireFighting",
+      dataKey: "rawFireFighting"
+    },
+    {
+      name: "AcidentalRelease",
+      dataKey: "rawAccidentalRelease"
+    },
+    {
       name: "HandlingStorage",
       dataKey: "rawHandlingStorage"
-    },
-    {
-      name: "Hazards",
-      dataKey: "rawHazards"
-    },
-    {
-      name: "Identification",
-      dataKey: "rawIdentification"
-    },
-    {
-      name: "Other",
-      dataKey: "rawOther"
     },
     {
       name: "Protection",
       dataKey: "rawProtection"
     },
     {
-      name: "Regulatory",
-      dataKey: "rawRegulatory"
+      name: "ChemicalProperties",
+      dataKey: "rawChemicalProperties"
     },
     {
       name: "StabilityReactivity",
@@ -115,8 +99,24 @@ export const datasheetFormat = {
       dataKey: "rawToxic"
     },
     {
+      name: "Eco",
+      dataKey: "rawEco"
+    },
+    {
+      name: "Disposal",
+      dataKey: "rawDisposal"
+    },
+    {
       name: "Transport",
       dataKey: "rawTransport"
+    },
+    {
+      name: "Regulatory",
+      dataKey: "rawRegulatory"
+    },
+    {
+      name: "Other",
+      dataKey: "rawOther"
     }
   ]
 };

@@ -10,10 +10,15 @@ Search engine for Material Safety Datasheets based on Solr
 |   |   |   |
 | [![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search_server-build)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search_server-build/) | [![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search-frontend-build)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search-frontend-build/) | [![Build Status](https://ci.net1.leoek.eu/buildStatus/icon?job=material-safety-search/material-safety-search-staging-deploy)](https://ci.net1.leoek.eu/job/material-safety-search/job/material-safety-search-staging-deploy/) |
 
+## Report und Zwischenpräsentationen
+
+Der Report und die Zwischenpräsentationen sind in [docs/](docs/) zu finden.
+___
+
 ## How to Run
 **NOTE**: Read the following section carefully! 
 
-* You will need the dataset that is NOT in this repository because of liscensing issues. 
+* You will need the dataset which is NOT in this repository because of liscensing issues. 
 
 * The dataset is linked as git submodule and can be installed by running: 
 `git submodule update --init --recursive`
@@ -23,6 +28,16 @@ Search engine for Material Safety Datasheets based on Solr
 * If you are **not** running the backend in a docker container, there are 2 additional files needed.
 Their default paths are `<repo-root>/hazard-ds/fscMap.txt` and `<repo-root>/hazard-ds/fsgMap.txt`. These paths can be adjusted through the environment variables `fscMapPath` and `fsgMapPath`.
 
+**NOTE** Installtion Instructions for required Software to **run** MSDS Search:
+* [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* [docker-compose](https://docs.docker.com/compose/install/#install-compose)
+
+**NOTE** Installtion Instructions for required Software to **develop** for MSDS Search:
+* docker and docker-compose (see above)
+* [Java Jdk 10](https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-linux-platforms.htm#JSJIG-GUID-737A84E4-2EFF-4D38-8E60-3E29D1B884B8) manual
+* [Java Jdk 10](https://stackoverflow.com/questions/49507160/how-to-install-jdk-10-under-ubuntu) via PPA
+* [yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
+
 **NOTE**: If you have questions about the following docker commands, you can find their documentation [here](https://docs.docker.com/compose/reference/overview/). These are the basic commands which you will probably need:
 
 1. `docker-compose up -d` Start/create containers, volumes and networks. Setup and detach your console.
@@ -31,23 +46,42 @@ Their default paths are `<repo-root>/hazard-ds/fscMap.txt` and `<repo-root>/haza
 4. `docker-compose down -v` Stop, delete all containers and remove all data volumes.
 5. The `-f` flag is used to specify a certain compose file. There are different compose files with different purposes in this repository.
 
-#### There are two options available to run this search engine:
+### Quick Start
+1. clone the repository: `git clone https://github.com/leoek/material-safety-search.git`
+2. `cd material-safety-search`
+3. download submodules: `git submodule update --init --recursive`
+4. With access to https://hub.docker.com/r/materialsafetysearch/private/
+    1. login to dockerhub: `docker login`
+    2. Use our prebuilt docker images: `sudo docker-compose -f docker-compose.staging.yml up -d`
+    3. [Optional] View logs: `sudo docker-compose -f docker-compose.staging.yml logs -f mss-server`
+4. Without access to the prebuilt docker images
+    1. Build and run the images on your local machine (which might take a while): `sudo docker-compose -f docker-compose.local.yml up -d`
+    2. [Optional] View logs: `sudo docker-compose -f docker-compose.local.yml logs -f mss-server`
+5. Wait for the dataset to be indexed, the search engine is already usable if only a part is indexed. (You can check the progress in the logs)
+
+### There are two options available to run this search engine:
 
 1. Use our prebuilt docker images: `sudo docker-compose -f docker-compose.staging.yml up -d`
 2. Build and run the images on your local machine (which might take a while): `sudo docker-compose -f docker-compose.local.yml up -d`
 
 **ATTENTION**: Please note that the solr container does not require any login information. Therefore it should not be exposed to the public. Our docker-compose.local.yml configuration **will expose all ports** for debugging purposes. You should never use that configuration in any production environment.
 
-#### Production Setup / Deployment
+### Production Setup / Deployment
 
 * We recommend to run all containers behind some kind of reverse proxy. You can get an example on how to do that in our docker-compose.staging.yml configuration.
 * Our backend and frontend containers do not have any SSL support. We recommend to setup SSL within the reverse proxy.
-* You can find an example Ansible setup inside `/ansible` which we used to deploy the search engine to the demo server. The Ansible setup will work with most debian based systems.
+* You can find an example Ansible setup inside `/ansible` which is used by Jenkins to deploy the search engine to the demo server. The Ansible setup will work with most debian based systems.
     * `ansible-role-common`: Basic server setup, you probably want to replace / adjust this.
     * `ansible-role-docker`: Install / update docker and docker-compose. Set it up to work with the Ansible `docker_service` module (which has some flaws).
     * `ansible-role-docker-nginx-proxy`: Setup jwilder as a reverse proxy, with letsencrypt-companion for SSL certificates
     * `docker-mss-deployment-local`: This is the role which will deploy the search engine.
-    * `docker-mss-deployment-local-reset-volumes`: This role can be used to clear the docker volumes. Use this if you want to re-index the dataset.
+    * `docker-mss-deployment-local-reset-volumes`: This role can be used to clear the docker volumes. Use this if you want to re-index the dataset and clear all logs.
+
+
+---
+## OpenApi Specification
+
+The Api is defined by an [penapi specification]api.yml).
 
 ----
 ## Development / Building from Source
@@ -98,7 +132,7 @@ Procedure:
 
 #### Frontend
 
-The frontend can be found within the /frontend folder.
+The frontend can be found within the [frontend/](frontend/) folder. Check out the [rontend Readme](ontend/README.md)
 
 Requirements:
 1. Yarn 1.8+

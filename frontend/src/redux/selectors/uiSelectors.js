@@ -1,6 +1,15 @@
 import get from "lodash/get";
 
 /**
+ * Facet Selection
+ * TODO reafactor this, its a fast but hacky solution
+ */
+
+export const getUiSelectedFacets = state => get(state, `ui.facets`, {});
+export const getUiSelectedFsgFacet = state =>
+  getUiSelectedFacets(state).fsgFacet;
+
+/**
  * advancedSearch
  */
 

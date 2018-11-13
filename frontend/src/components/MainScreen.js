@@ -12,10 +12,15 @@ import classnames from "classnames";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import withWidth from "@material-ui/core/withWidth";
+import Button from "@material-ui/core/Button";
 
 import SearchForm from "./SearchForm";
 
-import { updateSearchInput, toggleAdvancedSearch } from "../redux/actions";
+import {
+  updateSearchInput,
+  toggleAdvancedSearch,
+  resetSearchInput
+} from "../redux/actions";
 import { getSearchFormValues, getAdvancedSearch } from "../redux/selectors";
 import ResultList from "./ResultList";
 import DatasheetSectionDialog from "./DatasheetSectionDialog";
@@ -25,6 +30,7 @@ import FacetSelection from "./FacetSelection";
 import config from "../config";
 import DatasheetDialog from "./DatasheetDialog";
 import AdvancedSearchForm from "./AdvancedSearchForm";
+import { getDefaultInputValues } from "../lib";
 
 const styles = theme => ({
   root: {
@@ -94,43 +100,26 @@ const SearchFormWrapper = connect(state => ({
   isAdvancedSearch: getAdvancedSearch(state)
 }))(RawSearchFormWrapper);
 
-const getDefaultInputValues = isAdvancedSearch => {
-  const both = {
-    fuzzy: false
-  };
-  if (isAdvancedSearch) {
-    return {
-      ...both,
-      productId: null,
-      fsgString: null,
-      fscString: null,
-      niin: null,
-      companyName: null
-    };
-  }
-  return {
-    ...both,
-    query: "",
-    wholeDoc: false
-  };
-};
-
 export class Screen extends Component {
   componentDidMount = () => {
     const { updateSearchInput } = this.props;
-    updateSearchInput({ query: "test" });
+    if (config.devEnv) {
+      updateSearchInput({ query: "test" });
+    }
   };
 
   submit = values => {
     const { updateSearchInput, isAdvancedSearch } = this.props;
     updateSearchInput({
       ...getDefaultInputValues(isAdvancedSearch),
-      ...values
+      ...values,
+      fsgFacet: null,
+      fscFacet: null
     });
   };
 
   render() {
-    const { values, classes, t, width } = this.props;
+    const { values, classes, t, width, resetSearchInput } = this.props;
     const phoneWidth = "xs" === width;
 
     /**
@@ -142,13 +131,15 @@ export class Screen extends Component {
       <div className={classes.root}>
         <AppBar position="sticky" color="default">
           <Toolbar>
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classnames({ [classes.grow]: phoneWidth })}
-            >
-              {t("title")}
-            </Typography>
+            <Button onClick={resetSearchInput}>
+              <Typography
+                variant="title"
+                color="inherit"
+                className={classnames({ [classes.grow]: phoneWidth })}
+              >
+                {t("title")}
+              </Typography>
+            </Button>
             {!phoneWidth && (
               <Typography
                 color="inherit"
@@ -184,7 +175,8 @@ export class Screen extends Component {
 Screen.propTypes = {
   classes: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
-  values: PropTypes.object
+  values: PropTypes.object,
+  resetSearchInput: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -195,7 +187,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  updateSearchInput
+  updateSearchInput,
+  resetSearchInput
 };
 
 export const ConnectedScreen = connect(

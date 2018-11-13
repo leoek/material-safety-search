@@ -1,7 +1,8 @@
 package mss.domain.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "log")
@@ -10,12 +11,24 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String searchTerm;
-    private Date timestamp;
-    private String ipAddress;
-    private Float dwellTime;
+    private LocalDateTime start;
+    private LocalDateTime end;
+    private String publicIp;
+    private String localIp;
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "log")
+    private List<DwellTime> dwellTimes;
     private Integer resultClicks;
     private Boolean anyResults;
     private Integer resultCount;
+    private String session;
+
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (!(obj instanceof Log )) return false;
+        return (obj == this || ((Log) obj).getId().equals(this.getId()));
+    }
 
     public Long getId() {
         return id;
@@ -33,28 +46,52 @@ public class Log {
         this.searchTerm = searchTerm;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public LocalDateTime getStart() {
+        return start;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setStart(LocalDateTime start) {
+        this.start = start;
     }
 
-    public String getIpAddress() {
-        return ipAddress;
+    public LocalDateTime getEnd() {
+        return end;
     }
 
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
     }
 
-    public Float getDwellTime() {
-        return dwellTime;
+    public String getPublicIp() {
+        return publicIp;
     }
 
-    public void setDwellTime(Float dwellTime) {
-        this.dwellTime = dwellTime;
+    public void setPublicIp(String publicIp) {
+        this.publicIp = publicIp;
+    }
+
+    public String getLocalIp() {
+        return localIp;
+    }
+
+    public void setLocalIp(String localIp) {
+        this.localIp = localIp;
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
+    }
+
+    public List<DwellTime> getDwellTimes() {
+        return dwellTimes;
+    }
+
+    public void setDwellTimes(List<DwellTime> dwellTimes) {
+        this.dwellTimes = dwellTimes;
     }
 
     public Integer getResultClicks() {
@@ -80,4 +117,6 @@ public class Log {
     public void setResultCount(Integer resultCount) {
         this.resultCount = resultCount;
     }
+
+
 }

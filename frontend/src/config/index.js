@@ -4,10 +4,11 @@ const devEnv = process.env.NODE_ENV === "development";
 
 const devConfig = {
   apiBaseUrl: "http://localhost:8080"
+  //apiBaseUrl: "https://api.mss.leoek.tech"
 };
 
 export const baseConfig = {
-  version: "0.1.0",
+  version: "1.0.0",
   buildNumber:
     global.MSS && global.MSS.BUILD_NUMBER !== "REPLACE_WITH_BUILD_NUMBER"
       ? global.MSS.BUILD_NUMBER
@@ -21,8 +22,11 @@ export const baseConfig = {
     UNPARSABLE_RESPONSE: "UNPARSABLE_RESPONSE"
   },
   DEFAULTS: {
+    page: 0,
     pageSize: 10,
-    suggestionCount: 5
+    suggestionCount: 5,
+    dateFormat: "LL",
+    advancedSearchIsDefault: false
   },
   datasheetFormat,
   ingredientFormat

@@ -51,7 +51,7 @@ export default () => {
   );
 
   //run sagas
-  sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga, store.dispatch);
 
   //start persisting the store
   const persistor = persistStore(store, null, () => store.getState());

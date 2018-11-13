@@ -88,7 +88,7 @@ public class SolrSetupService {
                     "                        \"class\": \"solr.FlattenGraphFilterFactory\"\n" +
                     "                    },\n" +
                     "                    {\"class\": \"solr.EdgeNGramFilterFactory\",\n" +
-                    "                    \"minGramSize\": \"2\",\n" +
+                    "                    \"minGramSize\": \"1\",\n" +
                     "                    \"maxGramSize\": \"15\"\n" +
                     "                    }\n" +
                     "                ]\n" +
@@ -144,7 +144,7 @@ public class SolrSetupService {
                     "                \"filters\": [\n" +
                     "                    {\n" +
                     "                        \"class\": \"solr.EdgeNGramFilterFactory\",\n" +
-                    "                        \"minGramSize\": \"2\",\n" +
+                    "                        \"minGramSize\": \"1\",\n" +
                     "                        \"maxGramSize\": \"15\"\n" +
                     "                    }" +
                     "                 ]\n" +

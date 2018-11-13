@@ -23,6 +23,7 @@ import { SnippetTable } from "./Snippet";
 import { ResultTitle } from "./ResultList";
 
 import config from "../config";
+import Disclaimer from "./Disclaimer";
 const { datasheetFormat } = config;
 
 class DatasheetSectionDialog extends React.Component {
@@ -63,16 +64,13 @@ class DatasheetSectionDialog extends React.Component {
         <DialogTitle id="dialog-title">
           <ResultTitle item={datasheet} />
         </DialogTitle>
-        {datasheet && (
-          <DialogContent>
-            <SnippetTable item={datasheet} />
-          </DialogContent>
-        )}
-        <DialogTitle id="dialog-title-section">
-          {t(`${datasheetFormat.translationKeyPrefix}.${name}`)}
-        </DialogTitle>
         <DialogContent>
+          {datasheet && <SnippetTable item={datasheet} />}
+          <DialogTitle style={{ paddingLeft: 0 }} id="dialog-title-section">
+            {t(`${datasheetFormat.translationKeyPrefix}.${name}`)}
+          </DialogTitle>
           <RawText text={rawSection} />
+          <Disclaimer />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleShowDatasheet} color="primary">

@@ -1,23 +1,56 @@
-import { actionTypes as reduxFormActionTypes } from "redux-form";
-
+import uuidv1 from "uuid/v1";
+import {
+  actionTypes as reduxFormActionTypes,
+  reset as _reduxFormReset
+} from "redux-form";
 import config from "../../config";
 
 export const REDUX_FORM_SUBMIT = reduxFormActionTypes.SUBMIT;
 export const REDUX_FORM_SUBMIT_SUCCEEDED =
   reduxFormActionTypes.SET_SUBMIT_SUCCEEDED;
+export const reduxFormReset = _reduxFormReset;
+export const reduxFormResetSearchForm = () => reduxFormReset("search");
 
 export const REDUX_REHYDRATION_COMPLETED = "MSS/REDUX_REHYDRATION_COMPLETED";
 export const reduxRehydrationCompleted = () => ({
   type: REDUX_REHYDRATION_COMPLETED
 });
 
+export const REPORT_APP_START = "MSS/REPORT_APP_START";
+export const reportAppStart = () => ({
+  type: REPORT_APP_START
+});
+
+export const REPORT_NEW_LOCAL_IP = "MSS/REPORT_NEW_LOCAL_IP";
+export const reportNewLocalIp = (ip, localIps) => ({
+  type: REPORT_NEW_LOCAL_IP,
+  payload: {
+    ip,
+    localIps
+  }
+});
+
+export const START_NEW_SESSION = "MSS/START_NEW_SESSION";
+export const startNewSession = () => ({
+  type: START_NEW_SESSION,
+  payload: {
+    session: uuidv1()
+  }
+});
+
+export const REPORT_SEARCH_END = "MSS/REPORT_SEARCH_END";
+export const reportSearchEnd = () => ({
+  type: REPORT_SEARCH_END
+});
+
 /**
  * API Actions /search and /advancedSearch
  */
 export const FETCH_SEARCH_REQUEST = "MSS/FETCH_SEARCH_REQUEST";
-export const fetchSearchRequest = (payload, advancedSearch) => ({
+export const fetchSearchRequest = ({ searchInput, meta, advancedSearch }) => ({
   type: FETCH_SEARCH_REQUEST,
-  payload,
+  searchInput,
+  meta,
   advancedSearch
 });
 
@@ -36,6 +69,17 @@ export const fetchSearchFailure = error => ({
   payload: {
     error,
     timeFetched: new Date()
+  }
+});
+
+/**
+ * API Action Select Page
+ */
+export const SELECT_PAGE = "MSS/SELECT_PAGE";
+export const selectPage = page => ({
+  type: SELECT_PAGE,
+  payload: {
+    page
   }
 });
 
@@ -71,6 +115,33 @@ export const fetchSuggestFailure = ({ field, error }) => ({
   type: FETCH_SUGGEST_FAILURE,
   payload: {
     field,
+    error,
+    timeFetched: new Date()
+  }
+});
+
+/**
+ * API Actions send logs
+ */
+export const FETCH_LOG_REQUEST = "MSS/FETCH_LOG_REQUEST";
+export const fetchLogRequest = ({ ip, session, search }) => ({
+  type: FETCH_LOG_REQUEST,
+  payload: { ip, session, search }
+});
+
+export const FETCH_LOG_SUCCESS = "MSS/FETCH_LOG_SUCCESS";
+export const fetchLogSuccess = ({ data }) => ({
+  type: FETCH_LOG_SUCCESS,
+  payload: {
+    data,
+    timeFetched: new Date()
+  }
+});
+
+export const FETCH_LOG_FAILURE = "MSS/FETCH_LOG_FAILURE";
+export const fetchLogFailure = ({ error }) => ({
+  type: FETCH_LOG_FAILURE,
+  payload: {
     error,
     timeFetched: new Date()
   }
@@ -125,6 +196,11 @@ export const updateSearchInput = update => ({
   payload: {
     update
   }
+});
+
+export const RESET_SEARCH_INPUT = "MSS/RESET_SEARCH_INPUT";
+export const resetSearchInput = () => ({
+  type: RESET_SEARCH_INPUT
 });
 
 export const TOGGLE_ADVANCED_SEARCH = "MSS/TOGGLE_ADVANCED_SEARCH";

@@ -12,7 +12,12 @@ import { translate } from "react-i18next";
 import classnames from "classnames";
 import { getSearchIsFetching } from "../redux/selectors";
 
-import { InputCheckbox, InputAutoSuggest } from "./common/InputFields";
+import {
+  InputCheckbox,
+  InputAutoSuggest,
+  InputDatePicker,
+  InputIngredientSelection
+} from "./common/InputFields";
 import { SearchButton } from "./SearchForm";
 
 const styles = theme => ({
@@ -89,7 +94,7 @@ export class SearchForm extends Component {
     let columns = 1;
     if (["sm", "md"].includes(width)) {
       columns = 2;
-    } else if (["lg"].includes(width)) {
+    } else if (["lg", "xl"].includes(width)) {
       columns = 3;
     }
 
@@ -118,7 +123,6 @@ export class SearchForm extends Component {
                 label={t("searchform.search.companyNamelbl")}
                 name="companyName"
               />
-
               <Grid
                 item
                 xs={12}
@@ -132,6 +136,36 @@ export class SearchForm extends Component {
                   name="fuzzy"
                 />
               </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <InputDatePicker
+                  name="beginDate"
+                  label={t("searchform.search.beginDatelbl")}
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                className={classnames(classes.formItemContainer)}
+              >
+                <InputDatePicker
+                  name="endDate"
+                  label={t("searchform.search.endDatelbl")}
+                />
+              </Grid>
+              <InputIngredientSelection
+                name="ingredients"
+                label={t("searchform.search.ingredientslbl")}
+              />
             </Grid>
             <Grid container>
               {[...Array(columns - 1)].map((_, i) => (

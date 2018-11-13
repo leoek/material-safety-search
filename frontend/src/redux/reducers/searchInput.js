@@ -1,4 +1,4 @@
-import { UPDATE_SEARCH_INPUT } from "../actions";
+import { UPDATE_SEARCH_INPUT, RESET_SEARCH_INPUT } from "../actions";
 
 const initialState = {};
 
@@ -10,6 +10,8 @@ const searchInput = (state = initialState, action) => {
       ...state,
       ...update
     };
+  } else if (type === RESET_SEARCH_INPUT) {
+    return initialState;
   }
   return state;
 };

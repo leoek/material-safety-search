@@ -1,0 +1,41 @@
+---
+#tasks file for role
+- name: create folder mss inside docker home
+  become: true
+  file:
+    path: "{{ mss_path }}"
+    state: directory
+    mode: 0755
+  notify: rebuild_containers
+
+- name: Copy .env template
+  become: true
+  template:
+    src: .env
+    dest: "{{ mss_path }}/"
+    mode: 0644
+  notify: rebuild_containers
+
+- name: Copy docker-compose.yml template
+  become: true
+  template:
+    src: docker-compose.yml
+    dest: "{{ mss_path }}/"
+    mode: 0644
+  notify: rebuild_containers
+
+- name: login to docker registry
+  become: true
+  docker_login:
+    username: "{{ docker_hub_user }}"
+    password: "{{ docker_hub_pw }}"
+    email: "{{ docker_hub_mail }}"
+
+- name: pull new images
+  become: true
+  docker_service:
+    project_src: "{{ mss_path }}/"
+    project_name: "mss-{{ mss_domain_prefix }}"
+    state: present
+    pull: yes
+  notify: rebuild_containers

@@ -1,13 +1,17 @@
+import config from "../../config";
 import {
   SHOW_DATASHEET_SECTION,
   CLOSE_DATASHEET_SECTION,
   SHOW_DATASHEET,
   CLOSE_DATASHEET,
-  TOGGLE_ADVANCED_SEARCH
+  TOGGLE_ADVANCED_SEARCH,
+  SELECT_FACET,
+  DESELECT_FACET,
+  UPDATE_SEARCH_INPUT
 } from "../actions";
 
 const initialState = {
-  advancedSearch: true,
+  advancedSearch: config.DEFAULTS.advancedSearchIsDefault,
   notifications: {
     current: null,
     toShow: []
@@ -20,7 +24,8 @@ const initialState = {
   datasheetDialog: {
     open: false,
     datasheet: null
-  }
+  },
+  facets: {}
 };
 
 const ui = (state = initialState, action) => {
@@ -63,6 +68,40 @@ const ui = (state = initialState, action) => {
     return {
       ...state,
       advancedSearch: value === undefined ? !state.advancedSearch : !!value
+    };
+  } else if (type === SELECT_FACET) {
+    const { facet } = payload || {};
+    const { type } = facet || {};
+    return {
+      ...state,
+      facets: {
+        ...state.facets,
+        ...(type ? { [type]: facet } : {})
+      }
+    };
+  } else if (type === DESELECT_FACET) {
+    const { facet } = payload || {};
+    const { type } = facet || {};
+    return {
+      ...state,
+      facets: {
+        ...state.facets,
+        ...(type ? { [type]: null } : {})
+      }
+    };
+  } else if (type === UPDATE_SEARCH_INPUT) {
+  /**
+   * TODO: fix this it is ugly
+   */
+    const { update } = payload || {};
+    const { fscFacet, fsgFacet } = update;
+    return {
+      ...state,
+      facets: {
+        ...state.facets,
+        ...(fscFacet === null ? { fscFacet } : {}),
+        ...(fsgFacet === null ? { fsgFacet } : {})
+      }
     };
   }
   return state;
