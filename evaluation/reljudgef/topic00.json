@@ -1,0 +1,126 @@
+{
+    "querystring": "oxygen inhaled",
+    "totalcount": 2054,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N054025",
+                "companyName": "ACETYLENE OXYGEN CO",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-124-1435",
+                "companyName": "SELOX,INC;DIVISION OF AIRCO INC",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN,O2"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-077-1247",
+                "companyName": "OXNARD WELDING SUPPLIES",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN,G-1"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-559-5287",
+                "companyName": "AGA GAS INC",
+                "fsc": "9135",
+                "fscString": "Liquid Propellants Fuels and Oxidizers, Chemical Base",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OXYGEN;OXYGEN, COMPRESSED (D.O.T.)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-132-5181",
+                "companyName": "PURITAN-BENNETT AERO SYSTEMS CO",
+                "fsc": "6505",
+                "fscString": "Drugs and Biologicals",
+                "fsgString": "Medical, Dental, and Veterinary Equipment and Supplies",
+                "productId": "GASEOUS OXYGEN,OXYGEN,GOX"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-169-0803",
+                "companyName": "AGA BURDOX",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN,TECHNICAL"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-132-5225",
+                "companyName": "PURITAN-BENNETT",
+                "fsc": "6505",
+                "fscString": "Drugs and Biologicals",
+                "fsgString": "Medical, Dental, and Veterinary Equipment and Supplies",
+                "productId": "GASEOUS OXYGEN,OXYGEN GAS,GOX"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-781-8194",
+                "companyName": "BOC GROUP,INC,AIRCO,DIV",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN,REFRIGERATED LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-300-4965",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC.",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN,LOX,GOX"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N011474",
+                "companyName": "AGA GAS,INC",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN,REFRIGERATED LIQUID"
+            },
+            "relevant": false
+        }
+    ]
+}

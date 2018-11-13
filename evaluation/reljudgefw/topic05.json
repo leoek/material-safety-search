@@ -1,0 +1,126 @@
+{
+    "querystring": "how to handle SULFURIC ACID",
+    "totalcount": 235892,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N039817",
+                "companyName": "RED BIRD SERVICE",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "SULFURIC-PHOSPHORIC ACID MIXTURE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-250-2113",
+                "companyName": "EXIDE CORP",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY,COM-8 D-P"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-334-4879",
+                "companyName": "YUASA, INC",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-394-5732",
+                "companyName": "YUASA, INC",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY, NP4-12"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-433-1883",
+                "companyName": "JOHNSON CONTROLS GOVT SYSTEMS",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD ACID BATTERY, (SEE SUPPL)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N088446",
+                "companyName": "YUASA INC",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-462-8656",
+                "companyName": "YUASA, INC",
+                "fsc": "6130",
+                "fscString": "Converters, Electrical, Non-Rotating",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-250-2113",
+                "companyName": "YUASA-EXIDE,INC.",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-294-9072",
+                "companyName": "EXIDE CORP",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "LEAD-ACID BATTERY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N092793",
+                "companyName": "NORTH AMERICAN CHEMICAL COMPANY",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "BORIC ACID"
+            },
+            "relevant": false
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "querystring": "wood lgue",
+    "totalcount": 4128,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N062192",
+                "companyName": "COX WOOD PRESERVING CO",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "CHROMATED COPPER ARSENATE (CCA) PRESSURE-TREATED WOOD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N056075",
+                "companyName": "NORTH-SOUTH WOOD PRES CO",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PENTACHLOROPHENOL PRESSURE TREATED WOOD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N034842",
+                "companyName": "MCEWEN LUMBER CO",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "WOOD DUST"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N012125",
+                "companyName": "T BAIRD MCILVAIN CO",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "WOOD DUST"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N075465",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD WITH MOLD INHIBITOR, .6 PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N075465",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD WITH MOLD INHIBITOR, .8 PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N075464",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD WITH MOLD INHIBITOR, .4 PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N075466",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD WITH MOLD INHIBITOR, 1.0 PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N075467",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD WITH MOLD INHIBITOR, 2.5 PCF"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N075463",
+                "companyName": "OSMOSE WOOD PRESERVING INC",
+                "fsc": "5510",
+                "fscString": "Lumber and Related Basic Wood Materials",
+                "fsgString": "Lumber, Millwork, Plywood, and Veneer",
+                "productId": "PRESSURE TREATED WOOD WITH MOLD INHIBITOR, .25 PCF"
+            },
+            "relevant": false
+        }
+    ]
+}

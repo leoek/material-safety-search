@@ -1,0 +1,126 @@
+{
+    "querystring": "how to handle SULFURIC ACID",
+    "totalcount": 42837,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-922-6921",
+                "companyName": "A & L HANDLES",
+                "fsc": "2640",
+                "fscString": "Tire Rebuilding and Tire and Tube Repair",
+                "fsgString": "Tires and Tubes",
+                "productId": "M100 SCREWDRIVER HANDLES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-251-8007",
+                "companyName": "KOCH SULFUR PRODUCTS COMPANY",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "SULFURIC ACID"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N043584",
+                "companyName": "KOCH SULFUR PRODUCTS CO.",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "SULFURIC ACID"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-384-4898",
+                "companyName": "SOLVAY POLYMERS;DIV.OF SOLVAY AMERICA",
+                "fsc": "3990",
+                "fscString": "Miscellaneous Materiel Handling Equipment-5",
+                "fsgString": "Materials Handling Equipment",
+                "productId": "FORTIFLEX POLYETHYLENE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-379-0627",
+                "companyName": "SOLVAY POLYMERS",
+                "fsc": "3990",
+                "fscString": "Miscellaneous Materiel Handling Equipment-5",
+                "fsgString": "Materials Handling Equipment",
+                "productId": "FORTIFLEX POLYETHYLENE,DS 4048"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-823-8008",
+                "companyName": "AMERICAN BATTERY ACID CORPORATION",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "O-S-801,SULFURIC ACID,ELECTROLYTE,CL 2"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-823-8007",
+                "companyName": "AMERICAN BATTERY ACID CORPORATION",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "O-S-801,SULFURIC ACID,ELECTROLYTE,CL 2"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-027-6134",
+                "companyName": "WOODWARD MFG & SALES CO",
+                "fsc": "3920",
+                "fscString": "Materiel Handling Equipment Non-Self-Propelled-5",
+                "fsgString": "Materials Handling Equipment",
+                "productId": "60HD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N036985",
+                "companyName": "HOWMET CORP ALLOY DIV",
+                "fsc": "9535",
+                "fscString": "Plate, Sheet, Strip and Foil: Nonferrous Base Metal",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "HOW 21 (F 75)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D003278",
+                "companyName": "GNB INC INDUSTRIAL BATTERY DIV WOODLAKE CORP PARK",
+                "fsc": "3930",
+                "fscString": "Warehouse Trucks and Tractors, Self-Propelled",
+                "fsgString": "Materials Handling Equipment",
+                "productId": "ELECTROLYTE (SULFURIC ACID SOLUTION)"
+            },
+            "relevant": true
+        }
+    ]
+}

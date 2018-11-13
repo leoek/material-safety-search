@@ -1,0 +1,126 @@
+{
+    "querystring": "omnilube precautions",
+    "totalcount": 488,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00B210014",
+                "companyName": "ULTRACHEM, INC.",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OMNILUBE (R) 550"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D007562",
+                "companyName": "SAFT AMERICA INC(AMERICAD INFO SEE OTHER PRECAUT)",
+                "fsc": "6140",
+                "fscString": "Batteries, Rechargeable",
+                "fsgString": "Electric Wire, and Power and Distribution Equipment",
+                "productId": "HED SERIES CELLS (SEE SUPPLEMENTAL)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N087403",
+                "companyName": "MCKAY WELDING PRODUCTS",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery",
+                "productId": "GROUP B:MILD STEEL LOW HYDROGEN COVERED ELECTRODES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N087402",
+                "companyName": "MCKAY WELDING PRODUCTS",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery",
+                "productId": "GROUP A: LOW ALLOY LOW HYDROGEN COVERED ELECTRODES"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052897",
+                "companyName": "PRESIDENT TITANIUM AND STEEL CO INC",
+                "fsc": "9650",
+                "fscString": "Nonferrous Base Metal Refinery and Intermediate Forms",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "TITANIUM AND TITANIUM ALLOY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052944",
+                "companyName": "COOK COMPOSITES AND POLYMERS CO",
+                "fsc": "8030",
+                "fscString": "Preservative and Sealing Compounds",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CHEMPOL 032-1617, 0321617 BURI"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N043017",
+                "companyName": "COURTAULDS AEROSPACE",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "420HG 1:1 TOPCOAT ACTIVATOR, 930K028"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N042817",
+                "companyName": "MOBIL OIL CORP",
+                "fsc": "9150",
+                "fscString": "Oil and Grease: Cutting, Lubricating and Hydraulic",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "MOBILITH SHC 100"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N042692",
+                "companyName": "ALLIED CORP",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "HCFC-124"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N030733",
+                "companyName": "ASPHALT MATERIALS & CONSTRUCTION INC",
+                "fsc": "5610",
+                "fscString": "Mineral Construction Materials, Bulk",
+                "fsgString": "Construction and Building Materials",
+                "productId": "EMULSIFIED ASPHALT ALL GRADES"
+            },
+            "relevant": false
+        }
+    ]
+}

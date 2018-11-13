@@ -1,0 +1,126 @@
+{
+    "querystring": "oxygen inhaled",
+    "totalcount": 63192,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N054025",
+                "companyName": "ACETYLENE OXYGEN CO",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-169-0804",
+                "companyName": "AIR PRODUCTS AND CHEMICALS, INC.",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN, LOX (LIQUID ONLY), GOX (GAS ONLY)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-965-2527",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC",
+                "fsc": "9135",
+                "fscString": "Liquid Propellants Fuels and Oxidizers, Chemical Base",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OXYGEN, REFRIGERATED LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-169-0803",
+                "companyName": "AIR PRODUCTS AND CHEMICALS, INC.",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN, LOX (LIQUID ONLY), GOX (GAS ONLY)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-132-5225",
+                "companyName": "PRAXAIR INC",
+                "fsc": "6505",
+                "fscString": "Drugs and Biologicals",
+                "fsgString": "Medical, Dental, and Veterinary Equipment and Supplies",
+                "productId": "OXYGEN"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-228-7090",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN, COMPRESSED (SEE SUPPLEMENTAL DATA)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-049-5263",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC.",
+                "fsc": "6830",
+                "fscString": "Gases: Compressed and Liquefied",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "OXYGEN; OXYGEN COMPRESSED"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-559-5287",
+                "companyName": "AGA GAS INC",
+                "fsc": "9135",
+                "fscString": "Liquid Propellants Fuels and Oxidizers, Chemical Base",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OXYGEN;OXYGEN, COMPRESSED (D.O.T.)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-138-8623",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC.",
+                "fsc": "1660",
+                "fscString": "Aircraft, Air Conditioning, Heating and Pressurizing Equipment",
+                "fsgString": "Aircraft Components and Accessories",
+                "productId": "OXYGEN, COMPRESSED"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-965-2527",
+                "companyName": "AIR PRODUCTS AND CHEMICALS INC.",
+                "fsc": "9135",
+                "fscString": "Liquid Propellants Fuels and Oxidizers, Chemical Base",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "OXYGEN, LOX (LIQUID ONLY), GOX (GAS ONLY)"
+            },
+            "relevant": true
+        }
+    ]
+}

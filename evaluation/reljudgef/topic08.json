@@ -1,0 +1,126 @@
+{
+    "querystring": "military explosives",
+    "totalcount": 167,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-036-0444",
+                "companyName": "NORTH AMERICAN EXPLOSIVES,NAX",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PRIMASHEET 1000 CHARGE,DEMOLITION"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-036-0449",
+                "companyName": "NORTH AMERICAN EXPLOSIVES,NAX",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PRIMASHEET 1000"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-281-7450",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MERCURY"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-988-1458",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "BLUE 15045, 44-150-P SO-SURE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-238-8119",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "NAPHTHA, ALIPHATIC"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-082-2439",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "MIL-C-22750 EPOXY WHITE PART A"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-082-2450",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "CROWN METRO"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-082-2440",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "MIL-C-22750 EPOXY(WHITE PART A"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-270-6050",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "3439",
+                "fscString": "Miscellaneous Welding, Soldering and Brazing Supplies - Accessories-4",
+                "fsgString": "Metalworking Machinery",
+                "productId": "SOLDERING FLUX (STEARINE COMPOUND IC-3)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-039-3841",
+                "companyName": "MILITARY SPECIFICATIONS PROMULGATED BY MILITARY",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MIL-A-8243 TYPE II; DEICING FLUID"
+            },
+            "relevant": false
+        }
+    ]
+}
