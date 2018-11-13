@@ -1,0 +1,126 @@
+{
+    "querystring": "liquid on fire",
+    "totalcount": 188844,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-288-8268",
+                "companyName": "STOP-FIRE INC.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "EXTINGUISHER,FIRE,VAPORIZING LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-087-4989",
+                "companyName": "GENERAL FIRE EXTINGUISHER COMPANY",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "EXTINGUISHER,FIRE,VAPORIZING LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-708-0031",
+                "companyName": "GENERAL FIRE EXTINGUISHER CORP.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "EXTINGUISHER,FIRE,VAPORIZING LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-223-9877",
+                "companyName": "LORCON INC. FIRE FOAM DIV.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "LORCON 6% FOAM LIQUID FIRE EXTINGUISHING"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-273-8585",
+                "companyName": "LORCON INC. FIRE FOAM DIV.",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "LORCON 6% FOAM LIQUID FIRE EXTINGUISHING"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N061267",
+                "companyName": "FIREFREEZER WORLDWIDE INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "COLD FIRE, 302"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F046676",
+                "companyName": "CHEMONICS INDUSTRIES INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "FIRE-TROL LCG-F LIQUID CONCENTRATE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N036457",
+                "companyName": "FLAME GUARD INTERNATIONAL INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "GBM FIREPROOFING LIQUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N003472",
+                "companyName": "FIRE & THERMAL PROTECTION ENGINEERS",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "FIRE SHIELD"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-595-1780",
+                "companyName": "FLAG FIRE INC",
+                "fsc": "4210",
+                "fscString": "Fire Fighting Equipment",
+                "fsgString": "Fire Fighting, Rescue, and Safety Equipment",
+                "productId": "FIRE EXTINGUISHER CARBON DIOXIDE"
+            },
+            "relevant": false
+        }
+    ]
+}

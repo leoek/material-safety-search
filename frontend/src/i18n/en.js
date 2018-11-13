@@ -3,6 +3,7 @@ export default {
     title: "MSDS Search",
     failure: "Failure",
     advanced_search_togglelbl: "Advanced Search",
+    totalresultcountlbl: "Results",
     searchform: {
       quickselect: {
         title: "What happened?"

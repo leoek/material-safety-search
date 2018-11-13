@@ -1,0 +1,126 @@
+{
+    "querystring": "how to handle SULFURIC ACID",
+    "totalcount": 224310,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N039817",
+                "companyName": "RED BIRD SERVICE",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "SULFURIC-PHOSPHORIC ACID MIXTURE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F013815",
+                "companyName": "SOFTSOAP ENTERPRISES, INC.",
+                "fsc": "8520",
+                "fscString": "Toilet Soap, Shaving Preparations and Dentifrice",
+                "fsgString": "Toiletries",
+                "productId": "FOOD HANDLER LOTION SOAP"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F052605",
+                "companyName": "CERTAIN-TEED CORP",
+                "fsc": "5640",
+                "fscString": "Wallboard, Building Paper and Thermal Insulation Materials",
+                "fsgString": "Construction and Building Materials",
+                "productId": "EASY HANDLER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-288-9743",
+                "companyName": "BUCKEYE RUBBER PRODUCTS INC",
+                "fsc": "4720",
+                "fscString": "Hose and Tubing, Flexible",
+                "fsgString": "Pipe, Tubing, Hose, and Fittings",
+                "productId": "HOSE,NONMETALLIC,ZZ-H-428 TY-1,GRB,CL-2"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-823-8008",
+                "companyName": "AMERICAN BATTERY ACID CORPORATION",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "O-S-801,SULFURIC ACID,ELECTROLYTE,CL 2"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-823-8007",
+                "companyName": "AMERICAN BATTERY ACID CORPORATION",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "O-S-801,SULFURIC ACID,ELECTROLYTE,CL 2"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-253-3410",
+                "companyName": "PARKER-HANNIFIN CORP, FLUID CONNECTORS GROUP",
+                "fsc": "4720",
+                "fscString": "Hose and Tubing, Flexible",
+                "fsgString": "Pipe, Tubing, Hose, and Fittings",
+                "productId": "HOSE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-365-6916",
+                "companyName": "UNION CARBIDE CORP LINDE DIV",
+                "fsc": "4730",
+                "fscString": "Fittings and Specialties; Hose, Pipe and Tube",
+                "fsgString": "Pipe, Tubing, Hose, and Fittings",
+                "productId": "COUPLING HOSE,11042"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-288-9870",
+                "companyName": "AEROQUIP CORP, AEROSPACE GROUP, JACKSON PLANT",
+                "fsc": "4720",
+                "fscString": "Hose and Tubing, Flexible",
+                "fsgString": "Pipe, Tubing, Hose, and Fittings",
+                "productId": "HOSE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-624-4059",
+                "companyName": "AEROQUIP CORP, AEROSPACE GROUP, JACKSON PLANT",
+                "fsc": "4720",
+                "fscString": "Hose and Tubing, Flexible",
+                "fsgString": "Pipe, Tubing, Hose, and Fittings",
+                "productId": "HOSE"
+            },
+            "relevant": false
+        }
+    ]
+}

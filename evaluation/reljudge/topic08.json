@@ -1,0 +1,126 @@
+{
+    "querystring": "military explosives",
+    "totalcount": 1831,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N010938",
+                "companyName": "HERCULES INCORPORATED",
+                "fsc": "1376",
+                "fscString": "Bulk Explosives",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PROPELLANT,EXPLOSIVE,SOLID,M6+2F/76MM"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N017403",
+                "companyName": "NORTH AMERICAN EXPLOSIVES",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "EXPLOSIVE CUTTING TAPE, ECT2063MM"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-328-4732",
+                "companyName": "NORTH AMERICAN EXPLOSIVES",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "ECT, EXPLOSIVE CUTTING TAPE, ROECT, LSCF, SX2, DEMEX 200"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-036-0444",
+                "companyName": "NORTH AMERICAN EXPLOSIVES,NAX",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PRIMASHEET 1000 CHARGE,DEMOLITION"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-036-0449",
+                "companyName": "NORTH AMERICAN EXPLOSIVES,NAX",
+                "fsc": "1375",
+                "fscString": "Demolition Materials",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "PRIMASHEET 1000"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N076481",
+                "companyName": "OK LABORATORIES INC",
+                "fsc": "1365",
+                "fscString": "Military Chemical Agents",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "UNLIMITED FOG (FOG/SMOKE FLUID)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-434-9894",
+                "companyName": "THE WESTERN COMPANY",
+                "fsc": "1365",
+                "fscString": "Military Chemical Agents",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "NON-ALKALINE GEL SOLUTION A"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-434-9895",
+                "companyName": "THE WESTERN COMPANY",
+                "fsc": "1365",
+                "fscString": "Military Chemical Agents",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "ALKALINE GEL SOLUTION B"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N062701",
+                "companyName": "MACE SECURITY INTERNATIONAL INC",
+                "fsc": "1365",
+                "fscString": "Military Chemical Agents",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "10-INERT (FOGGER)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N062698",
+                "companyName": "MACE SECURITY INTERNATIONAL INC",
+                "fsc": "1365",
+                "fscString": "Military Chemical Agents",
+                "fsgString": "Ammunition and Explosives",
+                "productId": "99-INERT TRAINING UNIT (STREAM)"
+            },
+            "relevant": false
+        }
+    ]
+}

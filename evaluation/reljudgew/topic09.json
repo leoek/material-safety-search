@@ -1,0 +1,126 @@
+{
+    "querystring": "yellow paint",
+    "totalcount": 90829,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F032351",
+                "companyName": "CAL-WESTERN PAINTS",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "506 ARTISTIC ACRYLIC PAINT ACACIA (YELLOW)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-161-7419",
+                "companyName": "ATLAS PAINT AND VARNISH COMPANY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "YELLOW #33481 (PAINT) TT-P-645"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-2620",
+                "companyName": "ATLAS PAINT & VARNISH CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TT-P-29H SAND (YELLOW) 33617 LATEX PAINT"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-285-4935",
+                "companyName": "KALCOR COATING CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "98-4981, YELLOW STENCIL PAINT"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-901-8050",
+                "companyName": "ATLAS PAINT & VARNISH CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TT-E-509B,SAND YELLOW 23617 PAINT"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N026982",
+                "companyName": "SAPPHIRE PRODUCTS",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "PAINT-SAV"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-3197",
+                "companyName": "ATLAS PAINT & VARNISH CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TT-E-529C, YELLOW-GREEN PAINT 24533"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-527-2045",
+                "companyName": "ATLAS PAINT AND VARNISH COMPAY",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "TT-E-489F, YELLOW #13538 (PAINT)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F039854",
+                "companyName": "IOWA PAINT MFG CO INC",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "9056 YELLOW TRAFFIC PAINT"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N056058",
+                "companyName": "PERVO PAINT CO",
+                "fsc": "8010",
+                "fscString": "Paints, Dopes, Varnishes and Related Products",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "YELLOW TRAFFIC PAINT, 3361"
+            },
+            "relevant": true
+        }
+    ]
+}

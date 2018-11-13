@@ -1,0 +1,302 @@
+{
+    "": {
+        "mean average precision": 0.6287450959219667,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 1.0,
+                "totalcount": 5905
+            },
+            {
+                "querystring": "liquid on fire",
+                "average precision": 0.0,
+                "totalcount": 9311
+            },
+            {
+                "querystring": "buy ammonium flouride",
+                "average precision": 1.0,
+                "totalcount": 11936
+            },
+            {
+                "querystring": "omnilube precautions",
+                "average precision": 1.0,
+                "totalcount": 488
+            },
+            {
+                "querystring": "protective gloves required",
+                "average precision": 0.0,
+                "totalcount": 5169
+            },
+            {
+                "querystring": "how to handle SULFURIC ACID",
+                "average precision": 0.5476190476190476,
+                "totalcount": 42837
+            },
+            {
+                "querystring": "stainless steel waste disposal",
+                "average precision": 1.0,
+                "totalcount": 7109
+            },
+            {
+                "querystring": "ingredients of white powder",
+                "average precision": 1.0,
+                "totalcount": 34935
+            },
+            {
+                "querystring": "military explosives",
+                "average precision": 0.9617346938775511,
+                "totalcount": 1831
+            },
+            {
+                "querystring": "yellow paint",
+                "average precision": 1.0,
+                "totalcount": 74262
+            },
+            {
+                "querystring": "wood lgue",
+                "average precision": 0.0,
+                "totalcount": 1896
+            },
+            {
+                "querystring": "blue ink brother industries",
+                "average precision": 0.0,
+                "totalcount": 21819
+            },
+            {
+                "querystring": "foto bleach firefighting",
+                "average precision": 0.5074074074074074,
+                "totalcount": 1369
+            },
+            {
+                "querystring": "fertilizer",
+                "average precision": 0.7856701940035273,
+                "totalcount": 600
+            }
+        ]
+    },
+    "f": {
+        "mean average precision": 0.6112103174603175,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.9861111111111112,
+                "totalcount": 2054
+            },
+            {
+                "querystring": "liquid on fire",
+                "average precision": 0.0,
+                "totalcount": 188844
+            },
+            {
+                "querystring": "buy ammonium flouride",
+                "average precision": 0.36944444444444446,
+                "totalcount": 51956
+            },
+            {
+                "querystring": "omnilube precautions",
+                "average precision": 1.0,
+                "totalcount": 55
+            },
+            {
+                "querystring": "protective gloves required",
+                "average precision": 0.125,
+                "totalcount": 1180
+            },
+            {
+                "querystring": "how to handle SULFURIC ACID",
+                "average precision": 0.6333333333333333,
+                "totalcount": 224310
+            },
+            {
+                "querystring": "stainless steel waste disposal",
+                "average precision": 1.0,
+                "totalcount": 40417
+            },
+            {
+                "querystring": "ingredients of white powder",
+                "average precision": 0.9472222222222222,
+                "totalcount": 126937
+            },
+            {
+                "querystring": "military explosives",
+                "average precision": 1.0,
+                "totalcount": 167
+            },
+            {
+                "querystring": "yellow paint",
+                "average precision": 1.0,
+                "totalcount": 78537
+            },
+            {
+                "querystring": "wood lgue",
+                "average precision": 0.0,
+                "totalcount": 5588
+            },
+            {
+                "querystring": "blue ink brother industries",
+                "average precision": 0.0,
+                "totalcount": 142329
+            },
+            {
+                "querystring": "foto bleach firefighting",
+                "average precision": 0.49583333333333335,
+                "totalcount": 3679
+            },
+            {
+                "querystring": "fertilizer",
+                "average precision": 1.0,
+                "totalcount": 4
+            }
+        ]
+    },
+    "w": {
+        "mean average precision": 0.7501894143900947,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.9060405643738977,
+                "totalcount": 219265
+            },
+            {
+                "querystring": "liquid on fire",
+                "average precision": 0.9428571428571428,
+                "totalcount": 173593
+            },
+            {
+                "querystring": "buy ammonium flouride",
+                "average precision": 1.0,
+                "totalcount": 14348
+            },
+            {
+                "querystring": "omnilube precautions",
+                "average precision": 1.0,
+                "totalcount": 488
+            },
+            {
+                "querystring": "protective gloves required",
+                "average precision": 0.6427579365079366,
+                "totalcount": 107771
+            },
+            {
+                "querystring": "how to handle SULFURIC ACID",
+                "average precision": 0.1,
+                "totalcount": 125648
+            },
+            {
+                "querystring": "stainless steel waste disposal",
+                "average precision": 0.8802579365079365,
+                "totalcount": 11105
+            },
+            {
+                "querystring": "ingredients of white powder",
+                "average precision": 0.9617346938775511,
+                "totalcount": 107506
+            },
+            {
+                "querystring": "military explosives",
+                "average precision": 0.95,
+                "totalcount": 29593
+            },
+            {
+                "querystring": "yellow paint",
+                "average precision": 1.0,
+                "totalcount": 90829
+            },
+            {
+                "querystring": "wood lgue",
+                "average precision": 0.0,
+                "totalcount": 4128
+            },
+            {
+                "querystring": "blue ink brother industries",
+                "average precision": 1.0,
+                "totalcount": 61680
+            },
+            {
+                "querystring": "foto bleach firefighting",
+                "average precision": 0.3333333333333333,
+                "totalcount": 10395
+            },
+            {
+                "querystring": "fertilizer",
+                "average precision": 0.7856701940035273,
+                "totalcount": 1719
+            }
+        ]
+    },
+    "fw": {
+        "mean average precision": 0.7579050138573948,
+        "queries": [
+            {
+                "querystring": "oxygen inhaled",
+                "average precision": 0.8782627865961199,
+                "totalcount": 63192
+            },
+            {
+                "querystring": "liquid on fire",
+                "average precision": 0.9166666666666666,
+                "totalcount": 235891
+            },
+            {
+                "querystring": "buy ammonium flouride",
+                "average precision": 0.3333333333333333,
+                "totalcount": 80834
+            },
+            {
+                "querystring": "omnilube precautions",
+                "average precision": 1.0,
+                "totalcount": 67
+            },
+            {
+                "querystring": "protective gloves required",
+                "average precision": 0.0,
+                "totalcount": 3352
+            },
+            {
+                "querystring": "how to handle SULFURIC ACID",
+                "average precision": 1.0,
+                "totalcount": 235892
+            },
+            {
+                "querystring": "stainless steel waste disposal",
+                "average precision": 0.975,
+                "totalcount": 93073
+            },
+            {
+                "querystring": "ingredients of white powder",
+                "average precision": 1.0,
+                "totalcount": 223355
+            },
+            {
+                "querystring": "military explosives",
+                "average precision": 1.0,
+                "totalcount": 577
+            },
+            {
+                "querystring": "yellow paint",
+                "average precision": 1.0,
+                "totalcount": 119968
+            },
+            {
+                "querystring": "wood lgue",
+                "average precision": 0.0,
+                "totalcount": 76186
+            },
+            {
+                "querystring": "blue ink brother industries",
+                "average precision": 1.0,
+                "totalcount": 180582
+            },
+            {
+                "querystring": "foto bleach firefighting",
+                "average precision": 0.5074074074074074,
+                "totalcount": 9164
+            },
+            {
+                "querystring": "fertilizer",
+                "average precision": 1.0,
+                "totalcount": 12
+            }
+        ]
+    }
+}

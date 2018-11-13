@@ -1,0 +1,126 @@
+{
+    "querystring": "ingredients of white powder",
+    "totalcount": 223355,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-324-4645",
+                "companyName": "READE MFG CO INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MAGNESIUM POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D004349",
+                "companyName": "CLAIROL INC INTERNATIONAL DIVISION",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "7712 BLEACH POWDER-BASIC WHITE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N041423",
+                "companyName": "CLAIROL INC",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "BLEACH POWDERS (INCLUDES POWDERS, ACTIVATORS (SUPDAT)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N081104",
+                "companyName": "GENIUM PUBLISHING CORP",
+                "fsc": "9535",
+                "fscString": "Plate, Sheet, Strip and Foil: Nonferrous Base Metal",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "ALUMINUM METAL/POWDER, 100"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-935-5878",
+                "companyName": "READE MFG CO INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MAGNESIUM POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-324-4645",
+                "companyName": "MAGNESIUM ELEKTRON, INC, READE MFG CO DIV",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "MAGNESIUM POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-817-0295",
+                "companyName": "BABY PRODUCTS CO, TOILETRIES DIV.",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "JOHNSON'S BABY POWDER/JBP"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N041890",
+                "companyName": "COSMAIR INC",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "EFFASOL BLEACHING POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D004349",
+                "companyName": "CLAIROL INC",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "BLEACH POWDER"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-817-0295",
+                "companyName": "WHITTAKER, CLARK & DANIELS, INC.",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "TALC - TALCIUM POWDER"
+            },
+            "relevant": true
+        }
+    ]
+}

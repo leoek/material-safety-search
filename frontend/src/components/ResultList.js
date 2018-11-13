@@ -19,6 +19,7 @@ import Pagination from "./Pagination";
 
 import { showDatasheet } from "../redux/actions";
 import { getSearchItems, getSearchIsFetching } from "../redux/selectors";
+import ResultMeta from "./ResultMeta";
 
 const styles = theme => ({
   root: {
@@ -154,6 +155,7 @@ const ResultListContainer = ({
   children = null
 }) => (
   <div className={classes.root}>
+    <ResultMeta />
     <Pagination />
     {!hideLoading && (
       <div className={classes.loadingContainer}>

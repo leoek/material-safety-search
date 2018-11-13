@@ -1,0 +1,126 @@
+{
+    "querystring": "foto bleach firefighting",
+    "totalcount": 10395,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-297-6653",
+                "companyName": "NACIP INC",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "STABLE BLEACHING POWDER, 1ST"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-047-8563",
+                "companyName": "MILLER DIAL/FOTOFOIL",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTO FOIL DEVELOPER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N023304",
+                "companyName": "MILLER DIAL CORP/FOTOFOIL DIV",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTOCOLOR BLEACH, 86039"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-132-9991",
+                "companyName": "MILLER DIAL CORP FOTOFOIL DIVISION",
+                "fsc": "6750",
+                "fscString": "Photographic Supplies",
+                "fsgString": "Photographic Equipment",
+                "productId": "FOTO FOIL DEVELOPER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D004349",
+                "companyName": "CLAIROL INC",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "BLEACH POWDER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N020372",
+                "companyName": "GPS INDUSTRIES",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "JAVEL WATER/BLEACH SODA BLEACH/CHLORINE BLE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N041423",
+                "companyName": "CLAIROL INC",
+                "fsc": "8510",
+                "fscString": "Perfume, Toilet Preparations and Powders",
+                "fsgString": "Toiletries",
+                "productId": "BLEACH POWDERS (INCLUDES POWDERS, ACTIVATORS (SUPDAT)"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-900-6276",
+                "companyName": "PRILLAMAN CHEMICAL CORP",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "SODIUM HYPOCHLORITE SOLN,BLEACH 5.2-6.6%"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-029-5565",
+                "companyName": "PRILLAMAN CHEMICAL CORP",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "SODIUM HYPOCHLORITE SOLN, BLEACH 12.5-15%VOL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N035926",
+                "companyName": "TRANS CHEM INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "JAVEL WATER BLEACH, SODA BLEACH"
+            },
+            "relevant": false
+        }
+    ]
+}

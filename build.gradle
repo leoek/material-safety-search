@@ -28,7 +28,7 @@ idea {
 
 bootJar {
     baseName = 'material-safety-search'
-    version =  '1.0.0'
+    version =  '1.1.0'
 }
 
 group = "org"

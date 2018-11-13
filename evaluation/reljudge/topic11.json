@@ -1,0 +1,126 @@
+{
+    "querystring": "blue ink brother industries",
+    "totalcount": 21819,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F007398",
+                "companyName": "BLUE GOLD INDUSTRIAL CLEANER",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "BLUE GOLD INDUSTRIAL CLEANER"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F007229",
+                "companyName": "AMERICAN INK JET CORPORATION",
+                "fsc": "3610",
+                "fscString": "Printing, Duplicating and Bookbinding Equipment",
+                "fsgString": "Special Industry Machinery",
+                "productId": "INK JET PRINTING FLUID"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-380-8353",
+                "companyName": "BLUE CORAL INDUSTRIAL",
+                "fsc": "7930",
+                "fscString": "Cleaning and Polishing Compounds and Preparations",
+                "fsgString": "Cleaning Equipment and Supplies",
+                "productId": "CLEAR MAGIC INDUSTRIAL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F001711",
+                "companyName": "VAN SON HOLLAND INK CORP",
+                "fsc": "3610",
+                "fscString": "Printing, Duplicating and Bookbinding Equipment",
+                "fsgString": "Special Industry Machinery",
+                "productId": "RUBBERBASE PLUS COLOR OFFSET INKS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F006741",
+                "companyName": "HUNT MFG CO",
+                "fsc": "3610",
+                "fscString": "Printing, Duplicating and Bookbinding Equipment",
+                "fsgString": "Special Industry Machinery",
+                "productId": "BLUE 4542, 4582, 4592 SPEEDBALL INK"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-237-3457",
+                "companyName": "SEYMOUR OF SYCAMORE INC",
+                "fsc": "3680",
+                "fscString": "FSC Group 3680",
+                "fsgString": "Special Industry Machinery",
+                "productId": "TOOLMAKER BLUE LAYOUT INK FORMULA 00-0016-0"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N017045",
+                "companyName": "STAR BRITE",
+                "fsc": "3611",
+                "fscString": "Industrial Marking Machines-4",
+                "fsgString": "Special Industry Machinery",
+                "productId": "LIQUID ELECTRICAL TAPE 12-4046, 84137"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N017044",
+                "companyName": "STAR BRITE",
+                "fsc": "3611",
+                "fscString": "Industrial Marking Machines-4",
+                "fsgString": "Special Industry Machinery",
+                "productId": "LIQUID ELECTRICAL TAPE 12-4046, 84136"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N017046",
+                "companyName": "STAR BRITE",
+                "fsc": "3611",
+                "fscString": "Industrial Marking Machines-4",
+                "fsgString": "Special Industry Machinery",
+                "productId": "LIQUID ELECTRICAL TAPE 12-4046, 84138"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N017037",
+                "companyName": "STAR BRITE",
+                "fsc": "3611",
+                "fscString": "Industrial Marking Machines-4",
+                "fsgString": "Special Industry Machinery",
+                "productId": "LIQUID ELECTRICAL TAPE 12-4046, 84104"
+            },
+            "relevant": false
+        }
+    ]
+}

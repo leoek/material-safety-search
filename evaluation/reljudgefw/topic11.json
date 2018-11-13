@@ -1,0 +1,126 @@
+{
+    "querystring": "blue ink brother industries",
+    "totalcount": 180582,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "BROTHER INDUSTRIES LTD",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "ZA0041001 LC01C INK CARTRIDGE FOR MFC-7000FC AND MFC-7200FC"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "BROTHER INDUSTRIES LTD",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "ZA0031001 LC01BK INK CARTRIDGE FOR MFC-7000FC AND MFC-7200FC"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N069099",
+                "companyName": "BLUE CORAL INC",
+                "fsc": "7930",
+                "fscString": "Cleaning and Polishing Compounds and Preparations",
+                "fsgString": "Cleaning Equipment and Supplies",
+                "productId": "WESTLEYS CONCENTRATE CAR WASH, WC128"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N069098",
+                "companyName": "BLUE CORAL INC",
+                "fsc": "7930",
+                "fscString": "Cleaning and Polishing Compounds and Preparations",
+                "fsgString": "Cleaning Equipment and Supplies",
+                "productId": "WESTLEYS CONCENTRATE CAR WASH, WCW4"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-181-1734",
+                "companyName": "AMERICAN REGENT LABORATORIES INC SUB OF LITPOLD PH",
+                "fsc": "6505",
+                "fscString": "Drugs and Biologicals",
+                "fsgString": "Medical, Dental, and Veterinary Equipment and Supplies",
+                "productId": "METHYLENE BLUE INJECTION"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00B020049",
+                "companyName": "BLUE CORAL,INC.",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "WESTLEY'S BLECHE-WHITE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "CRC INDUSTRIES,INC.",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "RTV SILICON BLUE 14057"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F048826",
+                "companyName": "BLUE CORAL INC",
+                "fsc": "9160",
+                "fscString": "Miscellaneous Waxes, Oils and Fats",
+                "fsgString": "Fuels, Lubricants, Oils, and Waxes",
+                "productId": "13100 BLUE CORAL WASH & WAX"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-275-2888",
+                "companyName": "DAVID KAHN, INC",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "DAVID KAHN FOUNTAIN PEN INK BLUE/BLACK-1590"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N089509",
+                "companyName": "BROTHER INTERNATIONAL CORP",
+                "fsc": "7510",
+                "fscString": "Office Supplies",
+                "fsgString": "Office Supplies and Devices",
+                "productId": "LC01M, ZA0061001"
+            },
+            "relevant": false
+        }
+    ]
+}

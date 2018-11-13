@@ -1,0 +1,126 @@
+{
+    "querystring": "stainless steel waste disposal",
+    "totalcount": 40417,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-276-1771",
+                "companyName": "BSC STAINLESS",
+                "fsc": "9515",
+                "fscString": "Plate, Sheet, Strip and Foil: Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "STAINLESS STEEL"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N034869",
+                "companyName": "MCINNES STEEL CO",
+                "fsc": "9520",
+                "fscString": "Structural Shapes, Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "SPECIALTY/STAINLESS STEEL"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052702",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 416"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052701",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 410"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-596-3577",
+                "companyName": "SUNSET WIRE AND STEEL",
+                "fsc": "9510",
+                "fscString": "Bars and Rods, Iron and Steel",
+                "fsgString": "Metal Bars, Sheets, and Shapes",
+                "productId": "300 AND 400 SERIES STAINLESS STEELS AND SPECIALTY ALLOYS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052713",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 321, SIC-33"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052708",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 4340, SIC-33"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052712",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 316, SIC-33"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052710",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 303, SIC-33"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N052711",
+                "companyName": "SLATER STEELS CORP",
+                "fsc": "9640",
+                "fscString": "Iron and Steel Primary and Semi-finished Products",
+                "fsgString": "Ores, Minerals, and Their Primary Products",
+                "productId": "STAINLESS STEEL ALLOY 304, SIC-33"
+            },
+            "relevant": false
+        }
+    ]
+}

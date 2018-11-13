@@ -1,0 +1,54 @@
+{
+    "querystring": "fertilizer",
+    "totalcount": 4,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F008564",
+                "companyName": "O.M. SCOTT & SONS COMPANY",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "SCOTTS PROTURF FERTILIZER/FUNGICIDE VIII,"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F008495",
+                "companyName": "O.M. SCOTT & SONS COMPANY",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "SCOTTS PROTURF FERTILIZER/INSECTICIDE III"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F005479",
+                "companyName": "O.M. SCOTT & SONS COMPANY",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "SCOTTS PROTURF FERTILIZER/DICOT WEED CTRL"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00D003413",
+                "companyName": "THE SCOTTS COMPANY,PROFESSIONAL BUSINESS GROUP",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "SCOTTS PROTURF FERTILIZER+DICOT WEED CONTROL III;34-4-3;8609"
+            },
+            "relevant": true
+        }
+    ]
+}

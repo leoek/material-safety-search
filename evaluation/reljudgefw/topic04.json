@@ -1,0 +1,126 @@
+{
+    "querystring": "protective gloves required",
+    "totalcount": 3352,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-266-8843",
+                "companyName": "SAGER GLOVE CORP",
+                "fsc": "8415",
+                "fscString": "Clothing, Special Purpose",
+                "fsgString": "Clothing, Individual Equipment, and Insignia",
+                "productId": "MITTENS, CLOTH, NATURAL, ASBESTOS"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-226-6861",
+                "companyName": "SHELLER-GLOVE CORP,VICTOREEN INSTRUMENT DIV",
+                "fsc": "5960",
+                "fscString": "Electron Tubes and Associated Hardware",
+                "fsgString": "Electrical and Electronic Equipment Components",
+                "productId": "8612"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-405-9312",
+                "companyName": "FIBER GLASS-EVERCOAT CO,INC",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "GLOVE COTE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N020217",
+                "companyName": "FIBRE GLASS-EVERCOAT CO INC",
+                "fsc": "8030",
+                "fscString": "Preservative and Sealing Compounds",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "GLOVE COTE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N060686",
+                "companyName": "PRECISION SUPPLY",
+                "fsc": "8030",
+                "fscString": "Preservative and Sealing Compounds",
+                "fsgString": "Brushes, Paints, Sealers, and Adhesives",
+                "productId": "GLOVE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F004978",
+                "companyName": "W. H. SALISBURY",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "10-4 GLOVE DUST"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F006137",
+                "companyName": "BORDEN, INC",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "NO. 7 INVISIBLE GLOVE 5215N"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N019058",
+                "companyName": "TECH SPRAY",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "GOLD FINGER GLOVE, 1725-6S"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-952-7185",
+                "companyName": "GEORGE SENN CO, DIV. OF GLOVE SOLVENTS CO. INC.",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "CLEANING COMPOUND SLVENT, O-C-1889"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-405-9312",
+                "companyName": "FIBRE GLASS-EVERCOAT CO.,INC.",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "GLOVE COTE"
+            },
+            "relevant": false
+        }
+    ]
+}

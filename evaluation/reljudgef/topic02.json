@@ -1,0 +1,126 @@
+{
+    "querystring": "buy ammonium flouride",
+    "totalcount": 51956,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N032923",
+                "companyName": "BURKE CO",
+                "fsc": "5610",
+                "fscString": "Mineral Construction Materials, Bulk",
+                "fsgString": "Construction and Building Materials",
+                "productId": "8007, BURKE PLUG"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N037703",
+                "companyName": "BURKE CHEMICALS",
+                "fsc": "5610",
+                "fscString": "Mineral Construction Materials, Bulk",
+                "fsgString": "Construction and Building Materials",
+                "productId": "BURKEPOXY MORTAR PART C, MORTAR"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-974-3621",
+                "companyName": "FISHER SCIENTIFIC, CHEMICAL DIVISION",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM FLOURIDE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-264-6611",
+                "companyName": "MALLINCKRODT BAKER, INC.",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM-MOLYBDATE,4-HYDRATE"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N006608",
+                "companyName": "EM SCIENCE",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM HYDROGEN FLUORIDE,CAS # 1341-49-7"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": null,
+                "companyName": "FISHER SCIENTIFIC CO.  CHEMICAL MFG DIV",
+                "fsc": null,
+                "fscString": null,
+                "fsgString": null,
+                "productId": "04576100 TETRA-N-BUTYL AMMONIUM HYDROXIDE SOL 1M IN METHANOL"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "01-018-6726",
+                "companyName": "BURGESS INC.",
+                "fsc": "6850",
+                "fscString": "Miscellaneous Chemical Specialties",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM HYDROXIDE, 28%"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00-975-2504",
+                "companyName": "THOMAS HAYWARD CHEMICAL CO (OUT OF BUSINESS)",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM BIFLUORIDE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N042041",
+                "companyName": "MALLINCKRODT INC",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "FERRIC AMMONIUMSULFATE INDICATOR"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F000302",
+                "companyName": "SHAPE PRODUCTS",
+                "fsc": "6810",
+                "fscString": "Chemicals",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "AMMONIUM BUFFER, 3600"
+            },
+            "relevant": false
+        }
+    ]
+}

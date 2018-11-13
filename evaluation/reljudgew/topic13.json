@@ -1,0 +1,126 @@
+{
+    "querystring": "fertilizer",
+    "totalcount": 1719,
+    "results": [
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N001410",
+                "companyName": "AGWAY INC,FERTILIZER DIV.",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "TURFOOD REGULAR 10-6-4"
+            },
+            "relevant": false
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F030047",
+                "companyName": "PARKER FERTILIZER CO INC",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "STA-GREEN NONPESTICIDE GOLF FERTILIZERS"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F030046",
+                "companyName": "PARKER FERTILIZER CO INC",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "STA-GREEN & PARKER'S NONPESTICIDE FERTILIZERS"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N036419",
+                "companyName": "PARKER FERTILIZER CO INC",
+                "fsc": "6840",
+                "fscString": "Pest Control Agents and Disinfectants",
+                "fsgString": "Chemicals and Chemical Products",
+                "productId": "STA-GREEN & PARKER'S NONPESTICIDE FERTILIZE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F046010",
+                "companyName": "THE ANDERSON LAWN PRODUCTS DIVISION",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "ATT184DM5 TEE TIME FERTILIZER 18-6-15 W/DIMENSION"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N084432",
+                "companyName": "SCOTTS COMPANY",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "SUPER TURF FERTILIZER 25-4-12, 8876"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F025210",
+                "companyName": "STANDARD OIL CHEMICAL COMPANY",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "UREA PRILL FERTILIZER GRADE"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00F032455",
+                "companyName": "ALASKA FISH FERTILIZER CO",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "ALASKA FISH FERTILIZER (5-1-1)"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N084420",
+                "companyName": "SCOTTS CO",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "PROBLEND FERTILIZER 8-14-28, 84714"
+            },
+            "relevant": true
+        },
+        {
+            "doc": {
+                "docType": "datasheet",
+                "niin": "00N031660",
+                "companyName": "ESTECH BRANDED FERTILIZERS",
+                "fsc": "8720",
+                "fscString": "Fertilizers",
+                "fsgString": "Agricultural Supplies",
+                "productId": "PAR-EX 12-3-34 SLOW RELEASE FERTILIZER"
+            },
+            "relevant": true
+        }
+    ]
+}
